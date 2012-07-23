@@ -1,0 +1,508 @@
+$line: 27;
+$column: 5.55%;
+$font-size: 18;
+$em: $font-size * 1;
+
+@import "_temp"; // For styles to remove
+@import "_normalise";
+
+/*
+*	Type Scale
+*
+*	13.5px
+*	18.0px size
+*	22.5px
+*	27.0px leading
+*	36.0px
+*	40.5px
+*	54.0px
+*	63.0px
+*
+*/
+
+body {
+	font-size: #{$font-size/16}em;
+	line-height: #{$line / $em};
+	font-family: "chaparral-pro", Georgia, serif;
+	background: #EEE;
+	color: #222;
+	
+	overflow-x: hidden; // this is a temp fix
+}
+
+header {
+	font-family: "facitweb", "Lucida Grande", sans-serif;
+}
+
+a {
+	color: #666;
+	
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-touch-callout: none;
+}
+
+a:hover, a:focus, a:active {
+	color: #333;
+}
+
+.chap {
+	// What a nice chap!
+}
+
+/* Periferal Content */
+
+.chap_marg {
+	font-size: #{(13.5 / $em)}em;
+	line-height: #{(4/3)};
+	font-style: italic;
+	color: #666;
+
+	float: left;
+	width: #{($column * 3)};
+	margin: 0.5em 0 0 0; // this lines it up with the baseline in ths case, but might not always work. Test!
+	padding: 0 1em; // half gutter 
+	-webkit-hyphenate: auto; // ?
+	
+	-webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box;
+	    -ms-box-sizing: border-box;
+	     -o-box-sizing: border-box;
+		    box-sizing: border-box;
+
+	-webkit-transition: all 0.5s ease;
+	   -moz-transition: all 0.5s ease;
+	   	-ms-transition: all 0.5s ease;
+	     -o-transition: all 0.5s ease;
+		    transition: all 0.5s ease;
+
+}
+
+.chap_marg:hover, .chap_marg:focus {
+	color: #222;
+	cursor: pointer;
+} // these won't work on touch devices, duh
+
+.chap_marg_icon {
+	font-size: #{($em / 13.5)}em;
+	font-weight: bold;
+
+	display: block;
+	overflow: hidden;
+	margin: 0 0 0.25em 0;
+
+	width: 1.75em;
+	height: 1.75em;
+	border-radius: 4em 4em 4em 0;
+	border: none;
+	background: #9A9A9A;
+	
+	color: #FFF;
+	text-align: center;
+	line-height: 1.9; // visually centre
+	
+	-webkit-transition: all 0.5s ease;
+	   -moz-transition: all 0.5s ease;
+	   	-ms-transition: all 0.5s ease;
+	     -o-transition: all 0.5s ease;
+		    transition: all 0.5s ease;
+}
+
+.chap_marg:hover .chap_marg_icon, .chap_marg:focus .chap_marg_icon {
+	background: #FF8080;
+}
+
+.chap_marg_icon img {
+} /* this markup isn't right, maybe a :before on citations? 
+	 Also, should work for all icons, right now requires an
+	 image in the <i> tag. Needs an inner-class if markup 
+	 stays the same. */
+
+.chap_marg_icon__citation {
+
+}
+
+/* Main Sections */
+
+.chap_sec {
+	margin: 0 #{($column * 3)};
+	// width: #{($column * 10)}; // 10 originally , haig suggests 3/10/3 (16) instead of 4/8/4 (16), I decided 3/12/3 (18)
+	width: #{($column * 12)};
+	padding: 0 0.5em; // half-gutter, breaks figure, works against GGS but with pereferal content
+	
+	-webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box;
+	    -ms-box-sizing: border-box;
+	     -o-box-sizing: border-box;
+		    box-sizing: border-box;
+}
+
+.chap_sec:first-child p:first-child, .chap_lead {
+	font-size: #{22.5 / $em}em;
+	line-height: 1.5;
+}
+
+.chap_sec p + p, .chap_marg + .chap_sec p:first-child {
+	text-indent: 2em;
+} // indent for paragraph following paragraph, paragraph "following" periferal content
+
+.chap_sec blockquote {
+	margin: 1em 0 1em -1.5em;
+    border-left: 0.5em solid #FF8080;
+    font-style: italic;
+    padding: 0 0 0 1em;
+}
+
+.chap_sec cite {
+	display: block;
+    margin: 1em 0 0 0;
+    font-style: normal;
+}
+
+.chap_sec q:before {
+	content: "&#8220;"; // &#8220
+}
+
+.chap_sec q:after {
+	content: "&#8221;"; // &#8221;
+}
+
+/* Chapter Section Main Images */
+
+.chap_sec_fig {
+	/* This makes the figure break outside of the main column.
+	   Since the inner column is 12 out of 18, it's 2/3 of the full width,
+	   multiply by 1.5 to make the column variable work again. Then, since there
+	   is a constant gutter padding of 0.5em, find the percentage of 0.5em
+	   at 768 (target device width, change with media queries to breakpoint variables)
+	   and multiply by two for the additional width. Probably my biggest CSS comment
+	   ever! Hide this one in the SCSS, please. */
+	width: #{((($column * 14) * (3/2)) + (2 * (($em / 768) * 100%)))};
+	left: #{((($column * 1) * (-3/2)) - (1 * (($em / 768) * 100%)))};
+	margin: 1em 0;
+}
+
+.chap_sec_fig__left, .chap_sec_fig__right {
+	width: #{((($column * 15) * (3/2)) + (2 * (($em / 768) * 100%)))};
+	left: #{((($column * 3) * (-3/2)) - (1.25 * (($em / 768) * 100%)))};
+	// should be 1 instead of 1.25?
+}
+
+.chap_sec_fig__right {
+	// right: #{((($column * 3) * (-3/2)) - (1.25 * (($em / 768) * 100)))};
+	left: -(0.6 * (($em / 768) * 100%));
+	left: 0; // should be left: 0?
+}
+
+.chap_sec_fig_cap {
+	font-size: #{(13.5 / $em)}em;
+	background: #CCC;
+	color: #333;
+	padding: 0.5em 1em;
+}
+
+/* Marginal Images */
+
+.chap_marg_fig {
+	margin: 0 0 1em 0;
+}
+
+.chap_marg_fig_cap {
+	color: #666;
+	padding: 0.5em 0;		
+}
+
+/* Comments */
+
+.com {
+	width: 100%;
+	clear: left;
+	background: #FFF;
+	border-top: 1px solid #FF8080;
+	border-bottom: 1px solid rgba(#000,0.3);
+	box-shadow: 0 1.5px 3px rgba(0,0,0,0.25), inset 0 0 5px rgba(0,0,0,0);
+	// BUG this is causing bugs right now
+
+	-webkit-transition: all 0.5s ease; // this speed needs to be the same as .com_test speed. Variable?
+	
+	margin: 0 0 -1px 0; // fix baseline
+}
+
+.com__open,
+// .com:hover
+{
+	border-bottom: 1px solid rgba(#FF8080,1.0);
+	box-shadow: 0 1.5px 3px rgba(0,0,0,0), inset 0 0 5px rgba(0,0,0,0.5);
+	// BUG
+}
+
+.com_dive {
+	display: block;
+	// float: left; // this was before position: absolute
+	width: 0.75em;
+	height: 0.75em;
+	position: absolute;
+	right: 1.78em; // needed to center over small triangle which is set at 2em as in comps
+	margin: #{($em / -2)}px 0 0 0;
+	background: #EEE;
+	transform: rotate(45deg);
+	box-shadow: inset 1px 1px 2px rgba(0,0,0,0.25);
+	border: 1px solid #FF8080;
+	border-width: 3px 0 0 3px;
+
+	-webkit-transform: rotate(45deg);
+	   -moz-transform: rotate(45deg);
+	    -ms-transform: rotate(45deg);
+	     -o-transform: rotate(45deg);
+	        transform: rotate(45deg);
+	
+	// -webkit-transition: background 0.1s ease;
+	// -webkit-transition: all 0.2s ease;
+	// box sizing not supported in iOS4, makes this look worse
+	
+	background: -moz-linear-gradient(-45deg,  rgba(214,214,214,1) 50%, rgba(220,220,220,1) 57%, rgba(255,255,255,0) 100%);
+	background: -webkit-gradient(linear, left top, right bottom, color-stop(50%,rgba(214,214,214,1)), color-stop(57%,rgba(220,220,220,1)), color-stop(100%,rgba(255,255,255,0)));
+	background: -webkit-linear-gradient(-45deg,  rgba(214,214,214,1) 50%,rgba(220,220,220,1) 57%,rgba(255,255,255,0) 100%);
+	background: -o-linear-gradient(-45deg,  rgba(214,214,214,1) 50%,rgba(220,220,220,1) 57%,rgba(255,255,255,0) 100%);
+	background: -ms-linear-gradient(-45deg,  rgba(214,214,214,1) 50%,rgba(220,220,220,1) 57%,rgba(255,255,255,0) 100%);
+	background: linear-gradient(135deg,  rgba(214,214,214,1) 50%,rgba(220,220,220,1) 57%,rgba(255,255,255,0) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d6d6d6', endColorstr='#00ffffff',GradientType=1 );
+
+} // BUG this breaks margins right now
+
+.com__open .com_dive,
+// .com:hover .com_dive
+{
+	box-shadow: none;
+	border-width: 0 3px 3px 0;
+	// -webkit-animation: invertTriangle 0.2s ease-in-out;
+	// -webkit-animation-delay: 0.2s;
+	// -webkit-transform: rotate(225deg); // 585 for animation
+	// border-width: 0 3px 3px 0;
+	
+	// Need to include Compass
+	// @include filter-gradient(#4d000000, #00000000, vertical);
+	// @include background-image(linear-gradient(top, rgba(0,0,0,0.3) 0%,rgba(0,0,0,0) 100%));
+	
+	background: #EEE;
+}
+
+/* Dive Mini-Triangle */
+
+.com:after {
+	content: "";
+	display: block;
+	position: absolute;
+	float: left;
+	border: 4px solid transparent;
+	border-top-color: #FF8080;	
+	right: 2em; // 36px
+	width: 0;
+	height: 0;
+}
+
+.com__open:after,
+// .com:hover:after
+{
+	margin: 1px 0 0 0;
+	-webkit-transform: rotate(540deg);
+}
+
+/*
+.com__open:after, .com:hover:after {
+	float: right;
+	margin: 5px -10px 0 0;
+	-webkit-transform: rotate(180deg); // reset .com_dive:after, 540 instead of 180 for animation
+}
+*/
+
+//.com__open .com_dive:after, .com:hover .com_dive:after {
+//	display: none; // maybe ie display none, others slide down or fade in/out?
+//	-webkit-transform: rotate(135deg); // reset .com_dive:after, 540 instead of 180 for animation
+//}
+
+.com_count {
+	font-size: #{13.5 / $em}em;
+	display: block;
+	float: right;
+	height: 100%;
+	margin: -1.5em 0 0 0;
+	padding: 0 1em 0 0.5em;
+	color: #FF8080;
+
+	-webkit-user-select: none;  /* Chrome all / Safari all */
+	-moz-user-select: none;     /* Firefox all */
+	-ms-user-select: none;      /* IE 10+ */
+	-o-user-select: none;		/* No support yet */
+	user-select: none;			/* No support yet */
+}
+
+.com__open .com_count,
+// .com:hover .com_count 
+{
+}
+
+.com_test {
+	height: 0;
+	overflow: hidden;
+	
+	-webkit-transition: all 0.5s ease;
+	   -moz-transition: all 0.5s ease;
+	   	-ms-transition: all 0.5s ease;
+	     -o-transition: all 0.5s ease;
+		    transition: all 0.5s ease;
+
+	// need to trasition background, border, box-shadow, padding of inner comments, height
+}
+
+.com__open .com_test,
+// .com:hover .com_test
+{
+	height: 14em; // ONE BIG ISSUE WITH ANIMATIONS: fixed-height, should be 100%
+	padding: 0.50em 0;
+}
+
+.com_comments {
+	font-size: #{13.5 / $em}em;
+	width: #{($column * 15)};
+	margin: 0 auto;
+	position: relative;
+}
+
+.com__open .com_comments,
+// .com:hover .com_comments
+{
+}
+
+.com_comments_comment {
+	float: left;
+	width: #{(100%/3)}; // check how this works with the columns
+	padding: 0.5em 0; // quarter em padding here, three quarters for animation on .com_test	
+	position: relative;
+	height: 100%;
+}
+
+.com_comments_comment_wrap {
+	border-left: #{(2/3)}em solid #F04F47; // should this be px?
+	padding: 0 1em 1em 1em;
+}
+
+.com_comments_comment_cite {
+	font-size: #{$em / 13.5}em;
+	margin: 0.5em 0 0 0;
+	display: block;
+	// webkit hyphenate?
+}
+
+.com_comments_comment_reply {
+	display: block;
+	font-family: "facitweb", "Lucida Grande", sans-serif; // font family facit web, lucida grande, whatever
+	text-decoration: none;
+	line-height: 2;
+	color: #333;
+	float: left;
+	padding: 0 0.5em 0 0;
+}
+
+.com_comments_comment_reply_icon {
+	display: block;
+	float: left;
+	width: 2em;
+	margin: 0 0.5em 0 0;
+	text-align: center;
+	background: #F04F47;
+	color: #FFF;
+}
+
+@media screen and (min-width: 1024px) { // Check media queries in Sass
+
+	.com_comments {
+		width: #{($column * 14)};
+	}
+
+	.com_comments_comment {
+		// width: #{($column * 4)}; // check how this works with the columns
+		width: #{(207/908 * 100%)}; // Px to % from Fireworks, better way?
+	}
+
+	.com_comments_comment:last-of-type {
+		width: #{(441/908 * 100%)}; // Px to % from Fireworks, better way?
+	} // should actually be a __class for whatever the longest/most popular, whatever comment is. Probably shouldn't be the middle one.
+	
+	.com_comments_comment:last-of-type .com_comments_comment_wrap {
+		font-size: #{(4/3)}em; // Change font-size here instead since it won't mess up reply button then
+	
+		border-left: 0.5em solid #F04F47; // should this be px?
+		padding: 0 0.75em 0.75em 0.75em;
+	}
+
+	.com_comments_comment:last-of-type .com_comments_comment_cite {
+		font-size: 1em;
+	}
+	
+}
+
+/* Forms, move to normalise later? */
+
+form {
+}
+
+label {
+	float: left;
+	clear: left;
+	width: 100%;
+	font-size: #{(13.5 / $em)}em;
+	font-weight: bold;
+}
+
+input, textarea, select {
+	margin: 0 0 0.5em 0;
+	
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+input[type=text] {
+	float: left;
+	clear: left;
+	line-height: 2;
+	height: 2em;
+	padding: 0 #{(1/3)}em;
+	border: 1px solid #666;
+	// width: #{(($column * 11) * (18/14))};
+	width: 100%;
+}
+
+textarea {
+	float: left;
+	clear: left;
+	line-height: 1.5;
+	padding: 0.25em #{(1/3)}em;
+	border: 1px solid #666;
+	// width: #{(($column * 11) * (18/14))};
+	width: 100%;
+	min-height: 7em;
+	
+	box-sizing: border-box;
+}
+
+input[type=text]:focus, textarea:focus {
+	background: yellow;
+}
+
+input[type=submit] {
+	float: left;
+	clear: left;
+	margin: 0.5em 0;
+}
+
+.com_add_sec {
+	background: #CCC;
+	width: #{($column * 14)};
+	margin: 0 auto;
+	padding: 1em; // half-gutter, this creates the same problem as the figure gutter by bumping the inner content like the inputs inwards since the padding is in ems instead of percentages
+	position: relative;
+	top: -25em;
+	
+	box-shadow: 0 0 1em rgba(#000, 0.5);
+	box-sizing: border-box;
+}

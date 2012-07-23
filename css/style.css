@@ -1,0 +1,498 @@
+.clear_temp {
+  clear: left; }
+
+.col {
+  width: 11.1%;
+  width: 5.55555555556%;
+  float: left;
+  outline: 1px solid #000;
+  height: 4.5em;
+  background: pink;
+  text-align: center;
+  line-height: 4em;
+  display: none; }
+
+figure img {
+  width: 100%;
+  /* How do you have a image-friendly, responsive baseline grid?
+     The widths have to be set as max 100%, so the height is what
+     changes unless you want the proportions to change or the image
+     to get croppoed with an overflow, which are both worse. */ }
+
+/* Comment Fake Target, temp hopefully */
+.target_com {
+  padding: 5em 0;
+  margin: -5em 0;
+  z-index: 10;
+  position: relative;
+  cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0.5); }
+
+* {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-touch-callout: none; }
+
+.temp_citation_modal {
+  background: #CCC;
+  margin: 0 11.1%; }
+
+.temp_citation_modal__open {
+  display: block; }
+
+/*
+*
+*  Margin, padding, and border resets
+*  except for form elements
+*
+*/
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, a, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, figure, footer, header, hgroup, nav, section, menu, time, mark, audio, video, canvas {
+  margin: 0;
+  padding: 0;
+  border: 0; }
+
+/*
+*
+*  Consistency fixes
+*  adopted from http://necolas.github.com/normalize.css/
+*
+*/
+html {
+  height: 100%;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%; }
+
+body {
+  min-height: 100%;
+  font-size: 100%; }
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, nav, section, audio, canvas, video {
+  display: block; }
+
+sub, sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline; }
+
+sup {
+  top: -0.5em; }
+
+sub {
+  bottom: -0.25em; }
+
+pre {
+  white-space: pre;
+  white-space: pre-wrap;
+  word-wrap: break-word; }
+
+b, strong {
+  font-weight: bold; }
+
+i {
+  font-style: normal; }
+
+abbr[title] {
+  border-bottom: 1px dotted; }
+
+input, textarea, button, select {
+  margin: 0;
+  font-size: 100%;
+  line-height: normal;
+  vertical-align: baseline; }
+
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  cursor: pointer;
+  -webkit-appearance: button; }
+
+input[type="checkbox"],
+input[type="radio"] {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box; }
+
+textarea {
+  overflow: auto; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+/* Fluid Media */
+figure {
+  position: relative; }
+
+figure img, figure object, figure embed, figure video {
+  max-width: 100%;
+  display: block; }
+
+img {
+  border: 0;
+  -ms-interpolation-mode: bicubic; }
+
+/*
+*	Type Scale
+*
+*	13.5px
+*	18.0px size
+*	22.5px
+*	27.0px leading
+*	36.0px
+*	40.5px
+*	54.0px
+*	63.0px
+*
+*/
+body {
+  font-size: 1.125em;
+  line-height: 1.5;
+  font-family: "chaparral-pro", Georgia, serif;
+  background: #EEE;
+  color: #222;
+  overflow-x: hidden; }
+
+header {
+  font-family: "facitweb", "Lucida Grande", sans-serif; }
+
+a {
+  color: #666;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-touch-callout: none; }
+
+a:hover, a:focus, a:active {
+  color: #333; }
+
+/* Periferal Content */
+.chap_marg {
+  font-size: 0.75em;
+  line-height: 1.333;
+  font-style: italic;
+  color: #666;
+  float: left;
+  width: 16.65%;
+  margin: 0.5em 0 0 0;
+  padding: 0 1em;
+  -webkit-hyphenate: auto;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease; }
+
+.chap_marg:hover, .chap_marg:focus {
+  color: #222;
+  cursor: pointer; }
+
+.chap_marg_icon {
+  font-size: 1.333em;
+  font-weight: bold;
+  display: block;
+  overflow: hidden;
+  margin: 0 0 0.25em 0;
+  width: 1.75em;
+  height: 1.75em;
+  border-radius: 4em 4em 4em 0;
+  border: none;
+  background: #9A9A9A;
+  color: #FFF;
+  text-align: center;
+  line-height: 1.9;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease; }
+
+.chap_marg:hover .chap_marg_icon, .chap_marg:focus .chap_marg_icon {
+  background: #FF8080; }
+
+  /* this markup isn't right, maybe a :before on citations? 
+	 Also, should work for all icons, right now requires an
+	 image in the <i> tag. Needs an inner-class if markup 
+	 stays the same. */
+/* Main Sections */
+.chap_sec {
+  margin: 0 16.65%;
+  width: 66.6%;
+  padding: 0 0.5em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box; }
+
+.chap_sec:first-child p:first-child, .chap_lead {
+  font-size: 1.25em;
+  line-height: 1.5; }
+
+.chap_sec p + p, .chap_marg + .chap_sec p:first-child {
+  text-indent: 2em; }
+
+.chap_sec blockquote {
+  margin: 1em 0 1em -1.5em;
+  border-left: 0.5em solid #FF8080;
+  font-style: italic;
+  padding: 0 0 0 1em; }
+
+.chap_sec cite {
+  display: block;
+  margin: 1em 0 0 0;
+  font-style: normal; }
+
+.chap_sec q:before {
+  content: "&#8220;"; }
+
+.chap_sec q:after {
+  content: "&#8221;"; }
+
+/* Chapter Section Main Images */
+.chap_sec_fig {
+  /* This makes the figure break outside of the main column.
+     Since the inner column is 12 out of 18, it's 2/3 of the full width,
+     multiply by 1.5 to make the column variable work again. Then, since there
+     is a constant gutter padding of 0.5em, find the percentage of 0.5em
+     at 768 (target device width, change with media queries to breakpoint variables)
+     and multiply by two for the additional width. Probably my biggest CSS comment
+     ever! Hide this one in the SCSS, please. */
+  width: 121.238%;
+  left: -10.669%;
+  margin: 1em 0; }
+
+.chap_sec_fig__left, .chap_sec_fig__right {
+  width: 129.563%;
+  left: -27.905%; }
+
+.chap_sec_fig__right {
+  left: -1.406%;
+  left: 0; }
+
+.chap_sec_fig_cap {
+  font-size: 0.75em;
+  background: #CCC;
+  color: #333;
+  padding: 0.5em 1em; }
+
+/* Marginal Images */
+.chap_marg_fig {
+  margin: 0 0 1em 0; }
+
+.chap_marg_fig_cap {
+  color: #666;
+  padding: 0.5em 0; }
+
+/* Comments */
+.com {
+  width: 100%;
+  clear: left;
+  background: #FFF;
+  border-top: 1px solid #FF8080;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  box-shadow: 0 1.5px 3px rgba(0, 0, 0, 0.25), inset 0 0 5px rgba(0, 0, 0, 0);
+  -webkit-transition: all 0.5s ease;
+  margin: 0 0 -1px 0; }
+
+.com__open {
+  border-bottom: 1px solid #ff8080;
+  box-shadow: 0 1.5px 3px rgba(0, 0, 0, 0), inset 0 0 5px rgba(0, 0, 0, 0.5); }
+
+.com_dive {
+  display: block;
+  width: 0.75em;
+  height: 0.75em;
+  position: absolute;
+  right: 1.78em;
+  margin: -9px 0 0 0;
+  background: #EEE;
+  transform: rotate(45deg);
+  box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.25);
+  border: 1px solid #FF8080;
+  border-width: 3px 0 0 3px;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  background: -moz-linear-gradient(-45deg, #d6d6d6 50%, #dcdcdc 57%, rgba(255, 255, 255, 0) 100%);
+  background: -webkit-gradient(linear, left top, right bottom, color-stop(50%, #d6d6d6), color-stop(57%, #dcdcdc), color-stop(100%, rgba(255, 255, 255, 0)));
+  background: -webkit-linear-gradient(-45deg, #d6d6d6 50%, #dcdcdc 57%, rgba(255, 255, 255, 0) 100%);
+  background: -o-linear-gradient(-45deg, #d6d6d6 50%, #dcdcdc 57%, rgba(255, 255, 255, 0) 100%);
+  background: -ms-linear-gradient(-45deg, #d6d6d6 50%, #dcdcdc 57%, rgba(255, 255, 255, 0) 100%);
+  background: linear-gradient(135deg, #d6d6d6 50%, #dcdcdc 57%, rgba(255, 255, 255, 0) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#d6d6d6', endColorstr='#00ffffff',GradientType=1 ); }
+
+.com__open .com_dive {
+  box-shadow: none;
+  border-width: 0 3px 3px 0;
+  background: #EEE; }
+
+/* Dive Mini-Triangle */
+.com:after {
+  content: "";
+  display: block;
+  position: absolute;
+  float: left;
+  border: 4px solid transparent;
+  border-top-color: #FF8080;
+  right: 2em;
+  width: 0;
+  height: 0; }
+
+.com__open:after {
+  margin: 1px 0 0 0;
+  -webkit-transform: rotate(540deg); }
+
+/*
+.com__open:after, .com:hover:after {
+	float: right;
+	margin: 5px -10px 0 0;
+	-webkit-transform: rotate(180deg); // reset .com_dive:after, 540 instead of 180 for animation
+}
+*/
+.com_count {
+  font-size: 0.75em;
+  display: block;
+  float: right;
+  height: 100%;
+  margin: -1.5em 0 0 0;
+  padding: 0 1em 0 0.5em;
+  color: #FF8080;
+  -webkit-user-select: none;
+  /* Chrome all / Safari all */
+  -moz-user-select: none;
+  /* Firefox all */
+  -ms-user-select: none;
+  /* IE 10+ */
+  -o-user-select: none;
+  /* No support yet */
+  user-select: none;
+  /* No support yet */ }
+
+.com_test {
+  height: 0;
+  overflow: hidden;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease; }
+
+.com__open .com_test {
+  height: 14em;
+  padding: 0.50em 0; }
+
+.com_comments {
+  font-size: 0.75em;
+  width: 83.25%;
+  margin: 0 auto;
+  position: relative; }
+
+.com_comments_comment {
+  float: left;
+  width: 33.333%;
+  padding: 0.5em 0;
+  position: relative;
+  height: 100%; }
+
+.com_comments_comment_wrap {
+  border-left: 0.667em solid #f04f47;
+  padding: 0 1em 1em 1em; }
+
+.com_comments_comment_cite {
+  font-size: 1.333em;
+  margin: 0.5em 0 0 0;
+  display: block; }
+
+.com_comments_comment_reply {
+  display: block;
+  font-family: "facitweb", "Lucida Grande", sans-serif;
+  text-decoration: none;
+  line-height: 2;
+  color: #333;
+  float: left;
+  padding: 0 0.5em 0 0; }
+
+.com_comments_comment_reply_icon {
+  display: block;
+  float: left;
+  width: 2em;
+  margin: 0 0.5em 0 0;
+  text-align: center;
+  background: #F04F47;
+  color: #FFF; }
+
+@media screen and (min-width: 1024px) {
+  .com_comments {
+    width: 77.7%; }
+
+  .com_comments_comment {
+    width: 22.797%; }
+
+  .com_comments_comment:last-of-type {
+    width: 48.568%; }
+
+  .com_comments_comment:last-of-type .com_comments_comment_wrap {
+    font-size: 1.333em;
+    border-left: 0.5em solid #F04F47;
+    padding: 0 0.75em 0.75em 0.75em; }
+
+  .com_comments_comment:last-of-type .com_comments_comment_cite {
+    font-size: 1em; } }
+/* Forms, move to normalise later? */
+label {
+  float: left;
+  clear: left;
+  width: 100%;
+  font-size: 0.75em;
+  font-weight: bold; }
+
+input, textarea, select {
+  margin: 0 0 0.5em 0;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+input[type=text] {
+  float: left;
+  clear: left;
+  line-height: 2;
+  height: 2em;
+  padding: 0 0.333em;
+  border: 1px solid #666;
+  width: 100%; }
+
+textarea {
+  float: left;
+  clear: left;
+  line-height: 1.5;
+  padding: 0.25em 0.333em;
+  border: 1px solid #666;
+  width: 100%;
+  min-height: 7em;
+  box-sizing: border-box; }
+
+input[type=text]:focus, textarea:focus {
+  background: yellow; }
+
+input[type=submit] {
+  float: left;
+  clear: left;
+  margin: 0.5em 0; }
+
+.com_add_sec {
+  background: #CCC;
+  width: 77.7%;
+  margin: 0 auto;
+  padding: 1em;
+  position: relative;
+  top: -25em;
+  box-shadow: 0 0 1em rgba(0, 0, 0, 0.5);
+  box-sizing: border-box; }
