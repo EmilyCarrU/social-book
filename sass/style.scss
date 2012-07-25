@@ -3,8 +3,15 @@ $column: 5.55%;
 $font-size: 18;
 $em: $font-size * 1;
 
+/* Compass Variables */
+
+$default-transition-duration: 0.5s;
+
+/* Imports */
+
 @import "_temp"; // For styles to remove
 @import "_normalise";
+@import "compass/css3", "compass/css3/user-interface", "compass/utilities"; // For some reason, I have to specify css3/u-i, too.
 
 /*
 *	Type Scale
@@ -61,20 +68,10 @@ a:hover, a:focus, a:active {
 	width: #{($column * 3)};
 	margin: 0.5em 0 0 0; // this lines it up with the baseline in ths case, but might not always work. Test!
 	padding: 0 1em; // half gutter 
-	-webkit-hyphenate: auto; // ?
 	
-	-webkit-box-sizing: border-box;
-	   -moz-box-sizing: border-box;
-	    -ms-box-sizing: border-box;
-	     -o-box-sizing: border-box;
-		    box-sizing: border-box;
-
-	-webkit-transition: all 0.5s ease;
-	   -moz-transition: all 0.5s ease;
-	   	-ms-transition: all 0.5s ease;
-	     -o-transition: all 0.5s ease;
-		    transition: all 0.5s ease;
-
+	@include hyphenation;
+	@include box-sizing(border-box);
+	@include transition();
 }
 
 .chap_marg:hover, .chap_marg:focus {
@@ -92,19 +89,15 @@ a:hover, a:focus, a:active {
 
 	width: 1.75em;
 	height: 1.75em;
-	border-radius: 4em 4em 4em 0;
 	border: none;
 	background: #9A9A9A;
 	
 	color: #FFF;
 	text-align: center;
 	line-height: 1.9; // visually centre
-	
-	-webkit-transition: all 0.5s ease;
-	   -moz-transition: all 0.5s ease;
-	   	-ms-transition: all 0.5s ease;
-	     -o-transition: all 0.5s ease;
-		    transition: all 0.5s ease;
+
+	@include border-radius(4em 4em 4em 0);
+	@include transition();
 }
 
 .chap_marg:hover .chap_marg_icon, .chap_marg:focus .chap_marg_icon {
@@ -129,11 +122,7 @@ a:hover, a:focus, a:active {
 	width: #{($column * 12)};
 	padding: 0 0.5em; // half-gutter, breaks figure, works against GGS but with pereferal content
 	
-	-webkit-box-sizing: border-box;
-	   -moz-box-sizing: border-box;
-	    -ms-box-sizing: border-box;
-	     -o-box-sizing: border-box;
-		    box-sizing: border-box;
+	@include box-sizing(border-box);
 }
 
 .chap_sec:first-child p:first-child, .chap_lead {
@@ -214,76 +203,54 @@ a:hover, a:focus, a:active {
 /* Comments */
 
 .com {
+	margin: 0 0 -1px 0; // fix baseline
 	width: 100%;
 	clear: left;
 	background: #FFF;
 	border-top: 1px solid #FF8080;
 	border-bottom: 1px solid rgba(#000,0.3);
-	box-shadow: 0 1.5px 3px rgba(0,0,0,0.25), inset 0 0 5px rgba(0,0,0,0);
-	// BUG this is causing bugs right now
 
-	-webkit-transition: all 0.5s ease; // this speed needs to be the same as .com_test speed. Variable?
-	
-	margin: 0 0 -1px 0; // fix baseline
+	@include box-shadow(0 1.5px 3px rgba(#000, 0.25), inset 0 0 5px rgba(#000, 0));
+	@include transition(); // this speed needs to be the same as .com_test speed. Use default variables
 }
 
-.com__open,
+.com__open
 // .com:hover
 {
 	border-bottom: 1px solid rgba(#FF8080,1.0);
-	box-shadow: 0 1.5px 3px rgba(0,0,0,0), inset 0 0 5px rgba(0,0,0,0.5);
-	// BUG
+
+	@include box-shadow(0 1.5px 3px rgba(0,0,0,0), inset 0 0 5px rgba(0,0,0,0.5)); // BUG
 }
 
 .com_dive {
 	display: block;
-	// float: left; // this was before position: absolute
 	width: 0.75em;
 	height: 0.75em;
+	// float: left; // this was before position: absolute
 	position: absolute;
 	right: 1.78em; // needed to center over small triangle which is set at 2em as in comps
 	margin: #{($em / -2)}px 0 0 0;
 	background: #EEE;
 	transform: rotate(45deg);
-	box-shadow: inset 1px 1px 2px rgba(0,0,0,0.25);
 	border: 1px solid #FF8080;
 	border-width: 3px 0 0 3px;
-
-	-webkit-transform: rotate(45deg);
-	   -moz-transform: rotate(45deg);
-	    -ms-transform: rotate(45deg);
-	     -o-transform: rotate(45deg);
-	        transform: rotate(45deg);
 	
-	// -webkit-transition: background 0.1s ease;
-	// -webkit-transition: all 0.2s ease;
+	@include box-shadow(inset 1px 1px 2px rgba(#000,0.25));
+	@include transform(rotate(45deg));
+	@include transition(background 0.2s ease);
+	@include filter-gradient(#d6d6d6, #ffffff, horizontal);
+	@include background-image(linear-gradient(left top,  rgba(214,214,214,1) 50%,rgba(220,220,220,1) 57%,rgba(255,255,255,0) 100%));
 	// box sizing not supported in iOS4, makes this look worse
-	
-	background: -moz-linear-gradient(-45deg,  rgba(214,214,214,1) 50%, rgba(220,220,220,1) 57%, rgba(255,255,255,0) 100%);
-	background: -webkit-gradient(linear, left top, right bottom, color-stop(50%,rgba(214,214,214,1)), color-stop(57%,rgba(220,220,220,1)), color-stop(100%,rgba(255,255,255,0)));
-	background: -webkit-linear-gradient(-45deg,  rgba(214,214,214,1) 50%,rgba(220,220,220,1) 57%,rgba(255,255,255,0) 100%);
-	background: -o-linear-gradient(-45deg,  rgba(214,214,214,1) 50%,rgba(220,220,220,1) 57%,rgba(255,255,255,0) 100%);
-	background: -ms-linear-gradient(-45deg,  rgba(214,214,214,1) 50%,rgba(220,220,220,1) 57%,rgba(255,255,255,0) 100%);
-	background: linear-gradient(135deg,  rgba(214,214,214,1) 50%,rgba(220,220,220,1) 57%,rgba(255,255,255,0) 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d6d6d6', endColorstr='#00ffffff',GradientType=1 );
 
 } // BUG this breaks margins right now
 
-.com__open .com_dive,
+.com__open .com_dive
 // .com:hover .com_dive
 {
-	box-shadow: none;
 	border-width: 0 3px 3px 0;
-	// -webkit-animation: invertTriangle 0.2s ease-in-out;
-	// -webkit-animation-delay: 0.2s;
-	// -webkit-transform: rotate(225deg); // 585 for animation
-	// border-width: 0 3px 3px 0;
-	
-	// Need to include Compass
-	// @include filter-gradient(#4d000000, #00000000, vertical);
-	// @include background-image(linear-gradient(top, rgba(0,0,0,0.3) 0%,rgba(0,0,0,0) 100%));
-	
 	background: #EEE;
+	
+	@include box-shadow(none);
 }
 
 /* Dive Mini-Triangle */
@@ -300,24 +267,24 @@ a:hover, a:focus, a:active {
 	height: 0;
 }
 
-.com__open:after,
+.com__open:after
 // .com:hover:after
 {
 	margin: 1px 0 0 0;
-	-webkit-transform: rotate(540deg);
+	@include transform(rotate(540deg));
 }
 
 /*
 .com__open:after, .com:hover:after {
 	float: right;
 	margin: 5px -10px 0 0;
-	-webkit-transform: rotate(180deg); // reset .com_dive:after, 540 instead of 180 for animation
+	@include transform(rotate(180deg)); // reset .com_dive:after, 540 instead of 180 for animation
 }
 */
 
 //.com__open .com_dive:after, .com:hover .com_dive:after {
 //	display: none; // maybe ie display none, others slide down or fade in/out?
-//	-webkit-transform: rotate(135deg); // reset .com_dive:after, 540 instead of 180 for animation
+//	@include transform(rotate(135deg)); // reset .com_dive:after, 540 instead of 180 for animation
 //}
 
 .com_count {
@@ -329,14 +296,10 @@ a:hover, a:focus, a:active {
 	padding: 0 1em 0 0.5em;
 	color: #FF8080;
 
-	-webkit-user-select: none;  /* Chrome all / Safari all */
-	-moz-user-select: none;     /* Firefox all */
-	-ms-user-select: none;      /* IE 10+ */
-	-o-user-select: none;		/* No support yet */
-	user-select: none;			/* No support yet */
+	@include user-select(none);
 }
 
-.com__open .com_count,
+.com__open .com_count
 // .com:hover .com_count 
 {
 }
@@ -345,16 +308,11 @@ a:hover, a:focus, a:active {
 	height: 0;
 	overflow: hidden;
 	
-	-webkit-transition: all 0.5s ease;
-	   -moz-transition: all 0.5s ease;
-	   	-ms-transition: all 0.5s ease;
-	     -o-transition: all 0.5s ease;
-		    transition: all 0.5s ease;
-
+	@include transition();
 	// need to trasition background, border, box-shadow, padding of inner comments, height
 }
 
-.com__open .com_test,
+.com__open .com_test
 // .com:hover .com_test
 {
 	height: 14em; // ONE BIG ISSUE WITH ANIMATIONS: fixed-height, should be 100%
@@ -368,7 +326,7 @@ a:hover, a:focus, a:active {
 	position: relative;
 }
 
-.com__open .com_comments,
+.com__open .com_comments
 // .com:hover .com_comments
 {
 }
@@ -390,12 +348,13 @@ a:hover, a:focus, a:active {
 	font-size: #{$em / 13.5}em;
 	margin: 0.5em 0 0 0;
 	display: block;
-	// webkit hyphenate?
+	
+	@include hyphenation;
 }
 
 .com_comments_comment_reply {
 	display: block;
-	font-family: "facitweb", "Lucida Grande", sans-serif; // font family facit web, lucida grande, whatever
+	font-family: "facitweb", "Lucida Grande", sans-serif; // variable?
 	text-decoration: none;
 	line-height: 2;
 	color: #333;
@@ -429,8 +388,7 @@ a:hover, a:focus, a:active {
 	} // should actually be a __class for whatever the longest/most popular, whatever comment is. Probably shouldn't be the middle one.
 	
 	.com_comments_comment:last-of-type .com_comments_comment_wrap {
-		font-size: #{(4/3)}em; // Change font-size here instead since it won't mess up reply button then
-	
+		font-size: #{(4/3)}em; // Change font-size here instead since it won't mess up reply button then	
 		border-left: 0.5em solid #F04F47; // should this be px?
 		padding: 0 0.75em 0.75em 0.75em;
 	}
@@ -456,9 +414,8 @@ label {
 
 input, textarea, select {
 	margin: 0 0 0.5em 0;
-	
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
+
+	@include box-sizing(border-box);
 }
 
 input[type=text] {
@@ -481,8 +438,8 @@ textarea {
 	// width: #{(($column * 11) * (18/14))};
 	width: 100%;
 	min-height: 7em;
-	
-	box-sizing: border-box;
+
+	@include box-sizing(border-box);
 }
 
 input[type=text]:focus, textarea:focus {
@@ -502,7 +459,7 @@ input[type=submit] {
 	padding: 1em; // half-gutter, this creates the same problem as the figure gutter by bumping the inner content like the inputs inwards since the padding is in ems instead of percentages
 	position: relative;
 	top: -25em;
-	
-	box-shadow: 0 0 1em rgba(#000, 0.5);
-	box-sizing: border-box;
+
+	@include box-shadow(0 0 1em rgba(#000, 0.5));
+	@include box-sizing(border-box);
 }
