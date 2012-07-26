@@ -3,3 +3,605 @@
     -webkit-touch-callout: none;
     -webkit-user-select: none; /* Disable selection/Copy of UIWebView */
 }
+
+/* Compass Variables */
+/* Imports */
+/* line 1, ../sass/_temp.scss */
+.clear_temp {
+  clear: left; }
+
+/* line 5, ../sass/_temp.scss */
+.col {
+  width: 11.1%;
+  width: 5.55555555556%;
+  float: left;
+  outline: 1px solid #000;
+  height: 4.5em;
+  background: pink;
+  text-align: center;
+  line-height: 4em;
+  display: none; }
+
+/* line 18, ../sass/_temp.scss */
+figure img {
+  width: 100%;
+  /* How do you have a image-friendly, responsive baseline grid?
+     The widths have to be set as max 100%, so the height is what
+     changes unless you want the proportions to change or the image
+     to get croppoed with an overflow, which are both worse. */ }
+
+/* Comment Fake Target, temp hopefully */
+/* line 28, ../sass/_temp.scss */
+.target_com {
+  padding: 5em 0;
+  margin: -5em 0;
+  z-index: 10;
+  position: relative;
+  cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0.5); }
+
+/* line 42, ../sass/_temp.scss */
+* {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-touch-callout: none; }
+
+/* line 47, ../sass/_temp.scss */
+.temp_citation_modal {
+  background: #CCC;
+  margin: 0 11.1%; }
+
+/* line 53, ../sass/_temp.scss */
+.temp_citation_modal__open {
+  display: block; }
+
+/*
+*
+*  Margin, padding, and border resets
+*  except for form elements
+*
+*/
+/* line 8, ../sass/_normalise.scss */
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, a, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, figure, footer, header, hgroup, nav, section, menu, time, mark, audio, video, canvas {
+  margin: 0;
+  padding: 0;
+  border: 0; }
+
+/*
+*
+*  Consistency fixes
+*  adopted from http://necolas.github.com/normalize.css/
+*
+*/
+/* line 23, ../sass/_normalise.scss */
+html {
+  height: 100%;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%; }
+
+/* line 29, ../sass/_normalise.scss */
+body {
+  min-height: 100%;
+  font-size: 100%; }
+
+/* line 35, ../sass/_normalise.scss */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, nav, section, audio, canvas, video {
+  display: block; }
+
+/* line 39, ../sass/_normalise.scss */
+sub, sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline; }
+
+/* line 46, ../sass/_normalise.scss */
+sup {
+  top: -0.5em; }
+
+/* line 50, ../sass/_normalise.scss */
+sub {
+  bottom: -0.25em; }
+
+/* line 54, ../sass/_normalise.scss */
+pre {
+  white-space: pre;
+  white-space: pre-wrap;
+  word-wrap: break-word; }
+
+/* line 60, ../sass/_normalise.scss */
+b, strong {
+  font-weight: bold; }
+
+/* line 64, ../sass/_normalise.scss */
+i {
+  font-style: normal; }
+
+/* line 68, ../sass/_normalise.scss */
+abbr[title] {
+  border-bottom: 1px dotted; }
+
+/* line 72, ../sass/_normalise.scss */
+input, textarea, button, select {
+  margin: 0;
+  font-size: 100%;
+  line-height: normal;
+  vertical-align: baseline; }
+
+/* line 82, ../sass/_normalise.scss */
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  cursor: pointer;
+  -webkit-appearance: button; }
+
+/* line 88, ../sass/_normalise.scss */
+input[type="checkbox"],
+input[type="radio"] {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box; }
+
+/* line 96, ../sass/_normalise.scss */
+textarea {
+  overflow: auto; }
+
+/* line 100, ../sass/_normalise.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+/* Fluid Media */
+/* line 107, ../sass/_normalise.scss */
+figure {
+  position: relative; }
+
+/* line 111, ../sass/_normalise.scss */
+figure img, figure object, figure embed, figure video {
+  max-width: 100%;
+  display: block; }
+
+/* line 116, ../sass/_normalise.scss */
+img {
+  border: 0;
+  -ms-interpolation-mode: bicubic; }
+
+/*
+*	Type Scale
+*
+*	13.5px
+*	18.0px size
+*	22.5px
+*	27.0px leading
+*	36.0px
+*	40.5px
+*	54.0px
+*	63.0px
+*
+*/
+/* line 30, ../sass/style.scss */
+body {
+  font-size: 1.125em;
+  line-height: 1.5;
+  font-family: "chaparral-pro", Georgia, serif;
+  background: #EEE;
+  color: #222;
+  overflow-x: hidden; }
+
+/* line 40, ../sass/style.scss */
+header {
+  font-family: "facitweb", "Lucida Grande", sans-serif; }
+
+/* line 44, ../sass/style.scss */
+a {
+  color: #666;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-touch-callout: none; }
+
+/* line 51, ../sass/style.scss */
+a:hover, a:focus, a:active {
+  color: #333; }
+
+/* Periferal Content */
+/* line 61, ../sass/style.scss */
+.chap_marg {
+  font-size: 0.75em;
+  line-height: 1.33333;
+  font-style: italic;
+  color: #666;
+  float: left;
+  width: 16.65%;
+  margin: 0.5em 0 0 0;
+  padding: 0 1em;
+  -ms-word-break: break-all;
+  word-break: break-all;
+  word-break: break-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s; }
+
+/* line 77, ../sass/style.scss */
+.chap_marg:hover, .chap_marg:focus {
+  color: #222;
+  cursor: pointer; }
+
+/* line 82, ../sass/style.scss */
+.chap_marg_icon {
+  font-size: 1.33333em;
+  font-weight: bold;
+  display: block;
+  overflow: hidden;
+  margin: 0 0 0.25em 0;
+  width: 1.75em;
+  height: 1.75em;
+  border: none;
+  background: #9A9A9A;
+  color: #FFF;
+  text-align: center;
+  line-height: 1.9;
+  -webkit-border-radius: 4em 4em 4em 0;
+  -moz-border-radius: 4em 4em 4em 0;
+  -ms-border-radius: 4em 4em 4em 0;
+  -o-border-radius: 4em 4em 4em 0;
+  border-radius: 4em 4em 4em 0;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s; }
+
+/* line 103, ../sass/style.scss */
+.chap_marg:hover .chap_marg_icon, .chap_marg:focus .chap_marg_icon {
+  background: #FF8080; }
+
+  /* this markup isn't right, maybe a :before on citations? 
+	 Also, should work for all icons, right now requires an
+	 image in the <i> tag. Needs an inner-class if markup 
+	 stays the same. */
+/* Main Sections */
+/* line 119, ../sass/style.scss */
+.chap_sec {
+  margin: 0 16.65%;
+  width: 66.6%;
+  padding: 0 0.5em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+/* line 128, ../sass/style.scss */
+.chap_sec:first-child p:first-child, .chap_lead {
+  font-size: 1.25em;
+  line-height: 1.5; }
+
+/* line 133, ../sass/style.scss */
+.chap_sec p + p, .chap_marg + .chap_sec p:first-child {
+  text-indent: 2em; }
+
+/* line 137, ../sass/style.scss */
+.chap_sec blockquote {
+  margin: 1em 0 1em -1.5em;
+  border-left: 0.5em solid #FF8080;
+  font-style: italic;
+  padding: 0 0 0 1em; }
+
+/* line 144, ../sass/style.scss */
+.chap_sec cite {
+  display: block;
+  margin: 1em 0 0 0;
+  font-style: normal; }
+
+/* line 150, ../sass/style.scss */
+.chap_sec q:before {
+  content: "&#8220;"; }
+
+/* line 154, ../sass/style.scss */
+.chap_sec q:after {
+  content: "&#8221;"; }
+
+/* Chapter Section Main Images */
+/* line 160, ../sass/style.scss */
+.chap_sec_fig {
+  /* This makes the figure break outside of the main column.
+     Since the inner column is 12 out of 18, it's 2/3 of the full width,
+     multiply by 1.5 to make the column variable work again. Then, since there
+     is a constant gutter padding of 0.5em, find the percentage of 0.5em
+     at 768 (target device width, change with media queries to breakpoint variables)
+     and multiply by two for the additional width. Probably my biggest CSS comment
+     ever! Hide this one in the SCSS, please. */
+  width: 121.2375%;
+  left: -10.66875%;
+  margin: 1em 0; }
+
+/* line 173, ../sass/style.scss */
+.chap_sec_fig__left, .chap_sec_fig__right {
+  width: 129.5625%;
+  left: -27.90469%; }
+
+/* line 179, ../sass/style.scss */
+.chap_sec_fig__right {
+  left: -1.40625%;
+  left: 0; }
+
+/* line 185, ../sass/style.scss */
+.chap_sec_fig_cap {
+  font-size: 0.75em;
+  background: #CCC;
+  color: #333;
+  padding: 0.5em 1em; }
+
+/* Marginal Images */
+/* line 194, ../sass/style.scss */
+.chap_marg_fig {
+  margin: 0 0 1em 0; }
+
+/* line 198, ../sass/style.scss */
+.chap_marg_fig_cap {
+  color: #666;
+  padding: 0.5em 0; }
+
+/* Comments */
+/* line 205, ../sass/style.scss */
+.com {
+  margin: 0 0 -1px 0;
+  width: 100%;
+  clear: left;
+  background: #FFF;
+  border-top: 1px solid #FF8080;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0 1.5px 3px rgba(0, 0, 0, 0.25), inset 0 0 5px rgba(0, 0, 0, 0);
+  -moz-box-shadow: 0 1.5px 3px rgba(0, 0, 0, 0.25), inset 0 0 5px rgba(0, 0, 0, 0);
+  box-shadow: 0 1.5px 3px rgba(0, 0, 0, 0.25), inset 0 0 5px rgba(0, 0, 0, 0);
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s; }
+
+/* line 219, ../sass/style.scss */
+.com__open {
+  border-bottom: 1px solid #ff8080;
+  -webkit-box-shadow: 0 1.5px 3px rgba(0, 0, 0, 0), inset 0 0 5px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 1.5px 3px rgba(0, 0, 0, 0), inset 0 0 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 1.5px 3px rgba(0, 0, 0, 0), inset 0 0 5px rgba(0, 0, 0, 0.5); }
+
+/* line 225, ../sass/style.scss */
+.com_dive {
+  display: block;
+  width: 0.75em;
+  height: 0.75em;
+  position: absolute;
+  right: 1.78em;
+  margin: -9px 0 0 0;
+  background: #EEE;
+  transform: rotate(45deg);
+  border: 1px solid #FF8080;
+  border-width: 3px 0 0 3px;
+  -webkit-box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.25);
+  box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.25);
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  -webkit-transition: background 0.2s ease;
+  -moz-transition: background 0.2s ease;
+  -o-transition: background 0.2s ease;
+  transition: background 0.2s ease;
+  *zoom: 1;
+  filter: progid:DXImageTransform.Microsoft.gradient(gradientType=1, startColorstr='#FFD6D6D6', endColorstr='#FFFFFFFF');
+  background-image: -webkit-gradient(linear, 0% 0%, 100% 100%, color-stop(50%, #d6d6d6), color-stop(57%, #dcdcdc), color-stop(100%, rgba(255, 255, 255, 0)));
+  background-image: -webkit-linear-gradient(left top, #d6d6d6 50%, #dcdcdc 57%, rgba(255, 255, 255, 0) 100%);
+  background-image: -moz-linear-gradient(left top, #d6d6d6 50%, #dcdcdc 57%, rgba(255, 255, 255, 0) 100%);
+  background-image: -o-linear-gradient(left top, #d6d6d6 50%, #dcdcdc 57%, rgba(255, 255, 255, 0) 100%);
+  background-image: linear-gradient(left top, #d6d6d6 50%, #dcdcdc 57%, rgba(255, 255, 255, 0) 100%); }
+
+/* line 249, ../sass/style.scss */
+.com__open .com_dive {
+  border-width: 0 3px 3px 0;
+  background: #EEE;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none; }
+
+/* Dive Mini-Triangle */
+/* line 258, ../sass/style.scss */
+.com:after {
+  content: "";
+  display: block;
+  position: absolute;
+  float: left;
+  border: 4px solid transparent;
+  border-top-color: #FF8080;
+  right: 2em;
+  width: 0;
+  height: 0; }
+
+/* line 272, ../sass/style.scss */
+.com__open:after {
+  margin: 1px 0 0 0;
+  -webkit-transform: rotate(540deg);
+  -moz-transform: rotate(540deg);
+  -ms-transform: rotate(540deg);
+  -o-transform: rotate(540deg);
+  transform: rotate(540deg); }
+
+/*
+.com__open:after, .com:hover:after {
+	float: right;
+	margin: 5px -10px 0 0;
+	@include transform(rotate(180deg)); // reset .com_dive:after, 540 instead of 180 for animation
+}
+*/
+/* line 290, ../sass/style.scss */
+.com_count {
+  font-size: 0.75em;
+  display: block;
+  float: right;
+  height: 100%;
+  margin: -1.5em 0 0 0;
+  padding: 0 1em 0 0.5em;
+  color: #FF8080;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none; }
+
+/* line 307, ../sass/style.scss */
+.com_test {
+  height: 0;
+  overflow: hidden;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s; }
+
+/* line 317, ../sass/style.scss */
+.com__open .com_test {
+  height: 14em;
+  padding: 0.50em 0; }
+
+/* line 322, ../sass/style.scss */
+.com_comments {
+  font-size: 0.75em;
+  width: 83.25%;
+  margin: 0 auto;
+  position: relative; }
+
+/* line 334, ../sass/style.scss */
+.com_comments_comment {
+  float: left;
+  width: 33.33333%;
+  padding: 0.5em 0;
+  position: relative;
+  height: 100%; }
+
+/* line 342, ../sass/style.scss */
+.com_comments_comment_wrap {
+  border-left: 0.66667em solid #f04f47;
+  padding: 0 1em 1em 1em; }
+
+/* line 347, ../sass/style.scss */
+.com_comments_comment_cite {
+  font-size: 1.33333em;
+  margin: 0.5em 0 0 0;
+  display: block;
+  -ms-word-break: break-all;
+  word-break: break-all;
+  word-break: break-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto; }
+
+/* line 355, ../sass/style.scss */
+.com_comments_comment_reply {
+  display: block;
+  font-family: "facitweb", "Lucida Grande", sans-serif;
+  text-decoration: none;
+  line-height: 2;
+  color: #333;
+  float: left;
+  padding: 0 0.5em 0 0; }
+
+/* line 365, ../sass/style.scss */
+.com_comments_comment_reply_icon {
+  display: block;
+  float: left;
+  width: 2em;
+  margin: 0 0.5em 0 0;
+  text-align: center;
+  background: #F04F47;
+  color: #FFF; }
+
+@media screen and (min-width: 1024px) {
+  /* line 377, ../sass/style.scss */
+  .com_comments {
+    width: 77.7%; }
+
+  /* line 381, ../sass/style.scss */
+  .com_comments_comment {
+    width: 22.79736%; }
+
+  /* line 386, ../sass/style.scss */
+  .com_comments_comment:last-of-type {
+    width: 48.56828%; }
+
+  /* line 390, ../sass/style.scss */
+  .com_comments_comment:last-of-type .com_comments_comment_wrap {
+    font-size: 1.33333em;
+    border-left: 0.5em solid #F04F47;
+    padding: 0 0.75em 0.75em 0.75em; }
+
+  /* line 396, ../sass/style.scss */
+  .com_comments_comment:last-of-type .com_comments_comment_cite {
+    font-size: 1em; } }
+/* Forms, move to normalise later? */
+/* line 407, ../sass/style.scss */
+label {
+  float: left;
+  clear: left;
+  width: 100%;
+  font-size: 0.75em;
+  font-weight: bold; }
+
+/* line 415, ../sass/style.scss */
+input, textarea, select {
+  margin: 0 0 0.5em 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+/* line 421, ../sass/style.scss */
+input[type=text] {
+  float: left;
+  clear: left;
+  line-height: 2;
+  height: 2em;
+  padding: 0 0.33333em;
+  border: 1px solid #666;
+  width: 100%; }
+
+/* line 432, ../sass/style.scss */
+textarea {
+  float: left;
+  clear: left;
+  line-height: 1.5;
+  padding: 0.25em 0.33333em;
+  border: 1px solid #666;
+  width: 100%;
+  min-height: 7em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+/* line 445, ../sass/style.scss */
+input[type=text]:focus, textarea:focus {
+  background: yellow; }
+
+/* line 449, ../sass/style.scss */
+input[type=submit] {
+  float: left;
+  clear: left;
+  margin: 0.5em 0; }
+
+/* line 455, ../sass/style.scss */
+.com_add_sec {
+  background: #CCC;
+  width: 77.7%;
+  margin: 0 auto;
+  padding: 1em;
+  position: relative;
+  top: -25em;
+  -webkit-box-shadow: 0 0 1em rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 0 1em rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 1em rgba(0, 0, 0, 0.5);
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
