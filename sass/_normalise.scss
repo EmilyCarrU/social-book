@@ -102,6 +102,14 @@ table {
 	border-spacing: 0;
 }
 
+q:before {
+	content: "\201C"; // &#8220;
+}
+
+q:after {
+	content: "\201D"; // &#8221;
+}
+
 /* Fluid Media */
 
 figure {

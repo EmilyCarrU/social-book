@@ -3,49 +3,53 @@ $column: 5.55%;
 $font-size: 18;
 $em: $font-size * 1;
 
-/* Compass Variables */
+$content-background: #EEE;
+$content-color: #222;
+$content-fontstack-text: "chaparral-pro", Georgia, serif;
+$content-fontstack-head: "facitweb", "Lucida Grande", sans-serif;
 
-$default-transition-duration: 0.5s;
+// Compass Variables
 
-/* Imports */
+$default-transition-duration: 0.25s;
 
-@import "_temp"; // For styles to remove
+// Imports
+
+@import "compass/css3", "compass/css3/user-interface", "compass/utilities"; // For some reason, I have to specify css3/ui, too.
+@import "_temp", "_keyframes";
 @import "_normalise";
-@import "compass/css3", "compass/css3/user-interface", "compass/utilities"; // For some reason, I have to specify css3/u-i, too.
 
-/*
-*	Type Scale
-*
-*	13.5px
-*	18.0px size
-*	22.5px
-*	27.0px leading
-*	36.0px
-*	40.5px
-*	54.0px
-*	63.0px
-*
-*/
+//	Type Scale
+//
+//	13.5px
+//	18.0px size
+//	22.5px
+//	27.0px leading
+//	36.0px
+//	40.5px
+//	54.0px
+//	63.0px
+
+* {
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-touch-callout: none;
+} // move to normalise?
 
 body {
 	font-size: #{$font-size/16}em;
 	line-height: #{$line / $em};
-	font-family: "chaparral-pro", Georgia, serif;
-	background: #EEE;
-	color: #222;
+	font-family: $content-fontstack-text;
+	background: $content-background;
+	color: $content-color;
 	
 	overflow-x: hidden; // this is a temp fix
 }
 
 header {
-	font-family: "facitweb", "Lucida Grande", sans-serif;
+	font-family: $content-fontstack-head;
 }
 
 a {
 	color: #666;
-	
-	-webkit-tap-highlight-color: rgba(0,0,0,0);
-    -webkit-touch-callout: none;
 }
 
 a:hover, a:focus, a:active {
@@ -148,11 +152,9 @@ a:hover, a:focus, a:active {
 }
 
 .chap_sec q:before {
-	content: "&#8220;"; // &#8220
 }
 
 .chap_sec q:after {
-	content: "&#8221;"; // &#8221;
 }
 
 /* Chapter Section Main Images */
@@ -200,57 +202,63 @@ a:hover, a:focus, a:active {
 	padding: 0.5em 0;		
 }
 
+/* Comment Target */
+
+.target_com {
+	padding: 5em 0;
+	margin: -5em 0;
+	z-index: 10;
+	position: relative;
+	cursor: pointer;
+	// background: rgba(teal, 0.1);
+}
+
 /* Comments */
 
 .com {
-	margin: 0 0 -1px 0; // fix baseline
+	margin: 0 0 -1px 0; // fixes baseline
 	width: 100%;
 	clear: left;
 	background: #FFF;
 	border-top: 1px solid #FF8080;
 	border-bottom: 1px solid rgba(#000,0.3);
 
-	@include box-shadow(0 1.5px 3px rgba(#000, 0.25), inset 0 0 5px rgba(#000, 0));
-	@include transition(); // this speed needs to be the same as .com_test speed. Use default variables
+	@include transition();
+	@include transform(translate3d(0,0,0));
 }
 
-.com__open
-// .com:hover
-{
+.com__open, .com:focus {
 	border-bottom: 1px solid rgba(#FF8080,1.0);
-
-	@include box-shadow(0 1.5px 3px rgba(0,0,0,0), inset 0 0 5px rgba(0,0,0,0.5)); // BUG
 }
+
+/* Dive Main Arrow */
 
 .com_dive {
 	display: block;
 	width: 0.75em;
 	height: 0.75em;
-	// float: left; // this was before position: absolute
 	position: absolute;
 	right: 1.78em; // needed to center over small triangle which is set at 2em as in comps
 	margin: #{($em / -2)}px 0 0 0;
-	background: #EEE;
 	transform: rotate(45deg);
 	border: 1px solid #FF8080;
 	border-width: 3px 0 0 3px;
+	background: $content-background;
 	
-	@include box-shadow(inset 1px 1px 2px rgba(#000,0.25));
+	-webkit-animation: comDiveBackground 0.25s 1 normal ease-in-out none 0;
 	@include transform(rotate(45deg));
-	@include transition(background 0.2s ease);
 	@include filter-gradient(#d6d6d6, #ffffff, horizontal);
-	@include background-image(linear-gradient(left top,  rgba(214,214,214,1) 50%,rgba(220,220,220,1) 57%,rgba(255,255,255,0) 100%));
+	@include background-image(linear-gradient(left top, rgba(214,214,214,1) 20%, rgba(220,220,220,1) 57%, rgba(255,255,255,0) 100%));
+	@include transition(background);
 	// box sizing not supported in iOS4, makes this look worse
 
 } // BUG this breaks margins right now
 
-.com__open .com_dive
-// .com:hover .com_dive
-{
+.com__open .com_dive, .com:focus .com_dive {
 	border-width: 0 3px 3px 0;
-	background: #EEE;
+	background: $content-background;
 	
-	@include box-shadow(none);
+	-webkit-animation: none;
 }
 
 /* Dive Mini-Triangle */
@@ -267,25 +275,10 @@ a:hover, a:focus, a:active {
 	height: 0;
 }
 
-.com__open:after
-// .com:hover:after
-{
+.com__open:after, .com:focus:after {
 	margin: 1px 0 0 0;
-	@include transform(rotate(540deg));
+	@include transform(rotate(180deg));
 }
-
-/*
-.com__open:after, .com:hover:after {
-	float: right;
-	margin: 5px -10px 0 0;
-	@include transform(rotate(180deg)); // reset .com_dive:after, 540 instead of 180 for animation
-}
-*/
-
-//.com__open .com_dive:after, .com:hover .com_dive:after {
-//	display: none; // maybe ie display none, others slide down or fade in/out?
-//	@include transform(rotate(135deg)); // reset .com_dive:after, 540 instead of 180 for animation
-//}
 
 .com_count {
 	font-size: #{13.5 / $em}em;
@@ -299,22 +292,18 @@ a:hover, a:focus, a:active {
 	@include user-select(none);
 }
 
-.com__open .com_count
-// .com:hover .com_count 
-{
+.com__open .com_count, .com:focus .com_count {
 }
 
-.com_test {
+.com_wrapper {
 	height: 0;
-	overflow: hidden;
+	overflow-y: hidden;
 	
 	@include transition();
-	// need to trasition background, border, box-shadow, padding of inner comments, height
+	@include transform(translate3d(0,0,0)); // does this help? test
 }
 
-.com__open .com_test
-// .com:hover .com_test
-{
+.com__open .com_wrapper, .com:focus .com_wrapper {
 	height: 14em; // ONE BIG ISSUE WITH ANIMATIONS: fixed-height, should be 100%
 	padding: 0.50em 0;
 }
@@ -326,15 +315,13 @@ a:hover, a:focus, a:active {
 	position: relative;
 }
 
-.com__open .com_comments
-// .com:hover .com_comments
-{
+.com__open .com_comments, .com:focus .com_comments {
 }
 
 .com_comments_comment {
 	float: left;
 	width: #{(100%/3)}; // check how this works with the columns
-	padding: 0.5em 0; // quarter em padding here, three quarters for animation on .com_test	
+	padding: 0.5em 0; // quarter em padding here, three quarters for animation on .com_wrapper	
 	position: relative;
 	height: 100%;
 }
@@ -354,7 +341,7 @@ a:hover, a:focus, a:active {
 
 .com_comments_comment_reply {
 	display: block;
-	font-family: "facitweb", "Lucida Grande", sans-serif; // variable?
+	font-family: $content-fontstack-head;
 	text-decoration: none;
 	line-height: 2;
 	color: #333;

@@ -25,25 +25,6 @@ figure img {
 
 /* Comment Fake Target, temp hopefully */
 
-.target_com {
-	padding: 5em 0;
-	margin: -5em 0;
-	z-index: 10;
-	position: relative;
-	cursor: pointer;
-	
-	// background: rgba(teal, 0.15);
-	-webkit-tap-highlight-color: rgba(0,0,0,0.5);
-	
-	
-	// background: rgba(teal, 0.15);
-}
-
-* {
-	-webkit-tap-highlight-color: rgba(0,0,0,0);
-    -webkit-touch-callout: none;
-}
-
 .temp_citation_modal {
 	// display: none;
 	background: #CCC;

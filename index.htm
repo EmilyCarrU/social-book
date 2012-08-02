@@ -4,12 +4,34 @@
 	<head>
 		<meta charset="utf-8"/>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-		<title>Don't Keep Up</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" /><!-- Don't add maximum-scale=1.0 for a web version -->
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" /><!-- Don't add maximum-scale=1.0 for a web version -->
+		<title>Emily Carr Internet History ebook</title>
 		<link rel="stylesheet" href="css/style.css" />
 		<!--[if lt IE 9]><script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+		<script src="js/zepto-1.0.rc.js" ></script> 
+		<script src="js/zepto-onpress.js" ></script>
 		<script type="text/javascript" src="http://use.typekit.com/yml7xqf.js"></script>
-		<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+		<script type="text/javascript">
+		  try{Typekit.load();}catch(e){}
+          $(document).ready(function(){
+    	    var p = new PinchCard('.chap')
+    	    $(".target_com").bind({
+    	      openPanel: function(e) {
+    	        $(this).children(":first-child").addClass("com__open");
+    	      },
+    	      closePanel: function(e) {
+    	        $(this).children(":first-child").removeClass("com__open");
+    	      },
+    	      click: function() {
+	    	    $(this).children(":first-child").toggleClass("com__open");  
+    	      }
+    	    });    	    
+    	  });
+    	  
+    	  // http://jsfiddle.net/adambiggs/MAbD3/
+    	  // http://stackoverflow.com/questions/3508605/css-transition-height-0-to-height-auto
+		</script>
 	</head>
 	<body lang="en">
 		<article class="chap">
@@ -29,7 +51,7 @@
 				<section class="com">
 					<span class="com_count">15</span>
 					<span class="com_dive"></span><!-- maybe change this to an i? -->
-					<div class="com_test">
+					<div class="com_wrapper">
 						<div class="com_comments">
 							<section class="com_comments_comment">
 								<div class="com_comments_comment_wrap">
@@ -58,6 +80,7 @@
 								<a href="#reply" title="Reply to Brad Frost's comment" class="com_comments_comment_reply">
 									<i class="com_comments_comment_reply_icon">+</i>Reply
 								</a><!-- / .com_comments_comment_reply -->
+								<div class="clear_temp"></div><!-- Hopefully I can get rid of this -->
 							</section><!-- / .com_comments_comment -->
 							<!-- Not using the fourth comment for now
 							<section class="com_comments_comment">
@@ -66,14 +89,14 @@
 							</section>--><!-- / .com_comments_comment -->
 							<div class="clear_temp"></div><!-- Hopefully I can get rid of this -->
 						</div><!-- / .com_comments -->
-					</div><!-- / .com_test, hopefully remove -->
+					</div><!-- / .com_wrapper, hopefully remove -->
 				</section>
 			</div><!-- / .target_com -->
 			<section class="chap_sec">
 				<p>Or more recently: Mosaic, usenet, magnolia, Friendster, Pets.com, Napster, geoCities, Flooz, SixDegrees, Digg, eToys, MySpace, the WELL, Google Wave. Sure, some of them are still around, but even they are ghosts of their former selves.</p>
 				<p>Our lives online have accelerated the pace of obsolescence because the next thing is now only a click away. And I&#8217;m the first person to to click, to look around the corner, to crane my neck for whatever&#8217;s new. The privilege of living in an era in which a century-old technology can be replaced in a decade, and a ten-year-old technology replaced in a year, is that we get to delight in a constant stream of novelty.</p>
-			</section>
 			<!-- Still working on the citations
+			</section>
 				<section class="chap_marg">
 				<i class="chap_marg_icon chap_marg_icon__citation">?</i>
 				<p>Statistic provided by The Atlantic, 2010.</p>
@@ -84,9 +107,8 @@
 					<p>&hellip;the early web had no need for anything but the barest of typographic essentials. There was no imagery, no sound, no animation, no color, and none of the niceties we are used to seeing on the 21st century web. With the introduction of the Mosaic graphical web browser in 1993, this began to change (Davidson, Alternative).</p>
 				</blockquote>
 			</div>
--->
-			
 			<section class="chap_sec">
+-->
 				<p>And we get to enjoy our lost technologies too. I can still remember the silky-slick texture of a fax curling between my fingers, the scrape of a needle across a scratched record, the thud of my Walkman as it rattled against my waist. Ask anyone who&#8217;s even roughly my age to talk about polaroids or rotary phones or mix tapes and you will hear memories of waiting for the picture to appear (huddled around the snapshot), memories of the clicking that the phone made (as the dial spun back to its home position), memories of listening to that first collection of Bruce Springsteen B-sides (in the car with the window rolled down so you could sing along). They&#8217;re visceral memories, made up of our physical interactions with these long-gone objects and the people with whom we shared them.</p>
 				<ul>
 				    <li>List with proper hanging punctuation.</li>
@@ -135,10 +157,10 @@
 			<p>&#8220;This is a test for hanging quotes, because there is no way we're not trying to get hanging quotes to working properly in a book.&#8221; Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, &#8220;quis nostrud exercitation&#8221; ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 			</section>
 			<div class="target_com">
-				<section class="com">
+				<section class="com hidden">
 					<span class="com_count">15</span>
 					<span class="com_dive"></span>
-					<div class="com_test">
+					<div class="com_wrapper">
 						<div class="com_comments">
 							<section class="com_comments_comment">
 								<div class="com_comments_comment_wrap">
@@ -175,7 +197,7 @@
 							</section>--><!-- / .com_comments_comment -->
 							<!-- <div class="clear_temp"></div>--><!-- Don't think I need this anymore -->
 						</div><!-- / .com_comments -->
-					</div><!-- / .com_test, hopefully remove -->
+					</div><!-- / .com_wrapper, hopefully remove -->
 				</section><!-- / .com -->
 			</div><!-- / .target_com -->	
 			<section class="chap_sec">
@@ -208,7 +230,5 @@
 				</form>
 			</div>
 		</article><!-- / .chap -->
-		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-		<script type="text/javascript" src="js/script.min.js"></script>
 		<script type="text/javascript" src="js/gg.min.js"></script><!-- Golden Gridlet - remove me! -->
 	</body>
