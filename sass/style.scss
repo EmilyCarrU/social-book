@@ -14,9 +14,11 @@ $default-transition-duration: 0.25s;
 
 // Imports
 
-@import "compass/css3", "compass/css3/user-interface", "compass/utilities"; // For some reason, I have to specify css3/ui, too.
-@import "_temp", "_keyframes";
-@import "_normalise";
+@import "compass/css3", "compass/utilities";
+@import "compass/css3/user-interface"; // Shouldn't have to import individually
+@import "_temp", "_keyframes", "_normalise";
+@import "stitch/patterns";
+
 
 //	Type Scale
 //
@@ -73,7 +75,7 @@ a:hover, a:focus, a:active {
 	margin: 0.5em 0 0 0; // this lines it up with the baseline in ths case, but might not always work. Test!
 	padding: 0 1em; // half gutter 
 	
-	@include hyphenation;
+	// include hyphenation; // Yay, broke this again.
 	@include box-sizing(border-box);
 	@include transition();
 }
@@ -224,11 +226,12 @@ a:hover, a:focus, a:active {
 	border-bottom: 1px solid rgba(#000,0.3);
 
 	@include transition();
-	@include transform(translate3d(0,0,0));
+	@include enable-hardware-acceleration;
 }
 
 .com__open, .com:focus {
 	border-bottom: 1px solid rgba(#FF8080,1.0);
+	@include enable-hardware-acceleration;
 }
 
 /* Dive Main Arrow */
@@ -240,25 +243,25 @@ a:hover, a:focus, a:active {
 	position: absolute;
 	right: 1.78em; // needed to center over small triangle which is set at 2em as in comps
 	margin: #{($em / -2)}px 0 0 0;
-	transform: rotate(45deg);
 	border: 1px solid #FF8080;
 	border-width: 3px 0 0 3px;
 	background: $content-background;
 	
-	-webkit-animation: comDiveBackground 0.25s 1 normal ease-in-out none 0;
-	@include transform(rotate(45deg));
+	
+	@include animation(comDiveBackground 0.25s 1 normal ease-in-out none 0);
 	@include filter-gradient(#d6d6d6, #ffffff, horizontal);
 	@include background-image(linear-gradient(left top, rgba(214,214,214,1) 20%, rgba(220,220,220,1) 57%, rgba(255,255,255,0) 100%));
 	@include transition(background);
+	@include enable-hardware-acceleration; // Will overwrite next line if last
+	@include transform(rotate(45deg));
 	// box sizing not supported in iOS4, makes this look worse
-
 } // BUG this breaks margins right now
 
 .com__open .com_dive, .com:focus .com_dive {
 	border-width: 0 3px 3px 0;
 	background: $content-background;
 	
-	-webkit-animation: none;
+	@include animation(none);
 }
 
 /* Dive Mini-Triangle */
@@ -300,7 +303,7 @@ a:hover, a:focus, a:active {
 	overflow-y: hidden;
 	
 	@include transition();
-	@include transform(translate3d(0,0,0)); // does this help? test
+	@include enable-hardware-acceleration;
 }
 
 .com__open .com_wrapper, .com:focus .com_wrapper {
@@ -336,7 +339,7 @@ a:hover, a:focus, a:active {
 	margin: 0.5em 0 0 0;
 	display: block;
 	
-	@include hyphenation;
+	// include hyphenation; // Yay, broke this again.
 }
 
 .com_comments_comment_reply {

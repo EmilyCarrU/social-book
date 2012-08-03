@@ -1,8 +1,8 @@
-@-webkit-keyframes comDiveBackground {
+@include keyframes(comDiveBackground) {	
 	0% {
-		background: #FFF;
-	}
-	80% {
-		background: $content-background;
-	}
-}
+    	background: #FFF;
+    }
+    80% {
+    	background: $content-background;
+    }
+};

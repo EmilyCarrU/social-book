@@ -32,13 +32,49 @@ figure img {
 .temp_citation_modal__open {
   display: block; }
 
+@-moz-keyframes comDiveBackground {
+  /* line 2, ../sass/_keyframes.scss */
+  0% {
+    background: #FFF; }
+
+  /* line 5, ../sass/_keyframes.scss */
+  80% {
+    background: #eeeeee; } }
+
 @-webkit-keyframes comDiveBackground {
   /* line 2, ../sass/_keyframes.scss */
   0% {
     background: #FFF; }
 
   /* line 5, ../sass/_keyframes.scss */
-  100% {
+  80% {
+    background: #eeeeee; } }
+
+@-o-keyframes comDiveBackground {
+  /* line 2, ../sass/_keyframes.scss */
+  0% {
+    background: #FFF; }
+
+  /* line 5, ../sass/_keyframes.scss */
+  80% {
+    background: #eeeeee; } }
+
+@-ms-keyframes comDiveBackground {
+  /* line 2, ../sass/_keyframes.scss */
+  0% {
+    background: #FFF; }
+
+  /* line 5, ../sass/_keyframes.scss */
+  80% {
+    background: #eeeeee; } }
+
+@keyframes comDiveBackground {
+  /* line 2, ../sass/_keyframes.scss */
+  0% {
+    background: #FFF; }
+
+  /* line 5, ../sass/_keyframes.scss */
+  80% {
     background: #eeeeee; } }
 
 /*
@@ -164,12 +200,12 @@ img {
   border: 0;
   -ms-interpolation-mode: bicubic; }
 
-/* line 32, ../sass/style.scss */
+/* line 34, ../sass/style.scss */
 * {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -webkit-touch-callout: none; }
 
-/* line 37, ../sass/style.scss */
+/* line 39, ../sass/style.scss */
 body {
   font-size: 1.125em;
   line-height: 1.5;
@@ -178,20 +214,20 @@ body {
   color: #222222;
   overflow-x: hidden; }
 
-/* line 47, ../sass/style.scss */
+/* line 49, ../sass/style.scss */
 header {
   font-family: "facitweb", "Lucida Grande", sans-serif; }
 
-/* line 51, ../sass/style.scss */
+/* line 53, ../sass/style.scss */
 a {
   color: #666; }
 
-/* line 55, ../sass/style.scss */
+/* line 57, ../sass/style.scss */
 a:hover, a:focus, a:active {
   color: #333; }
 
 /* Periferal Content */
-/* line 65, ../sass/style.scss */
+/* line 67, ../sass/style.scss */
 .chap_marg {
   font-size: 0.75em;
   line-height: 1.33333;
@@ -201,26 +237,21 @@ a:hover, a:focus, a:active {
   width: 16.65%;
   margin: 0.5em 0 0 0;
   padding: 0 1em;
-  -ms-word-break: break-all;
-  word-break: break-all;
-  word-break: break-word;
-  -webkit-hyphens: auto;
-  -moz-hyphens: auto;
-  hyphens: auto;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   -webkit-transition: all 0.25s;
   -moz-transition: all 0.25s;
+  -ms-transition: all 0.25s;
   -o-transition: all 0.25s;
   transition: all 0.25s; }
 
-/* line 81, ../sass/style.scss */
+/* line 83, ../sass/style.scss */
 .chap_marg:hover, .chap_marg:focus {
   color: #222;
   cursor: pointer; }
 
-/* line 86, ../sass/style.scss */
+/* line 88, ../sass/style.scss */
 .chap_marg_icon {
   font-size: 1.33333em;
   font-weight: bold;
@@ -241,10 +272,11 @@ a:hover, a:focus, a:active {
   border-radius: 4em 4em 4em 0;
   -webkit-transition: all 0.25s;
   -moz-transition: all 0.25s;
+  -ms-transition: all 0.25s;
   -o-transition: all 0.25s;
   transition: all 0.25s; }
 
-/* line 107, ../sass/style.scss */
+/* line 109, ../sass/style.scss */
 .chap_marg:hover .chap_marg_icon, .chap_marg:focus .chap_marg_icon {
   background: #FF8080; }
 
@@ -253,7 +285,7 @@ a:hover, a:focus, a:active {
 	 image in the <i> tag. Needs an inner-class if markup 
 	 stays the same. */
 /* Main Sections */
-/* line 123, ../sass/style.scss */
+/* line 125, ../sass/style.scss */
 .chap_sec {
   margin: 0 16.65%;
   width: 66.6%;
@@ -262,30 +294,30 @@ a:hover, a:focus, a:active {
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
-/* line 132, ../sass/style.scss */
+/* line 134, ../sass/style.scss */
 .chap_sec:first-child p:first-child, .chap_lead {
   font-size: 1.25em;
   line-height: 1.5; }
 
-/* line 137, ../sass/style.scss */
+/* line 139, ../sass/style.scss */
 .chap_sec p + p, .chap_marg + .chap_sec p:first-child {
   text-indent: 2em; }
 
-/* line 141, ../sass/style.scss */
+/* line 143, ../sass/style.scss */
 .chap_sec blockquote {
   margin: 1em 0 1em -1.5em;
   border-left: 0.5em solid #FF8080;
   font-style: italic;
   padding: 0 0 0 1em; }
 
-/* line 148, ../sass/style.scss */
+/* line 150, ../sass/style.scss */
 .chap_sec cite {
   display: block;
   margin: 1em 0 0 0;
   font-style: normal; }
 
 /* Chapter Section Main Images */
-/* line 162, ../sass/style.scss */
+/* line 164, ../sass/style.scss */
 .chap_sec_fig {
   /* This makes the figure break outside of the main column.
      Since the inner column is 12 out of 18, it's 2/3 of the full width,
@@ -298,17 +330,17 @@ a:hover, a:focus, a:active {
   left: -10.66875%;
   margin: 1em 0; }
 
-/* line 175, ../sass/style.scss */
+/* line 177, ../sass/style.scss */
 .chap_sec_fig__left, .chap_sec_fig__right {
   width: 129.5625%;
   left: -27.90469%; }
 
-/* line 181, ../sass/style.scss */
+/* line 183, ../sass/style.scss */
 .chap_sec_fig__right {
   left: -1.40625%;
   left: 0; }
 
-/* line 187, ../sass/style.scss */
+/* line 189, ../sass/style.scss */
 .chap_sec_fig_cap {
   font-size: 0.75em;
   background: #CCC;
@@ -316,17 +348,17 @@ a:hover, a:focus, a:active {
   padding: 0.5em 1em; }
 
 /* Marginal Images */
-/* line 196, ../sass/style.scss */
+/* line 198, ../sass/style.scss */
 .chap_marg_fig {
   margin: 0 0 1em 0; }
 
-/* line 200, ../sass/style.scss */
+/* line 202, ../sass/style.scss */
 .chap_marg_fig_cap {
   color: #666;
   padding: 0.5em 0; }
 
 /* Comment Target */
-/* line 207, ../sass/style.scss */
+/* line 209, ../sass/style.scss */
 .target_com {
   padding: 5em 0;
   margin: -5em 0;
@@ -335,7 +367,7 @@ a:hover, a:focus, a:active {
   cursor: pointer; }
 
 /* Comments */
-/* line 218, ../sass/style.scss */
+/* line 220, ../sass/style.scss */
 .com {
   margin: 0 0 -1px 0;
   width: 100%;
@@ -345,20 +377,18 @@ a:hover, a:focus, a:active {
   border-bottom: 1px solid rgba(0, 0, 0, 0.3);
   -webkit-transition: all 0.25s;
   -moz-transition: all 0.25s;
+  -ms-transition: all 0.25s;
   -o-transition: all 0.25s;
   transition: all 0.25s;
-  -webkit-transform: translate3d(0, 0, 0);
-  -moz-transform: translate3d(0, 0, 0);
-  -ms-transform: translate3d(0, 0, 0);
-  -o-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0); }
+  -webkit-transform: translate3d(0, 0, 0); }
 
-/* line 230, ../sass/style.scss */
+/* line 232, ../sass/style.scss */
 .com__open, .com:focus {
-  border-bottom: 1px solid #ff8080; }
+  border-bottom: 1px solid #ff8080;
+  -webkit-transform: translate3d(0, 0, 0); }
 
 /* Dive Main Arrow */
-/* line 236, ../sass/style.scss */
+/* line 239, ../sass/style.scss */
 .com_dive {
   display: block;
   width: 0.75em;
@@ -366,36 +396,46 @@ a:hover, a:focus, a:active {
   position: absolute;
   right: 1.78em;
   margin: -9px 0 0 0;
-  transform: rotate(45deg);
   border: 1px solid #FF8080;
   border-width: 3px 0 0 3px;
   background: #eeeeee;
   -webkit-animation: comDiveBackground 0.25s 1 normal ease-in-out none 0;
-  -webkit-transform: rotate(45deg);
-  -moz-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  -o-transform: rotate(45deg);
-  transform: rotate(45deg);
-  *zoom: 1;
+  -moz-animation: comDiveBackground 0.25s 1 normal ease-in-out none 0;
+  -ms-animation: comDiveBackground 0.25s 1 normal ease-in-out none 0;
+  -o-animation: comDiveBackground 0.25s 1 normal ease-in-out none 0;
+  animation: comDiveBackground 0.25s 1 normal ease-in-out none 0;
+  zoom: 1;
   filter: progid:DXImageTransform.Microsoft.gradient(gradientType=1, startColorstr='#FFD6D6D6', endColorstr='#FFFFFFFF');
   background-image: -webkit-gradient(linear, 0% 0%, 100% 100%, color-stop(20%, #d6d6d6), color-stop(57%, #dcdcdc), color-stop(100%, rgba(255, 255, 255, 0)));
   background-image: -webkit-linear-gradient(left top, #d6d6d6 20%, #dcdcdc 57%, rgba(255, 255, 255, 0) 100%);
   background-image: -moz-linear-gradient(left top, #d6d6d6 20%, #dcdcdc 57%, rgba(255, 255, 255, 0) 100%);
   background-image: -o-linear-gradient(left top, #d6d6d6 20%, #dcdcdc 57%, rgba(255, 255, 255, 0) 100%);
+  background-image: -ms-linear-gradient(left top, #d6d6d6 20%, #dcdcdc 57%, rgba(255, 255, 255, 0) 100%);
   background-image: linear-gradient(left top, #d6d6d6 20%, #dcdcdc 57%, rgba(255, 255, 255, 0) 100%);
   -webkit-transition: background;
   -moz-transition: background;
+  -ms-transition: background;
   -o-transition: background;
-  transition: background; }
+  transition: background;
+  -webkit-transform: translate3d(0, 0, 0);
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg); }
 
-/* line 257, ../sass/style.scss */
+/* line 260, ../sass/style.scss */
 .com__open .com_dive, .com:focus .com_dive {
   border-width: 0 3px 3px 0;
   background: #eeeeee;
-  -webkit-animation: none; }
+  -webkit-animation: none;
+  -moz-animation: none;
+  -ms-animation: none;
+  -o-animation: none;
+  animation: none; }
 
 /* Dive Mini-Triangle */
-/* line 266, ../sass/style.scss */
+/* line 269, ../sass/style.scss */
 .com:after {
   content: "";
   display: block;
@@ -407,7 +447,7 @@ a:hover, a:focus, a:active {
   width: 0;
   height: 0; }
 
-/* line 278, ../sass/style.scss */
+/* line 281, ../sass/style.scss */
 .com__open:after, .com:focus:after {
   margin: 1px 0 0 0;
   -webkit-transform: rotate(180deg);
@@ -416,7 +456,7 @@ a:hover, a:focus, a:active {
   -o-transform: rotate(180deg);
   transform: rotate(180deg); }
 
-/* line 283, ../sass/style.scss */
+/* line 286, ../sass/style.scss */
 .com_count {
   font-size: 0.75em;
   display: block;
@@ -429,33 +469,30 @@ a:hover, a:focus, a:active {
   -moz-user-select: none;
   user-select: none; }
 
-/* line 298, ../sass/style.scss */
+/* line 301, ../sass/style.scss */
 .com_wrapper {
   height: 0;
   overflow-y: hidden;
   -webkit-transition: all 0.25s;
   -moz-transition: all 0.25s;
+  -ms-transition: all 0.25s;
   -o-transition: all 0.25s;
   transition: all 0.25s;
-  -webkit-transform: translate3d(0, 0, 0);
-  -moz-transform: translate3d(0, 0, 0);
-  -ms-transform: translate3d(0, 0, 0);
-  -o-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0); }
+  -webkit-transform: translate3d(0, 0, 0); }
 
-/* line 306, ../sass/style.scss */
+/* line 309, ../sass/style.scss */
 .com__open .com_wrapper, .com:focus .com_wrapper {
   height: 14em;
   padding: 0.50em 0; }
 
-/* line 311, ../sass/style.scss */
+/* line 314, ../sass/style.scss */
 .com_comments {
   font-size: 0.75em;
   width: 83.25%;
   margin: 0 auto;
   position: relative; }
 
-/* line 321, ../sass/style.scss */
+/* line 324, ../sass/style.scss */
 .com_comments_comment {
   float: left;
   width: 33.33333%;
@@ -463,24 +500,18 @@ a:hover, a:focus, a:active {
   position: relative;
   height: 100%; }
 
-/* line 329, ../sass/style.scss */
+/* line 332, ../sass/style.scss */
 .com_comments_comment_wrap {
   border-left: 0.66667em solid #f04f47;
   padding: 0 1em 1em 1em; }
 
-/* line 334, ../sass/style.scss */
+/* line 337, ../sass/style.scss */
 .com_comments_comment_cite {
   font-size: 1.33333em;
   margin: 0.5em 0 0 0;
-  display: block;
-  -ms-word-break: break-all;
-  word-break: break-all;
-  word-break: break-word;
-  -webkit-hyphens: auto;
-  -moz-hyphens: auto;
-  hyphens: auto; }
+  display: block; }
 
-/* line 342, ../sass/style.scss */
+/* line 345, ../sass/style.scss */
 .com_comments_comment_reply {
   display: block;
   font-family: "facitweb", "Lucida Grande", sans-serif;
@@ -490,7 +521,7 @@ a:hover, a:focus, a:active {
   float: left;
   padding: 0 0.5em 0 0; }
 
-/* line 352, ../sass/style.scss */
+/* line 355, ../sass/style.scss */
 .com_comments_comment_reply_icon {
   display: block;
   float: left;
@@ -501,29 +532,29 @@ a:hover, a:focus, a:active {
   color: #FFF; }
 
 @media screen and (min-width: 1024px) {
-  /* line 364, ../sass/style.scss */
+  /* line 367, ../sass/style.scss */
   .com_comments {
     width: 77.7%; }
 
-  /* line 368, ../sass/style.scss */
+  /* line 371, ../sass/style.scss */
   .com_comments_comment {
     width: 22.79736%; }
 
-  /* line 373, ../sass/style.scss */
+  /* line 376, ../sass/style.scss */
   .com_comments_comment:last-of-type {
     width: 48.56828%; }
 
-  /* line 377, ../sass/style.scss */
+  /* line 380, ../sass/style.scss */
   .com_comments_comment:last-of-type .com_comments_comment_wrap {
     font-size: 1.33333em;
     border-left: 0.5em solid #F04F47;
     padding: 0 0.75em 0.75em 0.75em; }
 
-  /* line 383, ../sass/style.scss */
+  /* line 386, ../sass/style.scss */
   .com_comments_comment:last-of-type .com_comments_comment_cite {
     font-size: 1em; } }
 /* Forms, move to normalise later? */
-/* line 394, ../sass/style.scss */
+/* line 397, ../sass/style.scss */
 label {
   float: left;
   clear: left;
@@ -531,14 +562,14 @@ label {
   font-size: 0.75em;
   font-weight: bold; }
 
-/* line 402, ../sass/style.scss */
+/* line 405, ../sass/style.scss */
 input, textarea, select {
   margin: 0 0 0.5em 0;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
-/* line 408, ../sass/style.scss */
+/* line 411, ../sass/style.scss */
 input[type=text] {
   float: left;
   clear: left;
@@ -548,7 +579,7 @@ input[type=text] {
   border: 1px solid #666;
   width: 100%; }
 
-/* line 419, ../sass/style.scss */
+/* line 422, ../sass/style.scss */
 textarea {
   float: left;
   clear: left;
@@ -561,17 +592,17 @@ textarea {
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
-/* line 432, ../sass/style.scss */
+/* line 435, ../sass/style.scss */
 input[type=text]:focus, textarea:focus {
   background: yellow; }
 
-/* line 436, ../sass/style.scss */
+/* line 439, ../sass/style.scss */
 input[type=submit] {
   float: left;
   clear: left;
   margin: 0.5em 0; }
 
-/* line 442, ../sass/style.scss */
+/* line 445, ../sass/style.scss */
 .com_add_sec {
   background: #CCC;
   width: 77.7%;
