@@ -14,13 +14,10 @@ App.Chapter = Backbone.Model.extend({
   title : '',
   content : '',
   comment_status : false,
-  
   initialize: function(o) {
     this.comments = new App.Comments(o.comments);
   }
-  
 });
-
 
 App.Chapters = Backbone.Collection.extend({
   model: App.Chapter,
@@ -29,7 +26,6 @@ App.Chapters = Backbone.Collection.extend({
     return response.posts;
   }
 });
-
 
 App.CommentView = Backbone.View.extend({
   render : function() {
@@ -41,30 +37,37 @@ App.CommentView = Backbone.View.extend({
 });
 
 App.CommentsView = Backbone.View.extend({
+  
+  events: {
+    "click .target_com" : "toggleComments",
+    "tap .target_com" : "toggleComments"
+  },
+  
+  toggleComments : function() {
+    $(this.el).find('.com').toggleClass('com__open');
+  },
+  
   render : function() {
     var template =  _.template($("#template-comments").html());
-    console.log(this.model.get('comment_count'))
     var html = template(this.model.toJSON());
     $(this.el).append(html);
     
     this.collection.each(function(comment) {
       var commentView = new App.CommentView({ model : comment });
-      // console.log(this.el)
-      $('.com_comments').prepend(commentView.render().el);
+      $(this.el).find('.com_comments').append(commentView.render().el);
     }, this);
 
     return this;
   }
 });
 
-
 App.SectionView = Backbone.View.extend({
   render : function() {
     // Main section template
     var template =  _.template($("#template-section").html());
-    this.el = template(this.model.toJSON());
-    // var html = template(this.model.toJSON());
-
+    var html = template(this.model.toJSON());
+    $(this.el).append(html);
+    
     // Comments template     
     if (this.model.get('comment_status') === 'open') {
       var commentsView = new App.CommentsView({collection: this.model.comments, model: this.model });
@@ -89,7 +92,6 @@ App.ChaptersView = Backbone.View.extend({
   },
 });
 
-
 App.Router = Backbone.Router.extend({
   routes: {
     '*path':  'defaultRoute'
@@ -108,9 +110,8 @@ App.Router = Backbone.Router.extend({
   }
 });
 
-
 $(function() {
-
+  
   Backbone.emulateJSON = true;
 
   // Initialize the Backbone router.
