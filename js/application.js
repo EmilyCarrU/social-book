@@ -28,6 +28,17 @@ App.Chapters = Backbone.Collection.extend({
 });
 
 App.CommentView = Backbone.View.extend({
+  events: {
+    "tap .com_comments_comment_reply"     : "addComment",
+    "click .com_comments_comment_reply"   : "addComment"
+  },
+  
+  addComment : function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    alert("Add Comment");
+  },
+  
   render : function() {
     var template =  _.template($("#template-comment").html());
     var html = template(this.model.toJSON());
@@ -43,7 +54,9 @@ App.CommentsView = Backbone.View.extend({
     "tap .target_com" : "toggleComments"
   },
   
-  toggleComments : function() {
+  toggleComments : function(e) {
+    e.preventDefault();
+    e.stopPropagation();
     $(this.el).find('.com').toggleClass('com__open');
   },
   
