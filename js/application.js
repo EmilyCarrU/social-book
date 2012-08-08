@@ -15,6 +15,10 @@ App.Chapter = Backbone.Model.extend({
   content : '',
   comment_status : false,
   initialize: function(o) {
+    var m = o.slug.match(/(\d{4})-(\d{2})-(\d{2})/);
+    this.decade = parseInt(m[1]);
+    this.month = parseInt(m[2]);
+    this.part = parseInt(m[3]);
     this.comments = new App.Comments(o.comments);
   }
 });
@@ -22,6 +26,29 @@ App.Chapter = Backbone.Model.extend({
 App.Chapters = Backbone.Collection.extend({
   model: App.Chapter,
   url: 'http://book.hyko.org/api/get_recent_posts/',
+
+  comparator: function(chapter1, chapter2) {
+    if (chapter1.decade < chapter2.decade) {
+      return 1;
+    } else if (chapter1.decade > chapter2.decade) {
+      return -1;
+    } else if (chapter1.decade === chapter2.decade) {
+      if (chapter1.month < chapter2.month) {
+        return 1;
+      } else if (chapter1.month > chapter2.month) {
+        return -1;
+      } else if (chapter1.month === chapter2.month) {
+        if (chapter1.part < chapter2.part) {
+          return 1;
+        } else if (chapter1.part > chapter2.part) {
+          return -1;
+        } else if (chapter1.part === chapter2.part) {
+          return 0;
+        }
+      }
+    }
+  },
+  
   parse: function(response) {
     return response.posts;
   }
