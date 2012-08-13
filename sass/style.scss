@@ -39,8 +39,8 @@ $default-transition-duration: 0.25s;
 // Z-Indexs
 //
 // .chap_head_fig: -1
-// 			    a: 10
 // 	 .target__com: 9
+// 			    a: 10
 // 	   .chap_marg: 11
 // 		 (modals): 20
 
@@ -75,7 +75,6 @@ a:hover, a:focus, a:active {
 
 a[href$=".pdf"]:after { content: " (PDF)"; }
 a[href$=".pdf"][data-size]:after { content: " (PDF, " attr(data-size) ")"; }
-
 
 .button {
 	font-size: #{(4/3)}em;
@@ -514,6 +513,17 @@ header {
 	clear: left;
 	float: left;
 	width: 100%;
+}
+
+.com_comments_actions_items {
+	list-style: none;
+	float: right;
+}
+
+.com_comments_actions_item {
+	float: left;
+	margin: 0 0 0 2em;
+	line-height: 2.5;
 }
 
 .com .button {
