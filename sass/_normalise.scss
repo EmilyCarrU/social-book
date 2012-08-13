@@ -125,3 +125,8 @@ img {
 	border: 0;
 	-ms-interpolation-mode: bicubic;
 }
+
+.wf-loading {
+    // Hide the blog title and post titles while web fonts are loading
+    visibility: hidden;
+}

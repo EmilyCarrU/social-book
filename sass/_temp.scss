@@ -23,8 +23,6 @@ figure img {
 	   to get croppoed with an overflow, which are both worse. */
 }
 
-/* Comment Fake Target, temp hopefully */
-
 .temp_citation_modal {
 	// display: none;
 	background: #CCC;
@@ -34,3 +32,7 @@ figure img {
 .temp_citation_modal__open {
 	display: block;
 }
+
+/* Targets */
+/* Uncomment to see the targets */
+/* .com_comments_comment_reply, .target__com { background: rgba(teal, 0.5); } */
