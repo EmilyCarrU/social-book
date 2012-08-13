@@ -393,7 +393,6 @@ header {
 .chap_sec {
   margin: 0 16.65%;
   width: 66.6%;
-  padding: 0 0.5em;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
@@ -423,20 +422,20 @@ header {
 /* Chapter Section Main Images */
 /* line 264, ../sass/style.scss */
 .chap_sec_fig {
-  width: 121.2375%;
-  left: -10.66875%;
-  margin: 1em 0; }
+  width: 116.55%;
+  left: -8.325%;
+  margin: 1em auto; }
 
-/* line 276, ../sass/style.scss */
+/* line 274, ../sass/style.scss */
 .chap_sec_fig__left, .chap_sec_fig__right {
-  width: 129.5625%;
-  left: -27.90469%; }
+  width: 124.875%;
+  left: -24.975%; }
 
-/* line 282, ../sass/style.scss */
+/* line 279, ../sass/style.scss */
 .chap_sec_fig__right {
   left: auto; }
 
-/* line 288, ../sass/style.scss */
+/* line 283, ../sass/style.scss */
 .chap_sec_fig_cap {
   font-size: 0.75em;
   background: #FFF;
@@ -446,7 +445,7 @@ header {
   line-height: 1.33333em;
   position: absolute;
   bottom: 0;
-  right: -0.1em;
+  right: 0;
   margin: 0;
   min-width: 35%;
   max-width: 50%;
@@ -454,12 +453,12 @@ header {
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
-/* line 306, ../sass/style.scss */
+/* line 301, ../sass/style.scss */
 .chap_sec_fig__right .chap_sec_fig_cap {
   left: 0;
   right: auto; }
 
-/* line 311, ../sass/style.scss */
+/* line 306, ../sass/style.scss */
 .chap_sec_fig__portrait {
   float: right;
   max-width: 54.6375%;
@@ -468,22 +467,22 @@ header {
   margin-right: -27.90469%;
   margin-left: 1.5em; }
 
-/* line 320, ../sass/style.scss */
+/* line 315, ../sass/style.scss */
 .chap_sec_fig__portrait .chap_sec_fig_cap {
   max-width: 100%; }
 
 /* Marginal Images */
-/* line 330, ../sass/style.scss */
+/* line 325, ../sass/style.scss */
 .chap_marg_fig {
   margin: 0 0 1em 0; }
 
-/* line 334, ../sass/style.scss */
+/* line 329, ../sass/style.scss */
 .chap_marg_fig_cap {
   color: #666;
   padding: 0.5em 0; }
 
 /* Comment Target */
-/* line 341, ../sass/style.scss */
+/* line 336, ../sass/style.scss */
 .target__com {
   padding: 5em 0;
   margin: -5em 0;
@@ -492,7 +491,7 @@ header {
   cursor: pointer; }
 
 /* Comments */
-/* line 351, ../sass/style.scss */
+/* line 346, ../sass/style.scss */
 .com {
   margin: -1px 0;
   width: 100%;
@@ -508,14 +507,14 @@ header {
   transition: all 0.25s;
   -webkit-transform: translate3d(0, 0, 0); }
 
-/* line 365, ../sass/style.scss */
+/* line 360, ../sass/style.scss */
 .com__open, .com:focus {
   height: 100%;
   border-bottom: 1px solid #ff284c;
   -webkit-transform: translate3d(0, 0, 0); }
 
 /* Dive Main Arrow */
-/* line 373, ../sass/style.scss */
+/* line 368, ../sass/style.scss */
 .com_dive {
   display: block;
   width: 0.75em;
@@ -543,7 +542,7 @@ header {
   -o-transform: rotate(45deg);
   transform: rotate(45deg); }
 
-/* line 394, ../sass/style.scss */
+/* line 389, ../sass/style.scss */
 .com__open .com_dive, .com:focus .com_dive {
   border-width: 0 3px 3px 0;
   background: #f9f8f0;
@@ -554,7 +553,7 @@ header {
   animation: none; }
 
 /* Dive Mini-Triangle */
-/* line 403, ../sass/style.scss */
+/* line 398, ../sass/style.scss */
 .com:after {
   content: "";
   display: block;
@@ -566,7 +565,7 @@ header {
   width: 0;
   height: 0; }
 
-/* line 415, ../sass/style.scss */
+/* line 410, ../sass/style.scss */
 .com__open:after, .com:focus:after {
   margin: 1px 0 0 0;
   -webkit-transform: rotate(180deg);
@@ -576,7 +575,7 @@ header {
   transform: rotate(180deg);
   -webkit-transform: translate3d(0, 0, 0); }
 
-/* line 421, ../sass/style.scss */
+/* line 416, ../sass/style.scss */
 .com_count {
   font-size: 0.75em;
   font-family: "Din Text Pro Regular", "Avenir", Verdana, sans-serif;
@@ -588,7 +587,7 @@ header {
   padding: 0 1em 0 0.5em;
   color: #ff284c; }
 
-/* line 437, ../sass/style.scss */
+/* line 432, ../sass/style.scss */
 .com_wrapper {
   height: 0;
   width: 100%;
@@ -600,7 +599,7 @@ header {
   transition: all 0.25s;
   -webkit-transform: translate3d(0, 0, 0); }
 
-/* line 446, ../sass/style.scss */
+/* line 441, ../sass/style.scss */
 .com__open .com_wrapper, .com:focus .com_wrapper {
   height: 17.5em;
   padding: 0.5em 0;
@@ -608,7 +607,7 @@ header {
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
-/* line 453, ../sass/style.scss */
+/* line 448, ../sass/style.scss */
 .com_comments {
   font-size: 0.75em;
   width: 88.8%;
@@ -623,7 +622,7 @@ header {
   font-style: normal;
   -webkit-transform: translate3d(0, 0, 0); }
 
-/* line 473, ../sass/style.scss */
+/* line 468, ../sass/style.scss */
 .com_comments_comment {
   float: left;
   position: relative;
@@ -632,12 +631,12 @@ header {
   height: 100%;
   display: block; }
 
-/* line 482, ../sass/style.scss */
+/* line 477, ../sass/style.scss */
 .com_comments_comment_wrap {
   border-left: 0.33333em solid #ff284c;
   padding: 0 1.33333em 1em 1em; }
 
-/* line 487, ../sass/style.scss */
+/* line 482, ../sass/style.scss */
 .com_comments_comment_cite {
   font-size: 1.33333em;
   font-family: "chaparral-pro", Georgia, serif;
@@ -645,7 +644,7 @@ header {
   margin: 0.5em 0 0 0;
   display: block; }
 
-/* line 497, ../sass/style.scss */
+/* line 492, ../sass/style.scss */
 .com_comments_comment_reply {
   line-height: 1.5;
   display: block;
@@ -656,7 +655,7 @@ header {
   margin: -1em 1em 0 -1em;
   float: left; }
 
-/* line 508, ../sass/style.scss */
+/* line 503, ../sass/style.scss */
 .com_comments_comment_reply_icon {
   font-weight: bold;
   width: 1.5em;
@@ -667,42 +666,42 @@ header {
   background: #ff284c;
   color: #FFF; }
 
-/* line 519, ../sass/style.scss */
+/* line 514, ../sass/style.scss */
 .com_comments_actions {
   margin: 1em 0;
   clear: left;
   float: left;
   width: 100%; }
 
-/* line 526, ../sass/style.scss */
+/* line 521, ../sass/style.scss */
 .com .button {
   background: #ff284c;
   float: right; }
 
 @media screen and (min-width: 1024px) {
-  /* line 533, ../sass/style.scss */
+  /* line 528, ../sass/style.scss */
   .com_comments {
     width: 77.7%; }
 
-  /* line 537, ../sass/style.scss */
+  /* line 532, ../sass/style.scss */
   .com_comments_comment {
     width: 22.79736%; }
 
-  /* line 542, ../sass/style.scss */
+  /* line 537, ../sass/style.scss */
   .com_comments_comment:last-of-type {
     width: 48.56828%; }
 
-  /* line 546, ../sass/style.scss */
+  /* line 541, ../sass/style.scss */
   .com_comments_comment:last-of-type .com_comments_comment_wrap {
     font-size: 1.33333em;
     border-left: 0.5em solid #ff284c;
     padding: 0 0.75em 0.75em 0.75em; }
 
-  /* line 552, ../sass/style.scss */
+  /* line 547, ../sass/style.scss */
   .com_comments_comment:last-of-type .com_comments_comment_cite {
     font-size: 1em; } }
 /* Forms, move to normalise later? */
-/* line 563, ../sass/style.scss */
+/* line 558, ../sass/style.scss */
 label {
   float: left;
   clear: left;
@@ -710,14 +709,14 @@ label {
   font-size: 0.75em;
   font-weight: bold; }
 
-/* line 571, ../sass/style.scss */
+/* line 566, ../sass/style.scss */
 input, textarea, select {
   margin: 0 0 0.5em 0;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
-/* line 577, ../sass/style.scss */
+/* line 572, ../sass/style.scss */
 input[type=text] {
   float: left;
   clear: left;
@@ -727,7 +726,7 @@ input[type=text] {
   border: 1px solid #666;
   width: 100%; }
 
-/* line 588, ../sass/style.scss */
+/* line 583, ../sass/style.scss */
 textarea {
   float: left;
   clear: left;
@@ -740,17 +739,17 @@ textarea {
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
-/* line 601, ../sass/style.scss */
+/* line 596, ../sass/style.scss */
 input[type=text]:focus, textarea:focus {
   background: yellow; }
 
-/* line 605, ../sass/style.scss */
+/* line 600, ../sass/style.scss */
 input[type=submit] {
   float: left;
   clear: left;
   margin: 0.5em 0; }
 
-/* line 615, ../sass/style.scss */
+/* line 610, ../sass/style.scss */
 .com_add_sec {
   background: #CCC;
   width: 77.7%;
