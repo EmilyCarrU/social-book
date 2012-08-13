@@ -59,8 +59,6 @@ body {
 	font-family: $content-fontstack-text;
 	background: $content-background;
 	color: $content-color;
-	
-	overflow-x: hidden; // this is a temp fix
 }
 
 a {
@@ -130,8 +128,9 @@ header {
 }
 
 .chap {
-	// What a nice chap!
-}
+	width: 100%;
+	overflow-x: hidden;
+} // What a nice chap!
 
 .chap_head {
 	width: #{($column * 15)};
@@ -223,11 +222,10 @@ header {
 /* Main Sections */
 
 .chap_sec {
-	margin: 0 #{($column * 3)};
-	// width: #{($column * 10)}; // 10 originally , haig suggests 3/10/3 (16) instead of 4/8/4 (16), I decided 3/12/3 (18)
+	margin: 0 0 0 #{($column * 3)};
 	width: #{($column * 12)};
 	// padding: 0 0.5em; // half-gutter, breaks figure
-	
+
 	@include box-sizing(border-box);
 }
 
