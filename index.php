@@ -1,48 +1,4 @@
-<!doctype html>
-<!--[if lt IE 9]><html class="ie"><![endif]-->
-<!--[if gte IE 9]><!--><html><!--<![endif]-->
-	<head>
-		<meta charset="utf-8"/>
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-		<meta name="apple-mobile-web-app-capable" content="yes" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" /><!-- Don't add maximum-scale=1.0 for a web version -->
-		<title>Emily Carr Internet History ebook</title>
-		<link rel="stylesheet" href="css/style.css" />
-		<!--[if lt IE 9]><script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-		<script type="text/javascript" src="js/zepto-1.0.rc.js"></script> 
-		<script type="text/javascript" src="js/zepto-onpress.js"></script>
-		<script type="text/javascript" src="js/pinchcard.js"></script>
-		<link rel="stylesheet" href="http://f.fontdeck.com/s/css/1pvW3wuCOIlhG6qWEMVQzqjyv2Y/localhost/22457.css" type="text/css" />
-		<script type="text/javascript" src="http://use.typekit.com/yml7xqf.js"></script>
-		<script type="text/javascript">
-		  (function() {
-		    var config = {
-		      kitId: 'yml7xqf',
-		      scriptTimeout: 3000
-		    };
-		    var h=document.getElementsByTagName("html")[0];h.className+=" wf-loading";var t=setTimeout(function(){h.className=h.className.replace(/(\s|^)wf-loading(\s|$)/g," ");h.className+=" wf-inactive"},config.scriptTimeout);var tk=document.createElement("script"),d=false;tk.src='//use.typekit.net/'+config.kitId+'.js';tk.type="text/javascript";tk.async="true";tk.onload=tk.onreadystatechange=function(){var a=this.readyState;if(d||a&&a!="complete"&&a!="loaded")return;d=true;clearTimeout(t);try{Typekit.load(config)}catch(b){}};var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(tk,s)
-		  })();
-		  
-          $(document).ready(function(){
-    	    var p = new PinchCard('.chap')
-    	    $(".target__com").bind({
-    	      openPanel: function(e) {
-    	        $(this).children(":first-child").addClass("com__open");
-    	      },
-    	      closePanel: function(e) {
-    	        $(this).children(":first-child").removeClass("com__open");
-    	      },
-    	      click: function() {
-	    	    $(this).children(":first-child").toggleClass("com__open");  
-    	      }
-    	    });    	    
-    	  });
-    	  
-    	  // http://jsfiddle.net/adambiggs/MAbD3/
-    	  // http://stackoverflow.com/questions/3508605/css-transition-height-0-to-height-auto
-		</script>
-	</head>
-	<body lang="en">
+<?php include_once("head.php"); ?>
 		<article class="chap">
 			<header class="chap_head">
 				<hgroup class="chap_head_group">
@@ -178,10 +134,9 @@ Canada, 2001, p.58.</a><!-- One issue is that there is little breathing room in 
 						<input type="text" name="commentEmail" id="commentEmail" placeholder="Your email" />
 						<label for="commentText">Comment</label>
 						<textarea name="commentText" id="commentText"></textarea>
-						<input type="submit" value="Add Comment" />
+						<input type="submit" value="Add Comment" class="button" />
 					</fieldset>
 				</form>
 			</div>
 		</article><!-- / .chap -->
-		<script type="text/javascript" src="js/gg.min.js"></script><!-- Golden Gridlet - remove me! -->
-	</body>
+<?php include_once("footer.php"); ?>

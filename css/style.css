@@ -253,6 +253,7 @@ a[href$=".pdf"][data-size]:after {
   display: block;
   position: relative;
   float: left;
+  border: 0;
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
   -webkit-border-radius: 0.25em;
   -moz-border-radius: 0.25em;
@@ -260,53 +261,53 @@ a[href$=".pdf"][data-size]:after {
   -o-border-radius: 0.25em;
   border-radius: 0.25em; }
 
-/* line 95, ../sass/style.scss */
+/* line 96, ../sass/style.scss */
 .button:hover, .button:active, .a:hover.button, .a:active.button {
   color: #FFF;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=75);
   opacity: 0.75; }
 
-/* line 100, ../sass/style.scss */
+/* line 101, ../sass/style.scss */
 .ui, .button, .target {
   -webkit-user-select: none;
   -moz-user-select: none;
   user-select: none; }
 
-/* line 105, ../sass/style.scss */
+/* line 106, ../sass/style.scss */
 .scaps {
   text-transform: lowercase;
   font-variant: small-caps; }
 
-/* line 110, ../sass/style.scss */
+/* line 111, ../sass/style.scss */
 header {
   text-rendering: optimizeLegibility;
   font-style: normal;
   font-weight: bold; }
 
-/* line 116, ../sass/style.scss */
+/* line 117, ../sass/style.scss */
 .h_title {
   font-weight: normal; }
 
-/* line 120, ../sass/style.scss */
+/* line 121, ../sass/style.scss */
 .h_subtitle {
   font-family: "Din Display Pro Black", "Avenir", Verdana, sans-serif;
   font-weight: 800; }
 
-/* line 125, ../sass/style.scss */
+/* line 126, ../sass/style.scss */
 .h_citetitle {
   font-size: 1em; }
 
-/* line 129, ../sass/style.scss */
+/* line 130, ../sass/style.scss */
 .chap {
   width: 100%;
   overflow-x: hidden; }
 
-/* line 134, ../sass/style.scss */
+/* line 135, ../sass/style.scss */
 .chap_head {
   width: 83.25%;
   margin: 0 0 2em 0; }
 
-/* line 139, ../sass/style.scss */
+/* line 140, ../sass/style.scss */
 .chap_head_group {
   width: 72.15%;
   padding: 0.5em 0;
@@ -319,7 +320,7 @@ header {
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
-/* line 151, ../sass/style.scss */
+/* line 152, ../sass/style.scss */
 .chap_head_group .h_subtitle {
   text-transform: uppercase;
   border-bottom: 1px solid #000;
@@ -327,18 +328,18 @@ header {
   margin: 0 0 0.33333em 0;
   float: left; }
 
-/* line 159, ../sass/style.scss */
+/* line 160, ../sass/style.scss */
 .chap_head_group .h_title {
   line-height: 1.33333;
   padding: 0 7.215%;
   clear: left; }
 
-/* line 165, ../sass/style.scss */
+/* line 166, ../sass/style.scss */
 .chap_head_fig {
   z-index: -1; }
 
 /* Periferal Content */
-/* line 173, ../sass/style.scss */
+/* line 174, ../sass/style.scss */
 .chap_marg {
   font-size: 0.75em;
   line-height: 1.33333;
@@ -361,18 +362,18 @@ header {
   -o-transition: left 0.25s ease 0.25s;
   transition: left 0.25s ease 0.25s; }
 
-/* line 193, ../sass/style.scss */
+/* line 194, ../sass/style.scss */
 .chap_marg:hover, .chap_marg:focus {
   cursor: pointer;
   left: 0; }
 
-/* line 198, ../sass/style.scss */
+/* line 199, ../sass/style.scss */
 .chap_marg q {
   text-indent: -0.4em;
   margin-bottom: 0.75em;
   display: block; }
 
-/* line 204, ../sass/style.scss */
+/* line 205, ../sass/style.scss */
 .chap_marg:after {
   content: "\2192";
   display: block;
@@ -391,7 +392,7 @@ header {
   box-sizing: border-box; }
 
 /* Main Sections */
-/* line 223, ../sass/style.scss */
+/* line 224, ../sass/style.scss */
 .chap_sec {
   margin: 0 0 0 16.65%;
   width: 66.6%;
@@ -399,45 +400,45 @@ header {
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
-/* line 231, ../sass/style.scss */
+/* line 232, ../sass/style.scss */
 .chap_sec:first-child p:first-child, .chap_lead {
   font-size: 1.25em;
   line-height: 1.5; }
 
-/* line 236, ../sass/style.scss */
+/* line 237, ../sass/style.scss */
 .chap_sec p + p, .chap_marg + .chap_sec > p:first-child {
   text-indent: 2em; }
 
-/* line 240, ../sass/style.scss */
+/* line 241, ../sass/style.scss */
 .chap_sec blockquote {
   margin: 1em 0;
   border-left: 0.5em solid #222222;
   font-style: italic;
   padding: 0 0 0 1em; }
 
-/* line 247, ../sass/style.scss */
+/* line 248, ../sass/style.scss */
 .chap_sec cite {
   display: block;
   margin: 1em 0 0 0;
   font-style: normal; }
 
 /* Chapter Section Main Images */
-/* line 261, ../sass/style.scss */
+/* line 262, ../sass/style.scss */
 .chap_sec_fig {
   width: 116.55%;
   left: -8.325%;
   margin: 1em auto; }
 
-/* line 271, ../sass/style.scss */
+/* line 272, ../sass/style.scss */
 .chap_sec_fig__left, .chap_sec_fig__right {
   width: 124.875%;
   left: -24.975%; }
 
-/* line 276, ../sass/style.scss */
+/* line 277, ../sass/style.scss */
 .chap_sec_fig__right {
   left: auto; }
 
-/* line 280, ../sass/style.scss */
+/* line 281, ../sass/style.scss */
 .chap_sec_fig_cap {
   font-size: 0.75em;
   background: #FFF;
@@ -455,12 +456,12 @@ header {
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
-/* line 298, ../sass/style.scss */
+/* line 299, ../sass/style.scss */
 .chap_sec_fig__right .chap_sec_fig_cap {
   left: 0;
   right: auto; }
 
-/* line 303, ../sass/style.scss */
+/* line 304, ../sass/style.scss */
 .chap_sec_fig__portrait {
   float: right;
   max-width: 54.6375%;
@@ -469,22 +470,22 @@ header {
   margin-right: -27.90469%;
   margin-left: 1.5em; }
 
-/* line 312, ../sass/style.scss */
+/* line 313, ../sass/style.scss */
 .chap_sec_fig__portrait .chap_sec_fig_cap {
   max-width: 100%; }
 
 /* Marginal Images */
-/* line 322, ../sass/style.scss */
+/* line 323, ../sass/style.scss */
 .chap_marg_fig {
   margin: 0 0 1em 0; }
 
-/* line 326, ../sass/style.scss */
+/* line 327, ../sass/style.scss */
 .chap_marg_fig_cap {
   color: #666;
   padding: 0.5em 0; }
 
 /* Comment Target */
-/* line 333, ../sass/style.scss */
+/* line 334, ../sass/style.scss */
 .target__com {
   padding: 5em 0;
   margin: -5em 0;
@@ -493,7 +494,7 @@ header {
   cursor: pointer; }
 
 /* Comments */
-/* line 343, ../sass/style.scss */
+/* line 344, ../sass/style.scss */
 .com {
   margin: -1px 0;
   width: 100%;
@@ -509,14 +510,14 @@ header {
   transition: all 0.25s;
   -webkit-transform: translate3d(0, 0, 0); }
 
-/* line 357, ../sass/style.scss */
+/* line 358, ../sass/style.scss */
 .com__open, .com:focus {
   height: 100%;
   border-bottom: 1px solid #ff284c;
   -webkit-transform: translate3d(0, 0, 0); }
 
 /* Dive Main Arrow */
-/* line 365, ../sass/style.scss */
+/* line 366, ../sass/style.scss */
 .com_dive {
   display: block;
   width: 0.75em;
@@ -761,6 +762,10 @@ input[type=submit] {
   float: left;
   clear: left;
   margin: 0.5em 0; }
+
+/* line 614, ../sass/style.scss */
+.modal {
+  z-index: 20; }
 
 /* line 618, ../sass/style.scss */
 .com_add_sec {

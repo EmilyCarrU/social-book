@@ -42,7 +42,7 @@ $default-transition-duration: 0.25s;
 // 	 .target__com: 9
 // 			    a: 10
 // 	   .chap_marg: 11
-// 		 (modals): 20
+// 		 .modal: 20
 
 * {
 	-webkit-tap-highlight-color: rgba(0,0,0,0);
@@ -87,6 +87,7 @@ a[href$=".pdf"][data-size]:after { content: " (PDF, " attr(data-size) ")"; }
 	display: block;
 	position: relative;
 	float: left;
+	border: 0;
 
 	@include text-shadow(0 1px 0 rgba(#000, 0.5));
 	@include border-radius(0.25em);
@@ -380,8 +381,7 @@ header {
 	@include transition(background);
 	@include enable-hardware-acceleration; // Will overwrite next line if last
 	@include transform(rotate(45deg));
-	// box sizing not supported in iOS4, makes this look worse
-} // BUG this breaks margins right now
+}
 
 .com__open .com_dive, .com:focus .com_dive {
 	border-width: 0 3px 3px 0;
@@ -612,7 +612,7 @@ input[type=submit] {
 }
 
 .modal {
-	
+	z-index: 20;
 }
 
 .com_add_sec {
