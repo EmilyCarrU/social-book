@@ -10,10 +10,10 @@
       <meta content='width=device-width, initial-scale=1.0 maximum-scale=1.0 user-scalable=0' name='viewport' />
       <meta name="viewport" content="width=device-width" />
 
-      <!-- // <script src="http://192.168.0.187:8080/target/target-script-min.js#anonymous"></script> -->
-      
       <link rel="stylesheet" href="css/application.css"></link>
-      
+
+      <script src="bookdata.json" ></script>
+      <script src="decadedata.json" ></script>
       <script src="js/zepto-1.0.rc.js" ></script>
       <script src="js/zepto-onpress.js" ></script>
       <script src="js/underscore-1.3.3-min.js" ></script>
@@ -22,12 +22,16 @@
       
     </head>
     <body>
-      <div id="chapters"></div>
+      <div id="decades"></div>
       
+      <script type="text/html" id="template-decade">
+        <div><%= title %></div>
+        <div class="chapters" style="display:none;"></div>        
+      </script>
+
       <script type="text/html" id="template-section">
         <section class='chap_sec'>
-          <%= title %> <%= slug %>
-          <%= content %>
+          <%= title %><%= content %>
         </section>
       </script>
 
@@ -56,7 +60,6 @@
   				</a>
   			</section>
       </script>
-
       
     </body>
 </html>

@@ -13,3 +13,15 @@
 ## Setup
 
     $ /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --disable-web-security
+    
+    
+## High Level
+
+ - Decades TOC
+   - Chapters TOC
+     - Sections
+       - Comments
+       
+### Decades
+ We add a tag for the decade to filter them out quickly.
+ * Endpoint - http://book.hyko.org/api/get_tag_posts/?tag=decade
