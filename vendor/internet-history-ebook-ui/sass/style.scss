@@ -1,0 +1,628 @@
+$line: 27;
+$column: 5.55%;
+$font-size: 18;
+$em: $font-size * 1;
+
+$content-fontstack-text: "chaparral-pro", Georgia, serif;
+// $content-fontstack-head: "facitweb", "Lucida Grande", sans-serif;
+$content-fontstack-head: "Din Display Pro Black", "Avenir", Verdana, sans-serif;
+$comment-fontstack-text: "Din Text Pro Regular", "Avenir", Verdana, sans-serif;
+
+$content-background: #F9F8F0; 
+$content-color: #222;
+$comment-color: #FF284C; // #F04F47 // #FF8080
+$comment-private-color: cyan;
+
+// Compass Variables
+
+$default-transition-duration: 0.25s;
+
+// Imports
+
+@import "compass/css3", "compass/utilities";
+@import "compass/css3/user-interface"; // Shouldn't have to import individually
+@import "_temp", "_keyframes", "_normalise";
+@import "stitch/patterns";
+
+
+//	Type Scale
+//
+//	13.5px
+//	18.0px size
+//	22.5px
+//	27.0px leading
+//	36.0px
+//	40.5px
+//	54.0px
+//	63.0px
+
+// Z-Indexs
+//
+// .chap_head_fig: -1
+// 	 .target__com: 9
+// 			    a: 10
+// 	   .chap_marg: 11
+// 		 .modal: 20
+
+* {
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-touch-callout: none;
+} // move to normalise?
+
+html {
+	@include fixed-sized-text;
+}
+
+body {
+	font-size: #{$font-size/16}em;
+	line-height: #{$line / $em};
+	font-family: $content-fontstack-text;
+	background: $content-background;
+	color: $content-color;
+}
+
+a {
+	color: #666;
+	z-index: 10; // adjust this, needs to be able targets
+	position: relative;
+}
+
+a:hover, a:focus, a:active {
+	color: #333;
+}
+
+/* Download links */
+
+a[href$=".pdf"]:after { content: " (PDF)"; }
+a[href$=".pdf"][data-size]:after { content: " (PDF, " attr(data-size) ")"; }
+
+.button {
+	font-size: #{(4/3)}em;
+	background: $content-color;
+	color: #FFF;
+	text-decoration: none;
+	line-height: 2em;
+	padding: 0 1em;
+	line-height: 2;
+	display: block;
+	position: relative;
+	float: left;
+	border: 0;
+
+	@include text-shadow(0 1px 0 rgba(#000, 0.5));
+	@include border-radius(0.25em);
+}
+
+.button:hover, .button:active, .a:hover.button, .a:active.button {
+	color: #FFF;
+	@include opacity(0.75);
+}
+
+.ui, .button, .target {
+	// background: rgba(teal, 0.5);
+	@include user-select(none); // Need to say, user select on com, none
+}
+
+.scaps {
+	text-transform: lowercase;
+	font-variant: small-caps;
+}
+
+header {
+	text-rendering: optimizeLegibility;
+	font-style: normal;
+	font-weight: bold;
+}
+
+.h_title {
+	font-weight: normal;
+}
+
+.h_subtitle {
+	font-family: $content-fontstack-head;
+	font-weight: 800;
+}
+
+.h_citetitle {
+	font-size: 1em;
+}
+
+.chap {
+	width: 100%;
+	overflow-x: hidden;
+} // What a nice chap!
+
+.chap_head {
+	width: #{($column * 15)};
+	margin: 0 0 2em 0;
+}
+
+.chap_head_group {
+	width: #{($column * 13)};
+	padding: 0.5em 0;
+	background: #FFF;
+	background: rgba(#FFF, 0.75);
+	top: 16em;
+	display: block;
+	position: absolute;
+
+	@include box-sizing(border-box);	
+}
+
+.chap_head_group .h_subtitle {
+	text-transform: uppercase;
+	border-bottom: 1px solid #000;
+	padding: 0 0 0 #{($column * (13/10))};
+	margin: 0 0 #{(1/3)}em 0;
+	float: left;
+}
+
+.chap_head_group .h_title {
+	line-height: #{(4/3)};
+	padding: 0 #{($column * (13/10))};
+	clear: left;
+}
+
+.chap_head_fig {
+	z-index: -1;
+}
+
+
+
+/* Periferal Content */
+
+.chap_marg {
+	font-size: #{(13.5 / $em)}em;
+	line-height: #{(4/3)};
+	font-style: normal;
+	color: #FFF;
+	background: #333;
+
+	float: left;
+	width: #{($column * 9)};
+	margin: 0 0 0 0; // this lines it up with the baseline in ths case, but might not always work. Test!
+	padding: 1em 1.5em 1em 1em; // half gutter 
+	position: absolute;
+	left: -#{($column * 8.75)};
+	z-index: 11;
+	
+	// include hyphenation; // Yay, broke this again.
+	@include box-sizing(border-box);
+	@include transition(left $default-transition-duration ease 0.25s);
+}
+
+.chap_marg:hover, .chap_marg:focus {
+	cursor: pointer;
+	left: 0;
+} // these won't work on touch devices, duh
+
+.chap_marg q {
+	text-indent: -0.4em;
+	margin-bottom: 0.75em;
+	display: block;
+}
+
+.chap_marg:after {
+	content: "\2192";
+	display: block;
+	width: 1.5em;
+	height: 1.5em;
+	background: #666;
+	position: absolute;
+	right: -0.75em;
+	top: 40%; // must be a better way to do this?
+	border: 1px solid #CCC;
+	color: #CCC;
+	text-align: center;
+	line-height: 1.5;
+	
+	@include box-sizing(border-box);
+}
+
+/* Main Sections */
+
+.chap_sec {
+	margin: 0 0 0 #{($column * 3)};
+	width: #{($column * 12)};
+	// padding: 0 0.5em; // half-gutter, breaks figure
+
+	@include box-sizing(border-box);
+}
+
+.chap_sec:first-child p:first-child, .chap_lead {
+	font-size: #{22.5 / $em}em;
+	line-height: 1.5;
+}
+
+.chap_sec p + p, .chap_marg + .chap_sec > p:first-child {
+	text-indent: 2em;
+} // indent for paragraph following paragraph, paragraph "following" periferal content
+
+.chap_sec blockquote {
+	margin: 1em 0;
+    border-left: 0.5em solid $content-color;
+    font-style: italic;
+    padding: 0 0 0 1em;
+}
+
+.chap_sec cite {
+	display: block;
+    margin: 1em 0 0 0;
+    font-style: normal;
+}
+
+.chap_sec q:before {
+}
+
+.chap_sec q:after {
+}
+
+/* Chapter Section Main Images */
+
+.chap_sec_fig {
+	// This makes the figure break outside of the main column.
+	// Since the inner column is 12 out of 18, it's 2/3 of the full width,
+	// multiply by 1.5 to make the column variable work again.
+	
+	width: #{(($column * 14) * (3/2))};
+	left: #{($column * 1) * (-3/2)};
+	margin: 1em auto;
+}
+
+.chap_sec_fig__left, .chap_sec_fig__right {
+	width: #{($column * 15) * (3/2)};
+	left: #{($column * 3) * (-3/2)};
+}
+
+.chap_sec_fig__right {
+	left: auto;
+}
+
+.chap_sec_fig_cap {
+	font-size: #{(13.5 / $em)}em;
+	background: #FFF;
+	background: rgba(#FFF, 0.75);
+	// background: desaturate(darken($content-background, 15%), 35%);
+	color: #333;
+	padding: 0.75em;
+	line-height: #{(4/3)}em;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	margin: 0;
+	min-width: 35%;
+	max-width: 50%;
+	
+	@include box-sizing(border-box);
+}
+
+.chap_sec_fig__right .chap_sec_fig_cap {
+	left: 0;
+	right: auto;
+}
+
+.chap_sec_fig__portrait {
+	float: right;
+	max-width: #{((($column * 6) * (3/2)) + (2 * (($em / 768) * 100%)))};
+	height: 100%;
+	overflow: hidden;
+	margin-right: #{((($column * 3) * (-3/2)) - (1.25 * (($em / 768) * 100%)))};
+	margin-left: 1.5em;
+}
+
+.chap_sec_fig__portrait .chap_sec_fig_cap {
+	max-width: 100%;
+}
+
+.chap_sec_fig__landscape {
+	
+}
+
+/* Marginal Images */
+
+.chap_marg_fig {
+	margin: 0 0 1em 0;
+}
+
+.chap_marg_fig_cap {
+	color: #666;
+	padding: 0.5em 0;		
+}
+
+/* Comment Target */
+
+.target__com {
+	padding: 5em 0;
+	margin: -5em 0;
+	z-index: 9;
+	position: relative;
+	cursor: pointer;
+}
+
+/* Comments */
+
+.com {
+	margin: -1px 0; // fixes baseline
+	width: 100%;
+	clear: both;
+	background: #FFF;
+	border-top: 1px solid $comment-color;
+	border-bottom: 1px solid $comment-color;
+	// border-bottom: 1px solid rgba(#000,0.3);
+	height: 0;
+
+	@include transition();
+	@include enable-hardware-acceleration;
+}
+
+.com__open, .com:focus {
+	height: 100%;
+	border-bottom: 1px solid $comment-color;
+	@include enable-hardware-acceleration;
+}
+
+/* Dive Main Arrow */
+
+.com_dive {
+	display: block;
+	width: 0.75em;
+	height: 0.75em;
+	position: absolute;
+	right: 1.78em; // needed to center over small triangle which is set at 2em as in comps
+	margin: #{($em / -2)}px 0 0 0;
+	border: 1px solid $comment-color;
+	border-width: 3px 0 0 3px;
+	background: $content-background;
+	
+	
+	@include animation(comDiveBackground 0.25s 1 normal ease-in-out none 0);
+	// @include filter-gradient(#d6d6d6, #ffffff, horizontal);
+	// @include background-image(linear-gradient(left top, rgba(214,214,214,1) 20%, rgba(220,220,220,1) 57%, rgba(255,255,255,0) 100%));
+	@include transition(background);
+	@include enable-hardware-acceleration; // Will overwrite next line if last
+	@include transform(rotate(45deg));
+}
+
+.com__open .com_dive, .com:focus .com_dive {
+	border-width: 0 3px 3px 0;
+	background: $content-background;
+	
+	@include animation(none);
+}
+
+/* Dive Mini-Triangle */
+
+.com:after {
+	content: "";
+	display: block;
+	position: absolute;
+	float: left;
+	border: 4px solid transparent;
+	border-top-color: $comment-color;	
+	right: 2em; // 36px
+	width: 0;
+	height: 0;
+}
+
+.com__open:after, .com:focus:after {
+	margin: 1px 0 0 0;
+	@include transform(rotate(180deg));
+	@include enable-hardware-acceleration;
+}
+
+.com_count {
+	font-size: #{13.5 / $em}em;
+	font-family: $comment-fontstack-text;
+	font-size-adjust: 0.5;
+	
+	display: block;
+	float: right;
+	height: 100%;
+	margin: -1.5em 0 0 0;
+	padding: 0 1em 0 0.5em;
+	color: $comment-color;
+}
+
+.com__open .com_count, .com:focus .com_count {
+}
+
+.com_wrapper {
+	height: 0;
+	width: 100%;
+	overflow-y: hidden;
+	
+	@include transition();
+	@include enable-hardware-acceleration;
+}
+
+.com__open .com_wrapper, .com:focus .com_wrapper {
+	height: 17.5em; // ONE BIG ISSUE WITH ANIMATIONS: fixed-height, should be 100%
+	padding: 0.5em 0;
+	
+	@include box-sizing(border-box);
+}
+
+.com_comments {
+	font-size: #{13.5 / $em}em;
+	width: #{($column * 16)};
+	margin: 0 auto;
+	position: relative;
+	list-style-type: none;
+	display: block;
+	padding: 0;
+	
+	font-family: $comment-fontstack-text;
+	font-size-adjust: 0.5;
+	font-weight: normal;
+	font-style: normal;
+	
+	@include enable-hardware-acceleration;
+}
+
+.com__open .com_comments, .com:focus .com_comments {
+}
+
+.com_comments_comment {
+	float: left;
+	position: relative;
+	width: #{(100%/3)}; // check how this works with the columns
+	padding: 0.5em 0; // quarter em padding here, three quarters for animation on .com_wrapper	
+	height: 100%;
+	display: block;
+}
+
+.com_comments_comment_wrap {
+	border-left: #{(1/3)}em solid $comment-color;
+	padding: 0 #{(4/3)}em 1em 1em;
+}
+
+.com_comments_comment_cite {
+	font-size: #{$em / 13.5}em;
+	font-family: $content-fontstack-text;
+	font-size-adjust: 0;	
+	margin: 0.5em 0 0 0;
+	display: block;		
+
+	// include hyphenation; // Yay, broke this again.
+}
+
+.com_comments_comment_reply {
+	line-height: 1.5;
+	display: block;
+	text-decoration: none;
+	color: #333;
+	padding: 1em;
+	width: #{(100%/3)};	
+	margin: -1em 1em 0 -1em;
+	float: left;
+}
+
+.com_comments_comment_reply_icon {
+	font-weight: bold;
+	width: 1.5em;
+	float: left;
+	display: block;
+	margin: 0 0.5em 0 0;
+	text-align: center;
+	background: $comment-color;
+	color: #FFF;
+}
+
+.com_comments_actions {
+	margin: 1em 0;
+	clear: left;
+	float: left;
+	width: 100%;
+}
+
+.com_comments_actions_items {
+	list-style: none;
+	float: right;
+}
+
+.com_comments_actions_item {
+	float: left;
+	margin: 0 0 0 2em;
+	line-height: 2.5;
+}
+
+.com .button {
+	background: $comment-color;
+	float: right;
+}
+
+@media screen and (min-width: 1024px) { // Check media queries in Sass
+
+	.com_comments {
+		width: #{($column * 14)};
+	}
+
+	.com_comments_comment {
+		// width: #{($column * 4)}; // check how this works with the columns
+		width: #{(207/908 * 100%)}; // Px to % from Fireworks, better way?
+	}
+
+	.com_comments_comment:last-of-type {
+		width: #{(441/908 * 100%)}; // Px to % from Fireworks, better way?
+	} // should actually be a __class for whatever the longest/most popular, whatever comment is. Probably shouldn't be the middle one.
+	
+	.com_comments_comment:last-of-type .com_comments_comment_wrap {
+		font-size: #{(4/3)}em; // Change font-size here instead since it won't mess up reply button then	
+		border-left: 0.5em solid $comment-color; // should this be px?
+		padding: 0 0.75em 0.75em 0.75em;
+	}
+
+	.com_comments_comment:last-of-type .com_comments_comment_cite {
+		font-size: 1em;
+	}
+	
+}
+
+/* Forms, move to normalise later? */
+
+form {
+}
+
+label {
+	float: left;
+	clear: left;
+	width: 100%;
+	font-size: #{(13.5 / $em)}em;
+	font-weight: bold;
+}
+
+input, textarea, select {
+	margin: 0 0 0.5em 0;
+
+	@include box-sizing(border-box);
+}
+
+input[type=text] {
+	float: left;
+	clear: left;
+	line-height: 2;
+	height: 2em;
+	padding: 0 #{(1/3)}em;
+	border: 1px solid #666;
+	// width: #{(($column * 11) * (18/14))};
+	width: 100%;
+}
+
+textarea {
+	float: left;
+	clear: left;
+	line-height: 1.5;
+	padding: 0.25em #{(1/3)}em;
+	border: 1px solid #666;
+	// width: #{(($column * 11) * (18/14))};
+	width: 100%;
+	min-height: 7em;
+
+	@include box-sizing(border-box);
+}
+
+input[type=text]:focus, textarea:focus {
+	background: yellow;
+}
+
+input[type=submit] {
+	float: left;
+	clear: left;
+	margin: 0.5em 0;
+}
+
+.modal {
+	z-index: 20;
+}
+
+.com_add_sec {
+	background: #CCC;
+	width: #{($column * 14)};
+	margin: 0 auto;
+	padding: 1em; // half-gutter, this creates the same problem as the figure gutter by bumping the inner content like the inputs inwards since the padding is in ems instead of percentages
+	position: relative;
+	top: -25em;
+
+	@include box-shadow(0 0 1em rgba(#000, 0.5));
+	@include box-sizing(border-box);
+}
