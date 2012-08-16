@@ -1,4 +1,4 @@
-<?php include_once("head.php"); ?>
+<?php include_once("header.php"); ?>
 		<article class="chap">
 			<header class="chap_head">
 				<hgroup class="chap_head_group">
@@ -88,6 +88,7 @@ Canada, 2001, p.58.</a><!-- One issue is that there is little breathing room in 
 				</blockquote>
 				<p>Or more recently: Mosaic, usenet, magnolia, Friendster, Pets.com, Napster, geoCities, Flooz, SixDegrees, Digg, eToys, MySpace, the WELL, Google Wave. Sure, some of them are still around, but even they are ghosts of their former selves.</p>
 				<figure class="chap_sec_fig">
+					<?php include("section_templates/figure_svg.php"); ?>
 				    <img src="images/figures/C-003693-LastSpike-Craigellachie-BC-Canada.jpg" alt="C-003693-LastSpike-Craigellachie-BC-Canada" />
 				    <figcaption class="chap_sec_fig_cap">This photo is just an example. So is this caption.</figcaption>
 				</figure>
@@ -95,6 +96,7 @@ Canada, 2001, p.58.</a><!-- One issue is that there is little breathing room in 
 				<p>&#8220;This is a test for hanging quotes, because there is no way we're not trying to get hanging quotes to working properly in a book.&#8221; Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, &#8220;quis nostrud exercitation&#8221; ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 				<p>Or more recently: Mosaic, usenet, magnolia, Friendster, Pets.com, Napster, geoCities, Flooz, SixDegrees, Digg, eToys, MySpace, the WELL, Google Wave. Sure, some of them are still around, but even they are ghosts of their former selves.</p>
 				<figure class="chap_sec_fig chap_sec_fig__left">
+					<?php include("section_templates/figure_svg.php"); ?>
 				    <img src="images/figures/Chinese-at-work-on-CPR-in-Mountains-1884.jpg" alt="Chinese at work on CPR in Mountains, 1884" />
 				    <figcaption class="chap_sec_fig_cap">This is an example of a photo breaking out to the left.</figcaption>
 				</figure>
