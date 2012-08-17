@@ -1,31 +1,3 @@
-/* line 1, ../sass/_temp.scss */
-.clear_temp {
-  clear: both; }
-
-/* line 5, ../sass/_temp.scss */
-figure img {
-  width: 100%;
-  /* How do you have a image-friendly, responsive baseline grid?
-     The widths have to be set as max 100%, so the height is what
-     changes unless you want the proportions to change or the image
-     to get croppoed with an overflow, which are both worse. */ }
-
-/* line 13, ../sass/_temp.scss */
-canvas {
-  background: #CCC; }
-
-/* line 17, ../sass/_temp.scss */
-.temp_citation_modal {
-  background: #CCC;
-  margin: 0 11.1%; }
-
-/* line 23, ../sass/_temp.scss */
-.temp_citation_modal__open {
-  display: block; }
-
-/* Targets */
-/* Uncomment to see the targets */
-/* .com_comments_comment_reply, .target__com { background: rgba(teal, 0.5); } */
 @-moz-keyframes comDiveBackground {
   /* line 2, ../sass/_keyframes.scss */
   0% {
