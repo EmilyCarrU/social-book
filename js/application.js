@@ -377,7 +377,7 @@ App.DecadeView = Backbone.View.extend({
 });
 
 App.DecadesView = Backbone.View.extend({
-  tagName : 'ul',
+  tagName : 'ol',
   className : 'decade',
   
   initialize: function() {               
