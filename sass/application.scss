@@ -57,7 +57,7 @@ body {
 	font-size: #{$font-size/16}em;
 	line-height: #{$line / $em};
 	font-family: $content-fontstack-text;
-	background: $content-background;
+	background: #CCC;
 	color: $content-color;
 }
 
@@ -146,11 +146,10 @@ header {
 // markup needs to be changed first
 
 .decade li { // markup needs to be changed
-	border-bottom: 1px solid black;
 	overflow: hidden;
 	display: block;
 	cursor: pointer;
-		
+
 	// @include transition();
 }
 
@@ -162,9 +161,10 @@ header {
 	// height: 0;
 	max-height: 0;
 	overflow: hidden;
+	background: $content-background;
 	
 	@include box-sizing(border-box);
-	@include transition(all, max-height $default-transition-duration, #{($default-transition-duration * 2.5)});
+	@include transition(all, max-height $default-transition-duration, #{($default-transition-duration * 3)});
 }
 
 .chap__open {
@@ -172,7 +172,6 @@ header {
 	margin: 0 0 #{($target_height * -1)}em 0;
 	padding-top: #{($target_height * 0.5)}em;
 	max-height: 10000px;
-	background: #CCC;
 }
 
 /* Chapters */

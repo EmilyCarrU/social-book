@@ -46,13 +46,13 @@
     	    var p = new PinchCard('.chap')
     	    $(".target__com").bind({
     	      openPanel: function(e) {
-    	        $(this).children(":first-child").addClass("com__open");
+    	        $(this.el).find('.com').addClass("com__open");
     	      },
     	      closePanel: function(e) {
-    	        $(this).children(":first-child").removeClass("com__open");
+    	        $(this.el).find('.com').removeClass("com__open");
     	      },
     	      click: function() {
-	    	    $(this).children(":first-child").toggleClass("com__open");  
+	    	    $(this.el).find('.com').toggleClass("com__open");  
     	      }
     	    });    	    
 
