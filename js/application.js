@@ -266,7 +266,7 @@ App.CommentsView = Backbone.View.extend({
     
     this.collection.each(function(comment) {
       var commentView = new App.CommentView({ model : comment });
-      $(this.el).find('.com_comments').append(commentView.render().el);
+      $(this.el).find('.com_comments').prepend(commentView.render().el);
     }, this);
 
     return this;
