@@ -93,7 +93,17 @@ App.Chapters = Backbone.Collection.extend({
 });
 
 App.Comments = Backbone.Collection.extend({
-    model: App.Comment
+    model: App.Comment,
+    localStorage: new Store("app-comments"),
+    
+    initialize: function() {
+      this.bind('add', this.addOne, this);
+    },
+    
+    addOne:function(item) {
+      console.log(item)
+    }
+    
 });
 
 //
@@ -102,17 +112,24 @@ App.Comments = Backbone.Collection.extend({
 
 App.CommentView = Backbone.View.extend({
   events: {
+    "click": "preventDefault",
     "tap .com_comments_comment_reply"     : "addComment",
     "click .com_comments_comment_reply"   : "addComment"
   },
-  
-  addComment : function(e) {
+    
+  preventDefault: function(e) {
     e.preventDefault();
     e.stopPropagation();
-    alert("Add Comment");
   },
   
-  render : function() {
+  // This is the reply button
+  addComment: function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    alert("Add Reply");
+  },
+  
+  render: function() {
     var template =  _.template($("#template-comment").html());
     var html = template(this.model.toJSON());
     $(this.el).append(html);
@@ -124,20 +141,89 @@ App.CommentView = Backbone.View.extend({
 App.CommentsView = Backbone.View.extend({
   
   events: {
-    "click .target_com": "toggleComments",
-    "tap .target_com": "toggleComments"
+    "click": "preventDefault",
+    "click .target__com": "toggleComments",
+    "tap .target__com": "toggleComments",
+    "click .button.com_comments_meta_add"   : "showCommentForm",
+    "click .cancel" : "cancelCommentForm",
+    "click .com_add_form .submit": "addComment"
+
+  },
+  
+  // initialize: function() {
+  //   this.bind('add', this.addOne, this);
+  // },
+  
+  // addOne:function(){
+  //   console.log("here")
+  // },
+  
+  preventDefault: function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+  },
+  
+  // This is the add button on the comments for the form
+  showCommentForm : function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    
+    // Add the Comment Form
+    var template =  _.template($("#template-comment-form").html());
+    var html = template();
+    $(this.el).append(html);
+  },
+  
+  clearForm: function() {
+    $(this.el).find('.com_add_form #commentName').val('');
+    $(this.el).find('.com_add_form #commentEmail').val('');
+    $(this.el).find('.com_add_form #commentText').val('');    
+  },
+  
+  closeForm: function() {
+    $(this.el).find('.com_add_sec').remove();
+  },
+  
+  addComment: function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    var attr = {}
+    attr.data = new Date();
+    attr.name = $(this.el).find('.com_add_form #commentName').val();
+    attr.email = $(this.el).find('.com_add_form #commentEmail').val();
+    attr.content = $(this.el).find('.com_add_form #commentText').val();
+
+    this.collection.create(attr);
+    this.clearForm();
+    this.closeForm();
+
+    // Update the View
+  
+  },
+  
+  cancelCommentForm: function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    this.closeForm();
   },
   
   toggleComments : function(e) {
     e.preventDefault();
     e.stopPropagation();
-    $(this.el).find('.com').toggleClass('com__open');
+    $(this.el).find('.com').addClass('com__open');
   },
   
   render : function() {
+
     var template =  _.template($("#template-comments").html());
     var html = template(this.model.toJSON());
     $(this.el).append(html);
+
+    if (this.model.get('comment_count') === 0) {
+      $(this.el).find('.com_comments_actions_item .view_all').hide();
+    }
     
     this.collection.each(function(comment) {
       var commentView = new App.CommentView({ model : comment });
@@ -171,7 +257,11 @@ App.DecadeView = Backbone.View.extend({
     "click li" : "expandItem",
   },
   
-  expandItem : function(){
+  expandItem : function(e){
+    e.preventDefault();
+    e.stopPropagation();
+    
+    $(this.el).find('.chapters').addClass('expandItem');
     $(this.el).find('.chapters').toggle();
   },
   
@@ -220,7 +310,7 @@ App.ChaptersView = Backbone.View.extend({
   className : 'chap',
   
   render : function() {
-    console.log(this.collection)
+    // console.log(this.collection)
     this.collection.each(function(section) {
       var sectionView = new App.SectionView({ model : section });
       $(this.el).prepend(sectionView.render().el);
@@ -242,21 +332,13 @@ App.Router = Backbone.Router.extend({
 
     $('#decades').html(App.decadesView.render().el);
 
-    // App.decades.fetch();
-    
-    // App.decades.fetch({
-    //   success: function(collection) {
-    //     $('#decades').html(App.decadesView.render().el);
-    //   }
-    // });
-
   }
 });
 
 $(function() {
   
   Backbone.emulateJSON = true;
-
+  
   // Initialize the Backbone router.
   App.router = new App.Router();  
   Backbone.history.start();

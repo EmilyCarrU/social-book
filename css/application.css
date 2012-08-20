@@ -300,7 +300,8 @@ header {
 /* line 130, ../sass/style.scss */
 .chap {
   width: 100%;
-  overflow-x: hidden; }
+/*  overflow-x: hidden; */
+}
 
 /* line 135, ../sass/style.scss */
 .chap_head {
@@ -763,12 +764,18 @@ input[type=submit] {
   clear: left;
   margin: 0.5em 0; }
 
+button {
+  float: left;
+  clear: left;
+  margin: 0.5em 0; }
+
+
 /* line 614, ../sass/style.scss */
 .modal {
   z-index: 20; }
 
 /* line 618, ../sass/style.scss */
-.com_add_sec {
+.com_add_sec {  
   background: #CCC;
   width: 77.7%;
   margin: 0 auto;
