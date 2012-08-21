@@ -429,7 +429,7 @@ App.Router = Backbone.Router.extend({
   
   // Show all the chapters (sections) for a year
   showYear: function(id) {
-
+    $("#chapters").show();
     $("#decades").hide();
     var chap = new App.Chapters(chapters);
 
@@ -438,17 +438,15 @@ App.Router = Backbone.Router.extend({
     }
     
     var chapterList = chap.filter(itor);
-    
     chap.reset(chapterList);
-
     var chaptersView = new App.ChaptersView({ collection : chap });
 
     $('#chapters').html(chaptersView.render().el);
-        
   },
   
   defaultRoute: function(path) {
-    
+    $("#decades").show();
+    $("#chapters").hide();
     App.decades = new App.Decades(decadeData);
     App.decadesView = new App.DecadesView({ collection : App.decades });
 
