@@ -154,13 +154,6 @@ App.CommentsView = Backbone.View.extend({
     "click .com_add_form .submit": "addComment"
   },
   
-  // initialize: function() {
-  //   this.bind('add', this.addOne, this);
-  // },
-  // 
-  // addOne:function(){
-  //   console.log("here")
-  // },
   
   preventDefault: function(e) {
     e.preventDefault();
@@ -231,7 +224,7 @@ App.CommentsView = Backbone.View.extend({
     
     this.collection.each(function(comment) {
       var commentView = new App.CommentView({ model : comment });
-      console.log(commentView.render().el);
+      // console.log(commentView.render().el);
       
       $(this.el).find('.com_comments').append(commentView.render().el);
     }, this);
