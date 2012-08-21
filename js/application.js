@@ -324,15 +324,6 @@ App.DecadeView = Backbone.View.extend({
     this.yearsView = new App.YearsView({ collection : this.years });
     $(this.el).find('.years').html(this.yearsView.render().el);
     return this;
-    
-    // this.chaptersView = new App.ChaptersView({ collection : this.chapters });
-    // 
-    // var template =  _.template($("#template-decade").html());
-    // var html = template(this.model.toJSON());
-    // $(this.el).append(html);
-    // $(this.el).find('.chapters').html(this.chaptersView.render().el);
-    //     
-    // return this;
   }
 });
 
