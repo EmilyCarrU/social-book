@@ -33,6 +33,7 @@ App.Chapter = Backbone.Model.extend({
     }
     
     this.comments = new App.Comments(o.comments);
+
   }
 });
 
@@ -100,9 +101,9 @@ App.Comments = Backbone.Collection.extend({
       this.bind('add', this.addOne, this);
     },
     
-    addOne:function(item) {
-      console.log(item)
-    }
+    // addOne:function(item) {
+    //   console.log(item);
+    // }
     
 });
 
@@ -111,12 +112,15 @@ App.Comments = Backbone.Collection.extend({
 //
 
 App.CommentView = Backbone.View.extend({
+  tagName: "li",
+  className: "com_comments_comment",
+  
   events: {
     "click": "preventDefault",
     "tap .com_comments_comment_reply"     : "addComment",
     "click .com_comments_comment_reply"   : "addComment"
   },
-    
+  
   preventDefault: function(e) {
     e.preventDefault();
     e.stopPropagation();
@@ -128,10 +132,11 @@ App.CommentView = Backbone.View.extend({
     e.stopPropagation();
     alert("Add Reply");
   },
-  
+    
   render: function() {
     var template =  _.template($("#template-comment").html());
     var html = template(this.model.toJSON());
+
     $(this.el).append(html);
     return this;
   }
@@ -147,13 +152,12 @@ App.CommentsView = Backbone.View.extend({
     "click .button.com_comments_meta_add"   : "showCommentForm",
     "click .cancel" : "cancelCommentForm",
     "click .com_add_form .submit": "addComment"
-
   },
   
   // initialize: function() {
   //   this.bind('add', this.addOne, this);
   // },
-  
+  // 
   // addOne:function(){
   //   console.log("here")
   // },
@@ -227,6 +231,8 @@ App.CommentsView = Backbone.View.extend({
     
     this.collection.each(function(comment) {
       var commentView = new App.CommentView({ model : comment });
+      console.log(commentView.render().el);
+      
       $(this.el).find('.com_comments').append(commentView.render().el);
     }, this);
 
@@ -235,6 +241,12 @@ App.CommentsView = Backbone.View.extend({
 });
 
 App.SectionView = Backbone.View.extend({
+  initialize: function() {
+    this.model.comments.bind('add', this.addOne, this);
+  },
+  
+  tag: 'ul',
+  
   render : function() {
     // Main section template
     var template =  _.template($("#template-section").html());
@@ -247,7 +259,17 @@ App.SectionView = Backbone.View.extend({
       $(this.el).append(commentsView.render().el);
     }
     return this;
+  },
+
+  addOne: function(comment) {
+    
+    var commentView = new App.CommentView({ model : comment });
+    $(this.el).find('.com_comments').append(commentView.render().el);
+
+    // TODO.
+    // Hit the server with the request.    
   }
+  
 });
 
 App.DecadeView = Backbone.View.extend({
@@ -269,16 +291,16 @@ App.DecadeView = Backbone.View.extend({
     
     var that = this;
     this.chapters = new App.Chapters(chapters);
-        
+    
     var itor = function(o) {
       return (o.attributes.decade == that.model.get('decade')) ? true : false;
     }
     
     var chapterList = that.chapters.filter(itor);
-    this.chapters.reset(chapterList);
-        
+    this.chapters.reset(chapterList);        
   },
-  render : function() {
+  
+  render: function() {
 
     this.chaptersView = new App.ChaptersView({ collection : this.chapters });
 
