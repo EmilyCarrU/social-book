@@ -51,9 +51,11 @@
     </head>
     <body>
       <div id="decades"></div>
+      <div id="chapters"></div>      
       
       <script type="text/html" id="template-decade">
         <div><%= title %></div>
+        <article class="years" style="display:none;"></div>
         <article class="chapters chap" style="display:none;"></div>        
       </script>
 
@@ -119,5 +121,15 @@
   				</form>
   			</div>      
       </script>
+     
+      <script type="text/html" id="template-year">
+        <div class="com_year_wrap">
+          <a href="#year/<%= id %>">
+            <%= year %> <%= title %>
+          </a>
+        </div>
+      </script>
+            
+      
     </body>
 </html>
