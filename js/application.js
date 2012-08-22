@@ -42,12 +42,9 @@ App.Chapter = Backbone.Model.extend({
       this.set('decade', parseInt(m[1]));
       this.set('year', parseInt(m[2]));
       this.set('part', parseInt(m[3]));
-    } else {
-      // console.log("We have to filter out the Decades", o);
     }
     
     this.comments = new App.Comments(o.comments);
-
   }
 });
 
@@ -173,6 +170,10 @@ App.CommentsView = Backbone.View.extend({
     "click .com_add_form .submit": "addComment"
   },
   
+  initialize: function() {
+    this.model.bind('change', this.updateCount, this);    
+  },
+  
   preventDefault: function(e) {
     e.preventDefault();
     e.stopPropagation();
@@ -209,12 +210,13 @@ App.CommentsView = Backbone.View.extend({
     attr.email = $(this.el).find('.com_add_form #commentEmail').val();
     attr.content = $(this.el).find('.com_add_form #commentText').val();
 
+    
     this.collection.create(attr);
     this.clearForm();
     this.closeForm();
 
-    // Update the View
-  
+    // Update the comment count
+    this.model.set('comment_count', this.model.get('comment_count') + 1);   
   },
   
   cancelCommentForm: function(e) {
@@ -230,6 +232,12 @@ App.CommentsView = Backbone.View.extend({
     $(this.el).find('.com').addClass('com__open');
   },
   
+  
+  // Called on 'change'
+  updateCount: function() {
+    $(this.el).find('.com_count').html(this.model.get('comment_count'))    
+  },
+  
   render : function() {
 
     var template =  _.template($("#template-comments").html());
@@ -242,8 +250,6 @@ App.CommentsView = Backbone.View.extend({
     
     this.collection.each(function(comment) {
       var commentView = new App.CommentView({ model : comment });
-      // console.log(commentView.render().el);
-      
       $(this.el).find('.com_comments').append(commentView.render().el);
     }, this);
 
@@ -252,11 +258,12 @@ App.CommentsView = Backbone.View.extend({
 });
 
 App.SectionView = Backbone.View.extend({
+  
+  tagName: 'ul',
+    
   initialize: function() {
     this.model.comments.bind('add', this.addOne, this);
   },
-  
-  tagName: 'ul',
   
   render : function() {
     // Main section template
@@ -264,7 +271,7 @@ App.SectionView = Backbone.View.extend({
     var html = template(this.model.toJSON());
     $(this.el).append(html);
     
-    // Comments template     
+    // Comments template
     if (this.model.get('comment_status') === 'open') {
       var commentsView = new App.CommentsView({collection: this.model.comments, model: this.model });
       $(this.el).append(commentsView.render().el);
@@ -278,7 +285,8 @@ App.SectionView = Backbone.View.extend({
     $(this.el).find('.com_comments').append(commentView.render().el);
 
     // TODO.
-    // Hit the server with the request.    
+    // Hit the server with the comment.
+    console.log(comment.toJSON());
   }
   
 });
@@ -289,6 +297,27 @@ App.DecadeView = Backbone.View.extend({
   events: {
     "click li" : "expandItem",
   },
+    
+  initialize: function() {
+    // Init the years view
+    
+    var that = this;    
+    this.years = new App.Years(chapters);
+    
+    var decadeItor = function(o) {
+      if (o.attributes.year) {
+        return (o.attributes.decade == that.model.get('decade')) ? true : false;
+      }
+    }
+    
+    // Filter out the the other decades
+    var yearList = that.years.filter(decadeItor);
+    this.years.reset(yearList);
+
+    // Return the first PART
+    var yearList = this.years.min(function(i){return i.attributes.part});
+    this.years.reset(yearList);
+  },
   
   expandItem : function(e){
     e.preventDefault();
@@ -296,21 +325,6 @@ App.DecadeView = Backbone.View.extend({
     
     $(this.el).find('.years').addClass('expandItem');
     $(this.el).find('.years').toggle();
-  },
-  
-  initialize: function() {
-    // Init the years view
-    
-    var that = this;    
-    this.years = new App.Years(chapters);
-
-    
-    var itor = function(o) {
-      return (o.attributes.decade == that.model.get('decade')) ? true : false;
-    }
-    
-    var yearList = that.years.filter(itor);
-    this.years.reset(yearList);     
   },
   
   render: function() {
@@ -325,13 +339,13 @@ App.DecadeView = Backbone.View.extend({
     $(this.el).find('.years').html(this.yearsView.render().el);
     return this;
   }
+  
 });
 
 App.DecadesView = Backbone.View.extend({
   tagName : 'ul',
   className : 'decade',
   
-
   render : function() {
     this.collection.each(function(d) {
       var decadeView = new App.DecadeView({ model : d });
@@ -367,27 +381,18 @@ App.YearsView = Backbone.View.extend({
     }, this);
     
     return this;
-  }  
-  
+  }
 });
 
 App.YearView = Backbone.View.extend({
   tagName: 'li',
   className : 'yearItem',
+  
   events: {
     "click": "preventDefault",
     "click .com_year_wrap": "launch"
   },
-  
-  launch: function(e) {
-    document.location = "#year/" + this.model.id;
-  },
-  
-  preventDefault: function(e) {
-    e.preventDefault();
-    e.stopPropagation();
-  },
-    
+      
   // Moved from Decade
   initialize: function(o) {
     
@@ -401,6 +406,15 @@ App.YearView = Backbone.View.extend({
     var chapterList = that.chapters.filter(itor);
     this.chapters.reset(chapterList);        
   },
+
+  launch: function(e) {
+    document.location = "#year/" + this.model.id;
+  },
+  
+  preventDefault: function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+  },  
   
   render : function() {
     var template =  _.template($("#template-year").html());
@@ -413,7 +427,6 @@ App.YearView = Backbone.View.extend({
 
 App.Router = Backbone.Router.extend({
   routes: {
-
     'year/:id': 'showYear',
     '*path': 'defaultRoute'    
   },
@@ -422,16 +435,24 @@ App.Router = Backbone.Router.extend({
   showYear: function(id) {
     $("#chapters").show();
     $("#decades").hide();
-    var chap = new App.Chapters(chapters);
-
-    var itor = function(o) {
-      return (o.attributes.id == id) ? true : false;
-    }
     
-    var chapterList = chap.filter(itor);
-    chap.reset(chapterList);
-    var chaptersView = new App.ChaptersView({ collection : chap });
+    var chap = new App.Chapters(chapters);
+    var filteredSet = chap.filter(function(o) {
+      return (o.attributes.id == id) ? true : false;
+    });
+    
+    var selectedYear = filteredSet[0].get('year');
+    var selectedDecade = filteredSet[0].get('decade');
+    
+    var allChapters = new App.Chapters(chapters);
+    
+    var newList = allChapters.filter(function(i){
+      return (i.attributes.year == selectedYear && i.attributes.decade == selectedDecade) ? true : false;
+    });
 
+    allChapters.reset(newList);
+    
+    var chaptersView = new App.ChaptersView({ collection : allChapters });
     $('#chapters').html(chaptersView.render().el);
   },
   
