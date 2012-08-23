@@ -8,7 +8,8 @@
       <meta content='width=device-width, initial-scale=1.0 maximum-scale=1.0 user-scalable=0' name='viewport' />
 
       <link rel="stylesheet" href="css/application.css"></link>
-      <link rel="stylesheet" href="http://f.fontdeck.com/s/css/1pvW3wuCOIlhG6qWEMVQzqjyv2Y/localhost/22457.css" type="text/css" />
+      <link rel="stylesheet" href="http://f.fontdeck.com/s/css/4CSrzfrp2qwCjFbwX0mbQSb6/54/localhost/22457.css" type="text/css" />
+      
       
       <script src="bookdata.json" ></script>
       <script src="decadedata.json" ></script>
@@ -74,19 +75,20 @@
       <div id="chapters"></div>      
       
       <script type="text/html" id="template-decade">
-        <div class="target target__toc_item">
-        	<header class="toc_item_head y_<%= slug %>s"><!-- needs more stable class -->
-        		<hgroup>
-			        <h3><%= title_plain %></h3>
-        		</hgroup>
-        		<section>
-        		<%= content %>
-        		</section>
-        	</header>
-        	<div class="chapters"></div>
-          <!-- This may need to be changed -->
-          <article class="years" style="display:none;"></div>        	
-        </div>
+
+       	<header class="toc_item_head y_<%= slug %>s"><!-- needs more stable year class not pulled from the slug -->
+       		<hgroup>
+       			<h4 class="toc_item_head_year">19X0</h4>
+		        <h3 class="toc_item_head_title"><%= title_plain %></h3>
+       		</hgroup>
+       		<section class="toc_item_intro">
+       		<%= content %>
+       		</section>
+       	</header>
+       	
+       	<div class="target target__chap"></div>
+        <!-- This may need to be changed -->
+        <article class="years" style="display:none;"></div>        	
 
       </script>
 
