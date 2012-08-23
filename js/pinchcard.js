@@ -48,7 +48,6 @@
           
           // Some threshold amount to trigger the move
           if (Math.abs(normDelta) >= 1 && this.fireAction === null) {
-
             if (normDelta < 0) {
               $(selEl).trigger('openPanel');
             } else {

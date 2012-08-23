@@ -172,6 +172,22 @@ App.CommentsView = Backbone.View.extend({
   
   initialize: function() {
     this.model.bind('change', this.updateCount, this);    
+    
+    // var p = new PinchCard('#chapters');
+    // 
+    // $(".target__com").bind({
+    //   openPanel: function(e) {
+    //     $(this).children(":first-child").addClass("com__open");
+    //   },
+    //   closePanel: function(e) {
+    //     $(this).children(":first-child").removeClass("com__open");
+    //   },
+    //   click: function() {
+    //     $(this).children(":first-child").toggleClass("com__open");  
+    //   }
+    // });          
+
+
   },
   
   preventDefault: function(e) {
@@ -295,7 +311,7 @@ App.DecadeView = Backbone.View.extend({
   tagName: 'li',
 
   events: {
-    "click li" : "expandItem",
+    // "click li" : "expandItem",
   },
     
   initialize: function() {
@@ -317,6 +333,21 @@ App.DecadeView = Backbone.View.extend({
     // Return the first PART
     var yearList = this.years.min(function(i){return i.attributes.part});
     this.years.reset(yearList);
+
+
+    // $(this.el).bind("openPanel", this.expandItem, this);
+    // $(this.el).bind("closePanel", this.expandItem, this);
+        
+    $(this.el).bind("openPanel",function(){
+      $(that.el).find('.years').show();
+      $(that.el).css("background-color","red")
+    },this);
+    
+    $(this.el).bind("closePanel",function(){
+      $(that.el).find('.years').hide();
+      $(that.el).css("background-color","blue")
+    },this);
+    
   },
   
   expandItem : function(e){
@@ -345,6 +376,9 @@ App.DecadeView = Backbone.View.extend({
 App.DecadesView = Backbone.View.extend({
   tagName : 'ul',
   className : 'decade',
+  
+  initialize: function() {               
+  },
   
   render : function() {
     this.collection.each(function(d) {
