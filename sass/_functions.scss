@@ -1,0 +1,19 @@
+@function year($num) {
+	@if $num == "1950" {
+		@return $chapter-color-50s;
+	} @else if $num == "1960" {
+		@return $chapter-color-60s;
+	} @else if $num == "1970" {
+		@return $chapter-color-70s;
+	} @else if $num == "1980" {
+		@return $chapter-color-80s;
+	} @else if $num == "1990" {
+		@return $chapter-color-90s;
+	} @else if $num == "2000" {
+		@return $chapter-color-00s;
+	} @else if $num == "2010" {
+		@return $chapter-color-10s;
+	} @else {
+		@return #DDD; /* #{($num)} */
+	}
+}

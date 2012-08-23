@@ -77,14 +77,23 @@
       <div id="chapters"></div>      
       
       <script type="text/html" id="template-decade">
-        <div><%= title %></div>
+        <header class="toc_item_head y_<%= slug %>s">
+        	<hgroup>
+		        <h3><%= title_plain %></h3>
+        	</hgroup>
+        	<section>
+        	<%= content %>
+        	</section>
+        </header>
+        <div class="chapters"></div>        
+        <!-- This may need to be changed -->
         <article class="years" style="display:none;"></div>
       </script>
 
       <script type="text/html" id="template-section">
 
         <section class="chap_sec">
-          <p><%= title %> <%= slug %></p>
+          <h4><%= title %> <%= slug %></h4>
           <%= content %>
         </section>
         

@@ -13,7 +13,13 @@ $content-color: #333;
 $comment-color: #FF284C; // #F04F47 // #FF8080
 $comment-private-color: purple;
 
+$chapter-color-50s: #FB8F8D;
+$chapter-color-60s: #02C3DA;
+$chapter-color-70s: #FF9C23;
 $chapter-color-80s: #02C3DA;
+$chapter-color-90s: #000088;
+$chapter-color-00s: #C086E1;
+$chapter-color-10s: #FB8F8D;
 
 $target_height: 5;
 
@@ -25,7 +31,7 @@ $default-transition-duration: 0.25s;
 
 @import "compass/css3", "compass/utilities";
 @import "compass/css3/user-interface"; // Shouldn't have to import individually
-@import "_temp", "_keyframes", "_normalise";
+@import "_temp", "_keyframes", "_normalise", "_functions";
 @import "stitch/patterns";
 
 
@@ -111,7 +117,6 @@ a[href$=".pdf"][data-size]:after { content: " (PDF, " attr(data-size) ")"; }
 header {
 	text-rendering: optimizeLegibility;
 	font-style: normal;
-	font-weight: bold;
 }
 
 .h_title {
@@ -149,15 +154,22 @@ header {
 	overflow: hidden;
 	display: block;
 	cursor: pointer;
-
 	// @include transition();
 }
+
+@for $i from 5 through 11 {
+	.y_#{(($i * 10) + 1900)}s {
+		background: year(#{(($i * 10) + 1900)});
+	}
+}
+/* Chapters */
 
 .chap {
 	float: left;
 	clear: left;
 	margin: 0 0 #{($target_height * -2)}em 0;
 	padding: 0 0 #{($target_height * 2)}em 0;
+	width: 100%;
 	// height: 0;
 	max-height: 0;
 	overflow: hidden;
@@ -165,7 +177,7 @@ header {
 	
 	@include box-sizing(border-box);
 	@include transition(all, max-height $default-transition-duration, #{($default-transition-duration * 3)});
-}
+} // What a nice chap!
 
 .chap__open {
 	// height: auto;
@@ -173,13 +185,6 @@ header {
 	padding-top: #{($target_height * 0.5)}em;
 	max-height: 10000px;
 }
-
-/* Chapters */
-
-.chap {
-	width: 100%;
-	overflow-x: hidden;
-} // What a nice chap!
 
 .chap_head {
 	width: #{($column * 15)};
