@@ -1,3 +1,4 @@
+<!doctype html>
 <html>
     <head>
       <meta charset="utf-8"/>
@@ -9,7 +10,6 @@
 
       <link rel="stylesheet" href="css/application.css"></link>
       <link rel="stylesheet" href="http://f.fontdeck.com/s/css/4CSrzfrp2qwCjFbwX0mbQSb6/54/localhost/22457.css" type="text/css" />
-      
       
       <script src="bookdata.json" ></script>
       <script src="decadedata.json" ></script>
@@ -58,28 +58,14 @@
 		</script>
     </head>
     <body lang="en">
-      <div class="temp_intro">
-      	<header>
-	      	<hgroup>
-		      	<h1>Hello, Welcome to the Book</h1>
-		      	<h2>Hi from the subtitle</h2>
-		    </hgroup>
-      	</header>
-      	<p>Depending on how you look at it, 40 years is a really long time or the blink of an eye.  It&#8217;s 1% of the history of the Jewish people, if you count back to the birth of Abraham in (reportedly) <a href="http://en.wikipedia.org/wiki/Abraham#Chronology">1948 BC.</a> It&#8217;s 283,824,028 times as long as you need to transmit 1 megabyte of data at the <a href="http://itpopular.com/world-internet-average-speed-1-8-mbps/">average global speed of an Internet connection</a>.</p>
-<p>It&#8217;s a little more than 10 times the <a href="http://www.patentlyo.com/patent/2010/07/unreasonable-patent-applicant-delay-and-the-uspto-backlog.html">average wait after filing your application for a US patent</a>. In a bunch of OECD countries, including Canada, it&#8217;s the <a href="http://oecdinsights.org/2011/03/18/when-im-64-6-%E2%80%A6/">number of years you have to contribute to your pension</a> before you can retire with full benefits. It&#8217;s the average lifespan of an elephant.</p>
-	    <header>
-	      <h2>Table of Contents</h2>
-	    </header>
-      </div>
       <div id="decades"></div>
       <div id="chapters"></div>      
-      
-      <script type="text/html" id="template-decade">
 
-       	<header class="toc_item_head y_<%= slug %>s"><!-- needs more stable year class not pulled from the slug -->
+      <script type="text/html" id="template-decade">
+       	<header class="toc_item_head y_<%= decade %>s">
        		<hgroup>
-       			<h4 class="toc_item_head_year">19X0</h4>
-		        <h3 class="toc_item_head_title"><%= title_plain %></h3>
+       			<h4 class="toc_item_head_year"><%= decade %></h4>
+		        <h3 class="toc_item_head_title"><%= title %></h3>
        		</hgroup>
        		<section class="toc_item_intro">
        		<%= content %>
@@ -91,25 +77,25 @@
         <article class="years" style="display:none;"></div>        	
 
       </script>
-
+      
       <script type="text/html" id="template-section">
-
         <section class="chap_sec">
           <h4><%= title %> <%= slug %></h4>
           <%= content %>
-        </section>
-        
+        </section>        
       </script>
 
       <script type="text/html" id="template-comments">
         <div class="target target__com">
           <aside class="com dive">
             <span class="ui dive_count"><%= comment_count %></span>
-            <i class="dive_icon"></i>
+            <!-- <i class="com_dive"></i> -->
             <section class="com_wrapper">
               <ul class="com_comments">
-	              <!-- Comments (com_comments_comment) should load here -->            
-                <li class="com_comments_actions">
+                
+	              <!-- Comments (com_comments_comment) should load here -->
+             
+	            <li class="com_comments_actions">
                   <ul class="com_comments_actions_items">
                     <li class="com_comments_actions_item">
                       <a href="#comments" class="view_all" title="View all the comments in this discussion">View all comments&hellip;</a>
@@ -162,6 +148,32 @@
       </script>
             
       
+      
+      <script type="text/html" id="template-comment-form">
+  			<div class="com_add_sec modal">
+  				<form class="com_add_form" method="post" action="#">
+  					<fieldset>
+  						<label for="commentName">Name</label>
+  						<input type="text" name="commentName" id="commentName" placeholder="Your name" />
+  						<label for="commentEmail">Email</label>
+  						<input type="text" name="commentEmail" id="commentEmail" placeholder="Your email" />
+  						<label for="commentText">Comment</label>
+  						<textarea name="commentText" id="commentText"></textarea>
+  						<button class="submit">Add Comment</button>
+  						<button class="cancel">Cancel</button>
+  					</fieldset>
+  				</form>
+  			</div>      
+      </script>
+
+      <script type="text/html" id="template-year">
+        <div class="com_year_wrap">
+          <a href="#year/<%= id %>">
+            <%= year %> <%= title %>
+          </a>
+        </div>
+      </script>
+
+
     </body>
-    <script type="text/javascript" src="js/gg.min.js"></script>
 </html>
