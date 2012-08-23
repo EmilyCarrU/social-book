@@ -162,32 +162,17 @@ App.CommentView = Backbone.View.extend({
 App.CommentsView = Backbone.View.extend({
   
   events: {
+
     "click": "preventDefault",
-    "click .target__com": "toggleComments",
-    "tap .target__com": "toggleComments",
+    "click .target": "toggleComments",
+    "tap .target": "toggleComments"    
     "click .button.com_comments_meta_add"   : "showCommentForm",
     "click .cancel" : "cancelCommentForm",
     "click .com_add_form .submit": "addComment"
   },
   
   initialize: function() {
-    this.model.bind('change', this.updateCount, this);    
-    
-    // var p = new PinchCard('#chapters');
-    // 
-    // $(".target__com").bind({
-    //   openPanel: function(e) {
-    //     $(this).children(":first-child").addClass("com__open");
-    //   },
-    //   closePanel: function(e) {
-    //     $(this).children(":first-child").removeClass("com__open");
-    //   },
-    //   click: function() {
-    //     $(this).children(":first-child").toggleClass("com__open");  
-    //   }
-    // });          
-
-
+    this.model.bind('change', this.updateCount, this);
   },
   
   preventDefault: function(e) {
@@ -245,7 +230,7 @@ App.CommentsView = Backbone.View.extend({
   toggleComments : function(e) {
     e.preventDefault();
     e.stopPropagation();
-    $(this.el).find('.com').addClass('com__open');
+    $(this.el).find('.dive').toggleClass('dive__open');    
   },
   
   

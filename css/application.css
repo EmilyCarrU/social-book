@@ -542,13 +542,12 @@ header {
   margin: -5em 0;
   z-index: 9; }
 
-/* Comments */
-/* line 414, ../sass/application.scss */
-.com {
+/* Dives */
+/* line 418, ../sass/application.scss */
+.dive {
   margin: -1px 0;
   width: 100%;
   clear: both;
-  background: #FFF;
   border-top: 1px solid #ff284c;
   border-bottom: 1px solid #ff284c;
   height: 0;
@@ -559,15 +558,9 @@ header {
   transition: all 0.25s;
   -webkit-transform: translate3d(0, 0, 0); }
 
-/* line 428, ../sass/application.scss */
-.com__open, .com:focus {
-  height: 17.5em;
-  border-bottom: 1px solid #ff284c;
-  -webkit-transform: translate3d(0, 0, 0); }
-
 /* Dive Main Arrow */
-/* line 436, ../sass/application.scss */
-.com_dive {
+/* line 433, ../sass/application.scss */
+.dive_icon {
   display: block;
   width: 0.75em;
   height: 0.75em;
@@ -594,8 +587,8 @@ header {
   -o-transform: rotate(45deg);
   transform: rotate(45deg); }
 
-/* line 456, ../sass/application.scss */
-.com__open .com_dive, .com:focus .com_dive {
+/* line 453, ../sass/application.scss */
+.dive__open .dive_icon, .dive:focus .dive_icon {
   border-width: 0 3px 3px 0;
   background: #f9f8f0;
   -webkit-animation: none;
@@ -605,8 +598,8 @@ header {
   animation: none; }
 
 /* Dive Mini-Triangle */
-/* line 465, ../sass/application.scss */
-.com:after {
+/* line 462, ../sass/application.scss */
+.dive:after {
   content: "";
   display: block;
   position: absolute;
@@ -617,8 +610,8 @@ header {
   width: 0;
   height: 0; }
 
-/* line 477, ../sass/application.scss */
-.com__open:after, .com:focus:after {
+/* line 474, ../sass/application.scss */
+.dive__open:after, .dive:focus:after {
   margin: 1px 0 0 0;
   -webkit-transform: rotate(180deg);
   -moz-transform: rotate(180deg);
@@ -627,8 +620,8 @@ header {
   transform: rotate(180deg);
   -webkit-transform: translate3d(0, 0, 0); }
 
-/* line 483, ../sass/application.scss */
-.com_count {
+/* line 480, ../sass/application.scss */
+.dive_count {
   font-size: 0.75em;
   font-family: "Din Text Pro Regular", "Avenir", Verdana, sans-serif;
   font-size-adjust: 0.5;
@@ -639,7 +632,18 @@ header {
   padding: 0 1em 0 0.5em;
   color: #ff284c; }
 
-/* line 499, ../sass/application.scss */
+/* Comments */
+/* line 498, ../sass/application.scss */
+.com {
+  background: #FFF;
+  border-color: #ff284c; }
+
+/* line 503, ../sass/application.scss */
+.dive__open.com, .com:focus {
+  height: 17.5em;
+  -webkit-transform: translate3d(0, 0, 0); }
+
+/* line 509, ../sass/application.scss */
 .com_wrapper {
   height: 0;
   width: 100%;
@@ -651,15 +655,15 @@ header {
   transition: all 0.25s;
   -webkit-transform: translate3d(0, 0, 0); }
 
-/* line 508, ../sass/application.scss */
-.com__open .com_wrapper, .com:focus .com_wrapper {
+/* line 518, ../sass/application.scss */
+.dive__open.com .com_wrapper, .com:focus .com_wrapper {
   height: 100%;
   padding: 0.5em 0;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
-/* line 515, ../sass/application.scss */
+/* line 525, ../sass/application.scss */
 .com_comments {
   font-size: 0.75em;
   width: 88.8%;
@@ -674,7 +678,7 @@ header {
   font-style: normal;
   -webkit-transform: translate3d(0, 0, 0); }
 
-/* line 535, ../sass/application.scss */
+/* line 545, ../sass/application.scss */
 .com_comments_comment {
   float: left;
   position: relative;
@@ -683,12 +687,12 @@ header {
   height: 100%;
   display: block; }
 
-/* line 544, ../sass/application.scss */
+/* line 554, ../sass/application.scss */
 .com_comments_comment_wrap {
   border-left: 0.33333em solid #ff284c;
   padding: 0 1.33333em 1em 1em; }
 
-/* line 549, ../sass/application.scss */
+/* line 559, ../sass/application.scss */
 .com_comments_comment_cite {
   font-size: 1.33333em;
   font-family: "chaparral-pro", Georgia, serif;
@@ -696,7 +700,7 @@ header {
   margin: 0.5em 0 0 0;
   display: block; }
 
-/* line 559, ../sass/application.scss */
+/* line 569, ../sass/application.scss */
 .com_comments_comment_reply {
   line-height: 1.5;
   display: block;
@@ -707,7 +711,7 @@ header {
   margin: -1em 1em 0 -1em;
   float: left; }
 
-/* line 570, ../sass/application.scss */
+/* line 580, ../sass/application.scss */
 .com_comments_comment_reply_icon {
   font-weight: bold;
   width: 1.5em;
@@ -718,53 +722,53 @@ header {
   background: #ff284c;
   color: #FFF; }
 
-/* line 581, ../sass/application.scss */
+/* line 591, ../sass/application.scss */
 .com_comments_actions {
   margin: 1em 0;
   clear: left;
   float: left;
   width: 100%; }
 
-/* line 588, ../sass/application.scss */
+/* line 598, ../sass/application.scss */
 .com_comments_actions_items {
   list-style: none;
   float: right; }
 
-/* line 593, ../sass/application.scss */
+/* line 603, ../sass/application.scss */
 .com_comments_actions_item {
   float: left;
   margin: 0 0 0 2em;
   line-height: 2.5; }
 
-/* line 599, ../sass/application.scss */
+/* line 609, ../sass/application.scss */
 .com .button {
   background: #ff284c;
   float: right; }
 
 @media screen and (min-width: 1024px) {
-  /* line 606, ../sass/application.scss */
+  /* line 616, ../sass/application.scss */
   .com_comments {
     width: 77.7%; }
 
-  /* line 610, ../sass/application.scss */
+  /* line 620, ../sass/application.scss */
   .com_comments_comment {
     width: 22.79736%; }
 
-  /* line 615, ../sass/application.scss */
+  /* line 625, ../sass/application.scss */
   .com_comments_comment:last-of-type {
     width: 48.56828%; }
 
-  /* line 619, ../sass/application.scss */
+  /* line 629, ../sass/application.scss */
   .com_comments_comment:last-of-type .com_comments_comment_wrap {
     font-size: 1.33333em;
     border-left: 0.5em solid #ff284c;
     padding: 0 0.75em 0.75em 0.75em; }
 
-  /* line 625, ../sass/application.scss */
+  /* line 635, ../sass/application.scss */
   .com_comments_comment:last-of-type .com_comments_comment_cite {
     font-size: 1em; } }
 /* Forms, move to normalise later? */
-/* line 636, ../sass/application.scss */
+/* line 646, ../sass/application.scss */
 label {
   float: left;
   clear: left;
@@ -772,14 +776,14 @@ label {
   font-size: 0.75em;
   font-weight: bold; }
 
-/* line 644, ../sass/application.scss */
+/* line 654, ../sass/application.scss */
 input, textarea, select {
   margin: 0 0 0.5em 0;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
-/* line 650, ../sass/application.scss */
+/* line 660, ../sass/application.scss */
 input[type=text] {
   float: left;
   clear: left;
@@ -789,7 +793,7 @@ input[type=text] {
   border: 1px solid #666;
   width: 100%; }
 
-/* line 661, ../sass/application.scss */
+/* line 671, ../sass/application.scss */
 textarea {
   float: left;
   clear: left;
@@ -802,17 +806,16 @@ textarea {
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
-/* line 674, ../sass/application.scss */
+/* line 684, ../sass/application.scss */
 input[type=text]:focus, textarea:focus {
   background: yellow; }
 
-/* line 678, ../sass/application.scss */
+/* line 688, ../sass/application.scss */
 input[type=submit] {
   float: left;
   clear: left;
   margin: 0.5em 0; }
 
-<<<<<<< HEAD
 button {
   float: left;
   clear: left;
@@ -825,14 +828,11 @@ button {
 
 /* line 618, ../sass/style.scss */
 .com_add_sec {  
-=======
-/* line 684, ../sass/application.scss */
 .modal {
   z-index: 20; }
 
-/* line 688, ../sass/application.scss */
+/* line 698, ../sass/application.scss */
 .com_add_sec {
->>>>>>> Background colour function
   background: #CCC;
   width: 77.7%;
   margin: 0 auto;

@@ -409,13 +409,16 @@ header {
 	z-index: 9;
 }
 
-/* Comments */
+.target__toc_item {
+	
+}
 
-.com {
+/* Dives */
+
+.dive {
 	margin: -1px 0; // fixes baseline
 	width: 100%;
 	clear: both;
-	background: #FFF;
 	border-top: 1px solid $comment-color;
 	border-bottom: 1px solid $comment-color;
 	// border-bottom: 1px solid rgba(#000,0.3);
@@ -425,15 +428,9 @@ header {
 	@include enable-hardware-acceleration;
 }
 
-.com__open, .com:focus{
-	height: 17.5em; // ONE BIG ISSUE WITH ANIMATIONS: fixed-height, should be 100%
-	border-bottom: 1px solid $comment-color;
-	@include enable-hardware-acceleration;
-}
-
 /* Dive Main Arrow */
 
-.com_dive {
+.dive_icon {
 	display: block;
 	width: 0.75em;
 	height: 0.75em;
@@ -453,7 +450,7 @@ header {
 	@include transform(rotate(45deg));
 }
 
-.com__open .com_dive, .com:focus .com_dive {
+.dive__open .dive_icon, .dive:focus .dive_icon {
 	border-width: 0 3px 3px 0;
 	background: $content-background;
 	
@@ -462,7 +459,7 @@ header {
 
 /* Dive Mini-Triangle */
 
-.com:after {
+.dive:after {
 	content: "";
 	display: block;
 	position: absolute;
@@ -474,13 +471,13 @@ header {
 	height: 0;
 }
 
-.com__open:after, .com:focus:after {
+.dive__open:after, .dive:focus:after {
 	margin: 1px 0 0 0;
 	@include transform(rotate(180deg));
 	@include enable-hardware-acceleration;
 }
 
-.com_count {
+.dive_count {
 	font-size: #{13.5 / $em}em;
 	font-family: $comment-fontstack-text;
 	font-size-adjust: 0.5;
@@ -493,7 +490,20 @@ header {
 	color: $comment-color;
 }
 
-.com__open .com_count, .com:focus .com_count {
+.dive__open .dive_count, .dive:focus .dive_count {
+}
+
+/* Comments */
+
+.com {
+	background: #FFF;
+	border-color: $comment-color;
+}
+
+.dive__open.com, .com:focus {
+	height: 17.5em; // ONE BIG ISSUE WITH ANIMATIONS: fixed-height, should be 100%
+	
+	@include enable-hardware-acceleration;
 }
 
 .com_wrapper {
@@ -505,7 +515,7 @@ header {
 	@include enable-hardware-acceleration;
 }
 
-.com__open .com_wrapper, .com:focus .com_wrapper {
+.dive__open.com .com_wrapper, .com:focus .com_wrapper {
 	height: 100%; // ONE BIG ISSUE WITH ANIMATIONS: fixed-height, should be 100% (originall here, moved up)
 	padding: 0.5em 0;
 	

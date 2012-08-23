@@ -44,15 +44,12 @@
       <script type="text/javascript">	
           $(document).ready(function(){
     	    var p = new PinchCard('.chap')
-    	    $(".target__com").bind({
+    	    $(".target").bind({
     	      openPanel: function(e) {
-    	        $(this.el).find('.com').addClass("com__open");
+    	        $(this.el).find('.dive').addClass("dive__open");
     	      },
     	      closePanel: function(e) {
-    	        $(this.el).find('.com').removeClass("com__open");
-    	      },
-    	      click: function() {
-	    	    $(this.el).find('.com').toggleClass("com__open");  
+    	        $(this.el).find('.dive').removeClass("dive__open");
     	      }
     	    });    	    
 
@@ -77,17 +74,20 @@
       <div id="chapters"></div>      
       
       <script type="text/html" id="template-decade">
-        <header class="toc_item_head y_<%= slug %>s">
-        	<hgroup>
-		        <h3><%= title_plain %></h3>
-        	</hgroup>
-        	<section>
-        	<%= content %>
-        	</section>
-        </header>
-        <div class="chapters"></div>        
-        <!-- This may need to be changed -->
-        <article class="years" style="display:none;"></div>
+        <div class="target target__toc_item">
+        	<header class="toc_item_head y_<%= slug %>s"><!-- needs more stable class -->
+        		<hgroup>
+			        <h3><%= title_plain %></h3>
+        		</hgroup>
+        		<section>
+        		<%= content %>
+        		</section>
+        	</header>
+        	<div class="chapters"></div>
+          <!-- This may need to be changed -->
+          <article class="years" style="display:none;"></div>        	
+        </div>
+
       </script>
 
       <script type="text/html" id="template-section">
@@ -101,9 +101,9 @@
 
       <script type="text/html" id="template-comments">
         <div class="target target__com">
-          <aside class="com">
-            <span class="ui com_count"><%= comment_count %></span>
-            <i class="com_dive"></i>
+          <aside class="com dive">
+            <span class="ui dive_count"><%= comment_count %></span>
+            <i class="dive_icon"></i>
             <section class="com_wrapper">
               <ul class="com_comments">
 	              <!-- Comments (com_comments_comment) should load here -->            
