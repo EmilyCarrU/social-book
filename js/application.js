@@ -165,13 +165,17 @@ App.CommentsView = Backbone.View.extend({
 
     "click": "preventDefault",
     "click .target": "toggleComments",
-    "tap .target": "toggleComments"    
+    "tap .target": "toggleComments",
+    "click .target__com": "toggleComments",
+    "tap .target__com": "toggleComments",
+
     "click .button.com_comments_meta_add"   : "showCommentForm",
     "click .cancel" : "cancelCommentForm",
     "click .com_add_form .submit": "addComment"
   },
   
   initialize: function() {
+
     this.model.bind('change', this.updateCount, this);
   },
   
@@ -251,7 +255,7 @@ App.CommentsView = Backbone.View.extend({
     
     this.collection.each(function(comment) {
       var commentView = new App.CommentView({ model : comment });
-      $(this.el).find('.com_comments').prepend(commentView.render().el);
+      $(this.el).find('.com_comments').append(commentView.render().el);
     }, this);
 
     return this;
@@ -294,14 +298,9 @@ App.SectionView = Backbone.View.extend({
 
 App.DecadeView = Backbone.View.extend({
   tagName: 'li',
-  className: 'toc_item',
 
   events: {
-    "click .toc_item" : "expandItem",
-  },
-  
-  expandItem : function(){
-    $(this.el).find('.chap').toggleClass("dive__open");
+    "click li" : "expandItem",
   },
     
   initialize: function() {
@@ -353,23 +352,21 @@ App.DecadeView = Backbone.View.extend({
     var template =  _.template($("#template-decade").html());
     var html = template(this.model.toJSON());
     $(this.el).append(html);
+
     // Init the YearsView
     this.yearsView = new App.YearsView({ collection : this.years });
     $(this.el).find('.years').html(this.yearsView.render().el);
 
     // $(this.el).find('.target__chap').html(this.chaptersView.render().el);
-        
+
     return this;
   }
   
 });
 
 App.DecadesView = Backbone.View.extend({
-  tagName : 'ol',
+  tagName : 'ul',
   className : 'decade',
-  
-  initialize: function() {               
-  },
   
   render : function() {
     this.collection.each(function(d) {
@@ -383,7 +380,7 @@ App.DecadesView = Backbone.View.extend({
 
 App.ChaptersView = Backbone.View.extend({
   tagName : 'article',
-  className : 'chap dive',
+  className : 'chap',  
   
   render : function() {
     this.collection.each(function(section) {
