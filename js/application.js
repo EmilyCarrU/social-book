@@ -237,7 +237,6 @@ App.CommentsView = Backbone.View.extend({
     $(this.el).find('.dive').toggleClass('dive__open');    
   },
   
-  
   // Called on 'change'
   updateCount: function() {
     $(this.el).find('.com_count').html(this.model.get('comment_count'))    
@@ -298,9 +297,10 @@ App.SectionView = Backbone.View.extend({
 
 App.DecadeView = Backbone.View.extend({
   tagName: 'li',
+  className: 'toc_item',
 
   events: {
-    "click li" : "expandItem",
+    "click .toc_item" : "expandItem",
   },
     
   initialize: function() {
@@ -342,8 +342,7 @@ App.DecadeView = Backbone.View.extend({
     e.preventDefault();
     e.stopPropagation();
     
-    $(this.el).find('.years').addClass('expandItem');
-    $(this.el).find('.years').toggle();
+    $(this.el).find('.dive').toggleClass('dive__open');
   },
   
   render: function() {
@@ -355,17 +354,17 @@ App.DecadeView = Backbone.View.extend({
 
     // Init the YearsView
     this.yearsView = new App.YearsView({ collection : this.years });
+
     $(this.el).find('.years').html(this.yearsView.render().el);
-
-    // $(this.el).find('.target__chap').html(this.chaptersView.render().el);
-
+    // This may need to be fixed.
+    $(this.el).find('.target__chap').html(this.yearsView.render().el);
     return this;
   }
   
 });
 
 App.DecadesView = Backbone.View.extend({
-  tagName : 'ul',
+  tagName : 'ol',
   className : 'decade',
   
   render : function() {
@@ -380,7 +379,7 @@ App.DecadesView = Backbone.View.extend({
 
 App.ChaptersView = Backbone.View.extend({
   tagName : 'article',
-  className : 'chap',  
+  className : 'chap dive dive__open',  
   
   render : function() {
     this.collection.each(function(section) {
@@ -394,7 +393,7 @@ App.ChaptersView = Backbone.View.extend({
 
 App.YearsView = Backbone.View.extend({
   tagName: 'ul',
-  className : 'yearTOC',
+  className : 'yearTOC dive',
   
   render : function() {
     this.collection.each(function(year) {
