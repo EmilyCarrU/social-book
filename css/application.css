@@ -305,11 +305,10 @@ header {
 /* line 165, ../sass/application.scss */
 .toc_item_head {
   font-family: "Din Text Pro Regular", "Avenir", Verdana, sans-serif;
-  border-bottom: 1px solid black;
   height: 6em;
   color: #FFF; }
 
-/* line 172, ../sass/application.scss */
+/* line 171, ../sass/application.scss */
 .toc_item_head_year {
   display: block;
   font-size: 4em;
@@ -327,7 +326,7 @@ header {
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
-/* line 187, ../sass/application.scss */
+/* line 186, ../sass/application.scss */
 .toc_item_head_title {
   font-family: "Din Text Pro Bold", "Avenir", Verdana, sans-serif;
   font-size-adjust: 0.5;
@@ -340,7 +339,7 @@ header {
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
-/* line 199, ../sass/application.scss */
+/* line 198, ../sass/application.scss */
 .toc_item_intro {
   width: 66.6%;
   padding: 0 0.5em;
@@ -350,7 +349,7 @@ header {
   box-sizing: border-box; }
 
 /* Chapters */
-/* line 209, ../sass/application.scss */
+/* line 208, ../sass/application.scss */
 .chap {
   float: left;
   clear: both;
@@ -366,23 +365,17 @@ header {
   -o-transition: all, max-height 0.25s, 0.75s;
   transition: all, max-height 0.25s, 0.75s; }
 
-/* line 220, ../sass/application.scss */
+/* This moves the :before arrow, might not make sense anyway for years accordion
 .chap.dive__open {
-  padding: 2.5em 0; }
-
-/* Chapters */
-/* line 179, ../sass/application.scss */
-.chap {
-  width: 100%;
-/*  overflow-x: hidden; */
+	padding: 2.5em 0;
 }
-
-/* line 184, ../sass/application.scss */
+*/
+/* line 225, ../sass/application.scss */
 .chap_head {
   width: 83.25%;
   margin: 0 0 2em 0; }
 
-/* line 229, ../sass/application.scss */
+/* line 230, ../sass/application.scss */
 .chap_head_group {
   width: 72.15%;
   padding: 0.5em 0;
@@ -395,7 +388,7 @@ header {
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
-/* line 241, ../sass/application.scss */
+/* line 242, ../sass/application.scss */
 .chap_head_group .h_subtitle {
   text-transform: uppercase;
   border-bottom: 1px solid #000;
@@ -403,18 +396,18 @@ header {
   margin: 0 0 0.33333em 0;
   float: left; }
 
-/* line 249, ../sass/application.scss */
+/* line 250, ../sass/application.scss */
 .chap_head_group .h_title {
   line-height: 1.33333;
   padding: 0 7.215%;
   clear: left; }
 
-/* line 255, ../sass/application.scss */
+/* line 256, ../sass/application.scss */
 .chap_head_fig {
   z-index: -1; }
 
 /* Periferal Content */
-/* line 263, ../sass/application.scss */
+/* line 264, ../sass/application.scss */
 .chap_marg {
   font-size: 0.75em;
   line-height: 1.33333;
@@ -437,18 +430,18 @@ header {
   -o-transition: left 0.25s ease 0.25s;
   transition: left 0.25s ease 0.25s; }
 
-/* line 283, ../sass/application.scss */
+/* line 284, ../sass/application.scss */
 .chap_marg:hover, .chap_marg:focus {
   cursor: pointer;
   left: 0; }
 
-/* line 288, ../sass/application.scss */
+/* line 289, ../sass/application.scss */
 .chap_marg q {
   text-indent: -0.4em;
   margin-bottom: 0.75em;
   display: block; }
 
-/* line 294, ../sass/application.scss */
+/* line 295, ../sass/application.scss */
 .chap_marg:after {
   content: "\2192";
   display: block;
@@ -467,7 +460,7 @@ header {
   box-sizing: border-box; }
 
 /* Main Sections */
-/* line 313, ../sass/application.scss */
+/* line 314, ../sass/application.scss */
 .chap_sec {
   margin: 0 0 0 16.65%;
   width: 66.6%;
@@ -475,45 +468,45 @@ header {
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
-/* line 321, ../sass/application.scss */
+/* line 322, ../sass/application.scss */
 .chap_sec:first-child p:first-child, .chap_lead {
   font-size: 1.25em;
   line-height: 1.5; }
 
-/* line 326, ../sass/application.scss */
+/* line 327, ../sass/application.scss */
 .chap_sec p + p, .chap_marg + .chap_sec > p:first-child {
   text-indent: 1.5em; }
 
-/* line 330, ../sass/application.scss */
+/* line 331, ../sass/application.scss */
 .chap_sec blockquote {
   margin: 1em 0;
   border-left: 0.5em solid #333333;
   font-style: italic;
   padding: 0 0 0 1em; }
 
-/* line 337, ../sass/application.scss */
+/* line 338, ../sass/application.scss */
 .chap_sec cite {
   display: block;
   margin: 1em 0 0 0;
   font-style: normal; }
 
 /* Chapter Section Main Images */
-/* line 351, ../sass/application.scss */
+/* line 352, ../sass/application.scss */
 .chap_sec_fig {
   width: 116.55%;
   left: -8.325%;
   margin: 1em auto; }
 
-/* line 361, ../sass/application.scss */
+/* line 362, ../sass/application.scss */
 .chap_sec_fig__left, .chap_sec_fig__right {
   width: 124.875%;
   left: -24.975%; }
 
-/* line 366, ../sass/application.scss */
+/* line 367, ../sass/application.scss */
 .chap_sec_fig__right {
   left: auto; }
 
-/* line 370, ../sass/application.scss */
+/* line 371, ../sass/application.scss */
 .chap_sec_fig_cap {
   font-size: 0.75em;
   background: #FFF;
@@ -531,12 +524,12 @@ header {
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
-/* line 388, ../sass/application.scss */
+/* line 389, ../sass/application.scss */
 .chap_sec_fig__right .chap_sec_fig_cap {
   left: 0;
   right: auto; }
 
-/* line 393, ../sass/application.scss */
+/* line 394, ../sass/application.scss */
 .chap_sec_fig__portrait {
   float: right;
   max-width: 49.95%;
@@ -545,12 +538,12 @@ header {
   margin-right: -25.075%;
   margin-left: 1.5em; }
 
-/* line 402, ../sass/application.scss */
+/* line 403, ../sass/application.scss */
 .chap_sec_fig__portrait .chap_sec_fig_cap {
   max-width: 100%; }
 
 /* chap_sec_fig svg */
-/* line 411, ../sass/application.scss */
+/* line 412, ../sass/application.scss */
 .chap_sec_fig_shape {
   position: absolute;
   overflow: hidden;
@@ -563,31 +556,30 @@ header {
   box-sizing: border-box; }
 
 /* Marginal Images */
-/* line 425, ../sass/application.scss */
+/* line 426, ../sass/application.scss */
 .chap_marg_fig {
   margin: 0 0 1em 0; }
 
-/* line 429, ../sass/application.scss */
+/* line 430, ../sass/application.scss */
 .chap_marg_fig_cap {
   color: #666;
   padding: 0.5em 0; }
 
 /* Comment Target */
-/* line 436, ../sass/application.scss */
+/* line 437, ../sass/application.scss */
 .target {
   position: relative;
   cursor: pointer; }
 
-/* line 441, ../sass/application.scss */
+/* line 442, ../sass/application.scss */
 .target__com {
   padding: 5em 0;
   margin: -5em 0;
   z-index: 9; }
 
 /* Dives */
-/* line 453, ../sass/application.scss */
+/* line 455, ../sass/application.scss */
 .dive {
-  margin: -1px 0;
   border-top: 1px solid #ff284c;
   border-bottom: 1px solid #ff284c;
   width: 100%;
@@ -603,13 +595,14 @@ header {
   transition: all, max-height 0.25s, 0.75s;
   -webkit-transform: translate3d(0, 0, 0); }
 
-/* line 466, ../sass/application.scss */
+/* line 468, ../sass/application.scss */
 .dive__open, .com:focus {
   max-height: 10000px; }
 
 /* Dive Main Arrow */
-/* line 475, ../sass/application.scss */
-.dive_icon {
+/* line 477, ../sass/application.scss */
+.dive:before, .dive_icon {
+  content: "";
   display: block;
   width: 0.75em;
   height: 0.75em;
@@ -636,8 +629,8 @@ header {
   -o-transform: rotate(45deg);
   transform: rotate(45deg); }
 
-/* line 495, ../sass/application.scss */
-.com.dive__open .dive_icon, .com:focus .dive_icon {
+/* line 497, ../sass/application.scss */
+.dive__open.dive:before, .com.dive__open .dive_icon, .com:focus .dive_icon {
   border-width: 0 3px 3px 0;
   background: #f9f8f0;
   -webkit-animation: none;
@@ -647,7 +640,7 @@ header {
   animation: none; }
 
 /* Dive Mini-Triangle */
-/* line 504, ../sass/application.scss */
+/* line 506, ../sass/application.scss */
 .dive:after {
   content: "";
   display: block;
@@ -659,7 +652,7 @@ header {
   width: 0;
   height: 0; }
 
-/* line 516, ../sass/application.scss */
+/* line 518, ../sass/application.scss */
 .dive__open:after, .dive:focus:after {
   margin: 1px 0 0 0;
   -webkit-transform: rotate(180deg);
@@ -669,7 +662,7 @@ header {
   transform: rotate(180deg);
   -webkit-transform: translate3d(0, 0, 0); }
 
-/* line 522, ../sass/application.scss */
+/* line 524, ../sass/application.scss */
 .dive_count {
   font-size: 0.75em;
   font-family: "Din Text Pro Regular", "Avenir", Verdana, sans-serif;
@@ -682,12 +675,12 @@ header {
   color: #ff284c; }
 
 /* Comments */
-/* line 540, ../sass/application.scss */
+/* line 542, ../sass/application.scss */
 .com {
   background: #FFF;
   border-color: #ff284c; }
 
-/* line 545, ../sass/application.scss */
+/* line 547, ../sass/application.scss */
 .com_wrapper {
   height: auto;
   max-height: 0;
@@ -703,12 +696,12 @@ header {
   transition: all, max-height 0.25s, 0.375s;
   -webkit-transform: translate3d(0, 0, 0); }
 
-/* line 556, ../sass/application.scss */
+/* line 558, ../sass/application.scss */
 .com.dive__open .com_wrapper, .com:focus .com_wrapper {
   padding: 1em 0;
   max-height: 1000px; }
 
-/* line 561, ../sass/application.scss */
+/* line 563, ../sass/application.scss */
 .com_comments {
   font-size: 0.75em;
   width: 88.8%;
@@ -723,7 +716,7 @@ header {
   font-style: normal;
   -webkit-transform: translate3d(0, 0, 0); }
 
-/* line 578, ../sass/application.scss */
+/* line 580, ../sass/application.scss */
 .com_comments_comment {
   float: left;
   position: relative;
@@ -731,12 +724,12 @@ header {
   padding: 0.5em 0;
   display: block; }
 
-/* line 586, ../sass/application.scss */
+/* line 588, ../sass/application.scss */
 .com_comments_comment_wrap {
   border-left: 0.33333em solid #ff284c;
   padding: 0 1.33333em 1em 1em; }
 
-/* line 591, ../sass/application.scss */
+/* line 593, ../sass/application.scss */
 .com_comments_comment_cite {
   font-size: 1.33333em;
   font-family: "chaparral-pro", Georgia, serif;
@@ -744,7 +737,7 @@ header {
   margin: 0.5em 0 0 0;
   display: block; }
 
-/* line 601, ../sass/application.scss */
+/* line 603, ../sass/application.scss */
 .com_comments_comment_reply {
   line-height: 1.5;
   display: block;
@@ -755,7 +748,7 @@ header {
   margin: -1em 1em 0 -1em;
   float: left; }
 
-/* line 612, ../sass/application.scss */
+/* line 614, ../sass/application.scss */
 .com_comments_comment_reply_icon {
   font-weight: bold;
   width: 1.5em;
@@ -766,53 +759,53 @@ header {
   background: #ff284c;
   color: #FFF; }
 
-/* line 623, ../sass/application.scss */
+/* line 625, ../sass/application.scss */
 .com_comments_actions {
   margin: 1em 0;
   clear: left;
   float: left;
   width: 100%; }
 
-/* line 630, ../sass/application.scss */
+/* line 632, ../sass/application.scss */
 .com_comments_actions_items {
   list-style: none;
   float: right; }
 
-/* line 635, ../sass/application.scss */
+/* line 637, ../sass/application.scss */
 .com_comments_actions_item {
   float: left;
   margin: 0 0 0 2em;
   line-height: 2.5; }
 
-/* line 641, ../sass/application.scss */
+/* line 643, ../sass/application.scss */
 .com .button {
   background: #ff284c;
   float: right; }
 
 @media screen and (min-width: 1024px) {
-  /* line 648, ../sass/application.scss */
+  /* line 650, ../sass/application.scss */
   .com_comments {
     width: 77.7%; }
 
-  /* line 652, ../sass/application.scss */
+  /* line 654, ../sass/application.scss */
   .com_comments_comment {
     width: 22.79736%; }
 
-  /* line 657, ../sass/application.scss */
+  /* line 659, ../sass/application.scss */
   .com_comments_comment:last-of-type {
     width: 48.56828%; }
 
-  /* line 661, ../sass/application.scss */
+  /* line 663, ../sass/application.scss */
   .com_comments_comment:last-of-type .com_comments_comment_wrap {
     font-size: 1.33333em;
     border-left: 0.5em solid #ff284c;
     padding: 0 0.75em 0.75em 0.75em; }
 
-  /* line 667, ../sass/application.scss */
+  /* line 669, ../sass/application.scss */
   .com_comments_comment:last-of-type .com_comments_comment_cite {
     font-size: 1em; } }
 /* Forms, move to normalise later? */
-/* line 678, ../sass/application.scss */
+/* line 680, ../sass/application.scss */
 label {
   float: left;
   clear: left;
@@ -820,14 +813,14 @@ label {
   font-size: 0.75em;
   font-weight: bold; }
 
-/* line 686, ../sass/application.scss */
+/* line 688, ../sass/application.scss */
 input, textarea, select {
   margin: 0 0 0.5em 0;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
-/* line 692, ../sass/application.scss */
+/* line 694, ../sass/application.scss */
 input[type=text] {
   float: left;
   clear: left;
@@ -837,7 +830,7 @@ input[type=text] {
   border: 1px solid #666;
   width: 100%; }
 
-/* line 703, ../sass/application.scss */
+/* line 705, ../sass/application.scss */
 textarea {
   float: left;
   clear: left;
@@ -850,17 +843,16 @@ textarea {
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
-/* line 716, ../sass/application.scss */
+/* line 718, ../sass/application.scss */
 input[type=text]:focus, textarea:focus {
   background: yellow; }
 
-/* line 720, ../sass/application.scss */
+/* line 722, ../sass/application.scss */
 input[type=submit] {
   float: left;
   clear: left;
   margin: 0.5em 0; }
 
-<<<<<<< HEAD
 button {
   float: left;
   clear: left;
@@ -871,15 +863,7 @@ button {
 .modal {
   z-index: 20; }
 
-/* line 618, ../sass/style.scss */
-.com_add_sec {  
-=======
-/* line 726, ../sass/application.scss */
->>>>>>> Centralised dive, no fixed height
-.modal {
-  z-index: 20; }
-
-/* line 730, ../sass/application.scss */
+/* line 732, ../sass/application.scss */
 .com_add_sec {
   background: #CCC;
   width: 77.7%;
