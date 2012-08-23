@@ -173,7 +173,27 @@
           </a>
         </div>
       </script>
-
+      
+      <script type="text/html" id="template-decades-header">
+      	<!-- The intro to the book would go here, before the list of decades -->
+      </script>
+      
+      <script type="text/html" id="template-years-header">
+      	<!-- The intro to the decade would go here, before the list of years -->
+      </script>
+      
+      <script type="text/html" id="template-chapters-header">
+      	<!-- The header for the chapter would go here, before the list of sections -->
+      	<header class="chap_head">
+			<hgroup class="chap_head_group">
+				<h2 class="h_subtitle">The Internet in <%= decade =></h2>
+				<h1 class="h_title"><%= title =></h1>
+			</hgroup>
+			<figure class="chap_head_fig">
+				<img src="images/headers/temp_chapter_<%= decade =>.png" alt="" />
+			</figure>
+		</header>
+      </script>
 
     </body>
 </html>
