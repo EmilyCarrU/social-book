@@ -311,7 +311,11 @@ App.DecadeView = Backbone.View.extend({
   tagName: 'li',
 
   events: {
-    // "click li" : "expandItem",
+    "click li" : "expandItem",
+  },
+  
+  expandItem : function(){
+    $(this.el).find('.chap').toggleClass("chap__open");
   },
     
   initialize: function() {
@@ -333,7 +337,6 @@ App.DecadeView = Backbone.View.extend({
     // Return the first PART
     var yearList = this.years.min(function(i){return i.attributes.part});
     this.years.reset(yearList);
-
 
     // $(this.el).bind("openPanel", this.expandItem, this);
     // $(this.el).bind("closePanel", this.expandItem, this);
