@@ -206,7 +206,7 @@ body {
   font-size: 1.125em;
   line-height: 1.5;
   font-family: "chaparral-pro", Georgia, serif;
-  background: #f9f8f0;
+  background: #CCC;
   color: #333333; }
 
 /* line 64, ../sass/application.scss */
@@ -299,12 +299,11 @@ header {
 */
 /* line 148, ../sass/application.scss */
 .decade li {
-  border-bottom: 1px solid black;
   overflow: hidden;
   display: block;
   cursor: pointer; }
 
-/* line 157, ../sass/application.scss */
+/* line 156, ../sass/application.scss */
 .chap {
   float: left;
   clear: left;
@@ -312,35 +311,35 @@ header {
   padding: 0 0 10em 0;
   max-height: 0;
   overflow: hidden;
+  background: #f9f8f0;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  -webkit-transition: all, max-height 0.25s, 0.625s;
-  -moz-transition: all, max-height 0.25s, 0.625s;
-  -ms-transition: all, max-height 0.25s, 0.625s;
-  -o-transition: all, max-height 0.25s, 0.625s;
-  transition: all, max-height 0.25s, 0.625s; }
+  -webkit-transition: all, max-height 0.25s, 0.75s;
+  -moz-transition: all, max-height 0.25s, 0.75s;
+  -ms-transition: all, max-height 0.25s, 0.75s;
+  -o-transition: all, max-height 0.25s, 0.75s;
+  transition: all, max-height 0.25s, 0.75s; }
 
 /* line 170, ../sass/application.scss */
 .chap__open {
   margin: 0 0 -5em 0;
   padding-top: 2.5em;
-  max-height: 10000px;
-  background: #CCC; }
+  max-height: 10000px; }
 
 /* Chapters */
-/* line 180, ../sass/application.scss */
+/* line 179, ../sass/application.scss */
 .chap {
   width: 100%;
 /*  overflow-x: hidden; */
 }
 
-/* line 185, ../sass/application.scss */
+/* line 184, ../sass/application.scss */
 .chap_head {
   width: 83.25%;
   margin: 0 0 2em 0; }
 
-/* line 190, ../sass/application.scss */
+/* line 189, ../sass/application.scss */
 .chap_head_group {
   width: 72.15%;
   padding: 0.5em 0;
@@ -353,7 +352,7 @@ header {
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
-/* line 202, ../sass/application.scss */
+/* line 201, ../sass/application.scss */
 .chap_head_group .h_subtitle {
   text-transform: uppercase;
   border-bottom: 1px solid #000;
@@ -361,18 +360,18 @@ header {
   margin: 0 0 0.33333em 0;
   float: left; }
 
-/* line 210, ../sass/application.scss */
+/* line 209, ../sass/application.scss */
 .chap_head_group .h_title {
   line-height: 1.33333;
   padding: 0 7.215%;
   clear: left; }
 
-/* line 216, ../sass/application.scss */
+/* line 215, ../sass/application.scss */
 .chap_head_fig {
   z-index: -1; }
 
 /* Periferal Content */
-/* line 224, ../sass/application.scss */
+/* line 223, ../sass/application.scss */
 .chap_marg {
   font-size: 0.75em;
   line-height: 1.33333;
@@ -395,18 +394,18 @@ header {
   -o-transition: left 0.25s ease 0.25s;
   transition: left 0.25s ease 0.25s; }
 
-/* line 244, ../sass/application.scss */
+/* line 243, ../sass/application.scss */
 .chap_marg:hover, .chap_marg:focus {
   cursor: pointer;
   left: 0; }
 
-/* line 249, ../sass/application.scss */
+/* line 248, ../sass/application.scss */
 .chap_marg q {
   text-indent: -0.4em;
   margin-bottom: 0.75em;
   display: block; }
 
-/* line 255, ../sass/application.scss */
+/* line 254, ../sass/application.scss */
 .chap_marg:after {
   content: "\2192";
   display: block;
@@ -425,7 +424,7 @@ header {
   box-sizing: border-box; }
 
 /* Main Sections */
-/* line 274, ../sass/application.scss */
+/* line 273, ../sass/application.scss */
 .chap_sec {
   margin: 0 0 0 16.65%;
   width: 66.6%;
@@ -433,45 +432,45 @@ header {
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
-/* line 282, ../sass/application.scss */
+/* line 281, ../sass/application.scss */
 .chap_sec:first-child p:first-child, .chap_lead {
   font-size: 1.25em;
   line-height: 1.5; }
 
-/* line 287, ../sass/application.scss */
+/* line 286, ../sass/application.scss */
 .chap_sec p + p, .chap_marg + .chap_sec > p:first-child {
   text-indent: 1.5em; }
 
-/* line 291, ../sass/application.scss */
+/* line 290, ../sass/application.scss */
 .chap_sec blockquote {
   margin: 1em 0;
   border-left: 0.5em solid #333333;
   font-style: italic;
   padding: 0 0 0 1em; }
 
-/* line 298, ../sass/application.scss */
+/* line 297, ../sass/application.scss */
 .chap_sec cite {
   display: block;
   margin: 1em 0 0 0;
   font-style: normal; }
 
 /* Chapter Section Main Images */
-/* line 312, ../sass/application.scss */
+/* line 311, ../sass/application.scss */
 .chap_sec_fig {
   width: 116.55%;
   left: -8.325%;
   margin: 1em auto; }
 
-/* line 322, ../sass/application.scss */
+/* line 321, ../sass/application.scss */
 .chap_sec_fig__left, .chap_sec_fig__right {
   width: 124.875%;
   left: -24.975%; }
 
-/* line 327, ../sass/application.scss */
+/* line 326, ../sass/application.scss */
 .chap_sec_fig__right {
   left: auto; }
 
-/* line 331, ../sass/application.scss */
+/* line 330, ../sass/application.scss */
 .chap_sec_fig_cap {
   font-size: 0.75em;
   background: #FFF;
@@ -489,12 +488,12 @@ header {
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
-/* line 349, ../sass/application.scss */
+/* line 348, ../sass/application.scss */
 .chap_sec_fig__right .chap_sec_fig_cap {
   left: 0;
   right: auto; }
 
-/* line 354, ../sass/application.scss */
+/* line 353, ../sass/application.scss */
 .chap_sec_fig__portrait {
   float: right;
   max-width: 49.95%;
@@ -503,12 +502,12 @@ header {
   margin-right: -25.075%;
   margin-left: 1.5em; }
 
-/* line 363, ../sass/application.scss */
+/* line 362, ../sass/application.scss */
 .chap_sec_fig__portrait .chap_sec_fig_cap {
   max-width: 100%; }
 
 /* chap_sec_fig svg */
-/* line 372, ../sass/application.scss */
+/* line 371, ../sass/application.scss */
 .chap_sec_fig_shape {
   position: absolute;
   overflow: hidden;
@@ -521,29 +520,29 @@ header {
   box-sizing: border-box; }
 
 /* Marginal Images */
-/* line 386, ../sass/application.scss */
+/* line 385, ../sass/application.scss */
 .chap_marg_fig {
   margin: 0 0 1em 0; }
 
-/* line 390, ../sass/application.scss */
+/* line 389, ../sass/application.scss */
 .chap_marg_fig_cap {
   color: #666;
   padding: 0.5em 0; }
 
 /* Comment Target */
-/* line 397, ../sass/application.scss */
+/* line 396, ../sass/application.scss */
 .target {
   position: relative;
   cursor: pointer; }
 
-/* line 402, ../sass/application.scss */
+/* line 401, ../sass/application.scss */
 .target__com {
   padding: 5em 0;
   margin: -5em 0;
   z-index: 9; }
 
 /* Comments */
-/* line 410, ../sass/application.scss */
+/* line 409, ../sass/application.scss */
 .com {
   margin: -1px 0;
   width: 100%;
@@ -559,14 +558,14 @@ header {
   transition: all 0.25s;
   -webkit-transform: translate3d(0, 0, 0); }
 
-/* line 424, ../sass/application.scss */
+/* line 423, ../sass/application.scss */
 .com__open, .com:focus {
   height: 17.5em;
   border-bottom: 1px solid #ff284c;
   -webkit-transform: translate3d(0, 0, 0); }
 
 /* Dive Main Arrow */
-/* line 432, ../sass/application.scss */
+/* line 431, ../sass/application.scss */
 .com_dive {
   display: block;
   width: 0.75em;
@@ -594,7 +593,7 @@ header {
   -o-transform: rotate(45deg);
   transform: rotate(45deg); }
 
-/* line 452, ../sass/application.scss */
+/* line 451, ../sass/application.scss */
 .com__open .com_dive, .com:focus .com_dive {
   border-width: 0 3px 3px 0;
   background: #f9f8f0;
@@ -605,7 +604,7 @@ header {
   animation: none; }
 
 /* Dive Mini-Triangle */
-/* line 461, ../sass/application.scss */
+/* line 460, ../sass/application.scss */
 .com:after {
   content: "";
   display: block;
@@ -617,7 +616,7 @@ header {
   width: 0;
   height: 0; }
 
-/* line 473, ../sass/application.scss */
+/* line 472, ../sass/application.scss */
 .com__open:after, .com:focus:after {
   margin: 1px 0 0 0;
   -webkit-transform: rotate(180deg);
@@ -627,7 +626,7 @@ header {
   transform: rotate(180deg);
   -webkit-transform: translate3d(0, 0, 0); }
 
-/* line 479, ../sass/application.scss */
+/* line 478, ../sass/application.scss */
 .com_count {
   font-size: 0.75em;
   font-family: "Din Text Pro Regular", "Avenir", Verdana, sans-serif;
@@ -639,7 +638,7 @@ header {
   padding: 0 1em 0 0.5em;
   color: #ff284c; }
 
-/* line 495, ../sass/application.scss */
+/* line 494, ../sass/application.scss */
 .com_wrapper {
   height: 0;
   width: 100%;
@@ -651,7 +650,7 @@ header {
   transition: all 0.25s;
   -webkit-transform: translate3d(0, 0, 0); }
 
-/* line 504, ../sass/application.scss */
+/* line 503, ../sass/application.scss */
 .com__open .com_wrapper, .com:focus .com_wrapper {
   height: 100%;
   padding: 0.5em 0;
@@ -659,7 +658,7 @@ header {
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
-/* line 511, ../sass/application.scss */
+/* line 510, ../sass/application.scss */
 .com_comments {
   font-size: 0.75em;
   width: 88.8%;
@@ -674,7 +673,7 @@ header {
   font-style: normal;
   -webkit-transform: translate3d(0, 0, 0); }
 
-/* line 531, ../sass/application.scss */
+/* line 530, ../sass/application.scss */
 .com_comments_comment {
   float: left;
   position: relative;
@@ -683,12 +682,12 @@ header {
   height: 100%;
   display: block; }
 
-/* line 540, ../sass/application.scss */
+/* line 539, ../sass/application.scss */
 .com_comments_comment_wrap {
   border-left: 0.33333em solid #ff284c;
   padding: 0 1.33333em 1em 1em; }
 
-/* line 545, ../sass/application.scss */
+/* line 544, ../sass/application.scss */
 .com_comments_comment_cite {
   font-size: 1.33333em;
   font-family: "chaparral-pro", Georgia, serif;
@@ -696,7 +695,7 @@ header {
   margin: 0.5em 0 0 0;
   display: block; }
 
-/* line 555, ../sass/application.scss */
+/* line 554, ../sass/application.scss */
 .com_comments_comment_reply {
   line-height: 1.5;
   display: block;
@@ -707,7 +706,7 @@ header {
   margin: -1em 1em 0 -1em;
   float: left; }
 
-/* line 566, ../sass/application.scss */
+/* line 565, ../sass/application.scss */
 .com_comments_comment_reply_icon {
   font-weight: bold;
   width: 1.5em;
@@ -718,53 +717,53 @@ header {
   background: #ff284c;
   color: #FFF; }
 
-/* line 577, ../sass/application.scss */
+/* line 576, ../sass/application.scss */
 .com_comments_actions {
   margin: 1em 0;
   clear: left;
   float: left;
   width: 100%; }
 
-/* line 584, ../sass/application.scss */
+/* line 583, ../sass/application.scss */
 .com_comments_actions_items {
   list-style: none;
   float: right; }
 
-/* line 589, ../sass/application.scss */
+/* line 588, ../sass/application.scss */
 .com_comments_actions_item {
   float: left;
   margin: 0 0 0 2em;
   line-height: 2.5; }
 
-/* line 595, ../sass/application.scss */
+/* line 594, ../sass/application.scss */
 .com .button {
   background: #ff284c;
   float: right; }
 
 @media screen and (min-width: 1024px) {
-  /* line 602, ../sass/application.scss */
+  /* line 601, ../sass/application.scss */
   .com_comments {
     width: 77.7%; }
 
-  /* line 606, ../sass/application.scss */
+  /* line 605, ../sass/application.scss */
   .com_comments_comment {
     width: 22.79736%; }
 
-  /* line 611, ../sass/application.scss */
+  /* line 610, ../sass/application.scss */
   .com_comments_comment:last-of-type {
     width: 48.56828%; }
 
-  /* line 615, ../sass/application.scss */
+  /* line 614, ../sass/application.scss */
   .com_comments_comment:last-of-type .com_comments_comment_wrap {
     font-size: 1.33333em;
     border-left: 0.5em solid #ff284c;
     padding: 0 0.75em 0.75em 0.75em; }
 
-  /* line 621, ../sass/application.scss */
+  /* line 620, ../sass/application.scss */
   .com_comments_comment:last-of-type .com_comments_comment_cite {
     font-size: 1em; } }
 /* Forms, move to normalise later? */
-/* line 632, ../sass/application.scss */
+/* line 631, ../sass/application.scss */
 label {
   float: left;
   clear: left;
@@ -772,14 +771,14 @@ label {
   font-size: 0.75em;
   font-weight: bold; }
 
-/* line 640, ../sass/application.scss */
+/* line 639, ../sass/application.scss */
 input, textarea, select {
   margin: 0 0 0.5em 0;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
-/* line 646, ../sass/application.scss */
+/* line 645, ../sass/application.scss */
 input[type=text] {
   float: left;
   clear: left;
@@ -789,7 +788,7 @@ input[type=text] {
   border: 1px solid #666;
   width: 100%; }
 
-/* line 657, ../sass/application.scss */
+/* line 656, ../sass/application.scss */
 textarea {
   float: left;
   clear: left;
@@ -802,11 +801,11 @@ textarea {
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
-/* line 670, ../sass/application.scss */
+/* line 669, ../sass/application.scss */
 input[type=text]:focus, textarea:focus {
   background: yellow; }
 
-/* line 674, ../sass/application.scss */
+/* line 673, ../sass/application.scss */
 input[type=submit] {
   float: left;
   clear: left;
@@ -824,7 +823,6 @@ button {
 
 /* line 618, ../sass/style.scss */
 .com_add_sec {  
-
   background: #CCC;
   width: 77.7%;
   margin: 0 auto;
