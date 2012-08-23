@@ -1,26 +1,13 @@
-<!doctype html>
 <html>
     <head>
       <meta charset="utf-8"/>
       <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
       
       <meta name="apple-mobile-web-app-capable" content="yes" />
-      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-
       <meta content='width=device-width, initial-scale=1.0 maximum-scale=1.0 user-scalable=0' name='viewport' />
-      <meta name="viewport" content="width=device-width" />
 
       <link rel="stylesheet" href="css/application.css"></link>
-
-      <style>
-      /* Quick Scafold for decades, this should be moved into the sass */
-      
-      .decade > li {
-        border-bottom:2px solid #ccc;
-        padding:30px 10px;
-        cursor:pointer;
-      }
-      </style>
+      <link rel="stylesheet" href="http://f.fontdeck.com/s/css/1pvW3wuCOIlhG6qWEMVQzqjyv2Y/localhost/22457.css" type="text/css" />
       
       <script src="bookdata.json" ></script>
       <script src="decadedata.json" ></script>
@@ -31,6 +18,7 @@
       <script src="js/backbone-localStorage-min.js"></script>
       <script src="js/application.js" ></script>
       <script src="js/pinchcard.js"></script>
+
       <script type="text/javascript">
           $(document).ready(function(e){
             var n = new PinchCard('#decades');
@@ -48,10 +36,42 @@
           //            $(this).children(":first-child").toggleClass("com__open");  
           //   }
           // });          
+
+      <script type="text/javascript" src="http://use.typekit.com/yml7xqf.js"></script>
+      <script type="text/javascript" src="js/temp_typekit.js"></script>
+      
+      <script type="text/javascript">	
+          $(document).ready(function(){
+    	    var p = new PinchCard('.chap')
+    	    $(".target__com").bind({
+    	      openPanel: function(e) {
+    	        $(this).children(":first-child").addClass("com__open");
+    	      },
+    	      closePanel: function(e) {
+    	        $(this).children(":first-child").removeClass("com__open");
+    	      },
+    	      click: function() {
+	    	    $(this).children(":first-child").toggleClass("com__open");  
+    	      }
+    	    });    	    
+
     	  });
 		</script>
     </head>
-    <body>
+    <body lang="en">
+      <div class="temp_intro">
+      	<header>
+	      	<hgroup>
+		      	<h1>Hello, Welcome to the Book</h1>
+		      	<h2>Hi from the subtitle</h2>
+		    </hgroup>
+      	</header>
+      	<p>Depending on how you look at it, 40 years is a really long time or the blink of an eye.  It&#8217;s 1% of the history of the Jewish people, if you count back to the birth of Abraham in (reportedly) <a href="http://en.wikipedia.org/wiki/Abraham#Chronology">1948 BC.</a> It&#8217;s 283,824,028 times as long as you need to transmit 1 megabyte of data at the <a href="http://itpopular.com/world-internet-average-speed-1-8-mbps/">average global speed of an Internet connection</a>.</p>
+<p>It&#8217;s a little more than 10 times the <a href="http://www.patentlyo.com/patent/2010/07/unreasonable-patent-applicant-delay-and-the-uspto-backlog.html">average wait after filing your application for a US patent</a>. In a bunch of OECD countries, including Canada, it&#8217;s the <a href="http://oecdinsights.org/2011/03/18/when-im-64-6-%E2%80%A6/">number of years you have to contribute to your pension</a> before you can retire with full benefits. It&#8217;s the average lifespan of an elephant.</p>
+	    <header>
+	      <h2>Table of Contents</h2>
+	    </header>
+      </div>
       <div id="decades"></div>
       <div id="chapters"></div>      
       
@@ -66,6 +86,7 @@
           <%= title %> <%= slug %>
           <%= content %>
         </section>
+        
       </script>
 
       <script type="text/html" id="template-comments">
@@ -132,4 +153,5 @@
             
       
     </body>
+    <script type="text/javascript" src="js/gg.min.js"></script>
 </html>
