@@ -164,7 +164,6 @@ header {
 
 .toc_item_head {
 	font-family: $comment-fontstack-text;
-	border-bottom: 1px solid black;
 	height: 6em;
 	color: #FFF;
 }
@@ -217,9 +216,11 @@ header {
 	@include transition(all, max-height $default-transition-duration, #{($default-transition-duration * 3)});
 } // What a nice chap!
 
+/* This moves the :before arrow, might not make sense anyway for years accordion
 .chap.dive__open {
 	padding: #{($target_height * 0.5)}em 0;
 }
+*/
 
 .chap_head {
 	width: #{($column * 15)};
@@ -444,14 +445,15 @@ header {
 	z-index: 9;
 }
 
-.target__toc_item {
+.target__chap {
 	
 }
 
 /* Dives */
+// pointer-events: none; // not for use on dive
 
 .dive {
-	margin: -1px 0; // fixes baseline
+	// margin: -1px 0; // fixes baseline
 	border-top: 1px solid $comment-color;
 	border-bottom: 1px solid $comment-color;
 	width: 100%;
@@ -472,7 +474,8 @@ header {
 
 /* Dive Main Arrow */
 
-.dive_icon {
+.dive:before, .dive_icon {
+	content: "";
 	display: block;
 	width: 0.75em;
 	height: 0.75em;
@@ -483,7 +486,6 @@ header {
 	border-width: 3px 0 0 3px;
 	background: $content-background;
 	
-	
 	@include animation(comDiveBackground 0.25s 1 normal ease-in-out none 0);
 	// @include filter-gradient(#d6d6d6, #ffffff, horizontal);
 	// @include background-image(linear-gradient(left top, rgba(214,214,214,1) 20%, rgba(220,220,220,1) 57%, rgba(255,255,255,0) 100%));
@@ -492,7 +494,7 @@ header {
 	@include transform(rotate(45deg));
 }
 
-.com.dive__open .dive_icon, .com:focus .dive_icon {
+.dive__open.dive:before, .com.dive__open .dive_icon, .com:focus .dive_icon {
 	border-width: 0 3px 3px 0;
 	background: $content-background;
 	
