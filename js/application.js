@@ -294,13 +294,14 @@ App.SectionView = Backbone.View.extend({
 
 App.DecadeView = Backbone.View.extend({
   tagName: 'li',
+  className: 'toc_item',
 
   events: {
-    "click li" : "expandItem",
+    "click .toc_item" : "expandItem",
   },
   
   expandItem : function(){
-    $(this.el).find('.chap').toggleClass("chap__open");
+    $(this.el).find('.chap').toggleClass("dive__open");
   },
     
   initialize: function() {
@@ -352,10 +353,12 @@ App.DecadeView = Backbone.View.extend({
     var template =  _.template($("#template-decade").html());
     var html = template(this.model.toJSON());
     $(this.el).append(html);
-
     // Init the YearsView
     this.yearsView = new App.YearsView({ collection : this.years });
     $(this.el).find('.years').html(this.yearsView.render().el);
+
+    // $(this.el).find('.target__chap').html(this.chaptersView.render().el);
+        
     return this;
   }
   
@@ -380,7 +383,7 @@ App.DecadesView = Backbone.View.extend({
 
 App.ChaptersView = Backbone.View.extend({
   tagName : 'article',
-  className : 'chap',  
+  className : 'chap dive',
   
   render : function() {
     this.collection.each(function(section) {
