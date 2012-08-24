@@ -596,18 +596,19 @@ header {
 }
 
 .com_comments {
-	font-size: #{13.5 / $em}em;
+	font: {
+		size: #{13.5 / $em}em;
+		family: $comment-fontstack-text;
+		size-adjust: 0.5;
+		weight: normal;
+		style: normal;		
+	}
 	width: #{($column * 16)};
 	margin: 0 auto;
 	position: relative;
 	list-style-type: none;
 	display: block;
 	padding: 0;
-	
-	font-family: $comment-fontstack-text;
-	font-size-adjust: 0.5;
-	font-weight: normal;
-	font-style: normal;
 	
 	@include enable-hardware-acceleration;
 }
@@ -713,11 +714,14 @@ form {
 }
 
 label {
+	font: {
+		size: #{(13.5 / $em)}em;
+		weight: bold;
+		family: $comment-fontstack-text;
+	}
 	float: left;
 	clear: left;
 	width: 100%;
-	font-size: #{(13.5 / $em)}em;
-	font-weight: bold;
 }
 
 input, textarea, select {
@@ -762,16 +766,18 @@ input[type=submit] {
 
 .modal {
 	z-index: 20;
+	width: #{$column * 14};
+	margin: 0 auto;
+	background: #FFF;
+	position: relative;
+	padding: #{$column * 1};
+	
+	@include box-sizing(border-box);
+}
+
+.modal__large {
+	
 }
 
 .com_add_sec {
-	background: #CCC;
-	width: #{($column * 14)};
-	margin: 0 auto;
-	padding: 1em; // half-gutter, this creates the same problem as the figure gutter by bumping the inner content like the inputs inwards since the padding is in ems instead of percentages
-	position: relative;
-	top: -25em;
-
-	@include box-shadow(0 0 1em rgba(#000, 0.5));
-	@include box-sizing(border-box);
 }
