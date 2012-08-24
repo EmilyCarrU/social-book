@@ -299,6 +299,7 @@ App.DecadeView = Backbone.View.extend({
 
   events: {
     "click .toc_item" : "expandItem",
+    "tap .toc_item" : "expandItem",
   },
     
   initialize: function() {
@@ -321,17 +322,13 @@ App.DecadeView = Backbone.View.extend({
     var yearList = this.years.min(function(i){return i.attributes.part});
     this.years.reset(yearList);
 
-    // $(this.el).bind("openPanel", this.expandItem, this);
-    // $(this.el).bind("closePanel", this.expandItem, this);
         
     $(this.el).bind("openPanel",function(){
-      $(that.el).find('.years').show();
-      $(that.el).css("background-color","red")
+      $(that.el).find('.yearTOC').addClass("dive__open");
     },this);
     
     $(this.el).bind("closePanel",function(){
-      $(that.el).find('.years').hide();
-      $(that.el).css("background-color","blue")
+      $(that.el).find('.yearTOC').removeClass("dive__open");
     },this);
     
   },
