@@ -44,9 +44,7 @@
           if (_this.list.length >= 5) {
             var sum = _.reduce(_this.list, function(memo, num){ return memo + num; }, 0);
 
-
             if (_this.fireAction === null) {
-              console.log(sum);              
               if (sum < -threshold) {
                 // console.log("OPEN Fired");
                 $(selEl).trigger('openPanel');
