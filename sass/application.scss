@@ -4,11 +4,11 @@ $font-size: 18;
 $em: $font-size * 1;
 
 $content-fontstack-text: "chaparral-pro", Georgia, serif;
-// $content-fontstack-head: "facitweb", "Lucida Grande", sans-serif;
 $content-fontstack-head: "Din Display Pro Black", "Avenir", Verdana, sans-serif;
 $content-fontstack-subhead: "Din Text Pro Bold", "Avenir", Verdana, sans-serif;
 $comment-fontstack-text: "Din Text Pro Regular", "Avenir", Verdana, sans-serif;
 
+$content-toc-background: #CCC;
 $content-background: #F9F8F0; 
 $content-color: #333;
 $comment-color: #FF284C; // #F04F47 // #FF8080
@@ -50,10 +50,11 @@ $default-transition-duration: 0.25s;
 // Z-Indexs
 //
 // .chap_head_fig: -1
-// 	 .target__com: 9
+// 	 	  .target: 9
+//   .dive:before: 10
 // 			    a: 10
 // 	   .chap_marg: 11
-// 		   .modal: 20
+// 		   .modal: 20 // change to pointer-events: none; ?
 
 * {
 	-webkit-tap-highlight-color: rgba(0,0,0,0);
@@ -64,7 +65,7 @@ body {
 	font-size: #{$font-size/16}em;
 	line-height: #{$line / $em};
 	font-family: $content-fontstack-text;
-	background: #CCC;
+	background: $content-toc-background;
 	color: $content-color;
 }
 
@@ -133,33 +134,140 @@ header {
 	font-size: 1em;
 }
 
-/* Table of Contents */
+/* Targets for Dive */
 
-/*
-  div #decades
-  ul  .decades
-  li
-  div
-  article .chapters .chap
-  article .chap
-  div
-  section .chap_sec
-  div
-  div .target target__com
-*/
+.target {
+	position: relative;
+	cursor: pointer;
+	padding: #{($target_height)}em 0;
+	margin: #{($target_height * -1)}em 0;
+
+	// background: rgba(teal, 0.33);
+}
+
+.target__com {
+}
+
+.target__chap {
+	
+}
+
+.target__fix {
+	// Getting used for year dive into chap now,
+	// Change chap to year and fix to chap?
+}
+
+/* Dive Main Arrow */
+
+.dive:before, .dive_icon {
+	content: "";
+	display: block;
+	width: 0.75em;
+	height: 0.75em;
+	position: absolute;
+	right: 1.78em; // needed to center over small triangle which is set at 2em as in comps
+	margin: #{($em / -2)}px 0 0 0;
+	border: 1px solid $comment-color;
+	border-width: 3px 0 0 3px;
+	background: $content-background;
+	z-index: 10;
+	
+	@include animation(comDiveBackground 0.25s 1 normal ease-in-out none 0);
+	// @include filter-gradient(#d6d6d6, #ffffff, horizontal);
+	// @include background-image(linear-gradient(left top, rgba(214,214,214,1) 20%, rgba(220,220,220,1) 57%, rgba(255,255,255,0) 100%));
+	@include transition(background);
+	@include enable-hardware-acceleration; // Will overwrite next line if last
+	@include transform(rotate(45deg));
+}
+
+.dive__open.dive:before, .dive__open .dive_icon, .target:focus .dive:before {
+	border-width: 0 3px 3px 0;
+	background: $content-background;
+	
+	@include animation(none);
+}
+
+/* Dives */
+// pointer-events: none; // not for use on dive
+
+.dive {
+	// margin: -1px 0; // fixes baseline
+	border-top: 1px solid $comment-color;
+	border-bottom: 1px solid $comment-color;
+	width: 100%;
+	max-height: 0;
+	background: $content-background;
+
+	@include box-sizing(border-box);
+	@include transition(all, max-height $default-transition-duration, #{($default-transition-duration * 3)});
+	@include enable-hardware-acceleration;
+}
+
+.dive__open, .com:focus {	
+	// New
+	// margin: 0 0 #{($target_height * -1)}em 0;
+	// padding-top: #{($target_height * 0.5)}em;
+	max-height: 1000px;
+}
+
+/* Dive Mini-Triangle */
+
+.dive:after {
+	content: "";
+	display: block;
+	position: absolute;
+	float: left;
+	border: 4px solid transparent;
+	border-top-color: $comment-color;	
+	right: 2em; // 36px
+	width: 0;
+	height: 0;
+}
+
+.dive__open:after, .dive:focus:after {
+	margin: 1px 0 0 0;
+	@include transform(rotate(180deg));
+	@include enable-hardware-acceleration;
+}
+
+.dive_count {
+	font-size: #{13.5 / $em}em;
+	font-family: $comment-fontstack-text;
+	font-size-adjust: 0.5;
+	
+	display: block;
+	float: right;
+	height: 1em;
+	margin: -1.5em 0 0 0;
+	padding: 0 1em 0 0.5em;
+	color: $comment-color;
+}
+
+.dive__open .dive_count, .dive:focus .dive_count {
+}
+
+/* Year Colours */
 
 @for $i from 5 through 11 {
-	.y_#{(($i * 10) + 1900)}s {
+	header.y_#{(($i * 10) + 1900)}s, .y_#{(($i * 10) + 1900)}s .dive__open.dive:before {
 		background: year(#{(($i * 10) + 1900)});
+	} // For .dive__open, send to keyframe animation from dive
+	  // or delay? 
+	
+	.y_#{(($i * 10) + 1900)}s .dive:before {
+		background: year(#{(($i * 10) + 1910)});
+		outline: 1px solid black;
 	}
 }
 
+/* Table of Contents */
+
 .toc_item { // markup needs to be changed
-	overflow: hidden;
+	// overflow: hidden;
 	display: block;
 	cursor: pointer;
-	
-	// @include transition();
+	position: relative;
+	display: block;
 }
 
 .toc_item_head {
@@ -203,13 +311,42 @@ header {
 	@include box-sizing(border-box);
 }
 
+/* Table of Contents - Year listings */
+
+.toc_years, .yearTOC {
+}
+
+.toc_years_item, .yearItem {
+	overflow: hidden;
+
+	background: #999;
+	border-bottom: 1px dotted black;
+	max-height: 6em;
+	display: block;
+	position: relative;
+}
+
+.toc_years_item a, .yearItem a {
+	display: block;
+	max-width: #{$column * 10};
+	background: rgba(#FFF, 0.75);
+	margin: 1.5em 0 0 #{$column * 1};
+	
+	@include box-sizing(border-box);
+}
+
+.toc_years_item .chap, .yearItem .chap {
+	overflow: hidden;
+}
+
 /* Chapters */
 
 .chap {
 	float: left;
 	clear: both;
 	width: 100%;
-	max-height: 0;
+	// max-height: 0;
+	height: auto;
 	background: $content-background;
 	
 	@include box-sizing(border-box);
@@ -256,8 +393,6 @@ header {
 .chap_head_fig {
 	z-index: -1;
 }
-
-
 
 /* Periferal Content */
 
@@ -430,111 +565,6 @@ header {
 .chap_marg_fig_cap {
 	color: #666;
 	padding: 0.5em 0;		
-}
-
-/* Comment Target */
-
-.target {
-	position: relative;
-	cursor: pointer;
-}
-
-.target__com {
-	padding: #{($target_height)}em 0;
-	margin: #{($target_height * -1)}em 0;
-	z-index: 9;
-}
-
-.target__chap {
-	
-}
-
-/* Dives */
-// pointer-events: none; // not for use on dive
-
-.dive {
-	// margin: -1px 0; // fixes baseline
-	border-top: 1px solid $comment-color;
-	border-bottom: 1px solid $comment-color;
-	width: 100%;
-	max-height: 0;
-	background: $content-background;
-
-	@include box-sizing(border-box);
-	@include transition(all, max-height $default-transition-duration, #{($default-transition-duration * 3)});
-	@include enable-hardware-acceleration;
-}
-
-.dive__open, .com:focus {	
-	// New
-	// margin: 0 0 #{($target_height * -1)}em 0;
-	// padding-top: #{($target_height * 0.5)}em;
-	max-height: 10000px;
-}
-
-/* Dive Main Arrow */
-
-.dive:before, .dive_icon {
-	content: "";
-	display: block;
-	width: 0.75em;
-	height: 0.75em;
-	position: absolute;
-	right: 1.78em; // needed to center over small triangle which is set at 2em as in comps
-	margin: #{($em / -2)}px 0 0 0;
-	border: 1px solid $comment-color;
-	border-width: 3px 0 0 3px;
-	background: $content-background;
-	
-	@include animation(comDiveBackground 0.25s 1 normal ease-in-out none 0);
-	// @include filter-gradient(#d6d6d6, #ffffff, horizontal);
-	// @include background-image(linear-gradient(left top, rgba(214,214,214,1) 20%, rgba(220,220,220,1) 57%, rgba(255,255,255,0) 100%));
-	@include transition(background);
-	@include enable-hardware-acceleration; // Will overwrite next line if last
-	@include transform(rotate(45deg));
-}
-
-.dive__open.dive:before, .com.dive__open .dive_icon, .com:focus .dive_icon {
-	border-width: 0 3px 3px 0;
-	background: $content-background;
-	
-	@include animation(none);
-}
-
-/* Dive Mini-Triangle */
-
-.dive:after {
-	content: "";
-	display: block;
-	position: absolute;
-	float: left;
-	border: 4px solid transparent;
-	border-top-color: $comment-color;	
-	right: 2em; // 36px
-	width: 0;
-	height: 0;
-}
-
-.dive__open:after, .dive:focus:after {
-	margin: 1px 0 0 0;
-	@include transform(rotate(180deg));
-	@include enable-hardware-acceleration;
-}
-
-.dive_count {
-	font-size: #{13.5 / $em}em;
-	font-family: $comment-fontstack-text;
-	font-size-adjust: 0.5;
-	
-	display: block;
-	float: right;
-	height: 1em;
-	margin: -1.5em 0 0 0;
-	padding: 0 1em 0 0.5em;
-	color: $comment-color;
-}
-
-.dive__open .dive_count, .dive:focus .dive_count {
 }
 
 /* Comments */
