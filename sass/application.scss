@@ -261,6 +261,12 @@ header {
 
 /* Table of Contents */
 
+.toc, .decade {
+	display: block;
+	position: relative;
+	overflow: hidden;
+}
+
 .toc_item { // markup needs to be changed
 	// overflow: hidden;
 	display: block;
@@ -316,7 +322,7 @@ header {
 }
 
 .toc_years_item, .yearItem {
-	overflow: hidden;
+	overflow: hidden; // ?
 
 	background: #999;
 	border-bottom: 1px dotted black;
@@ -335,7 +341,7 @@ header {
 }
 
 .toc_years_item .chap, .yearItem .chap {
-	overflow: hidden;
+	overflow: hidden; // ?
 }
 
 /* Chapters */
