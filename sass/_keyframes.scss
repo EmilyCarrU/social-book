@@ -1,8 +1,27 @@
 @include keyframes(comDiveBackground) {	
-	0% {
-    	background: #FFF;
+    0% {
+    	background: green;
     }
     80% {
-    	background: $content-background;
-    }
-};
+		background: $content-background;
+	}
+}
+
+@for $i from 5 through 11 {
+	@-webkit-keyframes dive#{(($i * 10) + 1900)}sBackground {	
+    	0% {
+    		background: #000;
+    	}
+    	80% {
+			background: year(#{(($i * 10) + 1900)});
+		}
+	}
+	@keyframes dive#{(($i * 10) + 1900)}sBackground {	
+    	0% {
+    		background: #000;
+    	}
+    	80% {
+			background: year(#{(($i * 10) + 1900)});
+		}
+	}
+}
