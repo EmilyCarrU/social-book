@@ -164,8 +164,6 @@ App.CommentsView = Backbone.View.extend({
   events: {
 
     "click": "preventDefault",
-    "click .target": "toggleComments",
-    "tap .target": "toggleComments",
     "click .target__com": "toggleComments",
     "tap .target__com": "toggleComments",
 
