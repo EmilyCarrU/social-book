@@ -256,7 +256,6 @@ header {
 	
 	.y_#{(($i * 10) + 1900)}s .dive:before {
 		background: year(#{(($i * 10) + 1910)});
-		outline: 1px solid black;
 	}
 }
 
