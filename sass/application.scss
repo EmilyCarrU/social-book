@@ -71,7 +71,7 @@ body {
 
 a {
 	color: #666;
-	z-index: 10; // adjust this, needs to be able targets
+	z-index: 10; // adjust this, needs to be above targets
 	position: relative;
 }
 
@@ -721,41 +721,47 @@ label {
 	}
 	float: left;
 	clear: left;
-	width: 100%;
+	width: #{($column * 3)}; // should be column * 2
+	line-height: 2.56; // should be #{(($em * 2) / 13.5)}
+	border-bottom: 1px solid #666;
+	padding: 0 1em 0 0;
+	
+	@include box-sizing(border-box);
 }
 
 input, textarea, select {
-	margin: 0 0 0.5em 0;
+	width: #{($column * 15)}; // should be 12
 
 	@include box-sizing(border-box);
 }
 
 input[type=text] {
 	float: left;
-	clear: left;
 	line-height: 2;
 	height: 2em;
 	padding: 0 #{(1/3)}em;
-	border: 1px solid #666;
-	// width: #{(($column * 11) * (18/14))};
-	width: 100%;
+	border: {
+		width: 0 0 0 1px;
+		bottom: 1px solid #666;
+	}
 }
 
 textarea {
 	float: left;
-	clear: left;
 	line-height: 1.5;
 	padding: 0.25em #{(1/3)}em;
 	border: 1px solid #666;
-	// width: #{(($column * 11) * (18/14))};
-	width: 100%;
+	border: {
+		top: 0;
+	}
 	min-height: 7em;
-
-	@include box-sizing(border-box);
 }
 
 input[type=text]:focus, textarea:focus {
-	background: yellow;
+	background: #FFA;
+	outline: none;
+	
+	@include transition(background, color);
 }
 
 input[type=submit] {
@@ -766,17 +772,40 @@ input[type=submit] {
 
 .modal {
 	z-index: 20;
+/*
 	width: #{$column * 14};
-	margin: 0 auto;
+	left: #{$column * 2};
+	right: #{$column * 2};
+*/
+	padding: 1em #{$column * 2};
+	width: 100%;
 	background: #FFF;
 	position: relative;
-	padding: #{$column * 1};
+	// padding: #{$column * 0.5};
+	overflow: hidden;
+	border: {
+		bottom: 2px solid $comment-color;
+	}
 	
 	@include box-sizing(border-box);
+	@include animation(fadeIn 0.5s 1 normal ease-in-out none 0);
 }
 
 .modal__large {
 	
+}
+
+.modal button {
+	
+}
+
+.cancel {
+	background: transparent;
+	border: none;
+	text-decoration: underline;
+	font: {
+		size: 0.75em;
+	}
 }
 
 .com_add_sec {

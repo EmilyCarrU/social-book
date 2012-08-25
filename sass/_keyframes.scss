@@ -25,3 +25,14 @@
 		}
 	}
 }
+
+@include keyframes(fadeIn) {
+	0% {
+		// opacity: 0;
+		max-height: 0;
+	}
+	100% {
+		// opacity: 100%;
+		max-height: 1000px;
+	}
+}
