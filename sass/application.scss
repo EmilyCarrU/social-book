@@ -772,15 +772,23 @@ input[type=submit] {
 
 .modal {
 	z-index: 20;
+/*
 	width: #{$column * 14};
 	left: #{$column * 2};
 	right: #{$column * 2};
+*/
+	padding: 1em #{$column * 2};
+	width: 100%;
 	background: #FFF;
-	position: absolute;
+	position: relative;
 	// padding: #{$column * 0.5};
-	padding: 1em;
+	overflow: hidden;
+	border: {
+		bottom: 2px solid $comment-color;
+	}
 	
 	@include box-sizing(border-box);
+	@include animation(fadeIn 0.5s 1 normal ease-in-out none 0);
 }
 
 .modal__large {
@@ -788,7 +796,16 @@ input[type=submit] {
 }
 
 .modal button {
-	display: none; // for now
+	
+}
+
+.cancel {
+	background: transparent;
+	border: none;
+	text-decoration: underline;
+	font: {
+		size: 0.75em;
+	}
 }
 
 .com_add_sec {
