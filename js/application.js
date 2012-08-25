@@ -464,6 +464,7 @@ App.Router = Backbone.Router.extend({
   showYear: function(id) {
     $("#chapters").show();
     $("#decades").hide();
+    $("#decadeIntro").hide();
     
     var chap = new App.Chapters(chapters);
     var filteredSet = chap.filter(function(o) {
@@ -487,6 +488,7 @@ App.Router = Backbone.Router.extend({
   
   defaultRoute: function(path) {
     $("#decades").show();
+    $("#decadeIntro").show();
     $("#chapters").hide();
 
     // console.log(decadeData);
