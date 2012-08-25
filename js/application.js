@@ -400,6 +400,19 @@ App.YearsView = Backbone.View.extend({
   }
 });
 
+App.DecadeIntroView = Backbone.View.extend({
+  initialize: function() {
+    this.el = $("#decadeIntro");
+    this.template = _.template($('#template-decades-header').html());
+  },
+  
+  render: function() {
+    this.el.html(this.template(this.model.toJSON()));
+    return this;
+  }
+  
+});
+  
 App.YearView = Backbone.View.extend({
   tagName: 'li',
   className : 'yearItem',
@@ -478,12 +491,19 @@ App.Router = Backbone.Router.extend({
 
     // console.log(decadeData);
 
-    var intro = _.reject(_.map(decadeData, function(x){ if (_.any(x.tags, function(y) {return y.title == 'intro'})) return x;}), 
+    var introData = _.reject(_.map(decadeData, 
+      function(x){ if (_.any(x.tags, function(y){ return y.title == 'intro' })) return x;}), 
       function(z){ return z == undefined }
-    );
+    )[0];
+    
+    var decadeSet = _.reject(decadeData,function(x){ return x.id == introData.id; });
 
-    App.decades = new App.Decades(decadeData);
-    App.decadesView = new App.DecadesView({ collection : App.decades });
+    var introDecade = new App.Decade(introData);
+    var introView = new App.DecadeIntroView({model: introDecade })
+    introView.render();
+    
+    App.decades = new App.Decades(decadeSet);
+    App.decadesView = new App.DecadesView({ collection: App.decades });
 
     $('#decades').html(App.decadesView.render().el);
 

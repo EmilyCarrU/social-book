@@ -10,7 +10,7 @@
 
       <link rel="stylesheet" href="css/application.css"></link>
       
-      <script src="http://10.244.36.242:8080/target/target-script-min.js#anonymous"></script>
+      <!-- // <script src="http://10.244.36.242:8080/target/target-script-min.js#anonymous"></script> -->
       <script src="bookdata.json" ></script>
       <script src="decadedata.json" ></script>
       <script src="js/zepto-1.0.rc.js" ></script>
@@ -52,6 +52,7 @@
       
     </head>
     <body lang="en">
+      <div id="decadeIntro"></div>
       <div id="decades"></div>
       <div id="chapters"></div>      
 
@@ -170,6 +171,8 @@
       
       <script type="text/html" id="template-decades-header">
       	<!-- The intro to the book would go here, before the list of decades -->
+        <h1><%= title %></h1>
+        <%= content %>
       </script>
       
       <script type="text/html" id="template-years-header">
