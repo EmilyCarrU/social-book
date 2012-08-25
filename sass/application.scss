@@ -62,9 +62,11 @@ $default-transition-duration: 0.25s;
 } // move to normalise?
 
 body {
-	font-size: #{$font-size/16}em;
+	font: {
+		size: #{$font-size/16}em;
+		family: $content-fontstack-text;	
+	}
 	line-height: #{$line / $em};
-	font-family: $content-fontstack-text;
 	background: $content-toc-background;
 	color: $content-color;
 }
@@ -126,8 +128,10 @@ header {
 }
 
 .h_subtitle {
-	font-family: $content-fontstack-head;
-	font-weight: 800;
+	font: {
+		family: $content-fontstack-head;
+		weight: 800;
+	}
 }
 
 .h_citetitle {
@@ -192,8 +196,10 @@ header {
 
 .dive {
 	// margin: -1px 0; // fixes baseline
-	border-top: 1px solid $comment-color;
-	border-bottom: 1px solid $comment-color;
+	border: {
+		top: 1px solid $comment-color;
+		bottom: 1px solid $comment-color;
+	}
 	width: 100%;
 	max-height: 0;
 	background: $content-background;
@@ -231,10 +237,11 @@ header {
 }
 
 .dive_count {
-	font-size: #{13.5 / $em}em;
-	font-family: $comment-fontstack-text;
-	font-size-adjust: 0.5;
-	
+	font: {
+		size: #{13.5 / $em}em;
+		family: $comment-fontstack-text;
+		size-adjust: 0.5;
+	}
 	display: block;
 	float: right;
 	height: 1em;
@@ -249,13 +256,18 @@ header {
 /* Year Colours */
 
 @for $i from 5 through 11 {
-	header.y_#{(($i * 10) + 1900)}s, .y_#{(($i * 10) + 1900)}s .dive__open.dive:before {
+	header.y_#{(($i * 10) + 1900)}s {
 		background: year(#{(($i * 10) + 1900)});
 	} // For .dive__open, send to keyframe animation from dive
 	  // or delay? 
 	
 	.y_#{(($i * 10) + 1900)}s .dive:before {
 		background: year(#{(($i * 10) + 1910)});
+	}
+	
+	.y_#{(($i * 10) + 1900)}s .dive__open.dive:before, .y_#{(($i * 10) + 1900)}s .dive__open .dive_icon {
+		@extend header.y_#{(($i * 10) + 1900)}s;
+		@include animation(none);
 	}
 }
 
@@ -282,9 +294,11 @@ header {
 }
 
 .toc_item_head_year {
+	font: {
+		size: 4em;
+		family: $content-fontstack-head;
+	}
 	display: block;
-	font-size: 4em;
-	font-family: $content-fontstack-head;
 	float: left;
 	position: relative;
 	opacity: 0.75;
@@ -297,8 +311,10 @@ header {
 }
 
 .toc_item_head_title {
-	font-family: $content-fontstack-subhead;
-	font-size-adjust: 0.5;
+	font: {
+		family: $content-fontstack-subhead;
+		size-adjust: 0.5;
+	}
 	letter-spacing: 0.05em;
 	position: relative;
 	float: left;
