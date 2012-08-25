@@ -1028,7 +1028,7 @@ label {
   font-family: "Din Text Pro Regular", "Avenir", Verdana, sans-serif;
   float: left;
   clear: left;
-  width: 16.65%;
+  width: 14.27143%;
   line-height: 2.56;
   border-bottom: 1px solid #666;
   padding: 0 1em 0 0;
@@ -1038,7 +1038,7 @@ label {
 
 /* line 732, ../sass/application.scss */
 input, textarea, select {
-  width: 83.25%;
+  width: 85.62857%;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
@@ -1085,7 +1085,7 @@ input[type=submit] {
   	left: 11.1%;
   	right: 11.1%;
   */
-  padding: 1em 11.1%;
+  padding: 1em 16.65% 1em 5.55%;
   width: 100%;
   background: #FFF;
   position: relative;
@@ -1100,7 +1100,11 @@ input[type=submit] {
   -o-animation: fadeIn 0.5s 1 normal ease-in-out none 0;
   animation: fadeIn 0.5s 1 normal ease-in-out none 0; }
 
-/* line 802, ../sass/application.scss */
+/* line 804, ../sass/application.scss */
+.submit {
+  margin: 0 0 0 14.27143%; }
+
+/* line 808, ../sass/application.scss */
 .cancel {
   background: transparent;
   border: none;

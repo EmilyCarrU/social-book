@@ -721,7 +721,7 @@ label {
 	}
 	float: left;
 	clear: left;
-	width: #{($column * 3)}; // should be column * 2
+	width: #{($column * 2) * (18/14)}; // should be column * 2
 	line-height: 2.56; // should be #{(($em * 2) / 13.5)}
 	border-bottom: 1px solid #666;
 	padding: 0 1em 0 0;
@@ -730,7 +730,7 @@ label {
 }
 
 input, textarea, select {
-	width: #{($column * 15)}; // should be 12
+	width: #{($column * 12) * (18/14)}; // should be 12
 
 	@include box-sizing(border-box);
 }
@@ -777,7 +777,7 @@ input[type=submit] {
 	left: #{$column * 2};
 	right: #{$column * 2};
 */
-	padding: 1em #{$column * 2};
+	padding: 1em #{$column * 3} 1em #{$column * 1};
 	width: 100%;
 	background: #FFF;
 	position: relative;
@@ -797,6 +797,12 @@ input[type=submit] {
 
 .modal button {
 	
+}
+
+// temp, maybe put buttons in an actions div?
+
+.submit {
+	margin: 0 0 0 #{($column * 2) * (18/14)};
 }
 
 .cancel {
