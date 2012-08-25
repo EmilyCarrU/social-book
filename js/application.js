@@ -475,6 +475,13 @@ App.Router = Backbone.Router.extend({
   defaultRoute: function(path) {
     $("#decades").show();
     $("#chapters").hide();
+
+    // console.log(decadeData);
+
+    var intro = _.reject(_.map(decadeData, function(x){ if (_.any(x.tags, function(y) {return y.title == 'intro'})) return x;}), 
+      function(z){ return z == undefined }
+    );
+
     App.decades = new App.Decades(decadeData);
     App.decadesView = new App.DecadesView({ collection : App.decades });
 
