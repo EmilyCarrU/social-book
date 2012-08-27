@@ -17,3 +17,8 @@
 		@return $content-toc-background;
 	}
 }
+
+@mixin background-rgba($hex, $alpha) {
+	background: $hex;
+	background: rgba($hex, $alpha);
+}
