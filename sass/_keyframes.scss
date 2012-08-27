@@ -1,6 +1,6 @@
-@include keyframes(comDiveBackground) {	
+@include keyframes(diveComBackground) {	
     0% {
-    	background: green;
+    	background: #FFF;
     }
     80% {
 		background: $content-background;

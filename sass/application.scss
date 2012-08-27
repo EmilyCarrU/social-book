@@ -165,7 +165,7 @@ header {
 
 /* Dive Main Arrow */
 
-.dive:before, .dive_icon {
+.dive_icon {
 	content: "";
 	display: block;
 	width: 0.75em;
@@ -178,7 +178,7 @@ header {
 	background: $content-background;
 	z-index: 10;
 	
-	@include animation(comDiveBackground 0.25s 1 normal ease-in-out none 0);
+	@include animation(diveComBackground 0.5s 1 normal ease-in-out none 0);
 	// @include filter-gradient(#d6d6d6, #ffffff, horizontal);
 	// @include background-image(linear-gradient(left top, rgba(214,214,214,1) 20%, rgba(220,220,220,1) 57%, rgba(255,255,255,0) 100%));
 	@include transition(background);
@@ -186,7 +186,7 @@ header {
 	@include transform(rotate(45deg));
 }
 
-.dive__open.dive:before, .dive__open .dive_icon, .target:focus .dive:before {
+.dive__open > .dive_icon, .target:focus .dive:before {
 	border-width: 0 3px 3px 0;
 	background: $content-background;
 	
@@ -230,6 +230,7 @@ header {
 	right: 2em; // 36px
 	width: 0;
 	height: 0;
+	z-index: 10;
 }
 
 .dive__open:after, .dive:focus:after {
@@ -271,6 +272,13 @@ header {
 		@extend header.y_#{(($i * 10) + 1900)}s;
 		@include animation(none);
 	}
+}
+
+/* Table of Contents Intro */
+
+#decadeIntro { // change to class, maybe intro toc_intro?
+	width: #{$column * 12};
+	margin: 0 #{$column * 1} 0 #{$column * 5};
 }
 
 /* Table of Contents */
