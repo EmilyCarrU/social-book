@@ -1,4 +1,4 @@
-@function year($num) {
+@function yearColor($num) {
 	@if $num == "1950" {
 		@return $chapter-color-50s;
 	} @else if $num == "1960" {
@@ -16,6 +16,10 @@
 	} @else {
 		@return $content-toc-background;
 	}
+}
+
+@mixin yearImage($type, $year, $file) {
+	image: url('../images/#{$type}/#{$year}/#{$file}.svg');
 }
 
 @mixin background-rgba($hex, $alpha) {
