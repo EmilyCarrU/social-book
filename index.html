@@ -135,10 +135,17 @@
       </script>
      
       <script type="text/html" id="template-year">
-        <div class="com_year_wrap">
-          <a href="#year/<%= id %>">
-            <%= year %> <%= title %>
-          </a>
+        <a href="#year/<%= id %>" class="com_year_wrap">            
+          <header class="year_head">
+              <hgroup class="year_head_group">
+              	<h2 class="h_title"><%= title %></h2>
+              </hgroup>
+          </header>
+        </a>
+        <div class="target target__year">
+        	<div class="dive">
+ 	        	<i class="dive_icon"></i>
+        	</div>
         </div>
       </script>
       
