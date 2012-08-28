@@ -361,18 +361,23 @@ header {
 
 .toc_year, .yearItem {
 	overflow: hidden; // ?
-
+	
 	background: #999;
 	border-bottom: 1px dotted black;
 	height: 6em;
 	display: block;
 	position: relative;
+
+	outline: 1px solid black;
 }
 
-.com_year_wrap a { // change to .toc_year_head
+.com_year_wrap { // change to .toc_year_head
 	display: block;
 	max-width: #{$column * 10};
-	margin: 1.5em 0 0 #{$column * 1};
+	margin: 1.5em 0 0 #{$column * 2};
+	position: relative;
+	bottom: 0;
+	padding: 0.25em 0.5em;
 
 	@include background-rgba(#FFF, 0.75);	
 	@include box-sizing(border-box);
