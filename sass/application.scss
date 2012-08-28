@@ -207,7 +207,7 @@ header {
 	background: $content-background;
 
 	@include box-sizing(border-box);
-	@include transition(all, max-height $default-transition-duration, #{($default-transition-duration * 3)});
+	@include transition(all #{$default-transition-duration * 2}, max-height #{($default-transition-duration * 3)});
 	@include enable-hardware-acceleration;
 }
 
@@ -217,6 +217,18 @@ header {
 	// padding-top: #{($target_height * 0.5)}em;
 	max-height: 10000px;
 }
+
+/* Dive Padding Animation, height */
+
+.yearTOC.dive__open, .yearTOC.dive__open {
+	padding: 1em 0;
+}
+
+.com.dive__open .com_wrapper, .com:focus .com_wrapper {
+	padding: 1em 0;
+	max-height: 1000px;
+}
+
 
 /* Dive Mini-Triangle */
 
@@ -367,7 +379,7 @@ header {
 }
 
 .toc_years_item .chap, .yearItem .chap {
-	overflow: hidden; // ?
+	// overflow: hidden; // ?
 }
 
 /* Chapters */
@@ -479,7 +491,6 @@ header {
 .chap_sec {
 	margin: 0 0 0 #{($column * 3)};
 	width: #{($column * 12)};
-	// padding: 0 0.5em; // half-gutter, breaks figure
 
 	@include box-sizing(border-box);
 }
@@ -611,11 +622,6 @@ header {
 	@include box-sizing(border-box);	
 	@include transition(all, max-height $default-transition-duration, #{($default-transition-duration * 1.5)});
 	@include enable-hardware-acceleration;
-}
-
-.com.dive__open .com_wrapper, .com:focus .com_wrapper {
-	padding: 1em 0;
-	max-height: 1000px;
 }
 
 .com_comments {
