@@ -500,9 +500,12 @@ header {
 	@include box-sizing(border-box);
 }
 
+// .chap ul .chap_sec:first-child p:first-child
+
 .chap_sec:first-child p:first-child, .chap_lead {
 	font-size: #{22.5 / $em}em;
 	line-height: 1.5;
+	outline: 1px solid red !important;
 }
 
 .chap_sec p + p, .chap_marg + .chap_sec > p:first-child {
