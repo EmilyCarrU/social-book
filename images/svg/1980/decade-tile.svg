@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1"
+     baseProfile="full"
+     xml:space="preserve"
+     xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     xmlns:ev="http://www.w3.org/2001/xml-events"
+     width="324em"
+     height="187em">
+    <path fill="rgba(255,255,255,0.5)" d="M0,0v187h2V97l155.9,90h8.1L322,97v90h2V0h-2v89.4V90L166,0H158L2,90V0H0z M164,3.4l156,90.1l-156,90.1V3.4z M160,3.4V4v179.5L4,93.5L160,3.4z" />
+</svg>
