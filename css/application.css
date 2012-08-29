@@ -339,6 +339,17 @@ img {
   100% {
     max-height: 1000px; } }
 
+/* A media query that captures almost all high DPI aware devices.
+   https://twitter.com/marcedwards/status/238853928010280960/photo/1
+   Compass? Turn into a mixin?
+
+   @media
+        only screen and (-webkit-min-device-pixel-ratio: 1.3),
+        only screen and (min-device-pixel-ratio: 1.3),
+        only screen and (min-resolution) {
+			// Your code to swap to higher DPI images
+        }
+*/
 /* line 59, ../sass/application.scss */
 * {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -547,7 +558,7 @@ header {
 /* line 274, ../sass/application.scss */
 .toc_item_head.y_1950s {
   background-color: #fb8f8d;
-  background-image: url("../images/svg/1950/decade-tile.svg"); }
+  background-image: url("../images/svg/1950/decade-tile.svg"), url("../images/header/1950.png"); }
 
 /* line 282, ../sass/application.scss */
 .y_1950s .dive:before {
@@ -564,7 +575,7 @@ header {
 /* line 274, ../sass/application.scss */
 .toc_item_head.y_1960s {
   background-color: #02c3da;
-  background-image: url("../images/svg/1960/decade-tile.svg"); }
+  background-image: url("../images/svg/1960/decade-tile.svg"), url("../images/header/1960.png"); }
 
 /* line 282, ../sass/application.scss */
 .y_1960s .dive:before {
@@ -581,7 +592,7 @@ header {
 /* line 274, ../sass/application.scss */
 .toc_item_head.y_1970s {
   background-color: #ff9c23;
-  background-image: url("../images/svg/1970/decade-tile.svg"); }
+  background-image: url("../images/svg/1970/decade-tile.svg"), url("../images/header/1970.png"); }
 
 /* line 282, ../sass/application.scss */
 .y_1970s .dive:before {
@@ -598,7 +609,7 @@ header {
 /* line 274, ../sass/application.scss */
 .toc_item_head.y_1980s {
   background-color: #02c3da;
-  background-image: url("../images/svg/1980/decade-tile.svg"); }
+  background-image: url("../images/svg/1980/decade-tile.svg"), url("../images/header/1980.png"); }
 
 /* line 282, ../sass/application.scss */
 .y_1980s .dive:before {
@@ -615,7 +626,7 @@ header {
 /* line 274, ../sass/application.scss */
 .toc_item_head.y_1990s {
   background-color: #000088;
-  background-image: url("../images/svg/1990/decade-tile.svg"); }
+  background-image: url("../images/svg/1990/decade-tile.svg"), url("../images/header/1990.png"); }
 
 /* line 282, ../sass/application.scss */
 .y_1990s .dive:before {
@@ -632,7 +643,7 @@ header {
 /* line 274, ../sass/application.scss */
 .toc_item_head.y_2000s {
   background-color: #c086e1;
-  background-image: url("../images/svg/2000/decade-tile.svg"); }
+  background-image: url("../images/svg/2000/decade-tile.svg"), url("../images/header/2000.png"); }
 
 /* line 282, ../sass/application.scss */
 .y_2000s .dive:before {
@@ -649,7 +660,7 @@ header {
 /* line 274, ../sass/application.scss */
 .toc_item_head.y_2010s {
   background-color: #fb8f8d;
-  background-image: url("../images/svg/2010/decade-tile.svg"); }
+  background-image: url("../images/svg/2010/decade-tile.svg"), url("../images/header/2010.png"); }
 
 /* line 282, ../sass/application.scss */
 .y_2010s .dive:before {
@@ -687,9 +698,10 @@ header {
 .toc_item_head {
   font-family: "Din Text Pro Regular", "Avenir", Verdana, sans-serif;
   height: 6em;
-  color: #FFF; }
+  color: #FFF;
+  background-repeat: repeat, no-repeat; }
 
-/* line 321, ../sass/application.scss */
+/* line 324, ../sass/application.scss */
 .toc_item_head_year {
   font-size: 4em;
   font-family: "Din Display Pro Black", "Avenir", Verdana, sans-serif;
@@ -707,7 +719,7 @@ header {
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
-/* line 338, ../sass/application.scss */
+/* line 341, ../sass/application.scss */
 .toc_item_head_title {
   font-family: "Din Text Pro Bold", "Avenir", Verdana, sans-serif;
   font-size-adjust: 0.5;
@@ -720,7 +732,7 @@ header {
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
-/* line 352, ../sass/application.scss */
+/* line 355, ../sass/application.scss */
 .toc_item_intro {
   width: 66.6%;
   padding: 0 0.5em;
@@ -730,7 +742,7 @@ header {
   box-sizing: border-box; }
 
 /* Table of Contents - Year listings */
-/* line 365, ../sass/application.scss */
+/* line 368, ../sass/application.scss */
 .toc_year, .yearItem {
   overflow: hidden;
   background: #999;
@@ -740,7 +752,7 @@ header {
   position: relative;
   outline: 1px solid black; }
 
-/* line 377, ../sass/application.scss */
+/* line 380, ../sass/application.scss */
 .com_year_wrap {
   display: block;
   max-width: 55.5%;
@@ -755,7 +767,7 @@ header {
   box-sizing: border-box; }
 
 /* Chapters */
-/* line 395, ../sass/application.scss */
+/* line 398, ../sass/application.scss */
 .chap {
   float: left;
   clear: both;
@@ -776,12 +788,12 @@ header {
 	padding: 2.5em 0;
 }
 */
-/* line 413, ../sass/application.scss */
+/* line 416, ../sass/application.scss */
 .chap_head {
   width: 83.25%;
   margin: 0 0 2em 0; }
 
-/* line 418, ../sass/application.scss */
+/* line 421, ../sass/application.scss */
 .chap_head_group {
   width: 72.15%;
   padding: 0.5em 0;
@@ -794,7 +806,7 @@ header {
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
-/* line 429, ../sass/application.scss */
+/* line 432, ../sass/application.scss */
 .chap_head_group .h_subtitle {
   text-transform: uppercase;
   border-bottom: 1px solid #000;
@@ -802,18 +814,18 @@ header {
   margin: 0 0 0.33333em 0;
   float: left; }
 
-/* line 437, ../sass/application.scss */
+/* line 440, ../sass/application.scss */
 .chap_head_group .h_title {
   line-height: 1.33333;
   padding: 0 7.215%;
   clear: left; }
 
-/* line 443, ../sass/application.scss */
+/* line 446, ../sass/application.scss */
 .chap_head_fig {
   z-index: -1; }
 
 /* Periferal Content */
-/* line 449, ../sass/application.scss */
+/* line 452, ../sass/application.scss */
 .chap_marg {
   font-size: 0.75em;
   line-height: 1.33333;
@@ -836,18 +848,18 @@ header {
   -o-transition: left 0.25s ease 0.25s;
   transition: left 0.25s ease 0.25s; }
 
-/* line 469, ../sass/application.scss */
+/* line 472, ../sass/application.scss */
 .chap_marg:hover, .chap_marg:focus {
   cursor: pointer;
   left: 0; }
 
-/* line 474, ../sass/application.scss */
+/* line 477, ../sass/application.scss */
 .chap_marg q {
   text-indent: -0.4em;
   margin-bottom: 0.75em;
   display: block; }
 
-/* line 480, ../sass/application.scss */
+/* line 483, ../sass/application.scss */
 .chap_marg:after {
   content: "\2192";
   display: block;
@@ -866,7 +878,7 @@ header {
   box-sizing: border-box; }
 
 /* Main Sections */
-/* line 499, ../sass/application.scss */
+/* line 502, ../sass/application.scss */
 .chap_sec {
   margin: 0 0 0 16.65%;
   width: 66.6%;
@@ -874,46 +886,46 @@ header {
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
-/* line 508, ../sass/application.scss */
+/* line 511, ../sass/application.scss */
 .chap_sec:first-child p:first-child, .chap_lead {
   font-size: 1.25em;
   line-height: 1.5;
   outline: 1px solid red !important; }
 
-/* line 514, ../sass/application.scss */
+/* line 517, ../sass/application.scss */
 .chap_sec p + p, .chap_marg + .chap_sec > p:first-child {
   text-indent: 1.5em; }
 
-/* line 518, ../sass/application.scss */
+/* line 521, ../sass/application.scss */
 .chap_sec blockquote {
   margin: 1em 0;
   border-left: 0.5em solid #333333;
   font-style: italic;
   padding: 0 0 0 1em; }
 
-/* line 525, ../sass/application.scss */
+/* line 528, ../sass/application.scss */
 .chap_sec cite {
   display: block;
   margin: 1em 0 0 0;
   font-style: normal; }
 
 /* Chapter Section Main Images */
-/* line 539, ../sass/application.scss */
+/* line 542, ../sass/application.scss */
 .chap_sec_fig {
   width: 116.55%;
   left: -8.325%;
   margin: 1em auto; }
 
-/* line 549, ../sass/application.scss */
+/* line 552, ../sass/application.scss */
 .chap_sec_fig__left, .chap_sec_fig__right {
   width: 124.875%;
   left: -24.975%; }
 
-/* line 554, ../sass/application.scss */
+/* line 557, ../sass/application.scss */
 .chap_sec_fig__right {
   left: auto; }
 
-/* line 558, ../sass/application.scss */
+/* line 561, ../sass/application.scss */
 .chap_sec_fig_cap {
   font-size: 0.75em;
   color: #333;
@@ -931,12 +943,12 @@ header {
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
-/* line 574, ../sass/application.scss */
+/* line 577, ../sass/application.scss */
 .chap_sec_fig__right .chap_sec_fig_cap {
   left: 0;
   right: auto; }
 
-/* line 579, ../sass/application.scss */
+/* line 582, ../sass/application.scss */
 .chap_sec_fig__portrait {
   float: right;
   max-width: 49.95%;
@@ -945,12 +957,12 @@ header {
   margin-right: -25.075%;
   margin-left: 1.5em; }
 
-/* line 588, ../sass/application.scss */
+/* line 591, ../sass/application.scss */
 .chap_sec_fig__portrait .chap_sec_fig_cap {
   max-width: 100%; }
 
 /* chap_sec_fig svg */
-/* line 597, ../sass/application.scss */
+/* line 600, ../sass/application.scss */
 .chap_sec_fig_shape {
   position: absolute;
   overflow: hidden;
@@ -963,22 +975,22 @@ header {
   box-sizing: border-box; }
 
 /* Marginal Images */
-/* line 611, ../sass/application.scss */
+/* line 614, ../sass/application.scss */
 .chap_marg_fig {
   margin: 0 0 1em 0; }
 
-/* line 615, ../sass/application.scss */
+/* line 618, ../sass/application.scss */
 .chap_marg_fig_cap {
   color: #666;
   padding: 0.5em 0; }
 
 /* Comments */
-/* line 622, ../sass/application.scss */
+/* line 625, ../sass/application.scss */
 .com {
   background: #FFF;
   border-color: #ff284c; }
 
-/* line 627, ../sass/application.scss */
+/* line 630, ../sass/application.scss */
 .com_wrapper {
   height: auto;
   max-height: 0;
@@ -994,7 +1006,7 @@ header {
   transition: all, max-height 0.25s, 0.375s;
   -webkit-transform: translate3d(0, 0, 0); }
 
-/* line 638, ../sass/application.scss */
+/* line 641, ../sass/application.scss */
 .com_comments {
   font-size: 0.75em;
   font-family: "Din Text Pro Regular", "Avenir", Verdana, sans-serif;
@@ -1009,7 +1021,7 @@ header {
   padding: 0;
   -webkit-transform: translate3d(0, 0, 0); }
 
-/* line 656, ../sass/application.scss */
+/* line 659, ../sass/application.scss */
 .com_comments_comment {
   float: left;
   position: relative;
@@ -1017,12 +1029,12 @@ header {
   padding: 0.5em 0;
   display: block; }
 
-/* line 664, ../sass/application.scss */
+/* line 667, ../sass/application.scss */
 .com_comments_comment_wrap {
   border-left: 0.33333em solid #ff284c;
   padding: 0 1.33333em 1em 1em; }
 
-/* line 669, ../sass/application.scss */
+/* line 672, ../sass/application.scss */
 .com_comments_comment_cite {
   font-size: 1.33333em;
   font-family: Georgia, serif;
@@ -1030,7 +1042,7 @@ header {
   margin: 0.5em 0 0 0;
   display: block; }
 
-/* line 679, ../sass/application.scss */
+/* line 682, ../sass/application.scss */
 .com_comments_comment_reply {
   line-height: 1.5;
   display: block;
@@ -1041,7 +1053,7 @@ header {
   margin: -1em 1em 0 -1em;
   float: left; }
 
-/* line 690, ../sass/application.scss */
+/* line 693, ../sass/application.scss */
 .com_comments_comment_reply_icon {
   font-weight: bold;
   width: 1.5em;
@@ -1052,53 +1064,53 @@ header {
   background: #ff284c;
   color: #FFF; }
 
-/* line 701, ../sass/application.scss */
+/* line 704, ../sass/application.scss */
 .com_comments_actions {
   margin: 1em 0;
   clear: left;
   float: left;
   width: 100%; }
 
-/* line 708, ../sass/application.scss */
+/* line 711, ../sass/application.scss */
 .com_comments_actions_items {
   list-style: none;
   float: right; }
 
-/* line 713, ../sass/application.scss */
+/* line 716, ../sass/application.scss */
 .com_comments_actions_item {
   float: left;
   margin: 0 0 0 2em;
   line-height: 2.5; }
 
-/* line 719, ../sass/application.scss */
+/* line 722, ../sass/application.scss */
 .com .button {
   background: #ff284c;
   float: right; }
 
 @media screen and (min-width: 1024px) {
-  /* line 726, ../sass/application.scss */
+  /* line 729, ../sass/application.scss */
   .com_comments {
     width: 77.7%; }
 
-  /* line 730, ../sass/application.scss */
+  /* line 733, ../sass/application.scss */
   .com_comments_comment {
     width: 22.79736%; }
 
-  /* line 735, ../sass/application.scss */
+  /* line 738, ../sass/application.scss */
   .com_comments_comment:last-of-type {
     width: 48.56828%; }
 
-  /* line 739, ../sass/application.scss */
+  /* line 742, ../sass/application.scss */
   .com_comments_comment:last-of-type .com_comments_comment_wrap {
     font-size: 1.33333em;
     border-left: 0.5em solid #ff284c;
     padding: 0 0.75em 0.75em 0.75em; }
 
-  /* line 745, ../sass/application.scss */
+  /* line 748, ../sass/application.scss */
   .com_comments_comment:last-of-type .com_comments_comment_cite {
     font-size: 1em; } }
 /* Forms, move to normalise later? */
-/* line 756, ../sass/application.scss */
+/* line 759, ../sass/application.scss */
 label {
   font-size: 0.75em;
   font-weight: bold;
@@ -1113,14 +1125,14 @@ label {
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
-/* line 772, ../sass/application.scss */
+/* line 775, ../sass/application.scss */
 input, textarea, select {
   width: 85.62857%;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
-/* line 778, ../sass/application.scss */
+/* line 781, ../sass/application.scss */
 input[type=text] {
   float: left;
   line-height: 2;
@@ -1129,7 +1141,7 @@ input[type=text] {
   border-width: 0 0 0 1px;
   border-bottom: 1px solid #666; }
 
-/* line 789, ../sass/application.scss */
+/* line 792, ../sass/application.scss */
 textarea {
   float: left;
   line-height: 1.5;
@@ -1138,7 +1150,7 @@ textarea {
   border-top: 0;
   min-height: 7em; }
 
-/* line 800, ../sass/application.scss */
+/* line 803, ../sass/application.scss */
 input[type=text]:focus, textarea:focus {
   background: #FFA;
   outline: none;
@@ -1148,13 +1160,13 @@ input[type=text]:focus, textarea:focus {
   -o-transition: background, color;
   transition: background, color; }
 
-/* line 807, ../sass/application.scss */
+/* line 810, ../sass/application.scss */
 input[type=submit] {
   float: left;
   clear: left;
   margin: 0.5em 0; }
 
-/* line 813, ../sass/application.scss */
+/* line 816, ../sass/application.scss */
 .modal {
   z-index: 20;
   /*
@@ -1177,11 +1189,11 @@ input[type=submit] {
   -o-animation: fadeIn 0.5s 1 normal ease-in-out none 0;
   animation: fadeIn 0.5s 1 normal ease-in-out none 0; }
 
-/* line 844, ../sass/application.scss */
+/* line 847, ../sass/application.scss */
 .submit {
   margin: 0 0 0 14.27143%; }
 
-/* line 848, ../sass/application.scss */
+/* line 851, ../sass/application.scss */
 .cancel {
   background: transparent;
   border: none;

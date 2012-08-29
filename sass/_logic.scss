@@ -18,11 +18,24 @@
 	}
 }
 
-@mixin yearImage($type, $year, $file) {
-	image: url('../images/#{$type}/#{$year}/#{$file}.svg');
+@mixin yearImage($type, $year, $fname, $ftype) {
+	image: url('../images/#{$type}/#{$year}/#{$fname}.#{$ftype}'),
+		   url('../images/header/#{$year}.png');
 }
 
 @mixin background-rgba($hex, $alpha) {
 	background: $hex;
 	background: rgba($hex, $alpha);
 }
+
+/* A media query that captures almost all high DPI aware devices.
+   https://twitter.com/marcedwards/status/238853928010280960/photo/1
+   Compass? Turn into a mixin?
+
+   @media
+        only screen and (-webkit-min-device-pixel-ratio: 1.3),
+        only screen and (min-device-pixel-ratio: 1.3),
+        only screen and (min-resolution) {
+			// Your code to swap to higher DPI images
+        }
+*/

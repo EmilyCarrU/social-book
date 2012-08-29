@@ -31,7 +31,7 @@ $default-transition-duration: 0.25s;
 // Imports
 
 @import "compass/css3", "compass/utilities";
-@import "compass/css3/user-interface"; // Shouldn't have to import individually
+@import "compass/css3/user-interface"; // Shouldn't have to import individuall
 @import "_normalise", "_temp", "_keyframes", "_logic";
 @import "stitch/patterns";
 
@@ -274,7 +274,7 @@ header {
 	.toc_item_head.y_#{(($i * 10) + 1900)}s {
 		background: {
 			color: yearColor(#{(($i * 10) + 1900)});
-			@include yearImage("svg", #{(($i * 10) + 1900)}, "decade-tile");
+			@include yearImage("svg", #{(($i * 10) + 1900)}, "decade-tile", "svg");
 		}
 	} // For .dive__open, send to keyframe animation from dive
 	  // or delay? 
@@ -316,6 +316,9 @@ header {
 	font-family: $comment-fontstack-text;
 	height: 6em;
 	color: #FFF;
+	background: {
+		repeat: repeat, no-repeat;
+	}
 }
 
 .toc_item_head_year {
