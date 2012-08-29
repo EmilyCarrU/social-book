@@ -237,7 +237,7 @@ header {
 	display: block;
 	position: absolute;
 	float: left;
-	border: 4px solid transparent;
+	border: 0.25em solid transparent;
 	border-top-color: $comment-color;	
 	right: 2em; // 36px
 	width: 0;
@@ -366,24 +366,20 @@ header {
 }
 
 .toc_year, .yearItem {
-	overflow: hidden; // ?
-	
 	background: #999;
 	border-bottom: 1px dotted black;
 	height: 6em;
 	display: block;
 	position: relative;
-
-	outline: 1px solid black;
 }
 
 .com_year_wrap { // change to .toc_year_head
 	display: block;
 	max-width: #{$column * 10};
-	margin: 1.5em 0 0 #{$column * 2};
+	margin: 0 0 0 #{$column * 2};
 	position: relative;
 	bottom: 0;
-	padding: 0.25em 0.5em;
+	padding: 0 0.5em;
 
 	@include background-rgba(#FFF, 0.75);	
 	@include box-sizing(border-box);
@@ -511,7 +507,6 @@ header {
 .chap_sec:first-child p:first-child, .chap_lead {
 	font-size: #{22.5 / $em}em;
 	line-height: 1.5;
-	outline: 1px solid red !important;
 }
 
 .chap_sec p + p, .chap_marg + .chap_sec > p:first-child {
