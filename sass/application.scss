@@ -274,8 +274,8 @@ header {
 	.toc_item_head.y_#{(($i * 10) + 1900)}s {
 		background: {
 			color: yearColor(#{(($i * 10) + 1900)});
-			@include yearImage("svg", #{(($i * 10) + 1900)}, "decade-tile", "svg");
 		}
+		@include background-image-retina(svg, #{(($i * 10) + 1900)}, decade-tile, svg, auto, auto, header, #{(($i * 10) + 1900)}, background, png, #{1024/$em}em, #{768/$em}em);
 	} // For .dive__open, send to keyframe animation from dive
 	  // or delay? 
 	
