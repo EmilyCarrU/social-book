@@ -297,47 +297,102 @@ img {
 @-moz-keyframes fadeIn {
   /* line 30, ../sass/_keyframes.scss */
   0% {
-    max-height: 0; }
+    opacity: 0; }
 
-  /* line 34, ../sass/_keyframes.scss */
+  /* line 33, ../sass/_keyframes.scss */
   100% {
-    max-height: 1000px; } }
+    opacity: 100%; } }
 
 @-webkit-keyframes fadeIn {
   /* line 30, ../sass/_keyframes.scss */
   0% {
-    max-height: 0; }
+    opacity: 0; }
 
-  /* line 34, ../sass/_keyframes.scss */
+  /* line 33, ../sass/_keyframes.scss */
   100% {
-    max-height: 1000px; } }
+    opacity: 100%; } }
 
 @-o-keyframes fadeIn {
   /* line 30, ../sass/_keyframes.scss */
   0% {
-    max-height: 0; }
+    opacity: 0; }
 
-  /* line 34, ../sass/_keyframes.scss */
+  /* line 33, ../sass/_keyframes.scss */
   100% {
-    max-height: 1000px; } }
+    opacity: 100%; } }
 
 @-ms-keyframes fadeIn {
   /* line 30, ../sass/_keyframes.scss */
   0% {
-    max-height: 0; }
+    opacity: 0; }
 
-  /* line 34, ../sass/_keyframes.scss */
+  /* line 33, ../sass/_keyframes.scss */
   100% {
-    max-height: 1000px; } }
+    opacity: 100%; } }
 
 @keyframes fadeIn {
   /* line 30, ../sass/_keyframes.scss */
   0% {
+    opacity: 0; }
+
+  /* line 33, ../sass/_keyframes.scss */
+  100% {
+    opacity: 100%; } }
+
+@-moz-keyframes growIn {
+  /* line 39, ../sass/_keyframes.scss */
+  0% {
     max-height: 0; }
 
-  /* line 34, ../sass/_keyframes.scss */
+  /* line 42, ../sass/_keyframes.scss */
   100% {
-    max-height: 1000px; } }
+    max-height: 1000px;
+    padding-top: 1em;
+    padding-bottom: 1em; } }
+
+@-webkit-keyframes growIn {
+  /* line 39, ../sass/_keyframes.scss */
+  0% {
+    max-height: 0; }
+
+  /* line 42, ../sass/_keyframes.scss */
+  100% {
+    max-height: 1000px;
+    padding-top: 1em;
+    padding-bottom: 1em; } }
+
+@-o-keyframes growIn {
+  /* line 39, ../sass/_keyframes.scss */
+  0% {
+    max-height: 0; }
+
+  /* line 42, ../sass/_keyframes.scss */
+  100% {
+    max-height: 1000px;
+    padding-top: 1em;
+    padding-bottom: 1em; } }
+
+@-ms-keyframes growIn {
+  /* line 39, ../sass/_keyframes.scss */
+  0% {
+    max-height: 0; }
+
+  /* line 42, ../sass/_keyframes.scss */
+  100% {
+    max-height: 1000px;
+    padding-top: 1em;
+    padding-bottom: 1em; } }
+
+@keyframes growIn {
+  /* line 39, ../sass/_keyframes.scss */
+  0% {
+    max-height: 0; }
+
+  /* line 42, ../sass/_keyframes.scss */
+  100% {
+    max-height: 1000px;
+    padding-top: 1em;
+    padding-bottom: 1em; } }
 
 /* line 59, ../sass/application.scss */
 * {
@@ -1170,81 +1225,109 @@ label {
   line-height: 2.56;
   border-bottom: 1px solid #666;
   padding: 0 1em 0 0;
+  text-align: right;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
-/* line 770, ../sass/application.scss */
+/* line 771, ../sass/application.scss */
+button {
+  font-family: "Din Text Pro Regular", "Avenir", Verdana, sans-serif; }
+
+/* line 775, ../sass/application.scss */
 input, textarea, select {
+  font-family: "Din Text Pro Regular", "Avenir", Verdana, sans-serif;
   width: 85.62857%;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
-/* line 776, ../sass/application.scss */
-input[type=text] {
+/* line 782, ../sass/application.scss */
+input[type=text], input[type=email], input[type=tel], input[type=url] {
   float: left;
   line-height: 2;
   height: 2em;
   padding: 0 0.33333em;
-  border-width: 0 0 0 1px;
-  border-bottom: 1px solid #666; }
+  margin: 0 0 0.5em 0;
+  background: #FFF;
+  color: #555;
+  border: 0.05556em solid #666666;
+  -webkit-border-radius: 0.13889em 0.13889em 0.13889em 0;
+  -moz-border-radius: 0.13889em 0.13889em 0.13889em 0;
+  -ms-border-radius: 0.13889em 0.13889em 0.13889em 0;
+  -o-border-radius: 0.13889em 0.13889em 0.13889em 0;
+  border-radius: 0.13889em 0.13889em 0.13889em 0; }
+  /* line 793, ../sass/application.scss */
+  input[type=text]:focus, textarea:focus, input[type=email]:focus, input[type=tel]:focus, input[type=url]:focus {
+    background: #F1F1F1;
+    color: #333333;
+    outline: none;
+    border: 0.05556em solid #333333;
+    -webkit-transition: background, color;
+    -moz-transition: background, color;
+    -ms-transition: background, color;
+    -o-transition: background, color;
+    transition: background, color; }
 
-/* line 787, ../sass/application.scss */
+/* line 803, ../sass/application.scss */
 textarea {
   float: left;
   line-height: 1.5;
   padding: 0.25em 0.33333em;
   border: 1px solid #666;
-  border-top: 0;
-  min-height: 7em; }
+  min-height: 7em;
+  -webkit-border-radius: 0.13889em;
+  -moz-border-radius: 0.13889em;
+  -ms-border-radius: 0.13889em;
+  -o-border-radius: 0.13889em;
+  border-radius: 0.13889em; }
 
-/* line 798, ../sass/application.scss */
-input[type=text]:focus, textarea:focus {
-  background: #FFA;
-  outline: none;
-  -webkit-transition: background, color;
-  -moz-transition: background, color;
-  -ms-transition: background, color;
-  -o-transition: background, color;
-  transition: background, color; }
+/* line 819, ../sass/application.scss */
+.form_action_items {
+  float: right;
+  margin: 0.5em 0 0 14.27143%; }
 
-/* line 805, ../sass/application.scss */
-input[type=submit] {
-  float: left;
-  clear: left;
-  margin: 0.5em 0; }
+/* line 824, ../sass/application.scss */
+.com_add_form .button {
+  float: right;
+  font-size: 1em;
+  background: #ff284c; }
 
-/* line 811, ../sass/application.scss */
-.modal {
-  z-index: 20;
-  /*
-  	width: 77.7%;
-  	left: 11.1%;
-  	right: 11.1%;
-  */
-  padding: 1em 16.65% 1em 5.55%;
-  width: 100%;
-  background: #FFF;
-  position: relative;
-  overflow: hidden;
-  border-bottom: 2px solid #ff284c;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  -webkit-animation: fadeIn 0.5s 1 normal ease-in-out none 0;
-  -moz-animation: fadeIn 0.5s 1 normal ease-in-out none 0;
-  -ms-animation: fadeIn 0.5s 1 normal ease-in-out none 0;
-  -o-animation: fadeIn 0.5s 1 normal ease-in-out none 0;
-  animation: fadeIn 0.5s 1 normal ease-in-out none 0; }
-
-/* line 842, ../sass/application.scss */
-.submit {
-  margin: 0 0 0 14.27143%; }
-
-/* line 846, ../sass/application.scss */
+/* line 830, ../sass/application.scss */
 .cancel {
   background: transparent;
   border: none;
   text-decoration: underline;
   font-size: 0.75em; }
+
+/* line 839, ../sass/application.scss */
+.modal {
+  z-index: 20;
+  max-height: 0;
+  padding: 0 16.65% 0 5.55%;
+  width: 100%;
+  background: #FFF;
+  position: relative;
+  overflow: hidden;
+  -webkit-transition: all 0.25s;
+  -moz-transition: all 0.25s;
+  -ms-transition: all 0.25s;
+  -o-transition: all 0.25s;
+  transition: all 0.25s;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-animation: growIn 0.5s 1 normal ease none 0;
+  -moz-animation: growIn 0.5s 1 normal ease none 0;
+  -ms-animation: growIn 0.5s 1 normal ease none 0;
+  -o-animation: growIn 0.5s 1 normal ease none 0;
+  animation: growIn 0.5s 1 normal ease none 0; }
+
+/* line 853, ../sass/application.scss */
+.modal__open {
+  overflow: hidden;
+  background: #ffe7eb;
+  max-height: 1000px;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  border-bottom: 2px solid #ff284c; }
