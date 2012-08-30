@@ -118,7 +118,7 @@
       
       
       <script type="text/html" id="template-comment-form">
-  			<div class="com_add_sec modal">
+  			<div class="com_add_sec modal modal__open">
   				<form class="com_add_form" method="post" action="#">
   					<fieldset>
   						<label for="commentName">Name</label>
@@ -127,7 +127,9 @@
   						<input type="text" name="commentEmail" id="commentEmail" placeholder="Your email" />
   						<label for="commentText">Comment</label>
   						<textarea name="commentText" id="commentText"></textarea>
-  						<button class="submit">Add Comment</button>
+            </fieldset>
+            <fieldset class="form_action_items">
+  						<button class="submit button">Add Comment</button>
   						<button class="cancel">Cancel</button>
   					</fieldset>
   				</form>
