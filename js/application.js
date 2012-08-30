@@ -200,7 +200,8 @@ App.CommentsView = Backbone.View.extend({
   },
   
   closeForm: function() {
-    $(this.el).find('.com_add_sec').remove();
+    $(this.el).find('.modal').toggleClass("modal__open")
+    // $(this.el).find('.com_add_sec').remove();
   },
   
   addComment: function(e) {
