@@ -853,11 +853,52 @@ header {
 .toc_year, .yearItem {
   background: #999;
   border-bottom: 1px dotted black;
-  height: 6em;
   display: block;
-  position: relative; }
+  padding: 5em 0 0 0;
+  position: relative;
+  overflow: visible; }
 
-/* line 376, ../sass/application.scss */
+/* line 378, ../sass/application.scss */
+.yearItem:nth-child(1) {
+  z-index: 0; }
+
+/* line 378, ../sass/application.scss */
+.yearItem:nth-child(2) {
+  z-index: -1; }
+
+/* line 378, ../sass/application.scss */
+.yearItem:nth-child(3) {
+  z-index: -2; }
+
+/* line 378, ../sass/application.scss */
+.yearItem:nth-child(4) {
+  z-index: -3; }
+
+/* line 378, ../sass/application.scss */
+.yearItem:nth-child(5) {
+  z-index: -4; }
+
+/* line 378, ../sass/application.scss */
+.yearItem:nth-child(6) {
+  z-index: -5; }
+
+/* line 378, ../sass/application.scss */
+.yearItem:nth-child(7) {
+  z-index: -6; }
+
+/* line 378, ../sass/application.scss */
+.yearItem:nth-child(8) {
+  z-index: -7; }
+
+/* line 378, ../sass/application.scss */
+.yearItem:nth-child(9) {
+  z-index: -8; }
+
+/* line 378, ../sass/application.scss */
+.yearItem:nth-child(10) {
+  z-index: -9; }
+
+/* line 382, ../sass/application.scss */
 .com_year_wrap {
   display: block;
   max-width: 55.5%;
@@ -872,7 +913,7 @@ header {
   box-sizing: border-box; }
 
 /* Chapters */
-/* line 394, ../sass/application.scss */
+/* line 400, ../sass/application.scss */
 .chap {
   float: left;
   clear: both;
@@ -893,12 +934,12 @@ header {
 	padding: 2.5em 0;
 }
 */
-/* line 412, ../sass/application.scss */
+/* line 418, ../sass/application.scss */
 .chap_head {
   width: 83.25%;
   margin: 0 0 2em 0; }
 
-/* line 417, ../sass/application.scss */
+/* line 423, ../sass/application.scss */
 .chap_head_group {
   width: 72.15%;
   padding: 0.5em 0;
@@ -911,7 +952,7 @@ header {
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
-/* line 428, ../sass/application.scss */
+/* line 434, ../sass/application.scss */
 .chap_head_group .h_subtitle {
   text-transform: uppercase;
   border-bottom: 1px solid #000;
@@ -919,18 +960,18 @@ header {
   margin: 0 0 0.33333em 0;
   float: left; }
 
-/* line 436, ../sass/application.scss */
+/* line 442, ../sass/application.scss */
 .chap_head_group .h_title {
   line-height: 1.33333;
   padding: 0 7.215%;
   clear: left; }
 
-/* line 442, ../sass/application.scss */
+/* line 448, ../sass/application.scss */
 .chap_head_fig {
   z-index: -1; }
 
 /* Periferal Content */
-/* line 448, ../sass/application.scss */
+/* line 454, ../sass/application.scss */
 .chap_marg {
   font-size: 0.75em;
   line-height: 1.33333;
@@ -953,18 +994,18 @@ header {
   -o-transition: left 0.25s ease 0.25s;
   transition: left 0.25s ease 0.25s; }
 
-/* line 468, ../sass/application.scss */
+/* line 474, ../sass/application.scss */
 .chap_marg:hover, .chap_marg:focus {
   cursor: pointer;
   left: 0; }
 
-/* line 473, ../sass/application.scss */
+/* line 479, ../sass/application.scss */
 .chap_marg q {
   text-indent: -0.4em;
   margin-bottom: 0.75em;
   display: block; }
 
-/* line 479, ../sass/application.scss */
+/* line 485, ../sass/application.scss */
 .chap_marg:after {
   content: "\2192";
   display: block;
@@ -983,7 +1024,7 @@ header {
   box-sizing: border-box; }
 
 /* Main Sections */
-/* line 498, ../sass/application.scss */
+/* line 504, ../sass/application.scss */
 .chap_sec {
   margin: 0 0 0 16.65%;
   width: 66.6%;
@@ -991,45 +1032,45 @@ header {
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
-/* line 507, ../sass/application.scss */
+/* line 513, ../sass/application.scss */
 .chap_sec:first-child p:first-child, .chap_lead {
   font-size: 1.25em;
   line-height: 1.5; }
 
-/* line 512, ../sass/application.scss */
+/* line 518, ../sass/application.scss */
 .chap_sec p + p, .chap_marg + .chap_sec > p:first-child {
   text-indent: 1.5em; }
 
-/* line 516, ../sass/application.scss */
+/* line 522, ../sass/application.scss */
 .chap_sec blockquote {
   margin: 1em 0;
   border-left: 0.5em solid #333333;
   font-style: italic;
   padding: 0 0 0 1em; }
 
-/* line 523, ../sass/application.scss */
+/* line 529, ../sass/application.scss */
 .chap_sec cite {
   display: block;
   margin: 1em 0 0 0;
   font-style: normal; }
 
 /* Chapter Section Main Images */
-/* line 537, ../sass/application.scss */
+/* line 543, ../sass/application.scss */
 .chap_sec_fig {
   width: 116.55%;
   left: -8.325%;
   margin: 1em auto; }
 
-/* line 547, ../sass/application.scss */
+/* line 553, ../sass/application.scss */
 .chap_sec_fig__left, .chap_sec_fig__right {
   width: 124.875%;
   left: -24.975%; }
 
-/* line 552, ../sass/application.scss */
+/* line 558, ../sass/application.scss */
 .chap_sec_fig__right {
   left: auto; }
 
-/* line 556, ../sass/application.scss */
+/* line 562, ../sass/application.scss */
 .chap_sec_fig_cap {
   font-size: 0.75em;
   color: #333;
@@ -1047,12 +1088,12 @@ header {
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
-/* line 572, ../sass/application.scss */
+/* line 578, ../sass/application.scss */
 .chap_sec_fig__right .chap_sec_fig_cap {
   left: 0;
   right: auto; }
 
-/* line 577, ../sass/application.scss */
+/* line 583, ../sass/application.scss */
 .chap_sec_fig__portrait {
   float: right;
   max-width: 49.95%;
@@ -1061,12 +1102,12 @@ header {
   margin-right: -25.075%;
   margin-left: 1.5em; }
 
-/* line 586, ../sass/application.scss */
+/* line 592, ../sass/application.scss */
 .chap_sec_fig__portrait .chap_sec_fig_cap {
   max-width: 100%; }
 
 /* chap_sec_fig svg */
-/* line 595, ../sass/application.scss */
+/* line 601, ../sass/application.scss */
 .chap_sec_fig_shape {
   position: absolute;
   overflow: hidden;
@@ -1079,22 +1120,22 @@ header {
   box-sizing: border-box; }
 
 /* Marginal Images */
-/* line 609, ../sass/application.scss */
+/* line 615, ../sass/application.scss */
 .chap_marg_fig {
   margin: 0 0 1em 0; }
 
-/* line 613, ../sass/application.scss */
+/* line 619, ../sass/application.scss */
 .chap_marg_fig_cap {
   color: #666;
   padding: 0.5em 0; }
 
 /* Comments */
-/* line 620, ../sass/application.scss */
+/* line 626, ../sass/application.scss */
 .com {
   background: #FFF;
   border-color: #ff284c; }
 
-/* line 625, ../sass/application.scss */
+/* line 631, ../sass/application.scss */
 .com_wrapper {
   height: auto;
   max-height: 0;
@@ -1110,7 +1151,7 @@ header {
   transition: all, max-height 0.25s, 0.375s;
   -webkit-transform: translate3d(0, 0, 0); }
 
-/* line 636, ../sass/application.scss */
+/* line 642, ../sass/application.scss */
 .com_comments {
   font-size: 0.75em;
   font-family: "Din Text Pro Regular", "Avenir", Verdana, sans-serif;
@@ -1125,7 +1166,7 @@ header {
   padding: 0;
   -webkit-transform: translate3d(0, 0, 0); }
 
-/* line 654, ../sass/application.scss */
+/* line 660, ../sass/application.scss */
 .com_comments_comment {
   float: left;
   position: relative;
@@ -1133,12 +1174,12 @@ header {
   padding: 0.5em 0;
   display: block; }
 
-/* line 662, ../sass/application.scss */
+/* line 668, ../sass/application.scss */
 .com_comments_comment_wrap {
   border-left: 0.33333em solid #ff284c;
   padding: 0 1.33333em 1em 1em; }
 
-/* line 667, ../sass/application.scss */
+/* line 673, ../sass/application.scss */
 .com_comments_comment_cite {
   font-size: 1.33333em;
   font-family: Georgia, serif;
@@ -1146,7 +1187,7 @@ header {
   margin: 0.5em 0 0 0;
   display: block; }
 
-/* line 677, ../sass/application.scss */
+/* line 683, ../sass/application.scss */
 .com_comments_comment_reply {
   line-height: 1.5;
   display: block;
@@ -1157,7 +1198,7 @@ header {
   margin: -1em 1em 0 -1em;
   float: left; }
 
-/* line 688, ../sass/application.scss */
+/* line 694, ../sass/application.scss */
 .com_comments_comment_reply_icon {
   font-weight: bold;
   width: 1.5em;
@@ -1168,53 +1209,53 @@ header {
   background: #ff284c;
   color: #FFF; }
 
-/* line 699, ../sass/application.scss */
+/* line 705, ../sass/application.scss */
 .com_comments_actions {
   margin: 1em 0;
   clear: left;
   float: left;
   width: 100%; }
 
-/* line 706, ../sass/application.scss */
+/* line 712, ../sass/application.scss */
 .com_comments_actions_items {
   list-style: none;
   float: right; }
 
-/* line 711, ../sass/application.scss */
+/* line 717, ../sass/application.scss */
 .com_comments_actions_item {
   float: left;
   margin: 0 0 0 2em;
   line-height: 2.5; }
 
-/* line 717, ../sass/application.scss */
+/* line 723, ../sass/application.scss */
 .com .button {
   background: #ff284c;
   float: right; }
 
 @media screen and (min-width: 1024px) {
-  /* line 724, ../sass/application.scss */
+  /* line 730, ../sass/application.scss */
   .com_comments {
     width: 77.7%; }
 
-  /* line 728, ../sass/application.scss */
+  /* line 734, ../sass/application.scss */
   .com_comments_comment {
     width: 22.79736%; }
 
-  /* line 733, ../sass/application.scss */
+  /* line 739, ../sass/application.scss */
   .com_comments_comment:last-of-type {
     width: 48.56828%; }
 
-  /* line 737, ../sass/application.scss */
+  /* line 743, ../sass/application.scss */
   .com_comments_comment:last-of-type .com_comments_comment_wrap {
     font-size: 1.33333em;
     border-left: 0.5em solid #ff284c;
     padding: 0 0.75em 0.75em 0.75em; }
 
-  /* line 743, ../sass/application.scss */
+  /* line 749, ../sass/application.scss */
   .com_comments_comment:last-of-type .com_comments_comment_cite {
     font-size: 1em; } }
 /* Forms, move to normalise later? */
-/* line 754, ../sass/application.scss */
+/* line 760, ../sass/application.scss */
 label {
   font-size: 0.75em;
   font-weight: bold;
@@ -1230,11 +1271,11 @@ label {
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
-/* line 771, ../sass/application.scss */
+/* line 777, ../sass/application.scss */
 button {
   font-family: "Din Text Pro Regular", "Avenir", Verdana, sans-serif; }
 
-/* line 775, ../sass/application.scss */
+/* line 781, ../sass/application.scss */
 input, textarea, select {
   font-family: "Din Text Pro Regular", "Avenir", Verdana, sans-serif;
   width: 85.62857%;
@@ -1242,7 +1283,7 @@ input, textarea, select {
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
-/* line 782, ../sass/application.scss */
+/* line 788, ../sass/application.scss */
 input[type=text], input[type=email], input[type=tel], input[type=url] {
   float: left;
   line-height: 2;
@@ -1257,7 +1298,7 @@ input[type=text], input[type=email], input[type=tel], input[type=url] {
   -ms-border-radius: 0.13889em 0.13889em 0.13889em 0;
   -o-border-radius: 0.13889em 0.13889em 0.13889em 0;
   border-radius: 0.13889em 0.13889em 0.13889em 0; }
-  /* line 793, ../sass/application.scss */
+  /* line 799, ../sass/application.scss */
   input[type=text]:focus, textarea:focus, input[type=email]:focus, input[type=tel]:focus, input[type=url]:focus {
     background: #F1F1F1;
     color: #333333;
@@ -1269,7 +1310,7 @@ input[type=text], input[type=email], input[type=tel], input[type=url] {
     -o-transition: background, color;
     transition: background, color; }
 
-/* line 803, ../sass/application.scss */
+/* line 809, ../sass/application.scss */
 textarea {
   float: left;
   line-height: 1.5;
@@ -1282,25 +1323,25 @@ textarea {
   -o-border-radius: 0.13889em;
   border-radius: 0.13889em; }
 
-/* line 819, ../sass/application.scss */
+/* line 825, ../sass/application.scss */
 .form_action_items {
   float: right;
   margin: 0.5em 0 0 14.27143%; }
 
-/* line 824, ../sass/application.scss */
+/* line 830, ../sass/application.scss */
 .com_add_form .button {
   float: right;
   font-size: 1em;
   background: #ff284c; }
 
-/* line 830, ../sass/application.scss */
+/* line 836, ../sass/application.scss */
 .cancel {
   background: transparent;
   border: none;
   text-decoration: underline;
   font-size: 0.75em; }
 
-/* line 839, ../sass/application.scss */
+/* line 845, ../sass/application.scss */
 .modal {
   z-index: 20;
   max-height: 0;
@@ -1323,7 +1364,7 @@ textarea {
   -o-animation: growIn 0.5s 1 normal ease none 0;
   animation: growIn 0.5s 1 normal ease none 0; }
 
-/* line 853, ../sass/application.scss */
+/* line 859, ../sass/application.scss */
 .modal__open {
   overflow: hidden;
   background: #ffe7eb;

@@ -368,11 +368,17 @@ header {
 .toc_year, .yearItem {
 	background: #999;
 	border-bottom: 1px dotted black;
-	height: 6em;
 	display: block;
+	padding: 5em 0 0 0;
 	position: relative;
+	overflow: visible;
 }
 
+@for $i from 1 through 10 {
+	.yearItem:nth-child(#{$i}) {
+		z-index: #{(1 - $i)}; // can I calc() this or something? Make each item z-index n-1
+	}
+}
 .com_year_wrap { // change to .toc_year_head
 	display: block;
 	max-width: #{$column * 10};
