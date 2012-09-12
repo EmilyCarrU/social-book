@@ -287,6 +287,19 @@ header {
 		@extend header.y_#{(($i * 10) + 1900)}s;
 		@include animation(none);
 	}
+
+	@for $j from 1 through 10 {
+
+		.toc_year:nth-child(#{$j}), .yearItem:nth-child(#{$j}) {
+			z-index: #{(1 - $j)};
+		}
+
+		.y_#{(1900) + ($i * 10)}s .toc_year:nth-child(#{$j}),
+		.y_#{(1900) + ($i * 10)}s .yearItem:nth-child(#{$j}) {
+			background: lighten(yearColor("#{(1900) + ($i * 10)}"), $j*3
+				);
+		}
+	}
 }
 
 /* Table of Contents Intro */
@@ -366,28 +379,11 @@ header {
 }
 
 .toc_year, .yearItem {
-	background: #999;
+	background: $content-background;
 	display: block;
 	padding: 5em 0 0 0;
 	position: relative;
 	border-bottom: 1px solid transparent; // ?
-}
-
-/* Hello */
-
-@for $i from 5 through 11 {
-	@for $j from 1 through 10 {
-
-		.toc_year:nth-child(#{$j}), .yearItem:nth-child(#{$j}) {
-			z-index: #{(1 - $j)};
-		}
-
-		.y_#{(1900) + ($i * 10)}s .toc_year:nth-child(#{$j}),
-		.y_#{(1900) + ($i * 10)}s .yearItem:nth-child(#{$j}) {
-			background: lighten(yearColor("#{(1900) + ($i * 10)}"), $j*3
-				);
-		}
-	}
 }
 
 .com_year_wrap { // change to .toc_year_head
