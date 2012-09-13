@@ -26,7 +26,6 @@ $target_height: 5;
 
 // Compass Variables
 
-$default-transition-duration: 0.25s;
 $legacy-support-for-ie6: false;
 $legacy-support-for-ie7: false;
 $legacy-support-for-ie8: false;
@@ -163,7 +162,6 @@ header {
 }
 
 .target__chap {
-	
 }
 
 .target__fix {
@@ -279,7 +277,9 @@ header {
 /* Year Colours */
 
 @for $i from 5 through 11 {
-	.toc_item_head.y_#{(($i * 10) + 1900)}s, .y_#{(($i * 10) + 1900)}s .yearItem, .y_#{(($i * 10) + 1900)}s .toc_year {
+	.toc_item_head.y_#{(($i * 10) + 1900)}s,
+	.y_#{(($i * 10) + 1900)}s .toc_year,
+	.y_#{(($i * 10) + 1900)}s .yearTOC {
 		background: {
 			color: yearColor(#{(($i * 10) + 1900)});
 		}
@@ -391,7 +391,7 @@ header {
 	display: block;
 	padding: 5em 0 0 0;
 	position: relative;
-	border-bottom: 1px solid transparent; // ?
+	border-bottom: 1px solid rgba(255,255,255,0.5); // ?
 }
 
 .com_year_wrap { // change to .toc_year_head
