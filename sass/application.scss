@@ -27,7 +27,15 @@ $target_height: 5;
 // Compass Variables
 
 $default-transition-duration: 0.25s;
+$legacy-support-for-ie6: false;
+$legacy-support-for-ie7: false;
+$legacy-support-for-ie8: false;
+$experimental-support-for-microsoft: true;
+$experimental-support-for-mozilla: true;
+$experimental-support-for-opera: true;
 
+$default-transition-duration: 0.25s;
+$experimental-support-for-svg: false;
 // Imports
 
 @import "compass/css3", "compass/utilities";
