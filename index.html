@@ -3,13 +3,13 @@
     <head>
       <meta charset="utf-8"/>
       <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-      
+
       <meta name="apple-mobile-web-app-capable" content="yes" />
       <meta name="apple-mobile-web-app-status-bar-style" content="black" />
       <meta content='width=device-width, initial-scale=1.0 maximum-scale=1.0 user-scalable=0' name='viewport' />
 
       <link rel="stylesheet" href="css/application.css"></link>
-      
+
       <!-- // <script src="http://10.244.36.242:8080/target/target-script-min.js#anonymous"></script> -->
       <script src="bookdata.json" ></script>
       <script src="decadedata.json" ></script>
@@ -24,10 +24,10 @@
 
       <script type="text/javascript">
           $(document).ready(function(e){
-            
+
             new PinchCard2('.toc_item');
-            
-            // var n = new PinchCard('#decades');            
+
+            // var n = new PinchCard('#decades');
 
 
           //            var p = new PinchCard('.chap')
@@ -38,23 +38,23 @@
           //              closePanel: function(e) {
           //                $(this.el).find('.dive').removeClass("dive__open");
           //              }
-          //            });            
+          //            });
 
 
           });
-            
+
           // Stop bounce - This will need to be changed to support scrolling down...
           function stopScrolling(touchEvent) { touchEvent.preventDefault(); }
           document.addEventListener('touchstart', stopScrolling, false );
           document.addEventListener('touchmove', stopScrolling, false );
-          
+
       </script>
-      
+
     </head>
     <body lang="en">
       <div id="decadeIntro"></div>
       <div id="decades"></div>
-      <div id="chapters"></div>      
+      <div id="chapters"></div>
 
       <script type="text/template" id="template-decade">
        	<header class="toc_item_head y_<%= decade %>s">
@@ -66,18 +66,18 @@
        		<%= content %>
        		</section>
        	</header>
-       	
+
        	<div class="target target__chap y_<%= decade %>s"></div>
         <!-- This may need to be changed -->
         <!-- <article class="years" style="display:none;"></article> -->
 
       </script>
-      
+
       <script type="text/template" id="template-section">
         <section class="chap_sec">
           <h4><%= title %> <%= slug %></h4>
           <%= content %>
-        </section>        
+        </section>
       </script>
 
       <script type="text/template" id="template-comments">
@@ -87,9 +87,9 @@
             <i class="dive_icon"></i>
             <section class="com_wrapper">
               <ul class="com_comments">
-                
+
 	              <!-- Comments (com_comments_comment) should load here -->
-             
+
 	            <li class="com_comments_actions">
                   <ul class="com_comments_actions_items">
                     <li class="com_comments_actions_item">
@@ -115,9 +115,9 @@
           <i class="ui com_comments_comment_reply_icon">+</i>Reply
         </a>
       </script>
-      
-      
-      <script type="text/html" id="template-comment-form">
+
+
+      <script type="text/template" id="template-comment-form">
   			<div class="com_add_sec modal modal__open">
   				<form class="com_add_form" method="post" action="#">
   					<fieldset>
@@ -133,11 +133,11 @@
   						<button class="cancel">Cancel</button>
   					</fieldset>
   				</form>
-  			</div>      
+  			</div>
       </script>
-     
-        <a href="#year/<%= id %>" class="com_year_wrap">            
+
       <script type="text/template" id="template-year">
+        <a href="#year/<%= id %>" class="com_year_wrap">
           <header class="year_head">
               <hgroup class="year_head_group">
               	<h2 class="h_title"><%= title %></h2>
@@ -150,17 +150,17 @@
         	</div>
         </div>
       </script>
-      
+
       <script type="text/template" id="template-decades-header">
       	<!-- The intro to the book would go here, before the list of decades -->
         <h1><%= title %></h1>
         <%= content %>
       </script>
-      
+
       <script type="text/template" id="template-years-header">
       	<!-- The intro to the decade would go here, before the list of years -->
       </script>
-      
+
       <script type="text/template" id="template-chapters-header">
       	<!-- The header for the chapter would go here, before the list of sections -->
       	<header class="chap_head">
