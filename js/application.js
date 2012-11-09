@@ -1,7 +1,7 @@
 // Main Entry point into app.
 
 window.App = {};
-
+window.App.online = true;
 //
 // Models
 // 
@@ -305,7 +305,6 @@ App.DecadeView = Backbone.View.extend({
     
   initialize: function() {
     // Init the years view
-    
     var that = this;    
     this.years = new App.Years(chapters);
     
@@ -350,9 +349,8 @@ App.DecadeView = Backbone.View.extend({
 
     // Init the YearsView
     this.yearsView = new App.YearsView({ collection : this.years });
+    // $(this.el).find('.years').html(this.yearsView.render().el);
 
-    $(this.el).find('.years').html(this.yearsView.render().el);
-    // This may need to be fixed.
     $(this.el).find('.target__chap').html(this.yearsView.render().el);
     return this;
   }
@@ -474,7 +472,7 @@ App.Router = Backbone.Router.extend({
     
     var selectedYear = filteredSet[0].get('year');
     var selectedDecade = filteredSet[0].get('decade');
-    
+
     var allChapters = new App.Chapters(chapters);
     
     var newList = allChapters.filter(function(i){
@@ -488,30 +486,49 @@ App.Router = Backbone.Router.extend({
   },
   
   defaultRoute: function(path) {
-    $("#decades").show();
-    $("#decadeIntro").show();
-    $("#chapters").hide();
 
-    // console.log(decadeData);
+    var callback = function(decades) {
+      $("#decades").show();
+      $("#decadeIntro").show();
+      $("#chapters").hide();
 
-    var introData = _.reject(_.map(decadeData, 
-      function(x){ if (_.any(x.tags, function(y){ return y.title == 'intro' })) return x;}), 
-      function(z){ return z == undefined }
-    )[0];
+      var introData = _.reject(_.map(decades, 
+        function(x){ if (_.any(x.tags, function(y){ return y.title == 'intro' })) return x;}), 
+        function(z){ return z == undefined }
+      )[0];
+
+      var decadeSet = _.reject(decades,function(x){ return x.id == introData.id; });
+      
+      var introDecade = new App.Decade(introData);
+      var introView = new App.DecadeIntroView({model: introDecade })
+      introView.render();
+
+      App.decades = new App.Decades(decadeSet);
+      App.decadesView = new App.DecadesView({ collection: App.decades });
+
+      $('#decades').html(App.decadesView.render().el);      
+    }
     
-    var decadeSet = _.reject(decadeData,function(x){ return x.id == introData.id; });
-
-    var introDecade = new App.Decade(introData);
-    var introView = new App.DecadeIntroView({model: introDecade })
-    introView.render();
     
-    App.decades = new App.Decades(decadeSet);
-    App.decadesView = new App.DecadesView({ collection: App.decades });
-
-    $('#decades').html(App.decadesView.render().el);
+    // Main starting point
+    // The Browser needs to be open with web-security disabled, see Readme.md for more information.
+    if (window.App.online) {
+      
+      $.getJSON('http://book.hyko.org/api/get_tag_posts/?tag=decade', function(decadeData, status, xhr){ 
+        $.getJSON('http://book.hyko.org/api/?json=1&count=1000', function(chapterData, status, xhr){ 
+          // Polute this one..
+          chapters = chapterData.posts;
+          callback(decadeData.posts);
+        });
+      });
+    } else {      
+      // Load Book with cached data decade data.
+      callback(decadeData);
+    }
 
   }
 });
+
 
 $(function() {
   
