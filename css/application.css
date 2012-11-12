@@ -602,19 +602,7 @@ header {
 .toc_item_head.y_1950s,
 .y_1950s .toc_year,
 .y_1950s .yearTOC {
-  background-color: #fb8f8d;
-  background-image: url("../images/svg/1950-decade-tile.svg"), url("../images/header/1950-background.png"); }
-  @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
-    /* line 56, ../sass/_logic.scss */
-    .toc_item_head.y_1950s,
-    .y_1950s .toc_year,
-    .y_1950s .yearTOC {
-      background-image: url("../images/svg/1950-decade-tile.svg");
-      background-image: url("../images/svg/1950-decade-tile.svg"), url("../images/header/1950-background@2x.png");
-      -webkit-background-size: auto auto, 56.88889em 42.66667em;
-      -moz-background-size: auto auto, 56.88889em 42.66667em;
-      -o-background-size: auto auto, 56.88889em 42.66667em;
-      background-size: auto auto, 56.88889em 42.66667em; } }
+  background-color: #fb8f8d; }
 
 /* line 290, ../sass/application.scss */
 .y_1950s .dive:before {
@@ -722,19 +710,7 @@ header {
 .toc_item_head.y_1960s,
 .y_1960s .toc_year,
 .y_1960s .yearTOC {
-  background-color: #02c3da;
-  background-image: url("../images/svg/1960-decade-tile.svg"), url("../images/header/1960-background.png"); }
-  @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
-    /* line 56, ../sass/_logic.scss */
-    .toc_item_head.y_1960s,
-    .y_1960s .toc_year,
-    .y_1960s .yearTOC {
-      background-image: url("../images/svg/1960-decade-tile.svg");
-      background-image: url("../images/svg/1960-decade-tile.svg"), url("../images/header/1960-background@2x.png");
-      -webkit-background-size: auto auto, 56.88889em 42.66667em;
-      -moz-background-size: auto auto, 56.88889em 42.66667em;
-      -o-background-size: auto auto, 56.88889em 42.66667em;
-      background-size: auto auto, 56.88889em 42.66667em; } }
+  background-color: #02c3da; }
 
 /* line 290, ../sass/application.scss */
 .y_1960s .dive:before {
@@ -842,19 +818,7 @@ header {
 .toc_item_head.y_1970s,
 .y_1970s .toc_year,
 .y_1970s .yearTOC {
-  background-color: #ff9c23;
-  background-image: url("../images/svg/1970-decade-tile.svg"), url("../images/header/1970-background.png"); }
-  @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
-    /* line 56, ../sass/_logic.scss */
-    .toc_item_head.y_1970s,
-    .y_1970s .toc_year,
-    .y_1970s .yearTOC {
-      background-image: url("../images/svg/1970-decade-tile.svg");
-      background-image: url("../images/svg/1970-decade-tile.svg"), url("../images/header/1970-background@2x.png");
-      -webkit-background-size: auto auto, 56.88889em 42.66667em;
-      -moz-background-size: auto auto, 56.88889em 42.66667em;
-      -o-background-size: auto auto, 56.88889em 42.66667em;
-      background-size: auto auto, 56.88889em 42.66667em; } }
+  background-color: #ff9c23; }
 
 /* line 290, ../sass/application.scss */
 .y_1970s .dive:before {
@@ -962,19 +926,7 @@ header {
 .toc_item_head.y_1980s,
 .y_1980s .toc_year,
 .y_1980s .yearTOC {
-  background-color: #02c3da;
-  background-image: url("../images/svg/1980-decade-tile.svg"), url("../images/header/1980-background.png"); }
-  @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
-    /* line 56, ../sass/_logic.scss */
-    .toc_item_head.y_1980s,
-    .y_1980s .toc_year,
-    .y_1980s .yearTOC {
-      background-image: url("../images/svg/1980-decade-tile.svg");
-      background-image: url("../images/svg/1980-decade-tile.svg"), url("../images/header/1980-background@2x.png");
-      -webkit-background-size: auto auto, 56.88889em 42.66667em;
-      -moz-background-size: auto auto, 56.88889em 42.66667em;
-      -o-background-size: auto auto, 56.88889em 42.66667em;
-      background-size: auto auto, 56.88889em 42.66667em; } }
+  background-color: #02c3da; }
 
 /* line 290, ../sass/application.scss */
 .y_1980s .dive:before {
@@ -1082,19 +1034,7 @@ header {
 .toc_item_head.y_1990s,
 .y_1990s .toc_year,
 .y_1990s .yearTOC {
-  background-color: #000088;
-  background-image: url("../images/svg/1990-decade-tile.svg"), url("../images/header/1990-background.png"); }
-  @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
-    /* line 56, ../sass/_logic.scss */
-    .toc_item_head.y_1990s,
-    .y_1990s .toc_year,
-    .y_1990s .yearTOC {
-      background-image: url("../images/svg/1990-decade-tile.svg");
-      background-image: url("../images/svg/1990-decade-tile.svg"), url("../images/header/1990-background@2x.png");
-      -webkit-background-size: auto auto, 56.88889em 42.66667em;
-      -moz-background-size: auto auto, 56.88889em 42.66667em;
-      -o-background-size: auto auto, 56.88889em 42.66667em;
-      background-size: auto auto, 56.88889em 42.66667em; } }
+  background-color: #000088; }
 
 /* line 290, ../sass/application.scss */
 .y_1990s .dive:before {
@@ -1202,19 +1142,7 @@ header {
 .toc_item_head.y_2000s,
 .y_2000s .toc_year,
 .y_2000s .yearTOC {
-  background-color: #c086e1;
-  background-image: url("../images/svg/2000-decade-tile.svg"), url("../images/header/2000-background.png"); }
-  @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
-    /* line 56, ../sass/_logic.scss */
-    .toc_item_head.y_2000s,
-    .y_2000s .toc_year,
-    .y_2000s .yearTOC {
-      background-image: url("../images/svg/2000-decade-tile.svg");
-      background-image: url("../images/svg/2000-decade-tile.svg"), url("../images/header/2000-background@2x.png");
-      -webkit-background-size: auto auto, 56.88889em 42.66667em;
-      -moz-background-size: auto auto, 56.88889em 42.66667em;
-      -o-background-size: auto auto, 56.88889em 42.66667em;
-      background-size: auto auto, 56.88889em 42.66667em; } }
+  background-color: #c086e1; }
 
 /* line 290, ../sass/application.scss */
 .y_2000s .dive:before {
@@ -1322,19 +1250,7 @@ header {
 .toc_item_head.y_2010s,
 .y_2010s .toc_year,
 .y_2010s .yearTOC {
-  background-color: #fb8f8d;
-  background-image: url("../images/svg/2010-decade-tile.svg"), url("../images/header/2010-background.png"); }
-  @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
-    /* line 56, ../sass/_logic.scss */
-    .toc_item_head.y_2010s,
-    .y_2010s .toc_year,
-    .y_2010s .yearTOC {
-      background-image: url("../images/svg/2010-decade-tile.svg");
-      background-image: url("../images/svg/2010-decade-tile.svg"), url("../images/header/2010-background@2x.png");
-      -webkit-background-size: auto auto, 56.88889em 42.66667em;
-      -moz-background-size: auto auto, 56.88889em 42.66667em;
-      -o-background-size: auto auto, 56.88889em 42.66667em;
-      background-size: auto auto, 56.88889em 42.66667em; } }
+  background-color: #fb8f8d; }
 
 /* line 290, ../sass/application.scss */
 .y_2010s .dive:before {
