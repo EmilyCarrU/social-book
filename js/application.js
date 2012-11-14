@@ -57,9 +57,21 @@ App.Years = Backbone.Collection.extend({
   model: App.Year,
   initialize: function(o) {
   },
-
-  comparator: function(year) {
-    return year.get('year');
+  
+  comparator: function(year1, year2) {
+    if (year1.get('year') < year2.get('year')) {
+      return 1;
+    } else if (year1.get('year') > year2.get('year')) {
+      return -1;
+    } else if (year1.get('year') === year2.get('year')) {
+      if (year1.get('part') < year2.get('part')) {
+        return 1;
+      } else if (year1.get('part') > year2.get('part')) {
+        return -1;
+      } else if (year1.get('part') === year2.get('part')) {
+        return 0;
+      }
+    }
   },
   
   parse: function(response) {
@@ -89,27 +101,27 @@ App.Chapters = Backbone.Collection.extend({
   model: App.Chapter,
   // url: 'http://book.hyko.org/api/get_recent_posts/',
 
-  comparator: function(chapter1, chapter2) {
-    if (chapter1.decade < chapter2.decade) {
-      return 1;
-    } else if (chapter1.decade > chapter2.decade) {
-      return -1;
-    } else if (chapter1.decade === chapter2.decade) {
-      if (chapter1.month < chapter2.month) {
-        return 1;
-      } else if (chapter1.year > chapter2.year) {
-        return -1;
-      } else if (chapter1.year === chapter2.year) {
-        if (chapter1.part < chapter2.part) {
-          return 1;
-        } else if (chapter1.part > chapter2.part) {
-          return -1;
-        } else if (chapter1.part === chapter2.part) {
-          return 0;
-        }
-      }
-    }
-  },
+  // comparator: function(chapter1, chapter2) {
+  //   if (chapter1.get('decade') < chapter2.get('decade')) {
+  //     return 1;
+  //   } else if (chapter1.get('decade') > chapter2.get('decade')) {
+  //     return -1;
+  //   } else if (chapter1.get('decade') === chapter2.get('decade')) {   
+  //     if (chapter1.get('year') < chapter2.get('year')) {
+  //       return 1;
+  //     } else if (chapter1.get('year') > chapter2.get('year')) {
+  //       return -1;
+  //     } else if (chapter1.get('year') === chapter2.get('year')) {
+  //       if (chapter1.get('part') < chapter2.get('part')) {
+  //         return 1;
+  //       } else if (chapter1.get('part') > chapter2.get('part')) {
+  //         return -1;
+  //       } else if (chapter1.get('part') === chapter2.get('part')) {
+  //         return 0;
+  //       }
+  //     }
+  //   }
+  // },
   
   parse: function(response) {
     return response.posts;
@@ -315,12 +327,12 @@ App.DecadeView = Backbone.View.extend({
     }
     
     // Filter out the the other decades
-    var yearList = that.years.filter(decadeItor);
+    var yearList = that.years.filter(decadeItor);    
     this.years.reset(yearList);
-
+    
     // Return the first PART
-    var yearList = this.years.min(function(i){return i.attributes.part});
-    this.years.reset(yearList);
+    // var yearList = this.years.min(function(i){return i.attributes.part});
+    // this.years.reset(yearList);
 
         
     $(this.el).bind("openPanel",function(){
@@ -373,10 +385,10 @@ App.DecadesView = Backbone.View.extend({
 
 App.ChaptersView = Backbone.View.extend({
   tagName : 'article',
-  className : 'chap dive dive__open',  
-  
+  className : 'chap dive dive__open',
   render : function() {
     this.collection.each(function(section) {
+      
       var sectionView = new App.SectionView({ model : section });
       $(this.el).prepend(sectionView.render().el);
     }, this);
@@ -461,28 +473,44 @@ App.Router = Backbone.Router.extend({
   
   // Show all the chapters (sections) for a year
   showYear: function(id) {
+    
+    var callback = function(chapterData) {
+      
+      var chap = new App.Chapters(chapterData);
+
+      var filteredSet = chap.filter(function(o) {
+        return (o.attributes.id == id) ? true : false;
+      });
+
+      var selectedYear = filteredSet[0].get('year');
+      var selectedDecade = filteredSet[0].get('decade');
+
+      var allChapters = new App.Chapters(chapterData);
+
+      // we only want chapters from this decade, section.
+      var newList = allChapters.filter(function(i){
+        return (i.attributes.year == selectedYear && i.attributes.decade == selectedDecade) ? true : false;
+      });
+
+      allChapters.reset(newList);
+      var chaptersView = new App.ChaptersView({ collection: allChapters });
+      $('#chapters').html(chaptersView.render().el);
+    }
+    
     $("#chapters").show();
     $("#decades").hide();
     $("#decadeIntro").hide();
-    
-    var chap = new App.Chapters(chapters);
-    var filteredSet = chap.filter(function(o) {
-      return (o.attributes.id == id) ? true : false;
-    });
-    
-    var selectedYear = filteredSet[0].get('year');
-    var selectedDecade = filteredSet[0].get('decade');
 
-    var allChapters = new App.Chapters(chapters);
+    if (window.App.online) {
     
-    var newList = allChapters.filter(function(i){
-      return (i.attributes.year == selectedYear && i.attributes.decade == selectedDecade) ? true : false;
-    });
+      $.getJSON('http://book.hyko.org/api/?json=1&count=1000', function(chapterData, status, xhr){ 
+        chapters = chapterData.posts;
+        callback(chapterData.posts);
+      });
 
-    allChapters.reset(newList);
-    
-    var chaptersView = new App.ChaptersView({ collection : allChapters });
-    $('#chapters').html(chaptersView.render().el);
+    } else {
+      callback(chapters);
+    }
   },
   
   defaultRoute: function(path) {
