@@ -322,18 +322,13 @@ App.DecadeView = Backbone.View.extend({
     
     var decadeItor = function(o) {
       if (o.attributes.year) {
-        return (o.attributes.decade == that.model.get('decade')) ? true : false;
+        return (o.attributes.decade == that.model.get('decade') && o.attributes.part == 0) ? true : false;
       }
     }
     
     // Filter out the the other decades
     var yearList = that.years.filter(decadeItor);    
     this.years.reset(yearList);
-    
-    // Return the first PART
-    // var yearList = this.years.min(function(i){return i.attributes.part});
-    // this.years.reset(yearList);
-
         
     $(this.el).bind("openPanel",function(){
       $(that.el).find('.yearTOC').addClass("dive__open");
@@ -359,6 +354,8 @@ App.DecadeView = Backbone.View.extend({
     var html = template(this.model.toJSON());
     $(this.el).append(html);
 
+    console.log(this.years)
+    
     // Init the YearsView
     this.yearsView = new App.YearsView({ collection : this.years });
     // $(this.el).find('.years').html(this.yearsView.render().el);
@@ -439,12 +436,12 @@ App.YearView = Backbone.View.extend({
     var that = this;
     this.chapters = new App.Chapters(chapters);
     
-    var itor = function(o) {
-      return (o.attributes.decade == that.model.get('decade')) ? true : false;
+    var itor = function(n) {
+      return (n.attributes.decade == that.model.get('decade')) ? true : false;
     }
     
     var chapterList = that.chapters.filter(itor);
-    this.chapters.reset(chapterList);        
+    this.chapters.reset(chapterList);
   },
 
   launch: function(e) {
