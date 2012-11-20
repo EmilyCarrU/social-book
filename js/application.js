@@ -322,7 +322,7 @@ App.DecadeView = Backbone.View.extend({
     
     var decadeItor = function(o) {
       if (o.attributes.year) {
-        return (o.attributes.decade == that.model.get('decade') && o.attributes.part == 0) ? true : false;
+        return (o.attributes.decade == that.model.get('decade') /*&& o.attributes.part == 0 */) ? true : false;
       }
     }
     
@@ -354,7 +354,7 @@ App.DecadeView = Backbone.View.extend({
     var html = template(this.model.toJSON());
     $(this.el).append(html);
 
-    console.log(this.years)
+    // console.log(this.years)
     
     // Init the YearsView
     this.yearsView = new App.YearsView({ collection : this.years });
