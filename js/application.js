@@ -1,5 +1,7 @@
 // Main Entry point into app.
 
+var apiEndpoint = 'http://book.hyko.org/api';
+
 window.App = {};
 window.App.online = true;
 //
@@ -48,7 +50,21 @@ App.Chapter = Backbone.Model.extend({
   }
 });
 
-App.Comment = Backbone.Model.extend({});
+App.Comment = Backbone.Model.extend({
+  sync: function(method, model, options) {
+    if (method === "create") {
+     $.ajax({
+       type: 'POST',
+       url: apiEndpoint + '/submit_comment/?post_id=' + options.post_id,
+       data: model.toJSON(),
+       complete: function(xhr, status) {
+         console.log(xhr, status)
+       }
+     }) 
+    }
+  }
+});
+
 
 //
 // Collections
@@ -82,7 +98,7 @@ App.Years = Backbone.Collection.extend({
 
 App.Decades = Backbone.Collection.extend({
   model: App.Decade,
-  url: "http://book.hyko.org/api/get_tag_posts/?tag=decade",
+  url: apiEndpoint + "/get_tag_posts/?tag=decade",
   
   initialize: function() {
   },
@@ -185,7 +201,6 @@ App.CommentsView = Backbone.View.extend({
   },
   
   initialize: function() {
-
     this.model.bind('change', this.updateCount, this);
   },
   
@@ -225,8 +240,8 @@ App.CommentsView = Backbone.View.extend({
     attr.name = $(this.el).find('.com_add_form #commentName').val();
     attr.email = $(this.el).find('.com_add_form #commentEmail').val();
     attr.content = $(this.el).find('.com_add_form #commentText').val();
-
-    
+    attr.post_id = this.model.get('id');
+  
     this.collection.create(attr);
     this.clearForm();
     this.closeForm();
@@ -301,7 +316,7 @@ App.SectionView = Backbone.View.extend({
 
     // TODO.
     // Hit the server with the comment.
-    console.log(comment.toJSON());
+    // console.log(comment.toJSON());
   }
   
 });
@@ -500,7 +515,7 @@ App.Router = Backbone.Router.extend({
 
     if (window.App.online) {
     
-      $.getJSON('http://book.hyko.org/api/?json=1&count=1000', function(chapterData, status, xhr){ 
+      $.getJSON(apiEndpoint + '?json=1&count=1000', function(chapterData, status, xhr){ 
         chapters = chapterData.posts;
         callback(chapterData.posts);
       });
@@ -539,8 +554,8 @@ App.Router = Backbone.Router.extend({
     // The Browser needs to be open with web-security disabled, see Readme.md for more information.
     if (window.App.online) {
       
-      $.getJSON('http://book.hyko.org/api/get_tag_posts/?tag=decade', function(decadeData, status, xhr){ 
-        $.getJSON('http://book.hyko.org/api/?json=1&count=1000', function(chapterData, status, xhr){ 
+      $.getJSON(apiEndpoint + 'api/get_tag_posts/?tag=decade', function(decadeData, status, xhr){ 
+        $.getJSON(apiEndpoint + 'api/?json=1&count=1000', function(chapterData, status, xhr){ 
           // Polute this one..
           chapters = chapterData.posts;
           callback(decadeData.posts);

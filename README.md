@@ -26,3 +26,4 @@
 ### Decades
  We add a tag for the decade to filter them out quickly.
  * Endpoint - http://book.hyko.org/api/get_tag_posts/?tag=decade
+ * http://book.hyko.org/api/submit_comment
