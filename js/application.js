@@ -250,7 +250,7 @@ App.CommentsView = Backbone.View.extend({
   
   // Called on 'change'
   updateCount: function() {
-    $(this.el).find('.com_count').html(this.model.get('comment_count'))    
+    $(this.el).find('.dive_count').html(this.model.get('comment_count'));
   },
   
   render : function() {
