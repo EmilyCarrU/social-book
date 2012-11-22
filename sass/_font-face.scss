@@ -1,28 +1,24 @@
 @include font-face("Tisa Web",
   font-files(
-    "../fonts/TisaWeb.woff", woff,
-    "../fonts/TisaWeb.ttf", ttf
+    "../fonts/TisaWeb.woff", woff
   )
 );
 
 @include font-face("Tisa Web Bold",
   font-files(
-    "../fonts/TisaWeb-Bold.woff", woff,
-    "../fonts/TisaWeb-Bold.ttf", ttf
+    "../fonts/TisaWeb-Bold.woff", woff
   ), bold, normal
 );
 
 @include font-face("Tisa Web Italic",
   font-files(
-    "../fonts/TisaWeb-Italic.woff", woff,
-    "../fonts/TisaWeb-Italic.ttf", ttf
+    "../fonts/TisaWeb-Italic.woff", woff
   ), normal italic
 );
 
 @include font-face("Tisa Web Bold Italic",
   font-files(
-    "../fonts/TisaWeb-BoldItalic.woff", woff,
-    "../fonts/TisaWeb-BoldItalic.ttf", ttf
+    "../fonts/TisaWeb-BoldItalic.woff", woff
   ), bold, italic
 );
 
