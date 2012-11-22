@@ -217,6 +217,8 @@ App.CommentsView = Backbone.View.extend({
     // Add the Comment Form
     var template =  _.template($("#template-comment-form").html());
     var html = template();
+    // This should already be in the DOM (hidden)
+    // TODO, move this upto init or render.
     $(this.el).append(html);
   },
   
@@ -441,7 +443,8 @@ App.YearView = Backbone.View.extend({
   yearToggle: 0,
   events: {
     "click": "preventDefault",
-    "click .target__year": "launch"
+    "click .target__year": "launch",
+    "click .com_year_wrap": "launch"
   },
       
   // Moved from Decade
@@ -459,8 +462,6 @@ App.YearView = Backbone.View.extend({
 
   launch: function(e) {
     e.preventDefault();
-    // console.log(this.yearToggle, this.model.id);
-    // document.location = "#year/" + this.model.id;
     if (this.yearToggle === 1) {
       $('.chapterItem').hide();
     } else {
@@ -547,7 +548,7 @@ $(function() {
 });
 
 var showYear = function(id) {
-  
+  console.log("SHOW YEAR", id)
   var callback = function(chapterData) {
     
     var chap = new App.Chapters(chapterData);
