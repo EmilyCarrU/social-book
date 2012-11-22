@@ -438,7 +438,7 @@ App.DecadeIntroView = Backbone.View.extend({
 App.YearView = Backbone.View.extend({
   tagName: 'li',
   className : 'yearItem',
-  
+  yearToggle: 0,
   events: {
     "click": "preventDefault",
     "click .com_year_wrap": "launch"
@@ -458,7 +458,16 @@ App.YearView = Backbone.View.extend({
   },
 
   launch: function(e) {
-    document.location = "#year/" + this.model.id;
+    e.preventDefault();
+    // console.log(this.yearToggle, this.model.id);
+    // document.location = "#year/" + this.model.id;
+    if (this.yearToggle === 1) {
+      $('.chapterItem').hide();
+    } else {
+      showYear(this.model.id);
+    }
+    this.yearToggle ^= 1;
+
   },
   
   preventDefault: function(e) {
@@ -482,54 +491,13 @@ App.Router = Backbone.Router.extend({
   },
   
   // Show all the chapters (sections) for a year
-  showYear: function(id) {
-    
-    var callback = function(chapterData) {
-      
-      var chap = new App.Chapters(chapterData);
-
-      var filteredSet = chap.filter(function(o) {
-        return (o.attributes.id == id) ? true : false;
-      });
-
-      var selectedYear = filteredSet[0].get('year');
-      var selectedDecade = filteredSet[0].get('decade');
-
-      var allChapters = new App.Chapters(chapterData);
-
-      // we only want chapters from this decade, section.
-      var newList = allChapters.filter(function(i){
-        return (i.attributes.year == selectedYear && i.attributes.decade == selectedDecade) ? true : false;
-      });
-
-      allChapters.reset(newList);
-      var chaptersView = new App.ChaptersView({ collection: allChapters });
-      $(".chapterItem.decade_"+ selectedDecade +".year_" + selectedYear ).html(chaptersView.render().el);
-      // $('#chapters').html(chaptersView.render().el);
-    }
-    
-    $("#chapters").show();
-    // $("#decades").hide();
-    // $("#decadeIntro").hide();
-
-    if (window.App.online) {
-    
-      $.getJSON(apiEndpoint + '?json=1&count=1000', function(chapterData, status, xhr){ 
-        chapters = chapterData.posts;
-        callback(chapterData.posts);
-      });
-
-    } else {
-      callback(chapters);
-    }
-  },
-  
+  showYear: showYear,  
   defaultRoute: function(path) {
 
     var callback = function(decades) {
       $("#decades").show();
       $("#decadeIntro").show();
-      $("#chapters").hide();
+      // $("#chapters").hide();
 
       var introData = _.reject(_.map(decades, 
         function(x){ if (_.any(x.tags, function(y){ return y.title == 'intro' })) return x;}), 
@@ -569,8 +537,7 @@ App.Router = Backbone.Router.extend({
 });
 
 
-$(function() {
-  
+$(function() {  
   Backbone.emulateJSON = true;
   
   // Initialize the Backbone router.
@@ -578,3 +545,46 @@ $(function() {
   Backbone.history.start();
 
 });
+
+var showYear = function(id) {
+  
+  var callback = function(chapterData) {
+    
+    var chap = new App.Chapters(chapterData);
+
+    var filteredSet = chap.filter(function(o) {
+      return (o.attributes.id == id) ? true : false;
+    });
+
+    var selectedYear = filteredSet[0].get('year');
+    var selectedDecade = filteredSet[0].get('decade');
+
+    var allChapters = new App.Chapters(chapterData);
+
+    // we only want chapters from this decade, section.
+    var newList = allChapters.filter(function(i){
+      return (i.attributes.year == selectedYear && i.attributes.decade == selectedDecade) ? true : false;
+    });
+
+    allChapters.reset(newList);
+
+    var chaptersView = new App.ChaptersView({ collection: allChapters });
+    $(".chapterItem.decade_"+ selectedDecade +".year_" + selectedYear ).html(chaptersView.render().el);
+    $(".chapterItem.decade_"+ selectedDecade +".year_" + selectedYear).show();
+  }
+  
+  // $("#chapters").show();
+  // $("#decades").hide();
+  // $("#decadeIntro").hide();
+
+  if (window.App.online) {
+  
+    $.getJSON(apiEndpoint + '?json=1&count=1000', function(chapterData, status, xhr){ 
+      chapters = chapterData.posts;
+      callback(chapterData.posts);
+    });
+
+  } else {
+    callback(chapters);
+  }
+}
