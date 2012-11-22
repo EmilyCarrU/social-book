@@ -337,6 +337,7 @@ App.DecadeView = Backbone.View.extend({
     var that = this;    
     this.years = new App.Years(chapters);
     
+    
     var decadeItor = function(o) {
       if (o.attributes.year) {
         return (o.attributes.decade == that.model.get('decade')  && o.attributes.part == 1) ? true : false;
@@ -361,7 +362,8 @@ App.DecadeView = Backbone.View.extend({
   expandItem : function(e){
     e.preventDefault();
     e.stopPropagation();
-    
+
+
     $(this.el).find('.dive').toggleClass('dive__open');
   },
   
@@ -517,14 +519,12 @@ App.Router = Backbone.Router.extend({
       $('#decades').html(App.decadesView.render().el);      
     }
     
-    
-    // Main starting point
-    // The Browser needs to be open with web-security disabled, see Readme.md for more information.
+
     if (window.App.online) {
-      
       $.getJSON(apiEndpoint + '/get_tag_posts/?tag=decade', function(decadeData, status, xhr){ 
         $.getJSON(apiEndpoint + '?json=1&count=1000', function(chapterData, status, xhr){ 
           // Polute this one..
+          allChapters = chapterData.posts;
           chapters = chapterData.posts;
           callback(decadeData.posts);
         });
@@ -548,7 +548,6 @@ $(function() {
 });
 
 var showYear = function(id) {
-  console.log("SHOW YEAR", id)
   var callback = function(chapterData) {
     
     var chap = new App.Chapters(chapterData);
@@ -574,14 +573,5 @@ var showYear = function(id) {
     $(".chapterItem.decade_"+ selectedDecade +".year_" + selectedYear).show();
   }
   
-  if (window.App.online) {
-  
-    $.getJSON(apiEndpoint + '?json=1&count=1000', function(chapterData, status, xhr){ 
-      chapters = chapterData.posts;
-      callback(chapterData.posts);
-    });
-
-  } else {
-    callback(chapters);
-  }
+  callback(chapters);  
 }
