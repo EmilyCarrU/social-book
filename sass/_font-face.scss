@@ -1,0 +1,100 @@
+@include font-face("Tisa Web",
+  font-files(
+    "../fonts/TisaWeb.woff", woff,
+    "../fonts/TisaWeb.ttf", ttf
+  )
+);
+
+@include font-face("Tisa Web Bold",
+  font-files(
+    "../fonts/TisaWeb-Bold.woff", woff,
+    "../fonts/TisaWeb-Bold.ttf", ttf
+  ), bold, normal
+);
+
+@include font-face("Tisa Web Italic",
+  font-files(
+    "../fonts/TisaWeb-Italic.woff", woff,
+    "../fonts/TisaWeb-Italic.ttf", ttf
+  ), normal italic
+);
+
+@include font-face("Tisa Web Bold Italic",
+  font-files(
+    "../fonts/TisaWeb-BoldItalic.woff", woff,
+    "../fonts/TisaWeb-BoldItalic.ttf", ttf
+  ), bold, italic
+);
+
+@include font-face("Dosis Light",
+  font-files(
+    "../fonts/Dosis-Light.woff", woff,
+    "../fonts/Dosis-Light.ttf", ttf
+  )
+);
+
+@include font-face("Dosis Regular",
+  font-files(
+    "../fonts/Dosis-Regular.woff", woff,
+    "../fonts/Dosis-Regular.ttf", ttf
+  )
+);
+
+@include font-face("Dosis SemiBold",
+  font-files(
+    "../fonts/Dosis-SemiBold.woff", woff,
+    "../fonts/Dosis-SemiBold.ttf", ttf
+  ), bold, normal
+);
+
+@include font-face("Dosis Bold",
+  font-files(
+    "../fonts/Dosis-Bold.woff", woff,
+    "../fonts/Dosis-Bold.ttf", ttf
+  ), bold, normal
+);
+
+%font-face-body {
+	font-family: "Tisa Web", Georgia, serif;
+	font-weight: normal;
+}
+
+%font-face-body-bold {
+	font-family: "Tisa Web Bold", Georgia, serif;
+	font-weight: normal;
+}
+
+%font-face-body-italic {
+	font-family: "Tisa Web Italic", Georgia, serif;
+	font-weight: normal;
+}
+
+%font-face-body-bolditalic {
+	font-family: "Tisa Web Bold Italic", Georgia, serif;
+	font-weight: normal;
+}
+
+%font-face-aside-light {
+	font-family: "Dosis Light", "AvenirNextCondensed-UltraLight", Verdana, sans-serif;
+	font-weight: normal;
+}
+
+%font-face-aside {
+	font-family: "Dosis Regular", "AvenirNext-Regular", Verdana, sans-serif;
+	font-weight: normal;
+}
+
+%font-face-aside-bold {
+	font-family: "Dosis SemiBold", "AvenirNext-DemiBold", Verdana, sans-serif;
+	font-weight: normal;
+}
+
+%font-face-subhead {
+	font-family: "Dosis Bold", "AvenirNextCondensed-Bold", Verdana, sans-serif;
+	font-weight: normal;
+}
+
+%font-face-head {
+	font-family: "Dosis Bold", "AvenirNextCondensed-Bold", Verdana, sans-serif;
+	font-weight: normal;
+}
