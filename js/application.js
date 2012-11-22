@@ -342,8 +342,7 @@ App.DecadeView = Backbone.View.extend({
     }
     
     // Filter out the the other decades
-    var yearList = that.years.filter(decadeItor);
-    
+    var yearList = that.years.filter(decadeItor);    
     this.years.reset(yearList);
     
         
@@ -447,7 +446,6 @@ App.YearView = Backbone.View.extend({
       
   // Moved from Decade
   initialize: function(o) {
-    
     var that = this;
     this.chapters = new App.Chapters(chapters);
     
@@ -506,12 +504,13 @@ App.Router = Backbone.Router.extend({
 
       allChapters.reset(newList);
       var chaptersView = new App.ChaptersView({ collection: allChapters });
-      $('#chapters').html(chaptersView.render().el);
+      $(".chapterItem.decade_"+ selectedDecade +".year_" + selectedYear ).html(chaptersView.render().el);
+      // $('#chapters').html(chaptersView.render().el);
     }
     
     $("#chapters").show();
-    $("#decades").hide();
-    $("#decadeIntro").hide();
+    // $("#decades").hide();
+    // $("#decadeIntro").hide();
 
     if (window.App.online) {
     
