@@ -125,23 +125,23 @@ img {
 
 @font-face {
   font-family: "Tisa Web";
-  src: url('fonts/../fonts/TisaWeb.woff') format('woff'), url('fonts/../fonts/TisaWeb.ttf') format('truetype'); }
+  src: url('fonts/../fonts/TisaWeb.woff') format('woff'); }
 
 @font-face {
   font-family: "Tisa Web Bold";
   src: url('fonts/bold');
-  src: url('fonts/bold?#iefix') format('eot'), url('fonts/../fonts/TisaWeb-Bold.woff') format('woff'), url('fonts/../fonts/TisaWeb-Bold.ttf') format('truetype');
+  src: url('fonts/bold?#iefix') format('eot'), url('fonts/../fonts/TisaWeb-Bold.woff') format('woff');
   font-weight: normal; }
 
 @font-face {
   font-family: "Tisa Web Italic";
   src: url('fonts/normalitalic');
-  src: url('fonts/normal italic?#iefix') format('eot'), url('fonts/../fonts/TisaWeb-Italic.woff') format('woff'), url('fonts/../fonts/TisaWeb-Italic.ttf') format('truetype'); }
+  src: url('fonts/normal italic?#iefix') format('eot'), url('fonts/../fonts/TisaWeb-Italic.woff') format('woff'); }
 
 @font-face {
   font-family: "Tisa Web Bold Italic";
   src: url('fonts/bold');
-  src: url('fonts/bold?#iefix') format('eot'), url('fonts/../fonts/TisaWeb-BoldItalic.woff') format('woff'), url('fonts/../fonts/TisaWeb-BoldItalic.ttf') format('truetype');
+  src: url('fonts/bold?#iefix') format('eot'), url('fonts/../fonts/TisaWeb-BoldItalic.woff') format('woff');
   font-weight: italic; }
 
 @font-face {
@@ -164,27 +164,27 @@ img {
   src: url('fonts/bold?#iefix') format('eot'), url('fonts/../fonts/Dosis-Bold.woff') format('woff'), url('fonts/../fonts/Dosis-Bold.ttf') format('truetype');
   font-weight: normal; }
 
-/* line 57, ../sass/_font-face.scss */
+/* line 53, ../sass/_font-face.scss */
 body, .com_comments_comment_cite {
   font-family: "Tisa Web", Georgia, serif;
   font-weight: normal; }
 
-/* line 82, ../sass/_font-face.scss */
+/* line 78, ../sass/_font-face.scss */
 .dive_count, .toc_item_head, .com_comments, button, input, textarea, select {
   font-family: "Dosis Regular", "AvenirNext-Regular", Verdana, sans-serif;
   font-weight: normal; }
 
-/* line 87, ../sass/_font-face.scss */
+/* line 83, ../sass/_font-face.scss */
 label {
   font-family: "Dosis SemiBold", "AvenirNext-DemiBold", Verdana, sans-serif;
   font-weight: normal; }
 
-/* line 92, ../sass/_font-face.scss */
+/* line 88, ../sass/_font-face.scss */
 .toc_item_head_title {
   font-family: "Dosis Bold", "AvenirNextCondensed-Bold", Verdana, sans-serif;
   font-weight: normal; }
 
-/* line 97, ../sass/_font-face.scss */
+/* line 93, ../sass/_font-face.scss */
 .h_subtitle, .toc_item_head_year {
   font-family: "Dosis Bold", "AvenirNextCondensed-Bold", Verdana, sans-serif;
   font-weight: normal; }
