@@ -402,11 +402,11 @@ header {
 	@include transition(all, max-height $default-transition-duration, #{($default-transition-duration * 3)});
 } // What a nice chap!
 
-/* This moves the :before arrow, might not make sense anyway for years accordion
 .chap.dive__open {
-	padding: #{($target-height * 0.5)}em 0;
+	// This moves the :before arrow, might not make sense anyway for years accordion
+	// padding: #{($target-height * 0.5)}em 0;
+	padding-bottom: 5em;
 }
-*/
 
 .chap_head {
 	width: #{($column * 15)};
@@ -500,8 +500,6 @@ header {
 
 	@include box-sizing(border-box);
 }
-
-// .chap ul .chap_sec:first-child p:first-child
 
 .chap_lead, .chap :first-child .chap_sec:first-child p:first-of-type {
 	font-size: #{22.5 / $em}em;
