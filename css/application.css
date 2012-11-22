@@ -609,17 +609,17 @@ header {
 
 /* line 198, ../sass/application.scss */
 .dive__open, .com:focus {
-  max-height: 10000px; }
+  max-height: 1000000px; }
 
 /* Dive Padding Animation, height */
 /* line 207, ../sass/application.scss */
 .yearTOC.dive__open, .yearTOC.dive__open {
-  padding: 1em 0; }
+  padding: 1em 0 10em 0; }
 
 /* line 211, ../sass/application.scss */
 .com.dive__open .com_wrapper, .com:focus .com_wrapper {
-  padding: 1em 0;
-  max-height: 1000px; }
+  padding: 1em 0 10em 0;
+  max-height: 1000000px; }
 
 /* Dive Mini-Triangle */
 /* line 219, ../sass/application.scss */
@@ -1424,22 +1424,24 @@ header {
 .toc, .decade {
   display: block;
   position: relative;
-  overflow: hidden; }
+  overflow: hidden;
+  padding: 0 0 5em 0; }
 
-/* line 306, ../sass/application.scss */
+/* line 307, ../sass/application.scss */
 .toc_item {
+  overflow: hidden;
   display: block;
   cursor: pointer;
   position: relative;
   display: block; }
 
-/* line 314, ../sass/application.scss */
+/* line 315, ../sass/application.scss */
 .toc_item_head {
   height: 6em;
   color: #FFF;
   background-repeat: repeat, no-repeat; }
 
-/* line 323, ../sass/application.scss */
+/* line 324, ../sass/application.scss */
 .toc_item_head_year {
   font-size: 4em;
   display: block;
@@ -1456,7 +1458,7 @@ header {
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
-/* line 340, ../sass/application.scss */
+/* line 341, ../sass/application.scss */
 .toc_item_head_title {
   font-size-adjust: 0.5;
   letter-spacing: 0.05em;
@@ -1468,7 +1470,7 @@ header {
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
-/* line 354, ../sass/application.scss */
+/* line 355, ../sass/application.scss */
 .toc_item_intro {
   width: 66.6%;
   padding: 0 0.5em;
@@ -1478,21 +1480,20 @@ header {
   box-sizing: border-box; }
 
 /* Table of Contents - Year listings */
-/* line 367, ../sass/application.scss */
+/* line 368, ../sass/application.scss */
 .toc_year, .yearItem {
   background: #f9f8f0;
   display: block;
-  padding: 5em 0 0 0;
   position: relative;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.5); }
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  padding-top: 7em; }
 
-/* line 375, ../sass/application.scss */
+/* line 376, ../sass/application.scss */
 .com_year_wrap {
   display: block;
+  position: relative;
   max-width: 55.5%;
   margin: 0 0 0 11.1%;
-  position: relative;
-  bottom: 0;
   padding: 0 0.5em;
   background: white;
   background: rgba(255, 255, 255, 0.75);
