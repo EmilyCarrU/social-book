@@ -441,7 +441,7 @@ App.YearView = Backbone.View.extend({
   yearToggle: 0,
   events: {
     "click": "preventDefault",
-    "click .com_year_wrap": "launch"
+    "click .target__year": "launch"
   },
       
   // Moved from Decade
@@ -573,10 +573,6 @@ var showYear = function(id) {
     $(".chapterItem.decade_"+ selectedDecade +".year_" + selectedYear).show();
   }
   
-  // $("#chapters").show();
-  // $("#decades").hide();
-  // $("#decadeIntro").hide();
-
   if (window.App.online) {
   
     $.getJSON(apiEndpoint + '?json=1&count=1000', function(chapterData, status, xhr){ 
