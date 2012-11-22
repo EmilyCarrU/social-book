@@ -3,11 +3,6 @@ $column: 5.55%;
 $font-size: 18;
 $em: $font-size * 1;
 
-$content-fontstack-text: Georgia, serif;
-$content-fontstack-head: "Din Display Pro Black", "Avenir", Verdana, sans-serif;
-$content-fontstack-subhead: "Din Text Pro Bold", "Avenir", Verdana, sans-serif;
-$comment-fontstack-text: "Din Text Pro Regular", "Avenir", Verdana, sans-serif;
-
 $content-toc-background: #888;
 $content-background: #F9F8F0;
 $content-color: #333;
@@ -39,20 +34,8 @@ $experimental-support-for-svg: false;
 
 @import "compass/css3", "compass/utilities";
 @import "compass/css3/user-interface"; // Shouldn't have to import individuall
-@import "_normalise", "_temp", "_keyframes", "_logic";
+@import "_normalise", "_font-face", "_temp", "_keyframes", "_logic";
 @import "stitch/patterns";
-
-
-//	Type Scale
-//
-//	13.5px
-//	18.0px size
-//	22.5px
-//	27.0px leading
-//	36.0px
-//	40.5px
-//	54.0px
-//	63.0px
 
 // Z-Indexs
 //
@@ -69,10 +52,8 @@ $experimental-support-for-svg: false;
 } // move to normalise?
 
 body {
-	font: {
-		size: #{$font-size/16}em;
-		family: $content-fontstack-text;
-	}
+	font-size: #{$font-size/16}em;
+	@extend %font-face-body;
 	line-height: #{$line / $em};
 	background: $content-toc-background;
 	color: $content-color;
@@ -136,10 +117,7 @@ header {
 }
 
 .h_subtitle {
-	font: {
-		family: $content-fontstack-head;
-		weight: 800;
-	}
+	@extend %font-face-head;
 }
 
 .h_citetitle {
@@ -260,9 +238,9 @@ header {
 .dive_count {
 	font: {
 		size: #{13.5 / $em}em;
-		family: $comment-fontstack-text;
 		size-adjust: 0.5;
 	}
+	@extend %font-face-aside;
 	display: block;
 	float: right;
 	height: 1em;
@@ -334,7 +312,7 @@ header {
 }
 
 .toc_item_head {
-	font-family: $comment-fontstack-text;
+	@extend %font-face-aside;
 	height: 6em;
 	color: #FFF;
 	background: {
@@ -345,8 +323,8 @@ header {
 .toc_item_head_year {
 	font: {
 		size: 4em;
-		family: $content-fontstack-head;
 	}
+	@extend %font-face-head;
 	display: block;
 	float: left;
 	position: relative;
@@ -361,9 +339,9 @@ header {
 
 .toc_item_head_title {
 	font: {
-		family: $content-fontstack-subhead;
 		size-adjust: 0.5;
 	}
+	@extend %font-face-subhead;
 	letter-spacing: 0.05em;
 	position: relative;
 	float: left;
@@ -525,7 +503,7 @@ header {
 
 // .chap ul .chap_sec:first-child p:first-child
 
-.chap_sec:first-child p:first-child, .chap_lead {
+.chap_lead, .chap :first-child .chap_sec:first-child p:first-of-type {
 	font-size: #{22.5 / $em}em;
 	line-height: 1.5;
 }
@@ -657,11 +635,11 @@ header {
 .com_comments {
 	font: {
 		size: #{13.5 / $em}em;
-		family: $comment-fontstack-text;
 		size-adjust: 0.5;
 		weight: normal;
 		style: normal;
 	}
+	@extend %font-face-aside;
 	width: #{($column * 16)};
 	margin: 0 auto;
 	position: relative;
@@ -686,9 +664,11 @@ header {
 }
 
 .com_comments_comment_cite {
-	font-size: #{$em / 13.5}em;
-	font-family: $content-fontstack-text;
-	font-size-adjust: 0;
+	@extend %font-face-body;
+	font: {
+		size: #{$em / 13.5}em;
+		size-adjust: 0;
+	}
 	margin: 0.5em 0 0 0;
 	display: block;
 
@@ -707,7 +687,6 @@ header {
 }
 
 .com_comments_comment_reply_icon {
-	font-weight: bold;
 	width: 1.5em;
 	float: left;
 	display: block;
@@ -775,9 +754,8 @@ form {
 label {
 	font: {
 		size: #{(13.5 / $em)}em;
-		weight: bold;
-		family: $comment-fontstack-text;
 	}
+	@extend %font-face-aside-bold;
 	float: left;
 	clear: left;
 	width: #{($column * 2) * (18/14)}; // should be column * 2
@@ -790,11 +768,11 @@ label {
 }
 
 button {
-	font-family: $comment-fontstack-text;
+	@extend %font-face-aside;
 }
 
 input, textarea, select {
-	font-family: $comment-fontstack-text;
+	@extend %font-face-aside;
 	width: #{($column * 12) * (18/14)}; // should be 12
 
 	@include box-sizing(border-box);
