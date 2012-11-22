@@ -554,8 +554,8 @@ App.Router = Backbone.Router.extend({
     // The Browser needs to be open with web-security disabled, see Readme.md for more information.
     if (window.App.online) {
       
-      $.getJSON(apiEndpoint + 'api/get_tag_posts/?tag=decade', function(decadeData, status, xhr){ 
-        $.getJSON(apiEndpoint + 'api/?json=1&count=1000', function(chapterData, status, xhr){ 
+      $.getJSON(apiEndpoint + '/get_tag_posts/?tag=decade', function(decadeData, status, xhr){ 
+        $.getJSON(apiEndpoint + '?json=1&count=1000', function(chapterData, status, xhr){ 
           // Polute this one..
           chapters = chapterData.posts;
           callback(decadeData.posts);
