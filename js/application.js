@@ -452,8 +452,7 @@ App.YearView = Backbone.View.extend({
     "click .target__year": "launch",
     "click .com_year_wrap": "launch"
   },
-      
-  // Moved from Decade
+  
   initialize: function(o) {
     var that = this;
     this.chapters = new App.Chapters(chapters);
@@ -472,9 +471,10 @@ App.YearView = Backbone.View.extend({
       $('.chapterItem').hide();
     } else {
       showYear(this.model.id);
+      // console.log(this.model.get('decade'))
+      updateSpine(this.model.get('decade') + '-' + this.model.get('year'));
     }
     this.yearToggle ^= 1;
-
   },
   
   preventDefault: function(e) {
@@ -520,15 +520,36 @@ App.Router = Backbone.Router.extend({
       App.decades = new App.Decades(decadeSet);
       App.decadesView = new App.DecadesView({ collection: App.decades });
 
-
-      console.log(App.decades.models.length)
       var len = App.decades.models.length;
       var value = 0;
       for (var i = 0; i < len; i++) {
         var value = value +  100 / len;
         gSpineData[App.decades.models[i].get('decade')] = value;
       }
+      
+      var allChapters = new App.Chapters(chapters);
 
+      // Update the Spine data for the chapters 
+      // Filter our the parts.
+      // This is pretty quick and could be improved.
+      
+      var x = {}
+      for (var i = 0; i < allChapters.models.length; i++) {
+        if (allChapters.models[i].get('decade') !== undefined) {
+
+          if (x[allChapters.models[i].get('decade')] === undefined) {
+            x[allChapters.models[i].get('decade')] = 0;
+          }
+          
+          if (allChapters.models[i].get('part') == 1) {
+            x[allChapters.models[i].get('decade')]++;
+            var y = allChapters.models[i].get('year');
+            var d = allChapters.models[i].get('decade');
+            var baseValue = gSpineData[d];
+            gSpineData[d+'-'+ y] = y + baseValue;
+          }
+        }        
+      }
 
       $('#decades').html(App.decadesView.render().el);      
     }
@@ -538,7 +559,7 @@ App.Router = Backbone.Router.extend({
       $.getJSON(apiEndpoint + '/get_tag_posts/?tag=decade', function(decadeData, status, xhr){ 
         $.getJSON(apiEndpoint + '?json=1&count=1000', function(chapterData, status, xhr){ 
           // Polute this one..
-          allChapters = chapterData.posts;
+          // allChapters = chapterData.posts;
           chapters = chapterData.posts;
         
           callback(decadeData.posts);
@@ -563,38 +584,32 @@ $(function() {
 });
 
 var showYear = function(id) {
-  var callback = function(chapterData) {
     
-    var chap = new App.Chapters(chapterData);
+  var chap = new App.Chapters(chapters);
 
-    var filteredSet = chap.filter(function(o) {
-      return (o.attributes.id == id) ? true : false;
-    });
+  var filteredSet = chap.filter(function(o) {
+    return (o.attributes.id == id) ? true : false;
+  });
 
-    var selectedYear = filteredSet[0].get('year');
-    var selectedDecade = filteredSet[0].get('decade');
+  var selectedYear = filteredSet[0].get('year');
+  var selectedDecade = filteredSet[0].get('decade');
 
-    var allChapters = new App.Chapters(chapterData);
+  var allChapters = new App.Chapters(chapters);
 
-    // we only want chapters from this decade, section.
-    var newList = allChapters.filter(function(i){
-      return (i.attributes.year == selectedYear && i.attributes.decade == selectedDecade) ? true : false;
-    });
+  // we only want chapters from this decade, section.
+  var newList = allChapters.filter(function(i){
+    return (i.attributes.year == selectedYear && i.attributes.decade == selectedDecade) ? true : false;
+  });
 
-    allChapters.reset(newList);
+  allChapters.reset(newList);
 
-    var chaptersView = new App.ChaptersView({ collection: allChapters });
-    $(".chapterItem.decade_"+ selectedDecade +".year_" + selectedYear ).html(chaptersView.render().el);
-    $(".chapterItem.decade_"+ selectedDecade +".year_" + selectedYear).show();
-  }
-  
-  callback(chapters);  
+  var chaptersView = new App.ChaptersView({ collection: allChapters });
+  $(".chapterItem.decade_"+ selectedDecade +".year_" + selectedYear ).html(chaptersView.render().el);
+  $(".chapterItem.decade_"+ selectedDecade +".year_" + selectedYear).show();
+
 }
 
 var gSpineData = {}
 var updateSpine = function(id) {
   $("#key").css("top", gSpineData[id] + "%")
 }
-// $(window).on('scroll',function(e){
-//   console.log("Scrolling", e)
-// })
