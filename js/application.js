@@ -561,7 +561,6 @@ App.Router = Backbone.Router.extend({
           // Polute this one..
           // allChapters = chapterData.posts;
           chapters = chapterData.posts;
-        
           callback(decadeData.posts);
         });
       });
