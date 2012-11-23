@@ -58,7 +58,7 @@ App.Comment = Backbone.Model.extend({
        url: apiEndpoint + '/submit_comment/?post_id=' + options.post_id,
        data: model.toJSON(),
        complete: function(xhr, status) {
-         console.log(xhr, status)
+         // Done... console.log(xhr, status)
        }
      }) 
     }
@@ -229,8 +229,12 @@ App.CommentsView = Backbone.View.extend({
   },
   
   closeForm: function() {
-    $(this.el).find('.modal').toggleClass("modal__open")
-    // $(this.el).find('.com_add_sec').remove();
+    $(this.el).find('.modal').toggleClass("modal__open");
+    var that = this;
+    window.setTimeout(function(){
+      $(that.el).find('.com_add_sec').remove();      
+    },1000);
+
   },
   
   addComment: function(e) {
