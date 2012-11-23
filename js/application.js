@@ -100,7 +100,7 @@ App.Decades = Backbone.Collection.extend({
   model: App.Decade,
   url: apiEndpoint + "/get_tag_posts/?tag=decade",
   
-  initialize: function() {
+  initialize: function(d) {
   },
 
   comparator: function(decade) {
@@ -366,7 +366,7 @@ App.DecadeView = Backbone.View.extend({
   expandItem : function(e){
     e.preventDefault();
     e.stopPropagation();
-
+    updateSpine(this.model.get('decade'));
 
     $(this.el).find('.dive').toggleClass('dive__open');
   },
@@ -516,9 +516,19 @@ App.Router = Backbone.Router.extend({
       var introDecade = new App.Decade(introData);
       var introView = new App.DecadeIntroView({model: introDecade })
       introView.render();
-
+      
       App.decades = new App.Decades(decadeSet);
       App.decadesView = new App.DecadesView({ collection: App.decades });
+
+
+      console.log(App.decades.models.length)
+      var len = App.decades.models.length;
+      var value = 0;
+      for (var i = 0; i < len; i++) {
+        var value = value +  100 / len;
+        gSpineData[App.decades.models[i].get('decade')] = value;
+      }
+
 
       $('#decades').html(App.decadesView.render().el);      
     }
@@ -530,6 +540,7 @@ App.Router = Backbone.Router.extend({
           // Polute this one..
           allChapters = chapterData.posts;
           chapters = chapterData.posts;
+        
           callback(decadeData.posts);
         });
       });
@@ -579,3 +590,11 @@ var showYear = function(id) {
   
   callback(chapters);  
 }
+
+var gSpineData = {}
+var updateSpine = function(id) {
+  $("#key").css("top", gSpineData[id] + "%")
+}
+// $(window).on('scroll',function(e){
+//   console.log("Scrolling", e)
+// })
