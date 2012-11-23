@@ -867,3 +867,22 @@ input[type=submit], button {
 		bottom: 2px solid $comment-color;
 	}
 }
+
+/* Spine & Key */
+/*
+#spine {
+	width: 8px !important;
+}
+*/
+#key {
+	@include transition(top #{$default-transition-duration * 2});
+	// height: 1px !important;
+	// width: 8px !important;
+	// background: white !important;
+	// border: {
+	// 	top: 1em solid $chapter-color-80s !important;
+	// 	bottom: 1em solid $chapter-color-80s !important;
+	// }
+	margin: -20px 0 0 0;
+	@include box-sizing(border-box);
+}
