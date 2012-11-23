@@ -371,7 +371,13 @@ header {
 	display: block;
 	position: relative;
 	border-bottom: 1px solid rgba(255,255,255,0.5); // ?
-	padding-top: 7em;
+	padding-top: 10em;
+}
+
+.toc_year:after, .yearItem:after {
+	content: "";
+	display: block;
+	clear: both;
 }
 
 .com_year_wrap { // change to .toc_year_head

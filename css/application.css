@@ -1486,9 +1486,15 @@ header {
   display: block;
   position: relative;
   border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-  padding-top: 7em; }
+  padding-top: 10em; }
 
 /* line 377, ../sass/application.scss */
+.toc_year:after, .yearItem:after {
+  content: "";
+  display: block;
+  clear: both; }
+
+/* line 383, ../sass/application.scss */
 .com_year_wrap {
   display: block;
   position: relative;
@@ -1502,7 +1508,7 @@ header {
   box-sizing: border-box; }
 
 /* Chapters */
-/* line 394, ../sass/application.scss */
+/* line 400, ../sass/application.scss */
 .chap {
   float: left;
   clear: both;
@@ -1518,16 +1524,16 @@ header {
   -o-transition: all, max-height 0.25s, 0.75s;
   transition: all, max-height 0.25s, 0.75s; }
 
-/* line 406, ../sass/application.scss */
+/* line 412, ../sass/application.scss */
 .chap.dive__open {
   padding-bottom: 5em; }
 
-/* line 412, ../sass/application.scss */
+/* line 418, ../sass/application.scss */
 .chap_head {
   width: 83.25%;
   margin: 0 0 2em 0; }
 
-/* line 417, ../sass/application.scss */
+/* line 423, ../sass/application.scss */
 .chap_head_group {
   width: 72.15%;
   padding: 0.5em 0;
@@ -1540,7 +1546,7 @@ header {
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
-/* line 428, ../sass/application.scss */
+/* line 434, ../sass/application.scss */
 .chap_head_group .h_subtitle {
   text-transform: uppercase;
   border-bottom: 1px solid #000;
@@ -1548,18 +1554,18 @@ header {
   margin: 0 0 0.33333em 0;
   float: left; }
 
-/* line 436, ../sass/application.scss */
+/* line 442, ../sass/application.scss */
 .chap_head_group .h_title {
   line-height: 1.33333;
   padding: 0 7.215%;
   clear: left; }
 
-/* line 442, ../sass/application.scss */
+/* line 448, ../sass/application.scss */
 .chap_head_fig {
   z-index: -1; }
 
 /* Periferal Content */
-/* line 448, ../sass/application.scss */
+/* line 454, ../sass/application.scss */
 .chap_marg {
   font-size: 0.75em;
   line-height: 1.33333;
@@ -1582,18 +1588,18 @@ header {
   -o-transition: left 0.25s ease 0.25s;
   transition: left 0.25s ease 0.25s; }
 
-/* line 468, ../sass/application.scss */
+/* line 474, ../sass/application.scss */
 .chap_marg:hover, .chap_marg:focus {
   cursor: pointer;
   left: 0; }
 
-/* line 473, ../sass/application.scss */
+/* line 479, ../sass/application.scss */
 .chap_marg q {
   text-indent: -0.4em;
   margin-bottom: 0.75em;
   display: block; }
 
-/* line 479, ../sass/application.scss */
+/* line 485, ../sass/application.scss */
 .chap_marg:after {
   content: "\2192";
   display: block;
@@ -1612,7 +1618,7 @@ header {
   box-sizing: border-box; }
 
 /* Main Sections */
-/* line 498, ../sass/application.scss */
+/* line 504, ../sass/application.scss */
 .chap_sec {
   margin: 0 0 0 16.65%;
   width: 66.6%;
@@ -1620,45 +1626,45 @@ header {
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
-/* line 505, ../sass/application.scss */
+/* line 511, ../sass/application.scss */
 .chap_lead, .chap :first-child .chap_sec:first-child p:first-of-type {
   font-size: 1.25em;
   line-height: 1.5; }
 
-/* line 510, ../sass/application.scss */
+/* line 516, ../sass/application.scss */
 .chap_sec p + p, .chap_marg + .chap_sec > p:first-child {
   text-indent: 1.5em; }
 
-/* line 514, ../sass/application.scss */
+/* line 520, ../sass/application.scss */
 .chap_sec blockquote {
   margin: 1em 0;
   border-left: 0.5em solid #333333;
   font-style: italic;
   padding: 0 0 0 1em; }
 
-/* line 521, ../sass/application.scss */
+/* line 527, ../sass/application.scss */
 .chap_sec cite {
   display: block;
   margin: 1em 0 0 0;
   font-style: normal; }
 
 /* Chapter Section Main Images */
-/* line 535, ../sass/application.scss */
+/* line 541, ../sass/application.scss */
 .chap_sec_fig {
   width: 116.55%;
   left: -8.325%;
   margin: 1em auto; }
 
-/* line 545, ../sass/application.scss */
+/* line 551, ../sass/application.scss */
 .chap_sec_fig__left, .chap_sec_fig__right {
   width: 124.875%;
   left: -24.975%; }
 
-/* line 550, ../sass/application.scss */
+/* line 556, ../sass/application.scss */
 .chap_sec_fig__right {
   left: auto; }
 
-/* line 554, ../sass/application.scss */
+/* line 560, ../sass/application.scss */
 .chap_sec_fig_cap {
   font-size: 0.75em;
   color: #333;
@@ -1676,12 +1682,12 @@ header {
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
-/* line 570, ../sass/application.scss */
+/* line 576, ../sass/application.scss */
 .chap_sec_fig__right .chap_sec_fig_cap {
   left: 0;
   right: auto; }
 
-/* line 575, ../sass/application.scss */
+/* line 581, ../sass/application.scss */
 .chap_sec_fig__portrait {
   float: right;
   max-width: 49.95%;
@@ -1690,12 +1696,12 @@ header {
   margin-right: -25.075%;
   margin-left: 1.5em; }
 
-/* line 584, ../sass/application.scss */
+/* line 590, ../sass/application.scss */
 .chap_sec_fig__portrait .chap_sec_fig_cap {
   max-width: 100%; }
 
 /* chap_sec_fig svg */
-/* line 593, ../sass/application.scss */
+/* line 599, ../sass/application.scss */
 .chap_sec_fig_shape {
   position: absolute;
   overflow: hidden;
@@ -1708,22 +1714,22 @@ header {
   box-sizing: border-box; }
 
 /* Marginal Images */
-/* line 607, ../sass/application.scss */
+/* line 613, ../sass/application.scss */
 .chap_marg_fig {
   margin: 0 0 1em 0; }
 
-/* line 611, ../sass/application.scss */
+/* line 617, ../sass/application.scss */
 .chap_marg_fig_cap {
   color: #666;
   padding: 0.5em 0; }
 
 /* Comments */
-/* line 618, ../sass/application.scss */
+/* line 624, ../sass/application.scss */
 .com {
   background: #FFF;
   border-color: #d70e0e; }
 
-/* line 623, ../sass/application.scss */
+/* line 629, ../sass/application.scss */
 .com_wrapper {
   height: auto;
   max-height: 0;
@@ -1739,7 +1745,7 @@ header {
   transition: all, max-height 0.25s, 0.375s;
   -webkit-transform: translate3d(0, 0, 0); }
 
-/* line 634, ../sass/application.scss */
+/* line 640, ../sass/application.scss */
 .com_comments {
   font-size: 0.75em;
   font-size-adjust: 0.5;
@@ -1753,7 +1759,7 @@ header {
   padding: 0;
   -webkit-transform: translate3d(0, 0, 0); }
 
-/* line 652, ../sass/application.scss */
+/* line 658, ../sass/application.scss */
 .com_comments_comment {
   float: left;
   position: relative;
@@ -1761,19 +1767,19 @@ header {
   padding: 0.5em 0;
   display: block; }
 
-/* line 660, ../sass/application.scss */
+/* line 666, ../sass/application.scss */
 .com_comments_comment_wrap {
   border-left: 0.33333em solid #d70e0e;
   padding: 0 1.33333em 1em 1em; }
 
-/* line 665, ../sass/application.scss */
+/* line 671, ../sass/application.scss */
 .com_comments_comment_cite {
   font-size: 1.33333em;
   font-size-adjust: 0;
   margin: 0.5em 0 0 0;
   display: block; }
 
-/* line 677, ../sass/application.scss */
+/* line 683, ../sass/application.scss */
 .com_comments_comment_reply {
   line-height: 1.5;
   display: block;
@@ -1784,7 +1790,7 @@ header {
   margin: -1em 1em 0 -1em;
   float: left; }
 
-/* line 688, ../sass/application.scss */
+/* line 694, ../sass/application.scss */
 .com_comments_comment_reply_icon {
   width: 1.5em;
   float: left;
@@ -1794,53 +1800,53 @@ header {
   background: #d70e0e;
   color: #FFF; }
 
-/* line 698, ../sass/application.scss */
+/* line 704, ../sass/application.scss */
 .com_comments_actions {
   margin: 1em 0;
   clear: left;
   float: left;
   width: 100%; }
 
-/* line 705, ../sass/application.scss */
+/* line 711, ../sass/application.scss */
 .com_comments_actions_items {
   list-style: none;
   float: right; }
 
-/* line 710, ../sass/application.scss */
+/* line 716, ../sass/application.scss */
 .com_comments_actions_item {
   float: left;
   margin: 0 0 0 2em;
   line-height: 2.5; }
 
-/* line 716, ../sass/application.scss */
+/* line 722, ../sass/application.scss */
 .com .button {
   background: #d70e0e;
   float: right; }
 
 @media screen and (min-width: 1024px) {
-  /* line 723, ../sass/application.scss */
+  /* line 729, ../sass/application.scss */
   .com_comments {
     width: 77.7%; }
 
-  /* line 727, ../sass/application.scss */
+  /* line 733, ../sass/application.scss */
   .com_comments_comment {
     width: 22.79736%; }
 
-  /* line 732, ../sass/application.scss */
+  /* line 738, ../sass/application.scss */
   .com_comments_comment:last-of-type {
     width: 48.56828%; }
 
-  /* line 736, ../sass/application.scss */
+  /* line 742, ../sass/application.scss */
   .com_comments_comment:last-of-type .com_comments_comment_wrap {
     font-size: 1.33333em;
     border-left: 0.5em solid #d70e0e;
     padding: 0 0.75em 0.75em 0.75em; }
 
-  /* line 742, ../sass/application.scss */
+  /* line 748, ../sass/application.scss */
   .com_comments_comment:last-of-type .com_comments_comment_cite {
     font-size: 1em; } }
 /* Forms, move to normalise later? */
-/* line 753, ../sass/application.scss */
+/* line 759, ../sass/application.scss */
 label {
   font-size: 0.75em;
   float: left;
@@ -1854,14 +1860,14 @@ label {
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
-/* line 773, ../sass/application.scss */
+/* line 779, ../sass/application.scss */
 input, textarea, select {
   width: 85.62857%;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
-/* line 780, ../sass/application.scss */
+/* line 786, ../sass/application.scss */
 input[type=text], input[type=email], input[type=tel], input[type=url] {
   float: left;
   line-height: 2;
@@ -1876,7 +1882,7 @@ input[type=text], input[type=email], input[type=tel], input[type=url] {
   -ms-border-radius: 0.13889em 0.13889em 0.13889em 0;
   -o-border-radius: 0.13889em 0.13889em 0.13889em 0;
   border-radius: 0.13889em 0.13889em 0.13889em 0; }
-  /* line 791, ../sass/application.scss */
+  /* line 797, ../sass/application.scss */
   input[type=text]:focus, textarea:focus, input[type=email]:focus, input[type=tel]:focus, input[type=url]:focus {
     background: #F1F1F1;
     color: #333333;
@@ -1888,7 +1894,7 @@ input[type=text], input[type=email], input[type=tel], input[type=url] {
     -o-transition: background, color;
     transition: background, color; }
 
-/* line 801, ../sass/application.scss */
+/* line 807, ../sass/application.scss */
 textarea {
   float: left;
   line-height: 1.5;
@@ -1901,25 +1907,25 @@ textarea {
   -o-border-radius: 0.13889em;
   border-radius: 0.13889em; }
 
-/* line 817, ../sass/application.scss */
+/* line 823, ../sass/application.scss */
 .form_action_items {
   float: right;
   margin: 0.5em 0 0 14.27143%; }
 
-/* line 822, ../sass/application.scss */
+/* line 828, ../sass/application.scss */
 .com_add_form .button {
   float: right;
   font-size: 1em;
   background: #d70e0e; }
 
-/* line 828, ../sass/application.scss */
+/* line 834, ../sass/application.scss */
 .cancel {
   background: transparent;
   border: none;
   text-decoration: underline;
   font-size: 0.75em; }
 
-/* line 837, ../sass/application.scss */
+/* line 843, ../sass/application.scss */
 .modal {
   z-index: 20;
   max-height: 0;
@@ -1942,7 +1948,7 @@ textarea {
   -o-animation: growIn 0.5s 1 normal ease none 0;
   animation: growIn 0.5s 1 normal ease none 0; }
 
-/* line 851, ../sass/application.scss */
+/* line 857, ../sass/application.scss */
 .modal__open {
   overflow: hidden;
   background: #faabab;
