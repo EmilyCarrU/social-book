@@ -18,7 +18,8 @@ $chapter-color-00s: #B7C1AC; // #C086E1
 $chapter-color-10s: #7E3531;
 
 $target-height: 5;
-$dive-max-height: 1000000px;
+$dive-content-max-height: 1000000px;
+$dive-comment-max-height: #{$dive-content-max-height/100};
 // Compass Variables
 
 $legacy-support-for-ie6: false;
@@ -199,7 +200,7 @@ header {
 	// New
 	// margin: 0 0 #{($target-height * -1)}em 0;
 	// padding-top: #{($target-height * 0.5)}em;
-	max-height: $dive-max-height;
+	max-height: $dive-content-max-height;
 }
 
 /* Dive Padding Animation, height */
@@ -210,7 +211,7 @@ header {
 
 .com.dive__open .com_wrapper, .com:focus .com_wrapper {
 	padding: 1em 0 10em 0;
-	max-height: $dive-max-height;
+	max-height: $dive-comment-max-height;
 }
 
 
@@ -370,7 +371,13 @@ header {
 	display: block;
 	position: relative;
 	border-bottom: 1px solid rgba(255,255,255,0.5); // ?
-	padding-top: 7em;
+	padding-top: 10em;
+}
+
+.toc_year:after, .yearItem:after {
+	content: "";
+	display: block;
+	clear: both;
 }
 
 .com_year_wrap { // change to .toc_year_head
