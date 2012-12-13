@@ -26,7 +26,7 @@
       <script type="text/javascript">
           $(document).ready(function(e){
 
-            new PinchCard2('.toc_item');
+            new PinchCard2('.target');
 
             // var n = new PinchCard('#decades');
           //            var p = new PinchCard('.chap')
@@ -39,38 +39,34 @@
           //              }
           //            });
 
+            // $('.target__cover').onpress(function(event){
+            //   $(this).find('.dive').first().toggleClass('dive__open');
+            // });
 
           });
 
           // Stop bounce - This will need to be changed to support scrolling down...
-          function stopScrolling(touchEvent) { touchEvent.preventDefault(); }
-          document.addEventListener('touchstart', stopScrolling, false );
-          document.addEventListener('touchmove', stopScrolling, false );
+          // function stopScrolling(touchEvent) { touchEvent.preventDefault(); }
+          // document.addEventListener('touchstart', stopScrolling, false );
+          // document.addEventListener('touchmove', stopScrolling, false );
 
       </script>
-
-      <style>
-        #spine {
-          top:0px;
-          left:0px;
-          position:fixed;
-          width:20px;
-          background-color:#333;
-          height:100%;
-        }
-        #key {
-          position:relative;
-          top:0%;
-          left:0px;
-          width:20px;
-          height:40px;
-          background-color:#0da0f4;
-        }
-      </style>
     </head>
     <body lang="en">
       <div id="decadeIntro"></div>
       <div id="decades"></div>
+      <div id="cover" class="cover">
+        <header class="cover_header">
+          <h1><strong>50 Years</strong> <span class="lowercase">of</span> Life Online</h1>
+        </header>
+        <div class="target target__cover">
+          <div class="cover_outer dive dive__open">
+            <i class="dive_icon"></i>
+            <!-- <div id="decadeIntro"></div> -->
+            <div id="decades" class="cover_wrapper dive_wrapper"></div>
+          </div>
+        </div>
+      </div>
       <div id="spine">
         <div id="key"></div>
       </div>
@@ -87,11 +83,16 @@
        		</section>
        	</header>
 
-        <li class="year_item_icon">
-          <i class="dive_icon"></i>
-        </li>
-
-       	<div class="target target__chap y_<%= decade %>s"></div>
+        <!-- trying to fix markup and css so that year listing works the
+        same way that the comments do. -->
+       	<div class="target target__decade_toc y_<%= decade %>s">
+          <div class="decade_toc dive"><!-- acts like .com -->
+            <i class="dive_icon"></i>
+            <div class="decade_toc_wrapper dive_wrapper">
+              <!-- yearTOC should render here -->
+            </div>
+          </div>
+        </div>
 
 
       </script>
@@ -104,11 +105,10 @@
       </script>
 
       <script type="text/template" id="template-comments">
-        <div class="target target__com">
           <aside class="com dive">
             <span class="ui dive_count"><%= comment_count %></span>
             <i class="dive_icon"></i>
-            <section class="com_wrapper">
+            <section class="com_wrapper dive_wrapper">
               <ul class="com_comments">
 
 	              <!-- Comments (com_comments_comment) should load here -->
@@ -126,7 +126,6 @@
               </ul>
             </section>
           </aside>
-        </div>
       </script>
 
       <script type="text/template" id="template-comment">
@@ -170,10 +169,10 @@
           </header>
         </a>
 
-        <div class="target target__year">
-        	<div class="dive">
+        <div class="target target__chapterItem">
+        	<div class="dive chapterItem_outer">
  	        	<i class="dive_icon"></i>
-            <div class="chapterItem decade_<%= decade %> year_<%= year %>"></div>
+            <div class="chapterItem dive_wrapper decade_<%= decade %> year_<%= year %>"></div><!-- maybe we should change these to data-decade="<%= decade %>" data-year="<%= year %>" -->
         	</div>
         </div>
       </script>
@@ -200,6 +199,5 @@
 			</figure>
 		</header>
       </script>
-
     </body>
 </html>

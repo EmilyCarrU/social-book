@@ -1,4 +1,31 @@
-@include keyframes(diveComBackground) {	
+@include keyframes(diveCoverBackground) {
+    0% {
+    	background: $content-background;
+    }
+    80% {
+		background: transparent;
+	}
+}
+
+@include keyframes(diveDecadeBackground) {
+    0% {
+    	background: green;
+    }
+    80% {
+		background: $content-background;
+	}
+}
+
+@include keyframes(diveYearBackground) {
+    0% {
+    	background: $content-background;
+    }
+    80% {
+		background: transparent;
+	}
+}
+
+@include keyframes(diveCommentBackground) {
     0% {
     	background: #FFF;
     }
@@ -7,24 +34,7 @@
 	}
 }
 
-@for $i from 5 through 11 {
-	@-webkit-keyframes dive#{(($i * 10) + 1900)}sBackground {	
-    	0% {
-    		background: #000;
-    	}
-    	80% {
-			background: year(#{(($i * 10) + 1900)});
-		}
-	}
-	@keyframes dive#{(($i * 10) + 1900)}sBackground {	
-    	0% {
-    		background: #000;
-    	}
-    	80% {
-			background: year(#{(($i * 10) + 1900)});
-		}
-	}
-}
+
 
 @include keyframes(fadeIn) {
 	0% {
@@ -45,5 +55,5 @@
 			top: 1em;
 			bottom: 1em;
 		}
-	}	
+	}
 }

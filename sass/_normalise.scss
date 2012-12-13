@@ -10,6 +10,7 @@ html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, a, blockquote,
 	padding: 0;
 	border: 0;
 	// box-sizing: border-box; // research if this is better to put here or under *
+	// would need to switch some dive icon spacing or switch those back to content box
 	// commented out for now for golden gridlet
 }
 
@@ -120,7 +121,7 @@ figure img, figure object, figure embed, figure video {
 img {
 	border: 0;
 	-ms-interpolation-mode: bicubic;
-	
+
 }
 
 .wf-loading {

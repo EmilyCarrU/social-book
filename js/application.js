@@ -266,7 +266,7 @@ App.CommentsView = Backbone.View.extend({
   toggleComments : function(e) {
     e.preventDefault();
     e.stopPropagation();
-    $(this.el).find('.dive').toggleClass('dive__open');    
+    $(this.el).find('.dive').first().toggleClass('dive__open');
   },
   
   // Called on 'change'
@@ -294,9 +294,7 @@ App.CommentsView = Backbone.View.extend({
 });
 
 App.SectionView = Backbone.View.extend({
-  
-  tagName: 'ul',
-    
+
   initialize: function() {
     this.model.comments.bind('add', this.addOne, this);
   },
@@ -309,15 +307,26 @@ App.SectionView = Backbone.View.extend({
     
     // Comments template
     if (this.model.get('comment_status') === 'open') {
-      var commentsView = new App.CommentsView({collection: this.model.comments, model: this.model });
+      var commentsView = new App.CommentsView({
+        collection: this.model.comments,
+        model: this.model,
+        tagName: 'div',
+        className: 'target target__com'
+      });
       $(this.el).append(commentsView.render().el);
+      // Need to fix something here,
+      // Instead of appending the comments to the section,
+      // I want to put it after, but that doesn't seem to
+      // work inside this view
     }
     return this;
   },
 
   addOne: function(comment) {
-    
-    var commentView = new App.CommentView({ model : comment });
+
+    var commentView = new App.CommentView({
+      model : comment
+    });
     $(this.el).find('.com_comments').append(commentView.render().el);
 
     // TODO.
@@ -333,7 +342,8 @@ App.DecadeView = Backbone.View.extend({
 
   events: {
     "click .toc_item" : "expandItem",
-    "tap .toc_item" : "expandItem",
+    // "click .target__decade_toc" : "expandItem",
+    "tap .target__decade_toc" : "expandItem",
   },
     
   initialize: function() {
@@ -351,16 +361,16 @@ App.DecadeView = Backbone.View.extend({
     // Filter out the the other decades
     var yearList = that.years.filter(decadeItor);    
     this.years.reset(yearList);
-    
-        
-    $(this.el).bind("openPanel",function(){
-      $(that.el).find('.yearTOC').addClass("dive__open");
-    },this);
-    
-    $(this.el).bind("closePanel",function(){
-      $(that.el).find('.yearTOC').removeClass("dive__open");
-    },this);
-    
+
+
+    // $(this.el).bind("openPanel",function(){
+    //   $(that.el).find('.yearTOC').addClass("dive__open");
+    // },this);
+
+    // $(this.el).bind("closePanel",function(){
+    //   $(that.el).find('.yearTOC').removeClass("dive__open");
+    // },this);
+
   },
   
   expandItem : function(e){
@@ -368,7 +378,9 @@ App.DecadeView = Backbone.View.extend({
     e.stopPropagation();
     updateSpine(this.model.get('decade'));
 
-    $(this.el).find('.dive').toggleClass('dive__open');
+    $(this.el).find('.dive').first().toggleClass('dive__open');
+    // Would using children or something be faster?
+    // Ask Rob about how efficient this is.
   },
   
   render: function() {
@@ -382,7 +394,7 @@ App.DecadeView = Backbone.View.extend({
     this.yearsView = new App.YearsView({ collection : this.years });
     // $(this.el).find('.years').html(this.yearsView.render().el);
 
-    $(this.el).find('.target__chap').html(this.yearsView.render().el);
+    $(this.el).find('.decade_toc_wrapper').html(this.yearsView.render().el);
     return this;
   }
   
@@ -404,12 +416,16 @@ App.DecadesView = Backbone.View.extend({
 
 App.ChaptersView = Backbone.View.extend({
   tagName : 'article',
-  className : 'chap dive dive__open',
+  className : 'chap',
   render : function() {
     this.collection.each(function(section) {
-      
-      var sectionView = new App.SectionView({ model : section });
-      $(this.el).prepend(sectionView.render().el);
+
+      var sectionView = new App.SectionView({
+        model : section,
+        tagName : 'section' // element for one .chap_sec and one .com block
+      });
+
+      $(this.el).append(sectionView.render().el).append("<em>Comment View should actually load here, after section view rather than inside it.</em>");
     }, this);
 
     return this;
@@ -417,9 +433,9 @@ App.ChaptersView = Backbone.View.extend({
 });
 
 App.YearsView = Backbone.View.extend({
-  tagName: 'ul',
-  className : 'yearTOC dive',
-  
+  tagName: 'ol',
+  className : 'yearTOC',
+
   render : function() {
     this.collection.each(function(year) {
       var yearView = new App.YearView({ model : year });
@@ -449,8 +465,9 @@ App.YearView = Backbone.View.extend({
   yearToggle: 0,
   events: {
     "click": "preventDefault",
-    "click .target__year": "launch",
     "click .com_year_wrap": "launch"
+    "tap .target__chapterItem": "launch",
+    // "click .target__chapterItem": "launch"
   },
   
   initialize: function(o) {
@@ -468,10 +485,10 @@ App.YearView = Backbone.View.extend({
   launch: function(e) {
     e.preventDefault();
     if (this.yearToggle === 1) {
-      $('.chapterItem').hide();
+      $(this.el).find('.dive').first().toggleClass('dive__open');
     } else {
+      $(this.el).find('.dive').first().toggleClass('dive__open');
       showYear(this.model.id);
-      // console.log(this.model.get('decade'))
       updateSpine(this.model.get('decade') + '-' + this.model.get('year'));
     }
     this.yearToggle ^= 1;
