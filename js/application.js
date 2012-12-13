@@ -341,8 +341,7 @@ App.DecadeView = Backbone.View.extend({
   className: 'toc_item',
 
   events: {
-    "click .toc_item" : "expandItem",
-    // "click .target__decade_toc" : "expandItem",
+    "click .target__decade_toc" : "expandItem",
     "tap .target__decade_toc" : "expandItem",
   },
     
@@ -465,9 +464,8 @@ App.YearView = Backbone.View.extend({
   yearToggle: 0,
   events: {
     "click": "preventDefault",
-    "click .com_year_wrap": "launch"
     "tap .target__chapterItem": "launch",
-    // "click .target__chapterItem": "launch"
+    "click .target__chapterItem": "launch"
   },
   
   initialize: function(o) {
