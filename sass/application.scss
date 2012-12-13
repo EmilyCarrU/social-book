@@ -161,8 +161,7 @@ h1, h2, h3, h4, h5, h6 {
 	background: $content-background;
 	z-index: 10;
 
-	// @include box-shadow(inset 1px 1px 0 rgba(#FFF, 0.5));
-
+	@include box-shadow(inset 1px 1px 0 rgba(#FFF, 0.33));
 	// @include animation(diveCommentBackground 5s 1 normal ease-in-out none 0);
 	@include transition(background);
 	@include enable-hardware-acceleration; // Will overwrite next line if last
@@ -208,7 +207,7 @@ h1, h2, h3, h4, h5, h6 {
 	max-height: 0;
 	background: $content-background;
 
-	// @include box-shadow(0 1px 0 rgba(#FFF, 0.5));
+	@include box-shadow(0 1px 0 rgba(#FFF, 0.33));
 	@include box-sizing(border-box);
 	@include transition(all #{$default-transition-duration * 2}, max-height #{($default-transition-duration * 3)});
 	@include enable-hardware-acceleration;
