@@ -24,28 +24,28 @@
 
 @include font-face("Dosis Light",
   font-files(
-    "../fonts/Dosis-Light.woff", woff,
+    // "../fonts/Dosis-Light.woff", woff, // rendering issues
     "../fonts/Dosis-Light.ttf", ttf
-  )
+  ), normal, normal
 );
 
 @include font-face("Dosis Regular",
   font-files(
-    "../fonts/Dosis-Regular.woff", woff,
+    // "../fonts/Dosis-Regular.woff", woff, // rendering issues
     "../fonts/Dosis-Regular.ttf", ttf
-  )
+  ), normal, normal
 );
 
 @include font-face("Dosis SemiBold",
   font-files(
-    "../fonts/Dosis-SemiBold.woff", woff,
+    // "../fonts/Dosis-SemiBold.woff", woff, // rendering issues
     "../fonts/Dosis-SemiBold.ttf", ttf
   ), bold, normal
 );
 
 @include font-face("Dosis Bold",
   font-files(
-    "../fonts/Dosis-Bold.woff", woff,
+    // "../fonts/Dosis-Bold.woff", woff, // rendering issues
     "../fonts/Dosis-Bold.ttf", ttf
   ), bold, normal
 );
