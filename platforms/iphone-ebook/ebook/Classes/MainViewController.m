@@ -108,7 +108,7 @@
     return [super registerPlugin:plugin withClassName:className];
 }
 */
-
+/*
 #pragma UIWebDelegate implementation
 
 - (void) webViewDidFinishLoad:(UIWebView*) theWebView 
@@ -127,8 +127,8 @@
 
 	return [super webViewDidFinishLoad:theWebView];
 }
+*/
 
-/* Comment out the block below to over-ride */
 /*
 
 - (void) webViewDidStartLoad:(UIWebView*)theWebView 
