@@ -51,9 +51,9 @@
           //              }
           //            });
 
-            // $('.target__cover').onpress(function(event){
-            //   $(this).find('.dive').first().toggleClass('dive__open');
-            // });
+            $('.target__cover').onpress(function(event){
+               $(this).find('.dive').first().toggleClass('dive__open');
+            });
 
           });
 
@@ -65,14 +65,14 @@
       </script>
     </head>
     <body lang="en">
-      <!--<div id="decadeIntro"></div>
-      <div id="decades"></div>-->
+      <!-- <div id="decadeIntro"></div> -->
+      <!-- <div id="decades"></div> -->
       <div id="cover" class="cover">
         <header class="cover_header">
           <h1><strong>50 Years</strong> <span class="lowercase">of</span> Life Online</h1>
         </header>
         <div class="target target__cover">
-          <div class="cover_outer dive dive__open">
+          <div class="cover_outer dive">
             <i class="dive_icon"></i>
             <div id="decades" class="cover_wrapper dive_wrapper"></div>
           </div>

@@ -5,7 +5,7 @@
 }
 
 .cover {
-    background: #D70E0E;
+    background: $cover-color;
     height: auto;
 }
 
@@ -13,7 +13,6 @@
     @extend %font-face-head;
     text-align: center;
     text-transform: capitalize;
-//    height: 768px;
     color: #FFF;
     padding: 3em 0 0 0;
 }
@@ -28,7 +27,7 @@
 }
 
 .cover_outer {
-    outline: 2px dashed orange;
+
 }
 
 .cover_wrapper {

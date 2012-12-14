@@ -3,6 +3,7 @@ $column: 5.55%;
 $font-size: 18;
 $em: $font-size * 1;
 
+$cover-color: #D70E0E;
 $content-toc-background: #888;
 $content-background: #F9F8F0;
 $content-color: #333;
@@ -21,13 +22,13 @@ $target-height: 4;
 $dive-content-max-height: 1000000px;
 $dive-comment-max-height: #{$dive-content-max-height/100};
 
-// Compass Variables
+// Compass Variables (these don't seem to work for keyframes)
 
 $legacy-support-for-ie6: false;
 $legacy-support-for-ie7: false;
 $legacy-support-for-ie8: false;
 $experimental-support-for-microsoft: false;
-$experimental-support-for-mozilla: true;
+$experimental-support-for-mozilla: false;
 $experimental-support-for-opera: false;
 $experimental-support-for-svg: false;
 
@@ -114,9 +115,10 @@ a[href$=".pdf"][data-size]:after { content: " (PDF, " attr(data-size) ")"; }
 header {
 	text-rendering: optimizeLegibility;
 	font-style: normal;
+	font-weight: normal;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6, strong {
 	font-weight: normal;
 }
 
@@ -142,8 +144,8 @@ h1, h2, h3, h4, h5, h6 {
 	z-index: 1;
 
 	@extend .ui;
-	@include background-rgba(#000, 0.1);
-	@include enable-hardware-acceleration; // probably remove
+	// @include background-rgba(#000, 0.1);
+	// @include enable-hardware-acceleration; // probably remove
 }
 
 /* Dive Main Arrow */
@@ -163,8 +165,7 @@ h1, h2, h3, h4, h5, h6 {
 
 	@include box-shadow(inset 1px 1px 0 rgba(#FFF, 0.33));
 	// @include animation(diveCommentBackground 5s 1 normal ease-in-out none 0);
-	@include transition(background);
-	@include enable-hardware-acceleration; // Will overwrite next line if last
+	// @include enable-hardware-acceleration; // Will overwrite next line if last
 	@include transform(rotate(45deg));
 }
 
@@ -175,12 +176,27 @@ h1, h2, h3, h4, h5, h6 {
 	// @include animation(none);
 }
 
+
 .cover_outer > .dive_icon {
-	// @include animation(diveCoverBackground 5s 1 normal ease-in-out none 0);
+	background: $cover-color;
+	@include animation(diveCoverBackground #{$default-transition-duration * 3} 1 normal ease-in none 0);
 }
 
-.decade_toc > .dive_icon {
-	// @include animation(diveDecadeBackground 5s 1 normal ease-in-out none 0);
+.cover_outer.dive.dive__open > .dive_icon {
+	background: $cover-color;
+	@include animation(none); // necessary for animation to work properly
+}
+
+
+.dive > .dive_icon {
+	// @include animation(diveDecadeBackground #{$default-transition-duration * 3} 1 normal ease-in none 0);
+	@include transition(background #{$default-transition-duration * 2} ease-out 0);
+} // This works for decades, won't work for chap, year or com
+  // They need to go through a middle stage
+  // (red, yellow, red / colour, content, colour / content, white, content)
+
+.dive.dive__open > .dive_icon {
+	@include transition(none);
 }
 
 .chapterItem_outer > .dive_icon {
@@ -195,73 +211,39 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Dives */
-// pointer-events: none; // not for use on dive
 
 .dive {
-	// margin: -1px 0; // fixes baseline
 	border: {
 		top: 1px solid $comment-color;
 		bottom: 1px solid $comment-color;
 	}
 	width: 100%;
-	max-height: 0;
+	height: auto;
+	max-height: auto;
 	background: $content-background;
 
 	@include box-shadow(0 1px 0 rgba(#FFF, 0.33));
 	@include box-sizing(border-box);
-	@include transition(all #{$default-transition-duration * 2}, max-height #{($default-transition-duration * 3)});
-	@include enable-hardware-acceleration;
 }
 
 .dive__open, .dive:focus {
-	// New
-	// margin: 0 0 #{($target-height * -1)}em 0;
-	// padding-top: #{($target-height * 0.5)}em;
-	max-height: $dive-content-max-height;
 	@include box-shadow(none);
 }
 
-/* Dive Padding Animation, height */
-
-/*
-.dive__open > .cover_wrapper, .dive:focus .cover_wrapper {
-	padding: 1em 0 10em 0;
-	max-height: $dive-content-max-height;
-}
-
-.dive__open > .decade_toc_wrapper, .dive:focus .decade_toc_wrapper {
-	padding: 1em 0 10em 0;
-	max-height: $dive-content-max-height;
-}
-
-.dive__open > .chapterItem, .dive:focus .chapterItem {
-	padding: 1em 0 10em 0;
-	max-height: $dive-comment-max-height;
-}
-
-.dive__open > .com_wrapper, .dive:focus .com_wrapper {
-	padding: 1em 0 10em 0;
-	max-height: $dive-comment-max-height;
-}
-*/
-
 .dive_wrapper {
 	display: block;
-	height: auto;
-    max-height: 0;
+	max-height: 0;
     width: 100%;
     overflow: hidden;
-
-    @include box-sizing(border-box);
-    @include transition(all, max-height $default-transition-duration, #{($default-transition-duration * 1.5)});
-    @include enable-hardware-acceleration;
+	@include animation(diveClose #{$default-transition-duration * 3} 1 normal ease-out none 0); // This is the main accordion transition
+	@include enable-hardware-acceleration;
 }
 
 .dive__open > .dive_wrapper, .dive:focus > .dive_wrapper {
-	padding: 1em 0 10em 0;
 	max-height: $dive-comment-max-height;
+	@include animation(diveOpen #{$default-transition-duration * 3} 1 normal ease-in none 0);
+	@include enable-hardware-acceleration;
 }
-
 
 /* Dive Mini-Triangle */
 
@@ -281,7 +263,6 @@ h1, h2, h3, h4, h5, h6 {
 .dive__open:after, .dive:focus:after {
 	margin: 1px 0 0 0;
 	@include transform(rotate(180deg));
-	@include enable-hardware-acceleration;
 }
 
 .dive_count {
@@ -311,32 +292,28 @@ h1, h2, h3, h4, h5, h6 {
 	} // For .dive__open, send to keyframe animation from dive
 	  // or delay?
 
-	.y_#{(($i * 10) + 1900)}s > .dive > .dive_icon {
+	.y_#{(($i * 10) + 1900)}s > .dive > .dive_icon,
+	.y_#{(($i * 10) + 1910)}s > .dive.dive__open > .dive_icon {
 		background-color: yearColor(#{(($i * 10) + 1910)});
-	}
-
-	.y_#{(($i * 10) + 1900)}s > .dive__open > .dive_icon {
-		background-color: yearColor(#{(($i * 10) + 1900)});
-		// @include animation(none);
 	}
 
 	/* Year Colours - huge CSS bloat right now */
 
-//	@for $j from 1 through 10 {
+	@for $j from 1 through 10 {
 
-//		.y_#{(1900) + ($i * 10)}s .yearItem:nth-child(#{$j}) {
-//			background: lighten(yearColor("#{(1900) + ($i * 10)}"), $j*3);
-//		}
+		.y_#{(1900) + ($i * 10)}s .yearItem:nth-child(#{$j}) {
+			background: lighten(yearColor("#{(1900) + ($i * 10)}"), $j*3);
+		}
 
-//		.y_#{(1900) + ($i * 10)}s .yearItem:nth-child(#{$j}) .chapterItem_outer.dive > .dive_icon {
-//			background: lighten(yearColor("#{(1900) + ($i * 10)}"), ($j + 1)*3);
-//		}
+		.y_#{(1900) + ($i * 10)}s .yearItem:nth-child(#{$j}) .chapterItem_outer.dive > .dive_icon {
+			background: lighten(yearColor("#{(1900) + ($i * 10)}"), ($j + 1)*3);
+		}
 
-//		.y_#{(1900) + ($i * 10)}s .yearItem:nth-child(#{$j}) .chapterItem_outer.dive__open > .dive_icon {
-//			background: lighten(yearColor("#{(1900) + ($i * 10)}"), $j*3);
-//		}
+		.y_#{(1900) + ($i * 10)}s .yearItem:nth-child(#{$j}) .chapterItem_outer.dive__open > .dive_icon {
+			background: lighten(yearColor("#{(1900) + ($i * 10)}"), $j*3);
+		}
 
-//	}
+	}
 }
 
 /* Table of Contents Intro */
@@ -709,7 +686,7 @@ h1, h2, h3, h4, h5, h6 {
 	display: block;
 	padding: 0;
 
-	@include enable-hardware-acceleration;
+	// @include enable-hardware-acceleration;
 }
 
 .com_comments_comment {
