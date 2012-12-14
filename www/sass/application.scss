@@ -252,18 +252,15 @@ h1, h2, h3, h4, h5, h6, strong {
     width: 100%;
     overflow: hidden;
 	// This is the main accordion transition
-	// @include transition(max-height #{$default-transition-duration * 3} linear);
-	// @include box-sizing(border-box);
-	@include animation(diveClose #{$default-transition-duration * 3} 1 normal ease none 0);
+	@include animation(diveOpen #{$default-transition-duration * 3} 1 reverse ease-in-out none 0);
 	@include enable-hardware-acceleration;
 }
 
 .dive__open > .dive_wrapper, .dive:focus > .dive_wrapper {
-	// padding: 1em 0 10em 0;
-	// max-height: $dive-comment-max-height;
-	// @include animation(diveOpen #{$default-transition-duration * 3} 1 normal ease-in-out none 0);
+	max-height: $dive-comment-max-height;
+	@include animation(diveOpen #{$default-transition-duration * 3} 1 normal ease-in-out none 0);
 
-	@include animation(diveOpen #{$default-transition-duration * 3} 1 alternate ease-in-out forwards 0);
+	// @include animation(diveOpen #{$default-transition-duration * 3} 1 alternate ease-in-out forwards 0);
 	// name, duration (in s or ms), iterations, direction (normal or alternate),
 	// timing-function(ease, ease-in-out, linear, etc.),
 	// fill-mode (forwards, backwards, both, none), delay (in s or ms)
