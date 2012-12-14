@@ -7,6 +7,16 @@
 	}
 }
 
+// This is necessary for iOS4, don't just reverse diveOpen animation.
+@include keyframes(diveClose) {
+	0% {
+		max-height: $dive-comment-max-height;
+	}
+	100% {
+		max-height: 0;
+	}
+}
+
 // Basis for "Bounce on Click" animation we're testing
 @include keyframes(diveBounce) {
 	0% {
@@ -23,13 +33,15 @@
 	}
 }
 
+// These are all the same with different colours,
+// Change to a functions?
 @include keyframes(diveCoverBackground) {
-    0% {
-    	background: $content-background;
-    }
-    80% {
-		background: transparent;
+	0%, 100% {
+		background: $cover-color;
 	}
+    1%, 80% {
+    	background: $chapter-color-70s;
+    }
 }
 
 @include keyframes(diveDecadeBackground) {

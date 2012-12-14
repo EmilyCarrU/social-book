@@ -3,6 +3,7 @@ $column: 5.55%;
 $font-size: 18;
 $em: $font-size * 1;
 
+$cover-color: #D70E0E;
 $content-toc-background: #888;
 $content-background: #F9F8F0;
 $content-color: #333;
@@ -21,7 +22,7 @@ $target-height: 4;
 $dive-content-max-height: 1000000px;
 $dive-comment-max-height: #{$dive-content-max-height/100};
 
-// Compass Variables
+// Compass Variables (these don't seem to work for keyframes)
 
 $legacy-support-for-ie6: false;
 $legacy-support-for-ie7: false;
@@ -175,12 +176,27 @@ h1, h2, h3, h4, h5, h6, strong {
 	// @include animation(none);
 }
 
+
 .cover_outer > .dive_icon {
-	// @include animation(diveCoverBackground 5s 1 normal ease-in-out none 0);
+	background: $cover-color;
+	@include animation(diveCoverBackground #{$default-transition-duration * 3} 1 normal ease-in none 0);
 }
 
-.decade_toc > .dive_icon {
-	// @include animation(diveDecadeBackground 5s 1 normal ease-in-out none 0);
+.cover_outer.dive.dive__open > .dive_icon {
+	background: $cover-color;
+	@include animation(none); // necessary for animation to work properly
+}
+
+
+.dive > .dive_icon {
+	// @include animation(diveDecadeBackground #{$default-transition-duration * 3} 1 normal ease-in none 0);
+	@include transition(background #{$default-transition-duration * 2} ease-out 0);
+} // This works for decades, won't work for chap, year or com
+  // They need to go through a middle stage
+  // (red, yellow, red / colour, content, colour / content, white, content)
+
+.dive.dive__open > .dive_icon {
+	@include transition(none);
 }
 
 .chapterItem_outer > .dive_icon {
@@ -195,10 +211,8 @@ h1, h2, h3, h4, h5, h6, strong {
 }
 
 /* Dives */
-// pointer-events: none; // not for use on dive
 
 .dive {
-	// margin: -1px 0; // fixes baseline
 	border: {
 		top: 1px solid $comment-color;
 		bottom: 1px solid $comment-color;
@@ -210,64 +224,26 @@ h1, h2, h3, h4, h5, h6, strong {
 
 	@include box-shadow(0 1px 0 rgba(#FFF, 0.33));
 	@include box-sizing(border-box);
-	// @include transition(max-height #{($default-transition-duration * 3)});
-	// @include enable-hardware-acceleration;
 }
 
 .dive__open, .dive:focus {
-	// margin: 0 0 #{($target-height * -1)}em 0;
-	// padding-top: #{($target-height * 0.5)}em;
-	// max-height: $dive-content-max-height;
 	@include box-shadow(none);
-	// @include enable-hardware-acceleration;
 }
-
-/* Dive Padding Animation, height */
-
-/*
-.dive__open > .cover_wrapper, .dive:focus .cover_wrapper {
-	padding: 1em 0 10em 0;
-	max-height: $dive-content-max-height;
-}
-
-.dive__open > .decade_toc_wrapper, .dive:focus .decade_toc_wrapper {
-	padding: 1em 0 10em 0;
-	max-height: $dive-content-max-height;
-}
-
-.dive__open > .chapterItem, .dive:focus .chapterItem {
-	padding: 1em 0 10em 0;
-	max-height: $dive-comment-max-height;
-}
-
-.dive__open > .com_wrapper, .dive:focus .com_wrapper {
-	padding: 1em 0 10em 0;
-	max-height: $dive-comment-max-height;
-}
-*/
 
 .dive_wrapper {
 	display: block;
 	max-height: 0;
     width: 100%;
     overflow: hidden;
-	// This is the main accordion transition
-	@include animation(diveOpen #{$default-transition-duration * 3} 1 reverse ease-in-out none 0);
+	@include animation(diveClose #{$default-transition-duration * 3} 1 normal ease-out none 0); // This is the main accordion transition
 	@include enable-hardware-acceleration;
 }
 
 .dive__open > .dive_wrapper, .dive:focus > .dive_wrapper {
 	max-height: $dive-comment-max-height;
-	@include animation(diveOpen #{$default-transition-duration * 3} 1 normal ease-in-out none 0);
-
-	// @include animation(diveOpen #{$default-transition-duration * 3} 1 alternate ease-in-out forwards 0);
-	// name, duration (in s or ms), iterations, direction (normal or alternate),
-	// timing-function(ease, ease-in-out, linear, etc.),
-	// fill-mode (forwards, backwards, both, none), delay (in s or ms)
-
+	@include animation(diveOpen #{$default-transition-duration * 3} 1 normal ease-in none 0);
 	@include enable-hardware-acceleration;
 }
-
 
 /* Dive Mini-Triangle */
 
@@ -287,7 +263,6 @@ h1, h2, h3, h4, h5, h6, strong {
 .dive__open:after, .dive:focus:after {
 	margin: 1px 0 0 0;
 	@include transform(rotate(180deg));
-	// @include enable-hardware-acceleration;
 }
 
 .dive_count {
