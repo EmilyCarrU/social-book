@@ -118,9 +118,6 @@ img {
   border: 0;
   -ms-interpolation-mode: bicubic; }
 
-/* line 127, ../sass/_normalise.scss */
-.wf-loading {
-  visibility: hidden; }
 
 @font-face {
   font-family: "Tisa Web";
