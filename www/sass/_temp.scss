@@ -6,7 +6,7 @@
 
 .cover {
     background: $cover-color;
-    height: auto;
+    @extend %ios_scroll_contain;
 }
 
 .cover_header {

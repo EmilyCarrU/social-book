@@ -107,7 +107,7 @@ q:after {
 	content: "\201D"; // &#8221;
 }
 
-/* Fluid Media */
+// Fluid Media
 
 figure {
 	position: relative;
@@ -124,4 +124,15 @@ img {
 
 }
 
+// Webkit Normalise
+
+* {
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-touch-callout: none;
+}
+
+%ios_scroll_contain {
+	height: 100%;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
 }

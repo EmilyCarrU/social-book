@@ -51,17 +51,19 @@ $default-transition-duration: 0.25s;
 // 	   .chap_marg: 11
 // 		   .modal: 20 // change to pointer-events: none; ?
 
-* {
-	-webkit-tap-highlight-color: rgba(0,0,0,0);
-    -webkit-touch-callout: none;
-} // move to normalise?
 
 body {
+	@extend html;
 	font-size: #{$font-size/16}em;
 	@extend %font-face-body;
 	line-height: #{$line / $em};
 	background: $content-toc-background;
 	color: $content-color;
+	background: $cover-color;
+}
+
+.main_wrapper {
+	@extend %ios_scroll_contain;
 }
 
 a {
@@ -175,7 +177,6 @@ h1, h2, h3, h4, h5, h6, strong {
 	@include box-shadow(none);
 	// @include animation(none);
 }
-
 
 .cover_outer > .dive_icon {
 	background: $cover-color;
