@@ -1,52 +1,52 @@
 @include font-face("Tisa Web",
   font-files(
-    "../fonts/TisaWeb.woff", woff
+    "TisaWeb.woff", woff
   )
 );
 
 @include font-face("Tisa Web Bold",
   font-files(
-    "../fonts/TisaWeb-Bold.woff", woff
+    "TisaWeb-Bold.woff", woff
   ), bold, normal
 );
 
 @include font-face("Tisa Web Italic",
   font-files(
-    "../fonts/TisaWeb-Italic.woff", woff
+    "TisaWeb-Italic.woff", woff
   ), normal italic
 );
 
 @include font-face("Tisa Web Bold Italic",
   font-files(
-    "../fonts/TisaWeb-BoldItalic.woff", woff
+    "TisaWeb-BoldItalic.woff", woff
   ), bold, italic
 );
 
 @include font-face("Dosis Light",
   font-files(
-    // "../fonts/Dosis-Light.woff", woff, // rendering issues
-    "../fonts/Dosis-Light.ttf", ttf
+    // "Dosis-Light.woff", woff, // rendering issues
+    "Dosis-Light.ttf", ttf
   ), normal, normal
 );
 
 @include font-face("Dosis Regular",
   font-files(
-    // "../fonts/Dosis-Regular.woff", woff, // rendering issues
-    "../fonts/Dosis-Regular.ttf", ttf
+    // "Dosis-Regular.woff", woff, // rendering issues
+    "Dosis-Regular.ttf", ttf
   ), normal, normal
 );
 
 @include font-face("Dosis SemiBold",
   font-files(
-    // "../fonts/Dosis-SemiBold.woff", woff, // rendering issues
-    "../fonts/Dosis-SemiBold.ttf", ttf
+    // "Dosis-SemiBold.woff", woff, // rendering issues
+    "Dosis-SemiBold.ttf", ttf
   ), bold, normal
 );
 
 @include font-face("Dosis Bold",
   font-files(
-    // "../fonts/Dosis-Bold.woff", woff, // rendering issues
-    "../fonts/Dosis-Bold.ttf", ttf
+    // "Dosis-Bold.woff", woff, // rendering issues
+    "Dosis-Bold.ttf", ttf
   ), bold, normal
 );
 
