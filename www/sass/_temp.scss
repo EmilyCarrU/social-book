@@ -4,11 +4,6 @@
     text-transform: lowercase;
 }
 
-.cover {
-    background: $cover-color;
-    @extend %ios_scroll_contain;
-}
-
 .cover_header {
     @extend %font-face-head;
     text-align: center;

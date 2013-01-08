@@ -57,13 +57,34 @@ body {
 	font-size: #{$font-size/16}em;
 	@extend %font-face-body;
 	line-height: #{$line / $em};
-	background: $content-toc-background;
+	background: #FFA; //$content-toc-background;
 	color: $content-color;
 	background: $cover-color;
 }
 
+.no-overflowscrolling .main_wrapper_outer, .no-overflowscrolling .main_wrapper {
+	height: auto;
+    overflow: visible;
+}
+
+.main_wrapper_outer {
+	@extend .main_wrapper;
+	-webkit-overflow-scrolling: touch;
+}
+
 .main_wrapper {
-	@extend %ios_scroll_contain;
+	height: 100%;
+    overflow: auto;
+}
+
+.no-overflowscrolling-fix {
+	display: block;
+	overflow: hidden;
+	text-align: center;
+	padding: 1em 0 0 0;
+	color: darken($cover-color, 5%);
+	// background: green;
+	min-height: 100%; // interpreted differently becasue of Modernizr
 }
 
 a {
