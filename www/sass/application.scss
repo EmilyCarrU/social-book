@@ -508,55 +508,6 @@ h1, h2, h3, h4, h5, h6, strong {
 	z-index: -1;
 }
 
-/* Periferal Content */
-
-.chap_marg {
-	font-size: #{(13.5 / $em)}em;
-	line-height: #{(4/3)};
-	font-style: normal;
-	color: #FFF;
-	background: #333;
-
-	float: left;
-	width: #{($column * 9)};
-	margin: 0 0 0 0; // this lines it up with the baseline in ths case, but might not always work. Test!
-	padding: 1em 1.5em 1em 1em; // half gutter
-	position: absolute;
-	left: -#{($column * 8.75)};
-	z-index: 11;
-
-	// include hyphenation; // Yay, broke this again.
-	@include box-sizing(border-box);
-	// @include transition(left $default-transition-duration ease 0.25s);
-}
-
-.chap_marg:hover, .chap_marg:focus {
-	left: 0;
-} // these won't work on touch devices, duh
-
-.chap_marg q {
-	text-indent: -0.4em;
-	margin-bottom: 0.75em;
-	display: block;
-}
-
-.chap_marg:after {
-	content: "\2192";
-	display: block;
-	width: 1.5em;
-	height: 1.5em;
-	background: #666;
-	position: absolute;
-	right: -0.75em;
-	top: 40%; // must be a better way to do this?
-	border: 1px solid #CCC;
-	color: #CCC;
-	text-align: center;
-	line-height: 1.5;
-
-	@include box-sizing(border-box);
-}
-
 /* Main Sections */
 
 .chap_sec {
