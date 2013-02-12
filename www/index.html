@@ -9,12 +9,10 @@
       <meta name="apple-mobile-web-app-status-bar-style" content="black" />
       <meta content='width=device-width, initial-scale=1.0 maximum-scale=1.0 user-scalable=0' name='viewport' />
 
-      <link rel="stylesheet" href="css/application.css"></link>
-      <link rel="stylesheet" href="css/paperfold.css"></link>      
+      <link rel="stylesheet" type="text/css" href="css/application.css"></link>
 
-      
       <!-- // <script src="http://192.168.0.199:8080/target/target-script-min.js#anonymous"></script> -->
-      
+
       <script src="bookdata.json" ></script>
       <script src="decadedata.json" ></script>
       <script src="js/modernizr.custom.71147.js"></script>
@@ -24,9 +22,9 @@
       <script src="js/backbone-0.9.2-min.js" ></script>
       <script src="js/backbone-localStorage-min.js"></script>
       <script src="js/application.js" ></script>
-      <script src="cordova-2.1.0.js" ></script>      
+      <script src="cordova-2.1.0.js" ></script>
 
-      
+
       <!-- // <script src="js/pinchcard.js"></script> -->
       <script src="js/pinchcard2.js"></script>
 
@@ -38,7 +36,7 @@
           $(document).ready(function(e){
 
             document.addEventListener("deviceready", onDeviceReady, false);
-            
+
             new PinchCard2('.target');
 
             // var n = new PinchCard('#decades');
@@ -52,9 +50,11 @@
           //              }
           //            });
 
-            $('.target__cover').onpress(function(event){
-               $(this).find('.dive').first().toggleClass('dive__open');
-            });
+            $('.target').on('openPanel', function(event){
+              $(this).find('.dive').first().addClass('dive__open');
+            }).on('clsePanel', function(event){
+              $(this).find('.dive').first().removeClass('dive__open');
+            }); // to be moved into application.js, cover not in backbone
 
           });
 
@@ -89,7 +89,7 @@
       </div>
 
       <script type="text/template" id="template-decade">
-      
+
        	<header class="toc_item_head y_<%= decade %>s">
        		<hgroup>
        			<h4 class="toc_item_head_year"><%= decade %></h4>
@@ -217,7 +217,5 @@
 		</header>
       </script>
     </body>
-    <script src="js/prefixfree.js"></script>      
-    <script src="js/paperfold.js" ></script>
-
+    <script src="js/prefixfree.js"></script>
 </html>

@@ -194,6 +194,8 @@ App.CommentsView = Backbone.View.extend({
     "click": "preventDefault",
     "click .target__com": "toggleComments",
     "tap .target__com": "toggleComments",
+    "openPanel .taget__com" : "toggleComments",
+    "clsePanel .target__com" : "toggleComments",
 
     "click .button.com_comments_meta_add"   : "showCommentForm",
     "click .cancel" : "cancelCommentForm",
@@ -341,8 +343,10 @@ App.DecadeView = Backbone.View.extend({
   className: 'toc_item',
 
   events: {
-    "click .target__decade_toc" : "expandItem",
-    "tap .target__decade_toc" : "expandItem",
+    // "click .target__decade_toc" : "expandItem",
+    // "tap .target__decade_toc" : "expandItem",
+    "openPanel .target__decade_toc" : "expandItemPinch",
+    "clsePanel .target__decade_toc" : "clapseItemPinch"
   },
     
   initialize: function() {
@@ -372,6 +376,14 @@ App.DecadeView = Backbone.View.extend({
 
   },
   
+  expandItemPinch : function(e){
+    e.preventDefault();
+    e.stopPropagation();
+
+    var diveWrapper = $(this.el).find('.dive').first();
+    diveWrapper.addClass('dive__open');
+  },
+
   expandItem : function(e){
     e.preventDefault();
     e.stopPropagation();
@@ -387,6 +399,14 @@ App.DecadeView = Backbone.View.extend({
     diveWrapper.toggleClass('dive__open');
   },
   
+  clapseItemPinch : function(e){
+    e.preventDefault();
+    e.stopPropagation();
+
+    var diveWrapper = $(this.el).find('.dive').first();
+    diveWrapper.removeClass('dive__close');
+  },
+
   render: function() {
     
     // Renders the DecadeView Template
@@ -429,7 +449,8 @@ App.ChaptersView = Backbone.View.extend({
         tagName : 'section' // element for one .chap_sec and one .com block
       });
 
-      $(this.el).append(sectionView.render().el).append("<em>Comment View should actually load here, after section view rather than inside it.</em>");
+      $(this.el).append(sectionView.render().el)
+      // .append("<em>Comment View should actually load here, after section view rather than inside it.</em>");
     }, this);
 
     return this;
@@ -468,9 +489,11 @@ App.YearView = Backbone.View.extend({
   className : 'yearItem',
   yearToggle: 0,
   events: {
-    "click": "preventDefault",
-    "tap .target__chapterItem": "launch",
-    "click .target__chapterItem": "launch"
+    // "click": "preventDefault",
+    // "tap .target__chapterItem": "launch",
+    // "click .target__chapterItem": "launch",
+    "openPanel .target__chapterItem": "expandItemPinch",
+    "clsePanel .target__chapterItem": "clapseItemPinch"
   },
   
   initialize: function(o) {
@@ -485,6 +508,20 @@ App.YearView = Backbone.View.extend({
     this.chapters.reset(chapterList);
   },
 
+  expandItemPinch : function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    if (this.yearToggle === 1) {
+      $(this.el).find('.dive').first().addClass('dive__open');
+    } else {
+      $(this.el).find('.dive').first().addClass('dive__open');
+      showYear(this.model.id);
+      updateSpine(this.model.get('decade') + '-' + this.model.get('year'));
+    }
+    this.yearToggle ^= 1;
+  },
+
   launch: function(e) {
     e.preventDefault();
     if (this.yearToggle === 1) {
@@ -497,6 +534,13 @@ App.YearView = Backbone.View.extend({
     this.yearToggle ^= 1;
   },
   
+  clapseItemPinch : function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    $(this.el).find('.dive').first().removeClass('dive__open');
+  },
+
   preventDefault: function(e) {
     e.preventDefault();
     e.stopPropagation();

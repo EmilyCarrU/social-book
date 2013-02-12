@@ -18,7 +18,7 @@ $chapter-color-90s: #90A99E; // #000088
 $chapter-color-00s: #B7C1AC; // #C086E1
 $chapter-color-10s: #7E3531;
 
-$target-height: 4;
+$target-height: 6;
 $dive-content-max-height: 1000000px;
 $dive-comment-max-height: #{$dive-content-max-height/100};
 
@@ -168,7 +168,7 @@ h1, h2, h3, h4, h5, h6, strong {
 
 	@extend .ui;
 	// @include background-rgba(#000, 0.1);
-	// @include enable-hardware-acceleration; // probably remove
+	// don't hardware accelerate
 }
 
 /* Dive Main Arrow */
@@ -248,7 +248,7 @@ h1, h2, h3, h4, h5, h6, strong {
 	@include box-sizing(border-box);
 }
 
-.dive__open, .dive:focus {
+.dive__open, .dive:focus, .dive__tease {
 	@include box-shadow(none);
 }
 
@@ -257,14 +257,21 @@ h1, h2, h3, h4, h5, h6, strong {
 	max-height: 0;
     width: 100%;
     overflow: hidden;
-	@include animation(diveClose #{$default-transition-duration * 3} 1 normal ease-out none 0); // This is the main accordion transition
+	// @include animation(diveClose #{$default-transition-duration * 3} 1 normal ease-out none 0); // This is the main accordion transition
 	@include enable-hardware-acceleration;
+
+	@include transition(max-height #{$default-transition-duration * 4} ease-in); // re-testing animation versus transition
 }
 
 .dive__open > .dive_wrapper, .dive:focus > .dive_wrapper {
 	max-height: $dive-comment-max-height;
-	@include animation(diveOpen #{$default-transition-duration * 3} 1 normal ease-in none 0);
+	// @include animation(diveOpen #{$default-transition-duration * 3} 1 normal ease-in none 0);
 	@include enable-hardware-acceleration;
+}
+
+.dive.dive__tease > .dive_wrapper {
+	// @include transition(none #{$default-transition-duration} 5 linear); // re-testing animation versus transition
+	max-height: 250em; // needs extra .dive class for higher specificity, as .dive__open and .dive__tease will get applied
 }
 
 /* Dive Mini-Triangle */
@@ -282,7 +289,7 @@ h1, h2, h3, h4, h5, h6, strong {
 	z-index: 10;
 }
 
-.dive__open:after, .dive:focus:after {
+.dive__open:after, .dive:focus:after, .dive__tease:after {
 	margin: 1px 0 0 0;
 	@include transform(rotate(180deg));
 }
