@@ -377,9 +377,14 @@ App.DecadeView = Backbone.View.extend({
     e.stopPropagation();
     updateSpine(this.model.get('decade'));
 
-    $(this.el).find('.dive').first().toggleClass('dive__open');
+    var diveWrapper = $(this.el).find('.dive').first();
     // Would using children or something be faster?
     // Ask Rob about how efficient this is.
+
+    // Kenneth's dive tease test
+    // diveWrapper.addClass('dive__open dive__tease');
+    // window.setTimeout(function(){$(diveWrapper).removeClass("dive__open dive__tease");}, 100);
+    diveWrapper.toggleClass('dive__open');
   },
   
   render: function() {
