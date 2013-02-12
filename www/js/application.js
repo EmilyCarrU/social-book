@@ -3,7 +3,7 @@
 var apiEndpoint = 'http://book.hyko.org/api';
 
 window.App = {};
-window.App.online = true;
+window.App.online = false;
 //
 // Models
 // 
