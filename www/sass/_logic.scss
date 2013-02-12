@@ -91,3 +91,12 @@
 	-ms-transform-origin: $origin;
 	transform-origin: $origin;
 }
+
+
+// updated Stitch instead
+@mixin enable-hardware-acceleration {
+  -webkit-transform:translate3d(0,0,0); // iOS <= 5
+  -webkit-transform: translateZ(0); // iOS >= 6
+  -webkit-perspective: 1000; // iOS >= 6
+  -webkit-backface-visibility: hidden; // iOS >= 6
+}
