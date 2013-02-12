@@ -5,3 +5,7 @@
 .DS_Store
 *.scssc
 >>>>>>> 6120bc0702a8f1b3dcb15cffa8f2c2e8efb89f71
+
+*.xcscheme
+*.plist
+*.xcuserstate
