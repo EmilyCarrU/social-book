@@ -39,21 +39,42 @@
             new PinchCard2('.target');
 
             // var n = new PinchCard('#decades');
-          //            var p = new PinchCard('.chap')
-          //            $(".target").bind({
-          //              openPanel: function(e) {
-          //                $(this.el).find('.dive').addClass("dive__open");
-          //              },
-          //              closePanel: function(e) {
-          //                $(this.el).find('.dive').removeClass("dive__open");
-          //              }
-          //            });
+            //            var p = new PinchCard('.chap')
+            //            $(".target").bind({
+            //              openPanel: function(e) {
+            //                $(this.el).find('.dive').addClass("dive__open");
+            //              },
+            //              closePanel: function(e) {
+            //                $(this.el).find('.dive').removeClass("dive__open");
+            //              }
+            //            });
 
-            $('.target').on('openPanel', function(event){
-              $(this).find('.dive').first().addClass('dive__open');
-            }).on('clsePanel', function(event){
-              $(this).find('.dive').first().removeClass('dive__open');
-            }); // to be moved into application.js, cover not in backbone
+            // All of this to be moved into application.js, cover not in backbone yet
+
+            if (window.App.optionPinch) {
+              $('.target').on('openPanel', function(event){
+                $(this).find('.dive').first().addClass('dive__open');
+              }).on('clsePanel', function(event){
+                $(this).find('.dive').first().removeClass('dive__open');
+              });
+            }
+
+            if (window.App.optionTap) {
+              $('.target__cover').onpress(function(event){
+                event.stopPropagation();
+                event.preventDefault();
+                $(this).find('.dive').first().toggleClass('dive__open');
+              });
+            }
+
+            if (window.App.optionClickDev) {
+              $('.target__cover').click(function(event){
+                event.stopPropagation();
+                event.preventDefault();
+                $(this).find('.dive').first().toggleClass('dive__open');
+              });
+            }
+
           });
 
           // Stop bounce - This will need to be changed to support scrolling down...
