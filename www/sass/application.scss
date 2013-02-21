@@ -19,6 +19,7 @@ $chapter-color-00s: #B7C1AC; // #C086E1
 $chapter-color-10s: #7E3531;
 
 $target-height: 6;
+$target-color: rgba(#000, 0);
 $dive-content-max-height: 1000000px;
 $dive-comment-max-height: #{$dive-content-max-height/100};
 
@@ -165,9 +166,9 @@ h1, h2, h3, h4, h5, h6, strong {
 	padding: #{($target-height)}em 0;
 	margin: #{($target-height * -1)}em 0;
 	z-index: 1;
+	background: $target-color;
 
 	@extend .ui;
-	// @include background-rgba(#000, 0.1);
 	// don't hardware accelerate
 }
 
