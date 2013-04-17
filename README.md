@@ -22,6 +22,12 @@
      - Chapters TOC
        - Sections
          - Comments
+         
+## New Structure
+ - Book
+   - Section (Part)
+     - Chapter
+       - Paragraph
        
 ### Decades
  We add a tag for the decade to filter them out quickly.

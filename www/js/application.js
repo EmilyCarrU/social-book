@@ -3,7 +3,7 @@
 var apiEndpoint = 'http://book.hyko.org/api';
 
 window.App = {};
-window.App.online = false;
+window.App.online = true;
 window.App.optionClick = true; // no effect on comments yet
 window.App.optionPinch = true; // no effect on comments yet
 window.App.optionTap = false; // no effect on comments yet
