@@ -12,6 +12,11 @@ window.App.Paragraph = function(rawData) {
   return this;
 }
 
+window.App.Paragraph.prototype.render = function() {
+  console.log("Render Para", this.id)
+}
+
+
 window.App.Paragraph.prototype.cleanParagraph = function(data) {
   this.id = data.id;
   this.title = data.title;
@@ -49,6 +54,10 @@ window.App.Chapter.prototype.build = function() {
   }
 }
 
+window.App.Chapter.prototype.render = function() {
+  console.log("Render Chap", this.id)
+}
+
 
 
 
@@ -76,6 +85,7 @@ window.App.Section.prototype.cleanSection = function(data) {
   this.title = data.title;
   this.content = data.content;
   this.url = data.url;
+  // this.chapters = [];
 
   return data;
 }
@@ -83,23 +93,28 @@ window.App.Section.prototype.parseChap = function(data) {
   return (data.page && data.page.children) ? data.page.children : [];
 }
 
-window.App.Section.prototype.render = function() {
+window.App.Section.prototype.render = function(options) {
+    // var el = options.el;
+    var that = this;
     var template =  _.template($("#template-decade").html());
     var html = template(this);
+    $(options.el).append(html);
     
-    // $(this.el).append(html);
-    // 
     // Init the YearsView
     // this.yearsView = new App.YearsView({ collection : this.years });
     // $(this.el).find('.years').html(this.yearsView.render().el);
-    // 
     // $(this.el).find('.decade_toc_wrapper').html(this.yearsView.render().el);
-    $("#section_" + this.id).find('.decade_toc_wrapper').html("Woo Hoo");
-    // $(this.el).find('.decade_toc_wrapper').html("Woo Hoo");
-    // return this;
+    
+
+    var t = function(self) {
+      for (var n = 0; n < self.chapters.length; n++) {
+        var html = that.chapters[n].render();
+        $(options.el).find('.decade_toc_wrapper').html("Render Chapter");
+      } 
+    }
+    t(that)
     
     return html;
-    
 }
 
 window.App.Section.prototype.fetch = function(cb) {
@@ -116,14 +131,12 @@ window.App.Section.prototype.build = function() {
       var newChapter = new window.App.Chapter(this.chapterArray[i]);
       this.chapters.push(newChapter);
     }
+     Sections.render({el:"#decades"});    
   } else {
     console.log("No Section Data");
   }
 }
 
-// window.App.Section.prototype.clean = function(data) {
-//   return data.page;
-// }
 
 /***
 
@@ -137,9 +150,9 @@ window.App.Sections = function() {
 
 window.App.Sections.prototype.init = function() {
   var that = this;
-  that.fetch(function(){
-    that.build();
-    that.render({el:"#decades"});
+  that.fetch(function(self){
+    self.build(function(self){
+    });
   });
 }
 
@@ -148,27 +161,25 @@ window.App.Sections.prototype.fetch = function(cb) {
   if (window.App.online) {
     $.getJSON(apiEndpoint + "/get_category_posts/?post_type=chapters&slug=section&order=ASC", function(data, status, xhr){
       that.sectionArray = that.clean(data);
-      cb();
+      cb(that);
     });
   } else {
     // TODO Fetch from Client Side DB 
     that.sectionArray = [];
-    cb();
+    cb(that);
   }
 }
 
 window.App.Sections.prototype.render = function(options) {
-  
   var el = options.el;
   $(el).append("<ol class='sections'>");
   var $ol = $(el).find("ol");
 
   for (var i = 0; i < this.sections.length; i++) {
-    
     var li = document.createElement('LI');
     li.id = 'section_' + this.sections[i].id;
-    li.className = 'decade'
-    li.innerHTML = this.sections[i].render();
+    li.className = 'decade';
+    li.innerHTML = this.sections[i].render({el:li});
     $ol.append(li);
   }
 }
@@ -177,17 +188,17 @@ window.App.Sections.prototype.clean = function(data) {
   return data.posts;
 }
 
-window.App.Sections.prototype.build = function() {
+window.App.Sections.prototype.build = function(cb) {
   if (this.sectionArray && this.sectionArray.length != 0) {
     for(var i = 0; i < this.sectionArray.length; i++) {
       var newSection = new window.App.Section(this.sectionArray[i]);
       this.sections.push(newSection);      
     }
+    if (cb) cb(this)    
   } else {
     console.log("No Section Data");
   }
 }
-
 
 if(!Modernizr.touch && window.App.optionClick && !window.App.optionTap) {
   window.App.optionClickDev = true; // for when we need to test the pinch on touch, and still want to click on desktop
