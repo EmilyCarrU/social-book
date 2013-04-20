@@ -12,8 +12,11 @@ window.App.Paragraph = function(rawData) {
   return this;
 }
 
-window.App.Paragraph.prototype.render = function() {
-  console.log("Render Para", this.id)
+window.App.Paragraph.prototype.render = function(options) {
+  var template =  _.template($("#template-paragraph").html());
+  var html = template(this);
+  var el = $(options.el).append(html);
+  return el.html() 
 }
 
 
@@ -54,12 +57,24 @@ window.App.Chapter.prototype.build = function() {
   }
 }
 
-window.App.Chapter.prototype.render = function() {
-  console.log("Render Chap", this.id)
+window.App.Chapter.prototype.render = function(options) {
+
+  var template =  _.template($("#template-chapter").html());
+  var html = template(this);
+  var el = $(options.el).append(html);
+
+  var el2 = el.find(".chapter_toc_wrapper");
+  // el2.append("<ol class='chapters'>");
+  // var $ol = el2.find("ol.chapters");
+  // console.log($ol)
+  
+  for (var i = 0; i < this.paragraphs.length; i++) {
+    var h = this.paragraphs[i].render({el:el2});
+    el2.html(h)
+  }
+  
+  return el.html();
 }
-
-
-
 
 
 // A Single secion of content
@@ -94,27 +109,19 @@ window.App.Section.prototype.parseChap = function(data) {
 }
 
 window.App.Section.prototype.render = function(options) {
-    // var el = options.el;
     var that = this;
     var template =  _.template($("#template-decade").html());
     var html = template(this);
     $(options.el).append(html);
     
-    // Init the YearsView
-    // this.yearsView = new App.YearsView({ collection : this.years });
-    // $(this.el).find('.years').html(this.yearsView.render().el);
-    // $(this.el).find('.decade_toc_wrapper').html(this.yearsView.render().el);
+    var el = $(options.el).find('.decade_toc_wrapper');
     
-
-    var t = function(self) {
-      for (var n = 0; n < self.chapters.length; n++) {
-        var html = that.chapters[n].render();
-        $(options.el).find('.decade_toc_wrapper').html("Render Chapter");
-      } 
+    for (var n = 0; n < that.chapters.length; n++) {
+      var h = that.chapters[n].render({el: el});
+      el.html(h);
     }
-    t(that)
     
-    return html;
+    return el.html();
 }
 
 window.App.Section.prototype.fetch = function(cb) {
@@ -131,7 +138,7 @@ window.App.Section.prototype.build = function() {
       var newChapter = new window.App.Chapter(this.chapterArray[i]);
       this.chapters.push(newChapter);
     }
-     Sections.render({el:"#decades"});    
+     Sections.render({el:"#decades"});
   } else {
     console.log("No Section Data");
   }
