@@ -76,6 +76,11 @@ App.ParagraphsView = Backbone.View.extend({
 });
 
 App.ChapterView = Backbone.View.extend({
+
+  initialize: function() {
+    this.model.comments.bind('add', this.addOne, this);
+  },
+  
   tagName: "li",
   render : function() {
     var that = this;
@@ -100,7 +105,15 @@ App.ChapterView = Backbone.View.extend({
       $(this.el).append(commentsView.render().el);
     }
     return this;
-  }  
+  },
+  
+  addOne: function(comment) {
+    var commentView = new App.CommentView({
+      model : comment
+    });
+    
+    $(this.el).find('.com_comments').append(commentView.render().el);
+  }
 })
 
 App.ChaptersView = Backbone.View.extend({

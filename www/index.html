@@ -11,8 +11,6 @@
 
       <link rel="stylesheet" type="text/css" href="css/application.css"></link>
 
-      <!-- // <script src="http://192.168.0.199:8080/target/target-script-min.js#anonymous"></script> -->
-
       <script src="bookdata.json" ></script>
       <script src="decadedata.json" ></script>
       <script src="js/modernizr.custom.71147.js"></script>
@@ -30,43 +28,6 @@
 
           $(document).ready(function(e){
             document.addEventListener("deviceready", onDeviceReady, false);
-            // new PinchCard2('.target');
-            // All of this to be moved into application.js, cover not in backbone yet
-
-            // if (window.App.optionPinch) {
-            //   $('.target').on('openPanel', function(event){
-            //     $(this).find('.dive').first().addClass('dive__open');
-            //   }).on('clsePanel', function(event){
-            //     $(this).find('.dive').first().removeClass('dive__open');
-            //   });
-            // }
-
-            // if (window.App.optionTap) {
-            //   $('.target__cover').onpress(function(event){
-            //     event.stopPropagation();
-            //     event.preventDefault();
-            //     $(this).find('.dive').first().toggleClass('dive__open');
-            //   });
-            // }
-            // window.App.bookopen = false;
-            // 
-            // if (window.App.optionClickDev) {
-            //   $('.target__cover').click(function(event){
-            //     if (window.App.bookopen == false) {
-            //       event.stopPropagation();
-            //       event.preventDefault();
-            //       window.App.bookopen = true;
-            //       $(this).find('.dive').first().toggleClass('dive__open');
-            //     }
-            //   });
-            // }
-            // 
-            // $(".decade").click(function(e){
-            //   console.log("FIRE");
-            // })
-            
-            
-            
           });
 
           // Stop bounce - This will need to be changed to support scrolling down...
