@@ -20,13 +20,9 @@
       <script src="js/zepto-onpress.js" ></script>
       <script src="js/underscore-1.3.3-min.js" ></script>
 
-
-      
-
       <script src="js/backbone-0.9.2-min.js" ></script>
       <script src="js/backbone-localStorage-min.js" ></script>
-      <script src="js/new_application.js" ></script>      
-      <!--script src="js/application.js" ></script -->
+      <script src="js/new_application.js" ></script>
       <script src="cordova-2.1.0.js" ></script>
       <script src="js/pinchcard2.js"></script>
       <script type="text/javascript">
@@ -103,7 +99,7 @@
         </div>
       </div>
 
-      <script type="text/template" id="template-decade">
+      <script type="text/template" id="template-section">
 
         <header class="toc_item_head ">
           <hgroup>
@@ -114,8 +110,7 @@
             <%= content %>
           </section>
         </header>
-
-        <!-- trying to fix markup and css so that year listing works the same way that the comments do. -->
+        
         <div class="target target__decade_toc ">
           <div class="decade_toc dive"><!-- acts like .com -->
             <i class="dive_icon"></i>
@@ -126,7 +121,7 @@
         </div>
       </script>
 
-      <script type="text/template" id="template-section">
+      <script type="text/template" id="template-chapter">
         <section class="chap_sec">
           <h4><%= title %> <%= slug %></h4>
           <div class="paragraphs paragraphs_toc_wrapper"></div>
@@ -184,34 +179,6 @@
             </fieldset>
           </form>
         </div>
-      </script>
-
-      <script type="text/template" id="template-year">
-        <!--a href="#year/<%= id %>" class="com_year_wrap"-->
-        <a href="#" class="com_year_wrap">
-          <header class="year_head">
-            <hgroup class="year_head_group">
-              <h2 class="h_title"><%= title %></h2>
-            </hgroup>
-          </header>
-        </a>
-
-        <div class="target target__chapterItem">
-          <div class="dive chapterItem_outer">
-            <i class="dive_icon"></i>
-            <div class="chapterItem dive_wrapper decade_<%= decade %> year_<%= year %>"></div><!-- maybe we should change these to data-decade="<%= decade %>" data-year="<%= year %>" -->
-          </div>
-        </div>
-      </script>
-
-      <script type="text/template" id="template-decades-header">
-        <!-- The intro to the book would go here, before the list of decades -->
-        <h1><%= title %></h1>
-        <%= content %>
-      </script>
-
-      <script type="text/template" id="template-years-header">
-      <!-- The intro to the decade would go here, before the list of years -->
       </script>
 
       <script type="text/template" id="template-chapters-header">

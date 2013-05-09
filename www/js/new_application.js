@@ -48,10 +48,9 @@ App.Comment = Backbone.Model.extend({
     if (method === "create") {
      $.ajax({
        type: 'POST',
-       url: apiEndpoint + '/submit_comment/?post_id=' + options.post_id,
+       url: apiEndpoint + '/submit_comment/?post_id=' + model.get('post_id'),
        data: model.toJSON(),
        complete: function(xhr, status) {
-         // console.log(xhr, status)
        }
      })
     }
@@ -81,7 +80,7 @@ App.ChapterView = Backbone.View.extend({
   render : function() {
     var that = this;
     
-    var template =  _.template($("#template-section").html());
+    var template =  _.template($("#template-chapter").html());
     var html = template(this.model.toJSON());
     $(this.el).append(html);
     
@@ -91,6 +90,7 @@ App.ChapterView = Backbone.View.extend({
 
     // Comments template
     if (that.model.get('comment_status') === 'open') {
+      console.log(that.model.get('comments'))
       var commentsView = new App.CommentsView({
         collection: that.model.comments,
         model: that.model,
@@ -132,7 +132,7 @@ App.SectionView = Backbone.View.extend({
   className: 'toc_item',
   render: function() {
     var that = this;
-    var template =  _.template($("#template-decade").html());
+    var template =  _.template($("#template-section").html());
     var html = template(this.model.toJSON());
     $(this.el).append(html);
     
@@ -141,7 +141,6 @@ App.SectionView = Backbone.View.extend({
       that.chapters = new App.Chapters(model.attributes.children)
       that.chaptersView = new App.ChaptersView({ collection : that.chapters });
       $(that.el).find('.decade_toc_wrapper').html(that.chaptersView.render().el);
-      
     }});
     
     return this;
@@ -197,8 +196,6 @@ App.CommentsView = Backbone.View.extend({
   },
 
   initialize: function() {
-    // console.log(this.model.id)
-    console.log("COLLECTION", this.collection);
     this.model.bind('change', this.updateCount, this);
   },
 
