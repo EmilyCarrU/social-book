@@ -51,6 +51,14 @@ App.Comment = Backbone.Model.extend({
        url: apiEndpoint + '/submit_comment/?post_id=' + model.get('post_id'),
        data: model.toJSON(),
        complete: function(xhr, status) {
+         var response = JSON.parse(xhr.responseText);
+         if (response.status === "error") {
+           alert(response.error)
+         }
+       },
+       error: function(xhr, status) {
+         console.log(xhr)
+         // alert()
        }
      })
     }
@@ -95,7 +103,6 @@ App.ChapterView = Backbone.View.extend({
 
     // Comments template
     if (that.model.get('comment_status') === 'open') {
-      console.log(that.model.get('comments'))
       var commentsView = new App.CommentsView({
         collection: that.model.comments,
         model: that.model,
@@ -209,7 +216,7 @@ App.CommentsView = Backbone.View.extend({
   },
 
   initialize: function() {
-    this.model.bind('change', this.updateCount, this);
+    this.model.bind('change', this.updateCount, this);    
   },
 
   preventDefault: function(e) {
@@ -222,12 +229,12 @@ App.CommentsView = Backbone.View.extend({
     e.preventDefault();
     e.stopPropagation();
 
-    // Add the Comment Form
-    var template =  _.template($("#template-comment-form").html());
-    var html = template();
-    // This should already be in the DOM (hidden)
-    // TODO, move this upto init or render.
-    $(this.el).append(html);
+    if (!$(this.el).find('.com_add_sec ').is(":visible")) {
+      var template =  _.template($("#template-comment-form").html());
+      var html = template();
+      $(this.el).append(html);
+    }
+
   },
 
   clearForm: function() {

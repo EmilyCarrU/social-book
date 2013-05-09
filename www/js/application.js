@@ -349,10 +349,6 @@ App.SectionView = Backbone.View.extend({
       model : comment
     });
     $(this.el).find('.com_comments').append(commentView.render().el);
-
-    // TODO.
-    // Hit the server with the comment.
-    // console.log(comment.toJSON());
   }
 
 });
