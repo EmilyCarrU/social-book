@@ -2,218 +2,325 @@ var apiEndpoint = 'http://book.hyko.org/api';
 
 window.App = {};
 window.App.online = true;
-window.App.optionClick = true; // no effect on comments yet
-window.App.optionPinch = true; // no effect on comments yet
-window.App.optionTap = false; // no effect on comments yet
 
 
-window.App.Paragraph = function(rawData) {
-  this.data = this.cleanParagraph(rawData);
-  return this;
-}
+App.Section = Backbone.Model.extend({
+  initialize: function() {
+  },
+  
+  url : function() {
+     return apiEndpoint + "/get_page/?post_type=chapters&id="+ this.id + "&children=true"
+  },
+  parse: function(response) {
+    return response.page;
+  }
+});
 
-window.App.Paragraph.prototype.render = function(options) {
-  var template =  _.template($("#template-paragraph").html());
-  var html = template(this);
-  var el = $(options.el).append(html);
-  return el.html() 
-}
+App.Sections = Backbone.Collection.extend({
+  model: App.Section
+});
 
+App.Paragraph = Backbone.Model.extend({});
 
-window.App.Paragraph.prototype.cleanParagraph = function(data) {
-  this.id = data.id;
-  this.title = data.title;
-  this.content = data.content;
-  this.comment_count = data.comment_count;
-  return data
-}
+App.Chapter = Backbone.Model.extend({
+  initialize: function(o) {
+    this.id = o.id;
+    this.comments = new App.Comments(o.comments);
+  }
+});
 
-// A Single Chapter
-window.App.Chapter = function(rawData) {
-  this.paragraphArray = [];
-  this.paragraphs = [];
-  this.cleanChapter(rawData);  
-  // Build out the final parahraph level
-  this.build();
-  return this;
-}
+App.Chapters = Backbone.Collection.extend({
+  model: App.Chapter
+});
 
-window.App.Chapter.prototype.cleanChapter = function(data) {
-  this.id = data.id;
-  this.title = data.title;
-  this.url = data.url;
-  this.paragraphArray = data.children;
-  return data;
-}
+App.Paragraphs = Backbone.Collection.extend({
+  model: App.Paragraph,
+});
 
-window.App.Chapter.prototype.build = function() {
-  if (this.paragraphArray && this.paragraphArray.length != 0) {
-    for(var i = 0; i < this.paragraphArray.length; i++) {
-      var newParagraph = new window.App.Paragraph(this.paragraphArray[i]);
-      this.paragraphs.push(newParagraph);
+App.ParagraphView = Backbone.View.extend({
+  render: function() {
+    return  this.model.toJSON().content;
+  }
+})
+
+App.Comment = Backbone.Model.extend({
+  sync: function(method, model, options) {
+    if (method === "create") {
+     $.ajax({
+       type: 'POST',
+       url: apiEndpoint + '/submit_comment/?post_id=' + options.post_id,
+       data: model.toJSON(),
+       complete: function(xhr, status) {
+         // console.log(xhr, status)
+       }
+     })
     }
-  } else {
-    console.log("No Paragraph Data");
   }
-}
+});
 
-window.App.Chapter.prototype.render = function(options) {
+App.Comments = Backbone.Collection.extend({
+    model: App.Comment,
+    localStorage: new Store("app-comments")
+});
 
-  var template =  _.template($("#template-chapter").html());
-  var html = template(this);
-  var el = $(options.el).append(html);
-
-  var el2 = el.find(".chapter_toc_wrapper");
-  // el2.append("<ol class='chapters'>");
-  // var $ol = el2.find("ol.chapters");
-  // console.log($ol)
+App.ParagraphsView = Backbone.View.extend({
+  tagName : 'ol',
+  className : 'para_list',
   
-  for (var i = 0; i < this.paragraphs.length; i++) {
-    var h = this.paragraphs[i].render({el:el2});
-    el2.html(h)
+  render: function() {
+    this.collection.each(function(d) {
+      var paraView = new App.ParagraphView({ model : d });
+      $(this.el).append(paraView.render());
+    }, this);
+    return this;
   }
-  
-  return el.html();
-}
+});
 
+App.ChapterView = Backbone.View.extend({
+  tagName: "li",
+  render : function() {
+    var that = this;
+    
+    var template =  _.template($("#template-section").html());
+    var html = template(this.model.toJSON());
+    $(this.el).append(html);
+    
+    that.paragraphs = new App.Paragraphs(this.model.attributes.children)
+    that.paragraphsView = new App.ParagraphsView({ collection : that.paragraphs });
+    $(that.el).find('.paragraphs_toc_wrapper').html(that.paragraphsView.render().el);
 
-// A Single secion of content
-window.App.Section = function(rawData) {
-  this.data = this.cleanSection(rawData);
-  this.title;
-  this.id;
-  this.content;
-  this.url;
-  this.chapters = [];
-  this.chapterArray = [];
-  
-  var that = this;
-  that.fetch(function(){
-    that.build();
-  });
-  
-  return this;
-}
+    // Comments template
+    if (that.model.get('comment_status') === 'open') {
+      var commentsView = new App.CommentsView({
+        collection: that.model.comments,
+        model: that.model,
+        tagName: 'div',
+        className: 'target target__com'
+      });
+      $(this.el).append(commentsView.render().el);
+    }
+    return this;
+  }  
+})
 
-window.App.Section.prototype.cleanSection = function(data) {
-  this.id = data.id;
-  this.title = data.title;
-  this.content = data.content;
-  this.url = data.url;
-  // this.chapters = [];
+App.ChaptersView = Backbone.View.extend({
+  tagName : 'ol',
+  className : 'chapters',
+  render: function() {
+    this.collection.each(function(d) {
+      var chapterView = new App.ChapterView({ model: d });
+      $(this.el).append(chapterView.render().el);
+    }, this);
+    return this;
+  }
+});
 
-  return data;
-}
-window.App.Section.prototype.parseChap = function(data) {
-  return (data.page && data.page.children) ? data.page.children : [];
-}
+App.SectionsView = Backbone.View.extend({
+  tagName : 'ol',
+  className : 'decade',
+  render : function() {
+    this.collection.each(function(d) {
+      var sectionView = new App.SectionView({ model : d });
+      $(this.el).append(sectionView.render().el);
+    }, this);
+    return this;
+  }
+});
 
-window.App.Section.prototype.render = function(options) {
+App.SectionView = Backbone.View.extend({
+  tagName: 'li',
+  className: 'toc_item',
+  render: function() {
     var that = this;
     var template =  _.template($("#template-decade").html());
-    var html = template(this);
-    $(options.el).append(html);
+    var html = template(this.model.toJSON());
+    $(this.el).append(html);
     
-    var el = $(options.el).find('.decade_toc_wrapper');
+    this.model.fetch({success: function(model, response){
+      // Init the Chapters
+      that.chapters = new App.Chapters(model.attributes.children)
+      that.chaptersView = new App.ChaptersView({ collection : that.chapters });
+      $(that.el).find('.decade_toc_wrapper').html(that.chaptersView.render().el);
+      
+    }});
     
-    for (var n = 0; n < that.chapters.length; n++) {
-      var h = that.chapters[n].render({el: el});
-      el.html(h);
+    return this;
+  }
+});
+
+
+App.CommentView = Backbone.View.extend({
+  tagName: "li",
+  className: "com_comments_comment",
+
+  events: {
+    "click": "preventDefault",
+    "tap .com_comments_comment_reply"     : "addComment",
+    "click .com_comments_comment_reply"   : "addComment"
+  },
+
+  preventDefault: function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+  },
+
+  // This is the reply button
+  addComment: function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    alert("Add Reply");
+  },
+
+  render: function() {
+    var template =  _.template($("#template-comment").html());
+    var html = template(this.model.toJSON());
+
+    $(this.el).append(html);
+    return this;
+  }
+
+});
+
+App.CommentsView = Backbone.View.extend({
+
+  events: {
+
+    "click": "preventDefault",
+    // "click .target__com": "toggleComments",
+    // "tap .target__com": "toggleComments",
+    // "openPanel .taget__com" : "toggleComments",
+    // "clsePanel .target__com" : "toggleComments",
+
+    "click .button.com_comments_meta_add" : "showCommentForm",
+    "click .cancel" : "cancelCommentForm",
+    "click .com_add_form .submit": "addComment"
+  },
+
+  initialize: function() {
+    // console.log(this.model.id)
+    console.log("COLLECTION", this.collection);
+    this.model.bind('change', this.updateCount, this);
+  },
+
+  preventDefault: function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+  },
+
+  // This is the add button on the comments for the form
+  showCommentForm : function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    // Add the Comment Form
+    var template =  _.template($("#template-comment-form").html());
+    var html = template();
+    // This should already be in the DOM (hidden)
+    // TODO, move this upto init or render.
+    $(this.el).append(html);
+  },
+
+  clearForm: function() {
+    $(this.el).find('.com_add_form #commentName').val('');
+    $(this.el).find('.com_add_form #commentEmail').val('');
+    $(this.el).find('.com_add_form #commentText').val('');
+  },
+
+  closeForm: function() {
+    $(this.el).find('.modal').toggleClass("modal__open");
+    var that = this;
+    window.setTimeout(function(){
+      $(that.el).find('.com_add_sec').remove();
+    },1000);
+
+  },
+
+  addComment: function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    var attr = {}
+    attr.data = new Date();
+    attr.name = $(this.el).find('.com_add_form #commentName').val();
+    attr.email = $(this.el).find('.com_add_form #commentEmail').val();
+    attr.content = $(this.el).find('.com_add_form #commentText').val();
+    attr.post_id = this.model.get('id');
+
+    this.collection.create(attr);
+    this.clearForm();
+    this.closeForm();
+
+    // Update the comment count
+    this.model.set('comment_count', this.model.get('comment_count') + 1);
+  },
+
+  cancelCommentForm: function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    this.closeForm();
+  },
+
+  toggleComments : function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    $(this.el).find('.dive').first().toggleClass('dive__open');
+  },
+
+  // Called on 'change'
+  updateCount: function() {
+    $(this.el).find('.dive_count').html(this.model.get('comment_count'));
+  },
+
+  render : function() {
+
+    var template =  _.template($("#template-comments").html());
+    var html = template(this.model.toJSON());
+    $(this.el).append(html);
+
+    if (this.model.get('comment_count') === 0) {
+      $(this.el).find('.com_comments_actions_item .view_all').hide();
     }
-    
-    return el.html();
-}
 
-window.App.Section.prototype.fetch = function(cb) {
-  var that = this;
-  $.getJSON(apiEndpoint + "/get_page/?post_type=chapters&id=" + this.id + "&children=true", function(data, status, xhr){
-    that.chapterArray = that.parseChap(data);
-    cb();
-  });
-}
+    this.collection.each(function(comment) {
+      var commentView = new App.CommentView({ model : comment });
+      $(this.el).find('.com_comments').prepend(commentView.render().el);
+    }, this);
 
-window.App.Section.prototype.build = function() {
-  if (this.chapterArray && this.chapterArray.length != 0) {
-    for(var i = 0; i < this.chapterArray.length; i++) {
-      var newChapter = new window.App.Chapter(this.chapterArray[i]);
-      this.chapters.push(newChapter);
+    return this;
+  }
+});
+
+
+App.Router = Backbone.Router.extend({
+  routes: {
+    '*path': 'defaultRoute'
+  },
+
+  defaultRoute: function(path) {
+
+    var callback = function(sections) {
+      App.sections = new App.Sections(sections)
+      App.sectionView = new App.SectionsView({ collection: App.sections });
+      
+      $('#decades').html(App.sectionView.render().el);
+      $("#decades").css({"max-height":"100%"});
     }
-     Sections.render({el:"#decades"});
-  } else {
-    console.log("No Section Data");
-  }
-}
 
-
-/***
-
-  Sections collection
-
-***/
-
-window.App.Sections = function() {
-  this.sections = [];
-}
-
-window.App.Sections.prototype.init = function() {
-  var that = this;
-  that.fetch(function(self){
-    self.build(function(self){
-    });
-  });
-}
-
-window.App.Sections.prototype.fetch = function(cb) {
-  var that = this;
-  if (window.App.online) {
-    $.getJSON(apiEndpoint + "/get_category_posts/?post_type=chapters&slug=section&order=ASC", function(data, status, xhr){
-      that.sectionArray = that.clean(data);
-      cb(that);
-    });
-  } else {
-    // TODO Fetch from Client Side DB 
-    that.sectionArray = [];
-    cb(that);
-  }
-}
-
-window.App.Sections.prototype.render = function(options) {
-  var el = options.el;
-  $(el).append("<ol class='sections'>");
-  var $ol = $(el).find("ol");
-
-  for (var i = 0; i < this.sections.length; i++) {
-    var li = document.createElement('LI');
-    li.id = 'section_' + this.sections[i].id;
-    li.className = 'decade';
-    li.innerHTML = this.sections[i].render({el:li});
-    $ol.append(li);
-  }
-}
-
-window.App.Sections.prototype.clean = function(data) {
-  return data.posts;
-}
-
-window.App.Sections.prototype.build = function(cb) {
-  if (this.sectionArray && this.sectionArray.length != 0) {
-    for(var i = 0; i < this.sectionArray.length; i++) {
-      var newSection = new window.App.Section(this.sectionArray[i]);
-      this.sections.push(newSection);      
+    if (window.App.online) {
+      $.getJSON(apiEndpoint + '/get_category_posts/?post_type=chapters&slug=section&order=ASC', function(sectionData, status, xhr){
+        callback(sectionData.posts);
+      });
+    } else {
+      console.log("offline")
     }
-    if (cb) cb(this)    
-  } else {
-    console.log("No Section Data");
   }
-}
+});
 
-if(!Modernizr.touch && window.App.optionClick && !window.App.optionTap) {
-  window.App.optionClickDev = true; // for when we need to test the pinch on touch, and still want to click on desktop
-}
-
-var Sections = new window.App.Sections();
-
-// Load the application
 $(function() {
-  Sections.init();
+  Backbone.emulateJSON = true;
+
+  // Initialize the Backbone router.
+  App.router = new App.Router();
+  Backbone.history.start();
+
 });

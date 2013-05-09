@@ -21,9 +21,21 @@ if(!Modernizr.touch && window.App.optionClick && !window.App.optionTap) {
 App.Decade = Backbone.Model.extend({
   title: '',
   decade: null,
+  url : function() {
+     return apiEndpoint + "/get_page/?post_type=chapters&id="+ this.id + "&children=true"
+  },
   initialize: function(o) {
+    this.fetch({success:function(data, data2){
+      console.log(data2)
+    }});
     this.set("decade", parseInt(o.slug));
+  },
+  
+  parse: function(response) {
+    return response.page;
   }
+  
+  
 });
 
 App.Year = Backbone.Model.extend({
@@ -108,19 +120,15 @@ App.Years = Backbone.Collection.extend({
 
 App.Decades = Backbone.Collection.extend({
   model: App.Decade,
-  url: apiEndpoint + "/get_tag_posts/?tag=decade",
+  url: apiEndpoint + "/get_page/?post_type=chapters&id=" + this.id + "&children=true",
+  // url: apiEndpoint + "/get_tag_posts/?tag=decade",
 
-  initialize: function(d) {
+  initialize: function(data) {
+    // for (var i in data) {
+    //   console.log(data[i].id)
+    //   this.model.fetch()
+    // }
   },
-
-  comparator: function(decade) {
-    return decade.get('decade');
-  },
-
-  parse: function(response) {
-    return response.posts;
-  }
-
 });
 
 App.Chapters = Backbone.Collection.extend({
@@ -288,6 +296,7 @@ App.CommentsView = Backbone.View.extend({
 
   render : function() {
 
+    console.log("RENDER COMMENTS")
     var template =  _.template($("#template-comments").html());
     var html = template(this.model.toJSON());
     $(this.el).append(html);
@@ -359,7 +368,7 @@ App.DecadeView = Backbone.View.extend({
     "clsePanel .target__decade_toc" : "clapseItemPinch"
   },
 
-  initialize: function() {
+  initialize: function(o) {
     // Init the years view
     var that = this;
     this.years = new App.Years(chapters);
@@ -457,10 +466,10 @@ App.DecadesView = Backbone.View.extend({
 
   render : function() {
     this.collection.each(function(d) {
+    console.log("IN RENDER", d)      
       var decadeView = new App.DecadeView({ model : d });
       $(this.el).append(decadeView.render().el);
     }, this);
-
     return this;
   }
 });
@@ -615,30 +624,22 @@ App.Router = Backbone.Router.extend({
   defaultRoute: function(path) {
 
     var callback = function(decades) {
+
       $("#decades").show();
-      $("#decadeIntro").show();
-      // $("#chapters").hide();
+      $("#chapters").show();
 
-      var introData = _.reject(_.map(decades,
-        function(x){ if (_.any(x.tags, function(y){ return y.title == 'intro' })) return x;}),
-        function(z){ return z == undefined }
-      )[0];
-
-      var decadeSet = _.reject(decades,function(x){ return x.id == introData.id; });
-
-      var introDecade = new App.Decade(introData);
-      var introView = new App.DecadeIntroView({model: introDecade })
-      introView.render();
-
+      // console.log(decades)
+      var decadeSet = decades;
       App.decades = new App.Decades(decadeSet);
       App.decadesView = new App.DecadesView({ collection: App.decades });
 
-      var len = App.decades.models.length;
-      var value = 0;
-      for (var i = 0; i < len; i++) {
-        var value = value +  100 / len;
-        gSpineData[App.decades.models[i].get('decade')] = value;
-      }
+      // Spine calculations - Remove for now
+      // var len = App.decades.models.length;
+      // var value = 0;
+      // for (var i = 0; i < len; i++) {
+      //   var value = value +  100 / len;
+      //   gSpineData[App.decades.models[i].get('decade')] = value;
+      // }
 
       var allChapters = new App.Chapters(chapters);
 
@@ -646,42 +647,41 @@ App.Router = Backbone.Router.extend({
       // Filter our the parts.
       // This is pretty quick and could be improved.
 
-      var x = {}
-      for (var i = 0; i < allChapters.models.length; i++) {
-        if (allChapters.models[i].get('decade') !== undefined) {
-
-          if (x[allChapters.models[i].get('decade')] === undefined) {
-            x[allChapters.models[i].get('decade')] = 0;
-          }
-
-          if (allChapters.models[i].get('part') == 1) {
-            x[allChapters.models[i].get('decade')]++;
-            var y = allChapters.models[i].get('year');
-            var d = allChapters.models[i].get('decade');
-            var baseValue = gSpineData[d];
-            gSpineData[d+'-'+ y] = y + baseValue;
-          }
-        }
-      }
+      // var x = {}
+      // for (var i = 0; i < allChapters.models.length; i++) {
+      //   if (allChapters.models[i].get('decade') !== undefined) {
+      // 
+      //     if (x[allChapters.models[i].get('decade')] === undefined) {
+      //       x[allChapters.models[i].get('decade')] = 0;
+      //     }
+      // 
+      //     if (allChapters.models[i].get('part') == 1) {
+      //       x[allChapters.models[i].get('decade')]++;
+      //       var y = allChapters.models[i].get('year');
+      //       var d = allChapters.models[i].get('decade');
+      //       var baseValue = gSpineData[d];
+      //       gSpineData[d+'-'+ y] = y + baseValue;
+      //     }
+      //   }
+      // }
 
       $('#decades').html(App.decadesView.render().el);
+      // This is a little forced
+      $("#decades").css({"max-height":"100%"});
     }
 
 
     if (window.App.online) {
-      $.getJSON(apiEndpoint + '/get_tag_posts/?tag=decade', function(decadeData, status, xhr){
-        $.getJSON(apiEndpoint + '?json=1&count=1000', function(chapterData, status, xhr){
-          // Polute this one..
-          // allChapters = chapterData.posts;
-          chapters = chapterData.posts;
-          callback(decadeData.posts);
-        });
+      $.getJSON(apiEndpoint + '/get_category_posts/?post_type=chapters&slug=section&order=ASC', function(chapterData, status, xhr){
+        // Polute this one..
+        // allChapters = chapterData.posts;
+        chapters = chapterData.posts;
+        callback(chapterData.posts);
       });
     } else {
-      // Load Book with cached data decade data.
-      callback(decadeData);
+      console.log("offline")
+      callback([])
     }
-
   }
 });
 

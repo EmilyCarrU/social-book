@@ -816,7 +816,7 @@ h1, h2, h3, h4, h5, h6, strong {
 /* line 256, ../sass/application.scss */
 .dive_wrapper {
   display: block;
-  max-height: 0;
+/*  max-height: 0;*/
   width: 100%;
   overflow: hidden;
   -webkit-transform: translate3d(0, 0, 0);
@@ -2269,3 +2269,9 @@ textarea {
   margin: -20px 0 0 0;
   -webkit-box-sizing: border-box;
   box-sizing: border-box; }
+
+
+.sections {
+  border:3px solid #fff;
+  margin-bottom:10px;
+}
