@@ -20,13 +20,14 @@ App.Sections = Backbone.Collection.extend({
   model: App.Section
 });
 
-App.Paragraph = Backbone.Model.extend({});
-
-App.Chapter = Backbone.Model.extend({
+App.Paragraph = Backbone.Model.extend({
   initialize: function(o) {
     this.id = o.id;
     this.comments = new App.Comments(o.comments);
   }
+});
+
+App.Chapter = Backbone.Model.extend({
 });
 
 App.Chapters = Backbone.Collection.extend({
@@ -38,8 +39,34 @@ App.Paragraphs = Backbone.Collection.extend({
 });
 
 App.ParagraphView = Backbone.View.extend({
+  tagName : 'li',
+  className : 'para_item',
+  
+  initialize: function() {
+    this.model.comments.bind('add', this.addOne, this);
+  },
+  
   render: function() {
-    return  this.model.toJSON().content;
+    var that = this;
+    // Comments template
+    if (that.model.get('comment_status') === 'open') {
+      var commentsView = new App.CommentsView({
+        collection: that.model.comments,
+        model: that.model,
+        tagName: 'div',
+        className: 'target target__com'
+      });
+      $(this.el).append(commentsView.render().el);
+    }
+    return $(this.el).append(this.model.toJSON().content);
+    //return  this.el; // this.model.toJSON().content;
+  },
+  
+  addOne: function(comment) {
+    var commentView = new App.CommentView({
+      model : comment
+    }); 
+    $(this.el).find('.com_comments').append(commentView.render().el);
   }
 })
 
@@ -84,10 +111,6 @@ App.ParagraphsView = Backbone.View.extend({
 });
 
 App.ChapterView = Backbone.View.extend({
-
-  initialize: function() {
-    this.model.comments.bind('add', this.addOne, this);
-  },
   
   tagName: "li",
   render : function() {
@@ -100,26 +123,8 @@ App.ChapterView = Backbone.View.extend({
     that.paragraphs = new App.Paragraphs(this.model.attributes.children)
     that.paragraphsView = new App.ParagraphsView({ collection : that.paragraphs });
     $(that.el).find('.paragraphs_toc_wrapper').html(that.paragraphsView.render().el);
-
-    // Comments template
-    if (that.model.get('comment_status') === 'open') {
-      var commentsView = new App.CommentsView({
-        collection: that.model.comments,
-        model: that.model,
-        tagName: 'div',
-        className: 'target target__com'
-      });
-      $(this.el).append(commentsView.render().el);
-    }
-    return this;
-  },
-  
-  addOne: function(comment) {
-    var commentView = new App.CommentView({
-      model : comment
-    });
     
-    $(this.el).find('.com_comments').append(commentView.render().el);
+    return this;
   }
 })
 
@@ -234,7 +239,6 @@ App.CommentsView = Backbone.View.extend({
       var html = template();
       $(this.el).append(html);
     }
-
   },
 
   clearForm: function() {
@@ -299,6 +303,7 @@ App.CommentsView = Backbone.View.extend({
     }
 
     this.collection.each(function(comment) {
+
       var commentView = new App.CommentView({ model : comment });
       $(this.el).find('.com_comments').prepend(commentView.render().el);
     }, this);
