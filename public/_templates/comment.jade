@@ -1,0 +1,6 @@
+script(type="text/template", id="template-comment")
+
+	section.com_comments_comment_wrap!= "<%= content %>"
+		span.com_comments_comment_cite!= "<%= name %>"
+		a.ui.com_comments_comment_reply(href="#reply", title="Reply to <%= name %>'s comment") Reply
+			i.ui.com_comments_comment_reply_icon +
