@@ -1,0 +1,102 @@
+// Variables
+
+// Base Type Sizes
+// ===============
+
+$default-font-size			= 16
+$base-font-size				= 18 // susy base size
+$base-reference-size		= 75 // 75 is article h1 font-size
+
+
+// Modular Scale & Leading
+// =============
+
+// ms-base-sizes			= 16
+$ms-ratio					= 1.5
+$ms-round-pixels			= false
+
+$base-line-height			= ms(0)
+
+
+// Breakpoints & Grid
+// ==================
+
+$grid-show					= false
+$grid-gutter				= ms(0)em
+
+$breakpoint-mid				= 'screen and (min-width: 45em)'
+$breakpoint-wide			= 'screen and (min-width: 65em)'
+$breakpoint-huge			= 'screen and (min-width: 80em)'
+
+
+// Font Stacks
+// ===========
+
+$font-family-sans			= "Signika", "Trebuchet MS", Helvetica, Arial, sans-serif
+$font-family-serif			= "Merriweather", Georgia, Times, "Times New Roman", serif
+$font-family-display		= font-family-sans
+$font-family-caption		= font-family-serif
+$font-family-monospace		= "Lucida Sans Typewriter", "Menlo", monospace
+$font-family-default		= font-family-sans
+
+
+// Font Weights
+// ============
+
+$font-weight-light			= 300
+$font-weight-regular		= 400
+$font-weight-semibold		= 600
+$font-weight-bold 			= 700
+
+
+// Legacy Support
+// ==============
+
+$support-for-ie				= false
+
+
+// Animation Timing
+// ================
+
+$default-transition-property = all
+$default-transition-duration = 0.2s // ms(-10) + s
+$default-transition-function = false
+$default-transition-delay	= false
+
+
+// Colour Scheme
+// =============
+
+// Main colour palette
+$color-primary				= #8E7982
+$color-secondary			= #266d70
+$color-highlight			= #f7803c
+$color-muted				= #5B5256
+$color-caption				= #ECECEC
+
+// Common colours
+$color-text					= #333
+$color-background			= #F2EFEA
+$color-border				= #ddd
+
+// Links
+$color-link-default			= $color-primary
+$color-link-visited			= $color-link-default
+$color-link-hover			= $color-highlight
+$color-link-active			= darken($color-highlight, 30%)
+
+// Code
+$color-code					= #999
+$color-code-background		= #f3f3f3
+$color-pre					= #d4d4d4
+$color-pre-background		= #333
+
+// Selections
+$color-selection			= lighten($color-highlight, 30%)
+
+// Messages
+$color-message				= #f4ecbb
+$color-success				= #2cde2c
+$color-warning				= #cf8600
+$color-important			= #d00
+$color-notice				= #66b

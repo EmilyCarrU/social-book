@@ -1,0 +1,35 @@
+.media-list
+	list-style: none
+
+.media-list-item
+	margin: inherit inherit ms(8) inherit
+
+.media-grid
+	@extend .media-list
+
+.media-grid-item
+	@extend .media-list-item
+
+.media
+	display: block
+	padding: 0
+
+.media-image
+	.ie &
+		width: 100%
+
+.media-caption
+	background: $color-caption
+	// padding
+
+.media-caption-title
+	font-family: $font-family-default
+	font-style: normal
+	display: inline
+
+.media-caption-header
+	display: block
+	font-family: $font-family-default
+	font-style: normal
+	margin-bottom: ms(-1)
+	line-height: ms(1)

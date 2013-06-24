@@ -1,0 +1,23 @@
+.flag
+	display: table
+	width: 100%
+
+.flag-image,
+.flag-body
+	display: table-cell
+	vertical-align: middle
+	.flag-is-top &
+		vertical-align: top
+	.flag-is-bottom &
+			vertical-align: bottom
+
+.flag-image
+	padding-right: ms(-3, em)
+	> img
+		display: block
+	.flag-is-reversed: &
+		padding-right: 0
+		padding-left: ms(-2, em)
+
+.flag-body
+	width: auto

@@ -1,0 +1,77 @@
+// Old Modular Scale Test
+// ======================
+
+ms(iter, type = '')
+	if type is em
+		dsz = $base-font-size
+	if type is px
+		dsz = 1
+	else
+		dsz = $default-font-size
+	rsz = $base-reference-size
+	sz = $base-font-size
+	ratio = $ms-ratio
+	iter = floor(iter)
+	abs_iter = abs(iter)
+
+	if (iter is 0)
+		sz = sz / dsz
+		return unit(sz, type)
+	else if (iter > 0)
+		sz = ((ratio**iter) * sz) / dsz
+		return unit(sz, type)
+	else if (iter < 0)
+		sz = ((ratio**iter) / 1 * sz) / dsz
+		return unit(sz, type)
+
+// Modular Scale
+// =============
+/*
+ms-base-sizes	?= 16
+ms-ratio		?= 1.5
+ms-round-pixels ?= false
+
+
+ms-multibase(multiple, ms-base-size = ms-base-size, ms-ratio = ms-ratio)
+	scale-values = ''
+	// should sort base size here
+	while i =< length(ms-base-size)
+		if i > 1
+			scale-values = append(scale-values, ms-base-size[i])
+		modular-scale = ms-base-size[i]
+		if multiple > 0
+			for i in 1...multiple
+				modular-scale =	(ms-ratio**i) * ms-base-size[i]
+				scale-values = append(scale-values, modular-scale)
+			i = -1
+			modular-scale = ms-base-size[i]
+			while modular-scale => ms-base-size[0]
+				modular-scale = (ms-ratio**i) * ms-base-size[i]
+				scale-values = append(scale-values, modular-scale)
+				i = i - 1
+		if multiple < 0
+			i = 0
+			modular-scale = ms-base-size[i]
+			while i => multiple
+				modular-scale = (ms-ratio**i) * ms-base-size[i]
+				scale-values = append(scale-values, modular-scale)
+				i = i - 1
+	k = k + 1
+return multiple
+
+modular-scale(multiple, ms-base-size = ms-base-size, ms-ratio = ms-ratio, ms-round-pixels = ms-round-pixels)
+	if multiple is 0
+		return ms-base-size[0]
+
+	// if multiple ms-base-sizes are passed in as a list
+	// calculate values in using each ms-base-size
+	if length(ms-base-size) > 1
+		if unit(ms-multibase(multiple, ms-base-size, ms-ratio)) is 'px' and ms-round-pixels is true
+			return round(ms-multibase(multiple, ms-base-size, ms-ratio))
+		return ms-multibase(multiple, ms-base-size, ms-ratio)
+
+
+ms(multiple, ms-base-size = ms-base-size, ms-ratio = ms-ratio, ms-round-pixels = ms-round-pixels)
+	modular-scale(multiple, ms-base-size, ms-ratio, ms-round-pixels)
+
+*/
