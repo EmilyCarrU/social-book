@@ -1,5 +1,5 @@
-/*= @group Print
----------------------------------------------------------------------- */
+// Print
+// =====
 
 @media print
 
@@ -10,7 +10,7 @@
 		text-shadow: none !important;
 
 	.nav
-			// @extend .visuallyHidden
+		@extend .visuallyHidden
 
 	.main a, .main a:visited
 		text-decoration: underline;
@@ -43,9 +43,9 @@
 
 		margin: 1cm 0.5cm;
 
-		p, h2, h3
-			orphans: 3;
-			widows: 3;
+	p, h2, h3
+		orphans: 3;
+		widows: 3;
 
-		h2, h3
-			page-break-after: avoid;
+	h2, h3
+		page-break-after: avoid;

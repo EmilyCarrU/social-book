@@ -1,22 +1,22 @@
-/*= @group Elements
----------------------------------------------------------------------- */
+// Elements
+// ========
 
-/*= @group Typography
----------------------------------------------------------------------- */
+// Typography
+// ==========
 
 body
-	font-weight: $font-weight-normal
+	font-weight: $font-weight-regular
 	line-height: $base-line-height
 	background: $color-background
 	color: $color-text
-	font-feature-settings: 'onum' 1, 'pnum' 1, 'kern' false, 'liga' 1
 	margin: 0
+	font-feature-settings: "onum" 1, "pnum" 1, "kern" false, "liga" 1
 
 .main
-	font-size: unit($base-font-size, px)
+	font-size: $base-font-size + px
 
-/*= @group Font Stacks
----------------------------------------------------------------------- */
+// Font Stacks
+// ===========
 
 body,
 select,
@@ -49,8 +49,9 @@ kbd,
 samp
 	font-family: $font-family-monospace
 
-/*= @group Headings
----------------------------------------------------------------------- */
+// Headings
+// ========
+
 
 h1
 	font-weight: $font-weight-semibold
@@ -71,12 +72,13 @@ h3
 h4,
 h5,
 h6
-	font-weight: $font-weight-normal
+	font-weight: $font-weight-regular
 	font-style: normal
 
 
-/*= @group Links
----------------------------------------------------------------------- */
+// Links
+// =====
+
 // Declared link, visited, hover, active
 
 a
@@ -96,8 +98,8 @@ a
 			outline: 0
 
 
-/*= @group Text Level Elements
----------------------------------------------------------------------- */
+// Text Level Elements
+// ===================
 
 // paragraphs have no indents, margins
 // paragraph plus paragrap is an indent, everything
@@ -107,7 +109,7 @@ p
 	margin: 0
 
 p + p
-	// WORk text-indent base-lh
+	text-indent: $base-line-height // check
 
 ul,
 ol,
@@ -115,27 +117,22 @@ dl
 	margin: ms(-2) 0
 	padding: 0
 
-
 ul ul,
 ol ol,
 dl dl
 	margin-left: ms(2)
 
-
 ul li
 	list-style: outside bullet // K, check on this
-
 
 ol
 	counter-reset: li
 	padding: 0
 
-
 ol > li
 	// list-style outside decimal
 	list-style: none
 	position: relative
-
 
 ol > li:before
 	content: counter(li) "." /* Use the counter as content */
@@ -189,7 +186,7 @@ abbr
 	// font-size-ajust useful here?
 	font-feature-settings: "lnum" 1, "pnum" 1, "kern" 0, "liga" 1, "scmp" 1, "c2sc" 1
 
-abbr[title]
+abbr[title],
 dfn[title]
 	cursor: help
 	border-bottom: 1px dotted
@@ -208,8 +205,9 @@ sup
 sub
 	bottom: -0.25em
 
-/*= @group Embeded Content
----------------------------------------------------------------------- */
+
+// Embeded Content
+// ===============
 
 img,
 embed,
@@ -227,32 +225,27 @@ svg:not(root)
 	overflow: hidden
 
 
-
-/*= @group Figures
----------------------------------------------------------------------- */
+// Figures
+// =======
 
 figure
 	margin: 0
 
 
-/*= @group Quotes
----------------------------------------------------------------------- */
+// Quotes
+// ======
 
 q
 	quotes: "“" "”" "‘" "’"
 
-
 q:before
 	content: open-quote
-
 
 q:after
 	content: close-quote
 
-
 cite
 	font-style: italic
-
 
 blockquote
 	margin: ms(0) 0
@@ -262,62 +255,58 @@ blockquote
 		strong
 			font-weight: normal
 
-
-/*= @group Code
----------------------------------------------------------------------- */
+// Code
+// ====
 
 pre
 	white-space: pre
 	white-space: pre-wrap
 	word-wrap: break-word
 
-
 code
 	padding: 0 ms(-2, em)
 	color: $color-code
 	background-color: $color-code-background
 
-
-pre
+pre,
 .code
 	color: $color-pre
 	background-color: $color-pre-background
-//	margin-bottom relative-size(base-lh)
-//	padding 1em relative-size(base-lh)
+	// margin-bottom relative-size(base-lh)
+	// padding 1em relative-size(base-lh)
 
-
-pre code
+pre code,
 .code code
 	background-color: transparent
 	border: none
 	padding: 0
 
-
 .code li
 	list-style-type: decimal-leading-zero
 
 
-/*= @group Tables
----------------------------------------------------------------------- */
+// Tables
+// ======
 
 table
 	border-collapse: collapse
 	border-spacing: 0
 	font-feature-settings: "lnum" 1, "pnum" 0, "tnum" 1, "kern" 0, "liga" 1, "scmp" 1
 
-
 td
 	vertical-align: top
 
 
-/*= @group Address
----------------------------------------------------------------------- */
+// Address
+// =======
 
 address
 	font-style: normal
 
-/*= @group Forms
----------------------------------------------------------------------- */
+
+// Forms
+// =====
+
 // From HTML5 Boilerplate
 
 form
@@ -328,11 +317,8 @@ fieldset
 	margin: 0
 	padding: 0
 
-
-// Indicate that 'label' will shift focus to the associated form element
 label
 	cursor: pointer
-
 
 // 1. Correct color not inheriting in IE6/7/8/9
 // 2. Correct alignment displayed oddly in IE6/7
@@ -364,7 +350,7 @@ input
 
 // 1. Display hand cursor for clickable form elements
 // 2. Allow styling of clickable form elements in iOS
-// 3. Correct inner spacing displayed oddly in IE7 (doesn't effect IE6)
+// 3. Correct inner spacing displayed oddly in IE7 (doesn’t effect IE6)
 button,
 input[type="button"],
 input[type="reset"],
