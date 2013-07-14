@@ -1,14 +1,14 @@
 // SMACSS / Stylus / Modular Scale Boilerplate
 // ===========================================
 
-@import 'nib' // Import Nib first (if you’re using it)
+@import "_nib" // Import Nib first (if you’re using it)
 
 // Stylus Features
 // =============
 
-@import 'variables'
-@import 'functions'
-@import 'mixins'
+@import "_variables"
+@import "_functions"
+@import "_mixins"
 
 
 // The Styles
@@ -21,13 +21,10 @@
 // - Module = minor components, e.g., navigation bar, callout, widgets etc.
 // - State  = a state is something that augments + overrides all other styles, e.g., success or error state
 
-@import 'base'
-@import 'layout'
-@import 'modules'
-@import 'state'
-
-// Helpers should come last out of screen styles
-@import 'base/helpers'
+@import "_base"
+@import "_layout"
+@import "_modules"
+@import "_state"
 
 // Print styles
-@import 'base/print'
+@import "_base/print"

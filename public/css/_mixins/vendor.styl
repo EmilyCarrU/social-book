@@ -1,0 +1,74 @@
+// Vendor
+// ======
+// For experimental properties not covered by Compass.
+
+// Nib Ex.
+// box-ordinal-group()
+//   vendor('box-ordinal-group', arguments, only: webkit moz ms official)
+
+// Resize
+// ==================
+
+resize()
+	vendor('resize', arguments, only: webkit)
+
+
+// Overflow Scrolling
+// ==================
+
+overflow-scrolling()
+	vendor('overflow-scrolling', arguments, only: webkit)
+
+
+// Font Variant
+// ============
+
+font-variant()
+	vendor('font-variant', arguments, only: moz webkit ms official)
+
+// Font Feature Settings
+// =====================
+
+font-feature-settings()
+	pos = ()
+	// for args in arguments
+	// 	for arg in args
+	// 		append(unquote(arg))
+	vendor('font-feature-settings', arguments, only: moz webkit ms official)
+
+
+
+
+// =font-feature-settings($font-feature-settings...)
+// 	$feature-tag-values-legacy: ()
+// 	$font-variant-value: normal !default
+
+// 	@each $value in $font-feature-settings
+// 		$feature-tag-value: unquote(nth($value, 1))
+// 		$feature-tag-value-legacy: $feature-tag-value + "=" + nth($value, 2)
+// 		$feature-tag-values-legacy: append($feature-tag-values-legacy, $feature-tag-value-legacy, comma)
+
+// 		@if $value == "smcp" or $value == "c2sc"
+// 			$font-variant-value: small-caps
+
+// 	-moz-font-feature-settings: quote(#{$feature-tag-values-legacy}) // Still need to fix this
+// 	@include experimental(font-feature-settings, $font-feature-settings, $font-feature-settings-support...)
+// 	font-variant: $font-variant-value
+
+
+// 	border-radius()
+// 	  pos = ()
+// 	  augmented = false
+// 	  importance = arguments[length(arguments) - 1] == !important ? !important : unquote('')
+
+// 	  for args in arguments
+// 	    for arg in args
+// 	      if arg is a 'ident'
+// 	        append(pos, arg)
+// 	        augmented = true
+// 	      else
+// 	        append(pos, arg)
+// 	        if augmented
+// 	          -apply-border-radius(pos, importance)
+// 	          pos = ()
+// 	  vendor('border-radius', pos, only: webkit official) unless augmented

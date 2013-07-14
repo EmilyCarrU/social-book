@@ -3,11 +3,10 @@
 	transition: none
 	.ie &
 		margin-top: 0 !important // override js
-		@include: translate(none)
-		@include: span-columns(3 omega, 5)
-		@include: clearfix
 		overflow: visible
 		float: right
+		translate(none)
+		clearfix()
 
 .nav-list
 	display: block

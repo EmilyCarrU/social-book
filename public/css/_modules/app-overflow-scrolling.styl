@@ -1,0 +1,26 @@
+// App Overflow Scrolling
+// ======================
+// Probably don’t use this, it still needs work.
+// More negatives than benefits coming from it.
+
+html
+	height: 100%
+	width: 100%
+	overflow-y: hidden
+	&.no-overflowscrolling
+		height: auto
+		overflow: visible
+body
+	height: 100% // bad to use on iOS
+	min-height: 100% // possibly bad to use on iOS
+	position: relative
+	overflow: auto
+	overflow-scrolling: touch
+	hardware-acceleration(true)
+
+// .no-overflowscrolling-fix
+// display: block
+// overflow: hidden
+// text-align: center
+// min-height: 75%
+// interpreted differently becasue of Modernizrtodo

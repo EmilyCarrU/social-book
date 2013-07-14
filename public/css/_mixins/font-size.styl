@@ -1,0 +1,9 @@
+font-size($n = $base-font-size)
+	if unit($n) is px
+		font-size: $n
+		font-size: unit($n / $default-font-size, rem)
+	else if unit($n) is rem
+		font-size: unit($n * $default-font-size, px)
+		font-size: $n
+	else
+		font-size: $n

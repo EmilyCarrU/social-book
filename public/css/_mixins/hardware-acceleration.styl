@@ -1,0 +1,14 @@
+// Hardware Acceleration
+// =====================
+
+hardware-acceleration($status = true)
+	if $status is false
+		vendor("transform", translate3d(none), only: webkit) // < iOS6
+		vendor("transform", translateZ(none), only: webkit)
+		vendor("perspective", none, only: webkit)
+		vendor("backface-visibility", none, only: webkit)
+	else
+		vendor("transform", translate3d(0,0,0), only: webkit) // < iOS6
+		vendor("transform", translateZ(0), only: webkit)
+		vendor("perspective", 1000, only: webkit)
+		vendor("backface-visibility", hidden, only: webkit)

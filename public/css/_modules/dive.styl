@@ -24,7 +24,7 @@
     width: 100%
     overflow: hidden
 	transition: max-height $default-transition-duration ease-in-out
-	enable-hardware-acceleration()
+	hardware-acceleration(true)
 
 .dive__open,
 .dive:focus,
@@ -33,7 +33,7 @@
 	.dive__open > &,
 	.dive:focus > &
 		max-height: $dive-comment-max-height
-		enable-hardware-acceleration()
+		hardware-acceleration(true)
 
 .dive.dive__tease > .dive_wrapper
 	max-height: 250em // needs extra .dive class for higher specificity, as .dive__open and .dive__tease will get applied

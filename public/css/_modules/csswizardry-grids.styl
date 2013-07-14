@@ -14,12 +14,11 @@ responsive := true
  */
 mobile-first :=	true
 
-silent-classes := true
 
 /**
  * Set the spacing between your grid items.
  */
-gutter := $grid-gutter
+gutter := 24px
 
 /**
  * Would you like push and pull classes enabled?
@@ -32,19 +31,13 @@ pull := true
  * your classes (e.g. `.palm--one-half`), the second value is the media query
  * that the breakpoint fires at.
  */
-
-
-breakpoints := 			"palm" "screen and (max-width: 480px)",
-						"lap" "screen and (min-width: 481px) and (max-width: 1023px)",
+breakpoints := 			"palm" "(max-width: 480px)",
+						"lap" "(min-width: 481px) and (max-width: 1023px)",
 						"portable" "(max-width: 1023px)",
-						"desk" "screen and (min-width: 1024px)"
+						"desk" "(min-width: 1024px)"
 
-if silent-classes is true
-	class-type = unquote("$")
-else
-	class-type = unquote(".")
 
-device-type()
+
 /*------------------------------------*\
 	$MIXINS
 \*------------------------------------*/
@@ -55,16 +48,16 @@ create-size(namespace, width, sizes = null)
 	if sizes
 		for size, i in sizes
 			plural = i is 0 ? "" : "s"
-			{class-type}{namespace}{size}-{width}{(plural)}
+			.{namespace}{size}-{width}{(plural)}
 				width: ((i + 1) / (length(sizes) + 1)) * 100%
 			if push
-				{class-type}push-{namespace}{size}-{width}{(plural)}
+				.push-{namespace}{size}-{width}{(plural)}
 					left: ((i + 1) / (length(sizes) + 1)) * 100%
 			if pull
-				{class-type}pull-{namespace}{size}-{width}{(plural)}
+				.pull-{namespace}{size}-{width}{(plural)}
 					right: ((i + 1) / (length(sizes) + 1)) * 100%
 	else
-		{class-type}{namespace}one-whole
+		.{namespace}one-whole
 			width: 100%
 
 /**
@@ -99,22 +92,11 @@ grid-media-query(media-query)
  * 2. Remove any margins and paddings that might affect the grid system.
  * 3. Apply a negative `margin-left` to negate the columns’ gutters.
  */
-
- /* In the original,
-	list-style: none
-	margin: 0
-	padding: 0
-	margin-left: -(gutter)
-*/
-
-{class-type}grid
-	list-style: none
-	// margin-left -1 * (gutter/2)
-	// margin-right -1 * (gutter/2)
-	padding-left: (gutter/2)
-	padding-right: (gutter/2)
-	outline: 1px solid red if show-grid is true
-	clearfix()
+.grid
+	list-style: none 				/* [1] */
+	margin: 0 						/* [2] */
+	padding: 0 						/* [2] */
+	margin-left: -(gutter) 			/* [3] */
 
 /**
  * 1. Cause columns to stack side-by-side.
@@ -123,34 +105,20 @@ grid-media-query(media-query)
  * 4. Full-width unless told to behave otherwise.
  * 5. Required to combine fluid widths and fixed gutters.
  */
-
-{class-type}grid__item
-	float: left
-	margin-left: 0
-	margin-right: 0
-	padding-right: (gutter/2)
-	padding-left: (gutter/2)
-	vertical-align: top
-	width: 100% if mobile-first isnt false
-	box-sizing: border-box
+.grid__item
+	float: left 					/* [1] */
+	padding-left: gutter 			/* [2] */
+	vertical-align: top 			/* [3] */
+	width: 100% if mobile-first		/* [4] */
+	-webkit-box-sizing: border-box 	/* [5] */
+	-moz-box-sizing: border-box 	/* [5] */
+	box-sizing: border-box 			/* [5] */
 	position: relative if pull or push
-	outline: 1px solid purple if grid-show is true
-	if grid-show is true
-		&:before
-			content: ""
-			border: 1px solid rgba(255, 0, 0, 0.75)
-			border-width: 0 1px
-			width: 100%
-			display: block
-			height: 5em
-			margin-bottom: -5em
-			overflow: hidden
-
 
 /**
  * Reversed grids allow you to structure your source in the opposite order to
  * how your rendered layout will appear. Extends `.grid`.
-
+ */
 .grid--rev
 	direction	: rtl
 	text-align	: left
@@ -158,30 +126,26 @@ grid-media-query(media-query)
 	> .grid__item
 		direction	: ltr
 		text-align	: left
-*/
+
 
 /**
  * Gutterless grids have all the properties of regular grids, minus any spacing.
  * Extends `.grid`.
  */
-{class-type}grid--full
-	margin-right: 0
+.grid--full
 	margin-left: 0
-	padding-right: 0
-	padding-left: 0
 
-	> {class-type}grid__item
+	> .grid__item
 		padding-left: 0
-		padding-right: 0
 
 
 /**
  * Align the entire grid to the right. Extends `.grid`.
  */
-{class-type}grid--right
+.grid--right
 	text-align: right
 
-	> {class-type}grid__item
+	> .grid__item
 		text-align: left
 
 
@@ -189,10 +153,10 @@ grid-media-query(media-query)
  * Centered grids align grid items centrally without needing to use push or pull
  * classes. Extends `.grid`.
  */
-{class-type}grid--center
+.grid--center
 	text-align: center
 
-	> {class-type}grid__item
+	> .grid__item
 		text-align: left
 
 
@@ -200,35 +164,35 @@ grid-media-query(media-query)
  * Align grid cells vertically (`.grid--middle` or `.grid--bottom`). Extends
  * `.grid`.
  */
-{class-type}grid--middle
+.grid--middle
 
-	> {class-type}grid__item
+	> .grid__item
 		vertical-align: middle
 
 
-{class-type}grid--bottom
+.grid--bottom
 
-	> {class-type}grid__item
+	> .grid__item
 		vertical-align: bottom
 
 
 /**
  * Create grids with narrower gutters. Extends `.grid`.
  */
-{class-type}grid--narrow
+.grid--narrow
 	margin-left: -(gutter / 2)
 
-	> {class-type}grid__item
+	> .grid__item
 		padding-left: gutter / 2
 
 
 /**
  * Create grids with wider gutters. Extends `.grid`.
  */
-{class-type}grid--wide
+.grid--wide
 	margin-left: -(gutter * 2)
 
-	> {class-type}grid__item
+	> .grid__item
 		padding-left: gutter * 2
 
 
@@ -295,4 +259,6 @@ if responsive
 		breakpoint-found = true
 		media = declaration
 		@media media
-			device-type(name + "--")
+			device-type(name + "-")
+
+

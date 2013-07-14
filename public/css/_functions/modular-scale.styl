@@ -1,0 +1,30 @@
+ms($iter, $ms-type ="em")
+	$dsz = $base-font-size
+
+	if $ms-type is "px"
+		// Pixels
+		$dsz = 1
+	else if $ms-type is "em"
+		// Ems
+		$dsz = $base-font-size
+	else if $ms-type is "rem"
+		// Ems  16
+		$dsz = $default-font-size
+	else if $ms-type is "%"
+		// % of 13
+		// never did this
+
+	$rsz = $base-reference-size // base-reference-size
+	$sz = $base-font-size // base-font-size
+
+	$iter = floor($iter)
+	$abs_iter = abs($iter)
+
+	if $iter is 0
+		$sz = $sz / $dsz
+	else if ($iter > 0)
+		$sz = (($ratio ** $iter) * $sz) / $dsz
+	else if ($iter < 0)
+		$sz = (($ratio ** $iter) / 1 * $sz) / $dsz
+
+	return unit($sz, $ms-type)
