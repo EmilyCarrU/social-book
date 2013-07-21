@@ -5,7 +5,6 @@
 	height: auto
 	max-height: auto
 	background: $color-background
-	box-shadow: 0 1px 0 rgba(255, 255, 255, 33%)
 	&:after
 		content: "" // 36px
 		position: absolute
@@ -18,54 +17,50 @@
 		border-top-color: $color-highlight
 		width: 0
 
-.dive_wrapper
+.dive-wrapper
 	display: block
-	max-height: 0
-    width: 100%
-    overflow: hidden
+	padding: 0
+	width: 100%
 	transition: max-height $default-transition-duration ease-in-out
 	hardware-acceleration(true)
 
-.dive__open,
+.dive--open,
 .dive:focus,
-.dive__tease
+.dive--tease
 	box-shadow: none
-	.dive__open > &,
+	.dive--open > &,
 	.dive:focus > &
-		max-height: $dive-comment-max-height
+		// max-height: $dive-comment-max-height
+		max-height: 9999px
 		hardware-acceleration(true)
 
-.dive.dive__tease > .dive_wrapper
-	max-height: 250em // needs extra .dive class for higher specificity, as .dive__open and .dive__tease will get applied
+.dive.dive--tease > .dive_wrapper
+	max-height: 250em // needs extra .dive class for higher specificity, as .dive--open and .dive--tease will get applied
 
-.dive_count
-	font-size-adjust: 0.5 // Still needed?
+.dive-count
 	font-size: 0.5em
+	// test font-size-adjust with fallback fonts
 	display: block
 	float: right
-	height: 1em
-	margin: -1.5em 0 0 0
-	padding: 0 1em 0 0.5em
-	.dive__open &,
+	.dive--open &,
 	.dive:focus &
 		// Move to state?
 
-.dive_icon
+.dive-icon
 	display: block
 	width: 0.75em
 	height: 0.75em
 	position: absolute
-	right: 1.5em
+	right: 2em
 	margin: 0
-	border: 1px solid $color-dive
+	border: 1px solid $color-highlight
 	border-width: 3px 0 0 3px
-	background: $content-background
-	z-index: 10
-	box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 33%)
+	background: $color-background
+	display: block
 	transform: rotate(45deg)
 
-.dive__open:after,
+.dive--open:after,
 .dive:focus:after,
-.dive__tease:after
+.dive--tease:after
 	margin: 1px 0 0 0
 	transform rotate(180deg)

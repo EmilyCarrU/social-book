@@ -1,13 +1,13 @@
 script(type="text/template", id="template-comments")
 
-	aside.com.dive
-		span.ui.dive_count!= "<% comment_count %>"
-		i.dive_icon
-		section.com_wrapper.dive_wrapper
-			ul.com_comments
-				li.com_comments_actions
-					ul.com_comments_actions_items
-						li.com_comments_actions_item
-							a.view_all(href="#comments", title="View all the comments in this discussion") View all comments&hellip;
-						li.com_comments_actions_item
-							a.button.com_comments_meta_add(href="#", title="") Add Comment
+	aside.dive
+		span.ui.dive-count!= "<% comment_count %>"
+		i.dive-icon
+		.dive-wrapper
+			ul.comment-list
+			//- Comments load here
+			ul.comment-list-action-list
+				li.comment-list-action-item
+					a.view-all(href="#comments", title="View all the comments in this discussion") View all comments&hellip;
+				li.comment-list-action-item
+					a.btn.add(href="#", title="") Add Comment

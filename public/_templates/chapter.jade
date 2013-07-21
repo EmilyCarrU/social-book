@@ -1,5 +1,9 @@
 script(type="text/template", id="template-chapter")
 
-	section.chap_sec
-		h4!= "<%= title %> <%= slug %>"
-		.paragraphs.paragraphs_toc_wrapper
+	header
+		h4!= "<%= title %>"
+		code!= "<%= slug %>"
+	.target
+		.dive
+			i.dive-icon
+			.dive-wrapper

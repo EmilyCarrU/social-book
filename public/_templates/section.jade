@@ -1,12 +1,9 @@
 script(type="text/template", id="template-section")
 
-	header.toc_item_head
-		hgroup
-			h4.toc_item_head_year
-			h3.toc_item_head_title!= "<%= title %>"
-		section.toc_item_intro
-			!= "<%= content %>"
-	target.target__decade_toc
-		.decade_toc.dive
-			i.dive_icon
-			.decade_toc_wrapper.dive_wrapper
+	header
+		h3!= "<%= title %>"
+		section!= "<%= content %>"
+	.target
+		.dive
+			i.dive-icon
+			.dive-wrapper

@@ -1,14 +1,18 @@
 script(type="text/template", id="template-comment-form")
 
-	.com_add_sec.modal.modal__open
-		form.com_add_form(method="post", action="#")
+	.comment-add.dive
+		form.comment-form(method="post", action="#")
 			fieldset
-				label(for="commentName") Name
-				input(type="text", name="commentName", id="commentName", placeholder="Your name")
-				label(for="commentEmail") Email
-				input(type="text", name="commentEmail", id="commentEmail", placeholder="Your email")
-				label(for="commentText") Comment
-				textarea(name="commentText", id="commentText")
-			fieldset(class="form_action_items")
-				button(class="submit button") Add Comment
-				button(class="cancel") Cancel
+				label(for="comment-form-name") Name
+				input.comment-form-name(type="text", name="comment-form-name", id="comment-form-name")
+				//- Need the subchapter number for ID, ex #comment-form-name--01-03-10
+
+				label(for="comment-form-email") Email
+				input.comment-form-email(type="text", name="comment-form-email", id="comment-form-email")
+
+				label(for="comment-form-content") Comment
+				textarea.comment-form-content(name="comment-form-content", id="comment-form-content")
+
+				fieldset(class="comment-form-action-list")
+					button.btn.submit.comment-form-action-item Add Comment
+					button.cancel.comment-form-action-item Cancel
