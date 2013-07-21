@@ -56,8 +56,8 @@ samp
 h1
 	font-weight: $font-weight-semibold
 	font-style: normal
-	font-size: ms(2, rem)
-	line-height: ms(0)
+	font-size: 3rem
+	line-height: 1.1
 	margin: 0
 
 h2
@@ -67,7 +67,7 @@ h2
 h3
 	font-weight: $font-weight-bold
 	font-style: normal
-	font-size: ms(1, rem)
+	font-size: 2rem
 
 h4,
 h5,
@@ -114,13 +114,13 @@ p + p
 ul,
 ol,
 dl
-	margin: ms(-2) 0
+	margin: 0
 	padding: 0
 
 ul ul,
 ol ol,
 dl dl
-	margin-left: ms(2)
+	margin-left: 2em
 
 ul li
 	list-style: outside bullet // K, check on this
@@ -129,26 +129,15 @@ ol
 	counter-reset: li
 	padding: 0
 
-ol > li
-	// list-style outside decimal
-	list-style: none
+ol li
+	list-style outside decimal
 	position: relative
-
-ol > li:before
-	content: counter(li) "." /* Use the counter as content */
-	counter-increment: li /* Increment the counter by 1 */
-	min-width: ms(4)
-	margin-left: ms(5)
-	margin-right: ms(-2)
-	position: absolute
-	text-align: right
-	font-feature-settings: "kern" 0, "tnum" 1, "onum" 1, "liga" 1
 
 dl dt
 	font-weight: bold
 
 dl dd
-	margin: 0 0 ms(0) 0
+	margin: 0 0 1em 0
 
 nav ul,
 nav ul li,
@@ -236,7 +225,7 @@ figure
 // ======
 
 q
-	quotes: "“" "”" "‘" "’"
+	// quotes: "“" "”" "‘" "’" // Temporarily commented out for github.com/sintaxi/harp/issues/40
 
 q:before
 	content: open-quote
@@ -248,7 +237,7 @@ cite
 	font-style: italic
 
 blockquote
-	margin: ms(0) 0
+	margin: 1em 0
 	footer
 		padding: 0.5em 0 0 1em
 		font-style: normal
@@ -264,7 +253,7 @@ pre
 	word-wrap: break-word
 
 code
-	padding: 0 ms(-2, em)
+	padding: 0.5em
 	color: $color-code
 	background-color: $color-code-background
 

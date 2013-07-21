@@ -6,18 +6,18 @@
 .flag-body
 	display: table-cell
 	vertical-align: middle
-	.flag-is-top &
+	&.flag--top
 		vertical-align: top
-	.flag-is-bottom &
+	&.flag--bottom
 			vertical-align: bottom
 
 .flag-image
-	padding-right: ms(-3)
+	padding-right: 0.5em
 	> img
 		display: block
-	.flag-is-reversed: &
+	&.flag--reversed
 		padding-right: 0
-		padding-left: ms(-2)
+		padding-left: 0.5em
 
 .flag-body
 	width: auto
