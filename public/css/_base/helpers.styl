@@ -1,12 +1,9 @@
-// Helpers
-// =======
-
 // HTML5bp Helpers
 // ================
 
 
 // For image replacement
-ir()
+.ir
 	border: 0
 	font: 0/0 a
 	text-shadow: none
@@ -14,12 +11,12 @@ ir()
 	background-color: transparent
 
 // Hide from both screenreaders and browsers h5bp.com/u
-hidden()
+.hidden
 	display: none
 	visibility: hidden
 
 // Hide only visually, but have it available for screenreaders h5bp.com/v
-visuallyhidden()
+.visuallyhidden
 	border: 0 clip rect(0 0 0 0)
 	height: 1px
 	margin: -1px
@@ -37,24 +34,5 @@ visuallyhidden()
 		position: static
 		width: auto
 
-invisible()
+.invisible
 	visibility: hidden
-
-// Typographic Helpers
-// ===================
-
-.amp
-	font-family: $font-family-serif
-	// font-weight: $font-weight-regular
-	font-style: italic
-	font-size: ms(0) // standing in for font-size-adjust
-.de-em
-	font-family: $font-family-serif
-	font-style: italic
-	font-weight: $font-weight-light
-	font-size: 0.75 * ms(0) // standing in for font-size-adjust
-	line-height: 1
-.no-break
-	white-space: pre
-.no-underline
-	border-bottom: 0
