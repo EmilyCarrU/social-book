@@ -1,7 +1,7 @@
 .dive
 	border-top: 1px solid $color-highlight
 	border-bottom: 1px solid $color-highlight
-	width: 100%
+	width: auto
 	height: auto
 	max-height: auto
 	background: $color-background
@@ -16,33 +16,31 @@
 		border: 0.25em solid transparent
 		border-top-color: $color-highlight
 		width: 0
+	&.is-open,
+	&:focus
+		> .dive-wrapper
+			// max-height: $dive-comment-max-height
+			max-height: 9999px
+			hardware-acceleration(true)
+		&:after
+			margin: 1px 0 0 0
+			transform rotate(180deg)
 
 .dive-wrapper
 	display: block
 	padding: 0
-	width: 100%
+	width: auto
+	max-height: 0
+	overflow: hidden
 	transition: max-height $default-transition-duration ease-in-out
 	hardware-acceleration(true)
-
-.dive--open,
-.dive:focus,
-.dive--tease
-	box-shadow: none
-	.dive--open > &,
-	.dive:focus > &
-		// max-height: $dive-comment-max-height
-		max-height: 9999px
-		hardware-acceleration(true)
-
-.dive.dive--tease > .dive_wrapper
-	max-height: 250em // needs extra .dive class for higher specificity, as .dive--open and .dive--tease will get applied
 
 .dive-count
 	font-size: 0.5em
 	// test font-size-adjust with fallback fonts
 	display: block
 	float: right
-	.dive--open &,
+	.dive.is-open &,
 	.dive:focus &
 		// Move to state?
 
@@ -58,9 +56,3 @@
 	background: $color-background
 	display: block
 	transform: rotate(45deg)
-
-.dive--open:after,
-.dive:focus:after,
-.dive--tease:after
-	margin: 1px 0 0 0
-	transform rotate(180deg)
