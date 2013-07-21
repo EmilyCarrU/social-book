@@ -1,0 +1,13 @@
+script(type="text/template", id="template-comment-list")
+
+	aside.dive
+		span.ui.dive-count!= "<% comment_count %>"
+		i.dive-icon
+		.dive-wrapper
+			ul.comment-list
+			//- Comments load here
+			ul.comment-list-action-list
+				li.comment-list-action
+					a.view-all(href="#comments", title="View all the comments in this discussion") View all comments&hellip;
+				li.comment-list-action
+					a.btn.add(href="#", title="") Add Comment
