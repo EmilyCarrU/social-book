@@ -1,8 +1,12 @@
+//- script(type="text/template", id="template-book")
 //- Should be changed to a view
-h1= globals.title
 .target
-	.dive
-		i.dive_icon
-		//- #book.dive-wrapper.dive--open
-		#book
-	//- span.no-overflowscrolling-fix= "(temp overflow scrolling fix, placeholder for real cover content)"
+  .dive
+    i.dive_icon
+    //- #book.dive-wrapper.dive--open
+    //- .topcoat-list
+    div
+      header.topcoat-list__header
+        h1 #{ title }
+      #book
+  //- span.no-overflowscrolling-fix= "(temp overflow scrolling fix, placeholder for real cover content)"

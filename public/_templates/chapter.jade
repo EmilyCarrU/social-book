@@ -1,9 +1,7 @@
 script(type="text/template", id="template-chapter")
 
-	header
-		h4!= "<%= title %>"
-		code!= "<%= slug %>"
-	.target
-		.dive
-			i.dive-icon
-			.dive-wrapper
+  strong!= "<%= title_plain %>"
+  p!= "<%= slug %>"
+  .js-subChapterView.topcoat-list
+    //- header.topcoat-list__header
+    //-   h4 SubChapters

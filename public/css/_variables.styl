@@ -4,25 +4,22 @@
 // ===============
 
 $default-font-size			= 16
-$base-font-size				= 18 // susy base size
-$base-reference-size		= 75 // 75 is article h1 font-size
+$base-font-size				  = 18
+$base-reference-size		= 75
 
 
 // Modular Scale & Leading
 // =============
 
 // ms-base-sizes			= 16
-$ratio						= 1.5
-$round-pixels				= false
+$ratio						    = 1.5
+$round-pixels				  = false
 
 $base-line-height			= 1.5
 
 
 // Breakpoints & Grid
 // ==================
-
-$grid-show					= false
-$grid-gutter				= 1em
 
 $breakpoint-mid				= 'screen and (min-width: 45em)'
 $breakpoint-wide			= 'screen and (min-width: 65em)'
@@ -32,11 +29,11 @@ $breakpoint-huge			= 'screen and (min-width: 80em)'
 // Font Stacks
 // ===========
 
-$font-family-sans			= Verdana
+$font-family-sans			  = Verdana
 $font-family-serif			= "FF Tisa", Georgia, serif
 $font-family-display		= $font-family-serif
 $font-family-caption		= $font-family-serif
-$font-family-monospace		= "Lucida Sans Typewriter", "Menlo", monospace
+$font-family-monospace	= "Lucida Sans Typewriter", "Menlo", monospace
 $font-family-default		= $font-family-serif
 
 
@@ -52,7 +49,7 @@ $font-weight-bold 			= 700
 // Legacy Support
 // ==============
 
-$support-for-ie				= false
+support-for-ie				= false
 
 
 // Animation Timing
@@ -75,9 +72,9 @@ $color-muted				= #5B5256
 $color-caption				= #ECECEC
 
 // Common colours
-$color-text					= #333
-$color-background			= #F2EFEA
-$color-border				= #ddd
+$color-text					  = #404040
+$color-background			= lighten(#F2EFEA, 65%);
+$color-border				  = #ddd
 
 // Links
 $color-link-default			= $color-primary
@@ -85,18 +82,214 @@ $color-link-visited			= $color-link-default
 $color-link-hover			= $color-highlight
 $color-link-active			= darken($color-highlight, 30%)
 
+// Selections
+$color-selection      = lighten($color-highlight, 30%)
+
 // Code
 $color-code					= #999
 $color-code-background		= #f3f3f3
 $color-pre					= #d4d4d4
 $color-pre-background		= #333
 
-// Selections
-$color-selection			= lighten($color-highlight, 30%)
+// Topcoat
+// =======
 
-// Messages
-$color-message				= #f4ecbb
-$color-success				= #2cde2c
-$color-warning				= #cf8600
-$color-important			= #d00
-$color-notice				= #66b
+support-for-ie = false
+
+var-border--cta           = 1px solid #143250
+var-background-color--cta = #288edf
+var-box-shadow--cta       = inset 0 1px rgba(255, 255, 255, 0.36)
+var-box-shadow--cta--down = inset 0 1px rgba(0, 0, 0, 0.12)
+var-color--cta            = #fff
+var-font-weight--cta      = 500
+var-text-shadow--cta      = 0 -1px rgba(0, 0, 0, 0.36)
+var-overflow              = hidden
+var-border--focus         = 1px solid #0940fd
+var-border--invalid       = 1px solid #D83B75
+var-box-shadow--focus     = 0 0 0 2px #6fb5f1
+
+// Text Input
+// ==========
+
+var-placeholder-color--input = #c6c8c8
+var-color--focus             = #000
+
+// Radio Input
+// ===========
+
+var-radio-offset             = -109px
+var-radio-offset--checked    = -74px
+var-radio-width              = 37px
+var-radio-bgsize             = var-radio-width
+var-radio-height             = 31px
+var-radio-line-height        = var-radio-height
+var-radio-margin             = 15px
+
+// Overlay
+// =======
+
+var-overlay-bg-color         = rgba(88, 90, 92, 0.7)
+var-overlay-padding          = 20px 10px
+var-overlay-bg-box-shadow    = inset 0px 0px 115px 0px #000000
+var-overlay-width            = 50%
+var-overlay-margin--left     = - var-overlay-width / 2
+
+// Textarea
+// ========
+
+var-font-size--textarea--large = 1.3rem
+var-line-height--large         = 1.3rem
+var-margin                     = 0
+
+// Progress Bar Container
+// ======================
+
+var-bar-border-radius       = 12px
+var-bar-width               = 250px
+var-bar-height              = 1.25rem
+
+// Progress Bar Progress
+// =====================
+
+var-progress-border-radius  = 12px 0 0 12px
+
+// Search Input
+// ============
+
+var-background-image-alt--search-input = url("../img/search_dark.svg")
+
+// Topcoat Mobile
+// ==============
+
+var-color                          = #c6c8c8
+var-font-size                      = 16px
+var-font-size--large               = 1.3rem
+var-font-weight                    = 200
+var-font-weight--large             = 400
+var-letter-spacing                 = 1px
+var-border-radius                  = 6px
+var-border-radius--large           = 30px
+var-border-radius--huge            = 40px
+var-padding                        = 0 1.25rem
+var-padding--large                 = var-padding
+var-height                         = 3rem
+var-height--large                  = 4.375rem
+var-line-height                    = var-height
+var-line-height--large             = var-height--large
+var-vertical-align                 = top
+/* Containers */
+var-padding--container             = 2rem
+/* Icon Button */
+var-size--icon                     = var-height * 0.54 // 25px
+var-size--icon--large              = var-height--large * 0.571428571
+var-padding--icon-button           = 0 var-height / 4
+var-icon-top                       = -1px
+var-icon-top--large                = -2px
+/* Navigation bar */
+var-padding--navigation-bar        = 1rem
+/* List */
+var-padding--list-header           = 4px 20px
+var-padding--list-item             = 1.25rem
+var-font-size--list-header         = .9em
+var-font-weight--list-header       = 400
+/* Search Input */
+var-search-icon                    = url("../img/search.svg")
+var-background-image--search-input                     = var-search-icon
+/* Text Area */
+var-font-size--textarea            = 2.5rem
+var-font-size--textarea--large     = 3rem
+/* Checkbox */
+var-size--checkbox                 = 2rem
+var-border-radius--checkbox        = 3px
+var-top--checkmark                 = 1px
+var-left--checkmark                = 2px
+var-width--checkmark__tail         = 28px
+var-height--checkmark__foot        = 11px
+var-border-radius--checkmark       = 2px
+var-border-width--checkmark        = 7px
+var-transform--checkmark           = rotate(-50deg)
+/* Radio */
+var-size--radio-button             = 1.875rem
+var-size--radio-button--checked    = 0.875rem
+var-position--radio-button--checked = 7px
+var-border--radio-button           = 1px solid rgba(0,0,0,0.1)
+var-background--radio-button       = #666666
+var-box-shadow--radio-button       = 0 1px rgba(255,255,255,0.50)
+/* Range input */
+var-range__slider-height           = 3rem
+var-range__slider-width            = 2rem
+var-range-height                   = 1rem
+/* Search Input */
+var-padding--search-input          = 0 0 0 2rem
+var-padding--search-input--large   = 0 0 0 2.9rem
+
+// Topcoat Mobile Light
+// ====================
+
+var-background-color        = #e5e9e8
+var-background--body        = #DFE2E2
+var-background-color--down  = #d3d7d7
+var-background-color--hover = #EDF1F1
+var-border                  = 1px solid #a5a8a8
+var-box-shadow              = none
+var-box-shadow--down        = inset 0 1px rgba(0, 0, 0, 0.12)
+var-color                   = #404040
+var-text-shadow             = none
+
+// Call to Action
+
+var-background-color--cta--down = #0380e8
+var-background-color--cta--hover = #509BEF
+
+// Icons
+
+var-menu-stack-icon = url("../img/hamburger_dark.svg")
+
+// Navigation Bar
+
+var-color--navigation-bar = #000
+var-box-shadow--navigation-bar = inset 0 -1px #b9bcbc, 0 1px #d4d6d6
+
+// Text Input
+
+var-color--placeholder = #C6C8C8
+var-color--focus = #000
+var-background-color--text-input = var-background-color--down
+var-background-color--text-input--focus = var-background-color--hover
+
+// List
+
+var-background-color--list        = $color-background
+var-border-top--list-container    = darken($color-background, 50%)
+var-border-top--list              = 1px solid rgb(188, 191, 191)
+var-border-bottom--list           = 1px solid rgb(239, 241, 241)
+var-border-top--list-item--first  = 1px solid rgba(0, 0, 0, 0.05)
+var-border-top--list-item         = 1px solid rgb(239, 241, 241)
+var-border-bottom--list-item      = 1px solid rgb(188, 191, 191)
+var-color--list-header            = rgb(101, 101, 101)
+var-text-shadow--list-header      = 0 1px 0 rgba(255, 255, 255, 0.5)
+var-border-top--list-header       = 1px solid rgba(255, 255, 255, 0.5)
+var-border-bottom--list-header    = 1px solid rgba(255, 255, 255, 0.23)
+var-background-color--list-header = rgb(204, 207, 207)
+
+// Overlay
+
+var-modal-bg-color                = #e5e9e8
+var-overlay__header-border        = 1px solid #d3d7d7
+
+// Progress bar
+
+var-bar-bg-color                  = var-background-color--down
+var-progress-bg-color             = #e0f0fa
+
+// Checkbox
+
+var-border--checkmark             = 7px solid #666666
+
+// Range input
+
+var-range-background              = var-background-color--down
+var-range__slider-border          = 1px solid rgba(0, 0, 0, .36)
+var-range__slider-background      = url("../img/light-grips.png") center center no-repeat #e5e9e8
+var-range__slider-bg-size         = 7px 18px
+var-range__slider-box-shadow      = inset 0 1px 0 rgba(255, 255, 255, .12);

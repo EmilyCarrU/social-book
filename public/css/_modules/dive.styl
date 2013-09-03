@@ -4,7 +4,6 @@
 	width: auto
 	height: auto
 	max-height: auto
-	background: $color-background
 	&:after
 		content: "" // 36px
 		position: absolute
@@ -13,24 +12,22 @@
 		display: block
 		float: left
 		height: 0
-		border: 0.25em solid transparent
 		border-top-color: $color-highlight
 		width: 0
 	&.is-open,
 	&:focus
 		> .dive-wrapper
-			// max-height: $dive-comment-max-height
 			max-height: 9999px
-			hardware-acceleration(true)
+			// height: 100px !important
+			// hardware-acceleration(true)
 		&:after
-			margin: 1px 0 0 0
 			transform rotate(180deg)
 
 .dive-wrapper
 	display: block
 	padding: 0
 	width: auto
-	max-height: 0
+	// max-height: 0
 	overflow: hidden
 	transition: max-height $default-transition-duration ease-in-out
 	hardware-acceleration(true)

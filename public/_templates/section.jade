@@ -1,9 +1,15 @@
 script(type="text/template", id="template-section")
 
-	header
-		h3!= "<%= title %>"
-		section!= "<%= content %>"
-	.target.target--section
-		.dive
-			i.dive-icon
-			.dive-wrapper
+    header
+      h2!= "<%= title_plain %>"
+      section!= "<%= content %>"
+      div!= "Type: <%= type %>"
+      div!= "Added: <%= date %>"
+      div!= "Modified: <%= date %>"
+      div!= "Author: <%= author.first_name %> <%= author.last_name %>"
+      div!= "<%= id %>"
+      button.topcoat-button Hello
+
+    .js-chapterView.topcoat-list
+      //- header.topcoat-list__header
+      //-   h3 Chapters

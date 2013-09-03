@@ -1,6 +1,6 @@
 script(type="text/template", id="template-comment")
 
-	.comment-content
+	.comment-content(id!="comment-<%= id %>")
 		.comment-body!= "<%= content %>"
 			header.comment-header
 				a.comment-author!= "—<%= name %>"
