@@ -94,7 +94,7 @@ $color-pre-background		= #333
 // Topcoat
 // =======
 
-support-for-ie = false
+support-for-ie            = false
 
 var-border--cta           = 1px solid #143250
 var-background-color--cta = #288edf
@@ -185,13 +185,18 @@ var-size--icon--large              = var-height--large * 0.571428571
 var-padding--icon-button           = 0 var-height / 4
 var-icon-top                       = -1px
 var-icon-top--large                = -2px
-/* Navigation bar */
+
+// Navigation bar
+
 var-padding--navigation-bar        = 1rem
-/* List */
-var-padding--list-header           = 4px 20px
-var-padding--list-item             = 1.25rem
+
+// List
+
+var-padding--list-header           = 1em 3em
+var-padding--list-item             = 0
 var-font-size--list-header         = .9em
-var-font-weight--list-header       = 400
+var-font-weight--list-header       = 700
+
 /* Search Input */
 var-search-icon                    = url("../img/search.svg")
 var-background-image--search-input                     = var-search-icon
@@ -230,9 +235,9 @@ var-background-color        = #e5e9e8
 var-background--body        = #DFE2E2
 var-background-color--down  = #d3d7d7
 var-background-color--hover = #EDF1F1
-var-border                  = 1px solid #a5a8a8
+var-border                  = none // 1px solid #a5a8a8
 var-box-shadow              = none
-var-box-shadow--down        = inset 0 1px rgba(0, 0, 0, 0.12)
+var-box-shadow--down        = none // inset 0 1px rgba(0, 0, 0, 0.12)
 var-color                   = #404040
 var-text-shadow             = none
 
@@ -260,17 +265,19 @@ var-background-color--text-input--focus = var-background-color--hover
 // List
 
 var-background-color--list        = $color-background
-var-border-top--list-container    = darken($color-background, 50%)
-var-border-top--list              = 1px solid rgb(188, 191, 191)
-var-border-bottom--list           = 1px solid rgb(239, 241, 241)
-var-border-top--list-item--first  = 1px solid rgba(0, 0, 0, 0.05)
-var-border-top--list-item         = 1px solid rgb(239, 241, 241)
-var-border-bottom--list-item      = 1px solid rgb(188, 191, 191)
+var-border-top--list-container    = darken($color-background, 10%)
+var-border-top--list              = 1px solid darken($color-background, 30%)
+var-border-bottom--list           = var-border-top--list
+
+var-border-top--list-item--first  = none
+var-border-top--list-item         = 1px solid darken($color-background, 20%)
+var-border-bottom--list-item      = none
+
 var-color--list-header            = rgb(101, 101, 101)
-var-text-shadow--list-header      = 0 1px 0 rgba(255, 255, 255, 0.5)
-var-border-top--list-header       = 1px solid rgba(255, 255, 255, 0.5)
-var-border-bottom--list-header    = 1px solid rgba(255, 255, 255, 0.23)
-var-background-color--list-header = rgb(204, 207, 207)
+var-text-shadow--list-header      = none
+var-border-top--list-header       = none
+var-border-bottom--list-header    = none
+var-background-color--list-header = darken($color-background, 10%)
 
 // Overlay
 

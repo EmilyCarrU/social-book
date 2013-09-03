@@ -1,7 +1,8 @@
 script(type="text/template", id="template-chapter")
 
-  strong!= "<%= title_plain %>"
-  p!= "<%= slug %>"
-  .js-subChapterView.topcoat-list
+  .chapter-wrapper
+    strong!= "<%= title_plain %>"
+    p!= "<%= slug %>"
+  .js-subChapterView.topcoat-list(id!="<%= slug %>")
     //- header.topcoat-list__header
     //-   h4 SubChapters
