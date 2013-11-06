@@ -1,8 +1,12 @@
 //- script(type="text/template", id="template-book")
 //- Should be changed to a view
 
-div
-  header.topcoat-list__header
-    h1 #{ title }
-  #book
-  //- span.no-overflowscrolling-fix= "(temp overflow scrolling fix, placeholder for real cover content)"
+//-
+  div
+    header.topcoat-list__header
+      a(href="/")
+        h1 #{ title }
+    #book
+    //- span.no-overflowscrolling-fix= "(temp overflow scrolling fix, placeholder for real cover content)"
+
+#book

@@ -4,15 +4,15 @@ script(type="text/template", id="template-comment-form")
 		form.comment-form(method="post", action="#")
 			fieldset
 				label(for="comment-form-name") Name
-				input.comment-form-name(type="text", name="comment-form-name", id="comment-form-name")
+				input.topcoat-text-input.comment-form-name(type="text", name="comment-form-name", id="comment-form-name")
 				//- Need the subchapter number for ID, ex #comment-form-name--01-03-10
 
 				label(for="comment-form-email") Email
-				input.comment-form-email(type="text", name="comment-form-email", id="comment-form-email")
+				input.topcoat-text-input.comment-form-email(type="text", name="comment-form-email", id="comment-form-email")
 
 				label(for="comment-form-content") Comment
-				textarea.comment-form-content(name="comment-form-content", id="comment-form-content")
+				textarea.topcoat-textarea.comment-form-content(name="comment-form-content", id="comment-form-content", rows="3", cols="18")
 
 				fieldset(class="comment-form-action-list")
-					button.btn.submit.comment-form-action Add Comment
-					button.cancel.comment-form-action Cancel
+					button.topcoat-button.comment-form-action.js-submitAddComment Add Comment
+					button.topcoat-link.comment-form-action.js-cancelAddComment Cancel

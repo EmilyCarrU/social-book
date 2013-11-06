@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>970FE04A-EEAA-4FE1-9BDE-ADEDBB4280CE</string>
+	<key>IDESourceControlProjectName</key>
+	<string>ebook</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>B8410CFE-4E38-465B-8B97-EEE8663B078C</key>
+		<string>ssh://github.com/chloi/emilycarr-ebook.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>platforms/iphone-ebook/ebook.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>B8410CFE-4E38-465B-8B97-EEE8663B078C</key>
+		<string>../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/chloi/emilycarr-ebook.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>B8410CFE-4E38-465B-8B97-EEE8663B078C</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>B8410CFE-4E38-465B-8B97-EEE8663B078C</string>
+			<key>IDESourceControlWCCName</key>
+			<string>emily-carr-ebook.harpapp</string>
+		</dict>
+	</array>
+</dict>
+</plist>
