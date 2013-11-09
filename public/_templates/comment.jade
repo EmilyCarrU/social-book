@@ -4,11 +4,11 @@ script(type="text/template", id="template-comment")
 		.comment-body!= "<%= content %>"
 			header.comment-header
 				a.comment-author!= "—<%= name %>"
-				a.comment-time Two days ago
-			.comment-content
-				a.ui.reply(href="#reply", title="Reply to <%= name %>’s comment") Reply
+				time(datetime="<%= date %>").comment-time!= "<%= date %>"
+			//- .comment-content
+			//- 	a.ui.reply(href="#reply", title="Reply to <%= name %>’s comment") Reply
 
-			footer
-				ul.comment-action-list
-					li.comment-action
-						a.reply
+			//- footer
+			//- 	ul.comment-action-list
+			//- 		li.comment-action
+			//- 			a.reply

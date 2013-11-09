@@ -2,11 +2,16 @@
 // =====
 
 .topcoat-list
+  // visibility: hidden
   display: none
+  &.js-chapterView
+    display: block
+    // visibility:visible
 
 .is-focused
   > .topcoat-list
+    // visibility: visible
     display: block
-
 .isnt-focused
-  display: none
+  // visibility: hidden
+  // display: none
