@@ -4,6 +4,22 @@
 // 	margin: 0
 // 	padding: 0
 
+.topcoat-list__item
+  border: none
+
+.subchapter-list
+  padding-top: 3em
+
 .subchapter // Probably should do this in topcoat module style
-  padding: var-padding--list-header
+  padding: 0 1em
+  @media $breakpoint-mid
+    padding-left: 3em
+    padding-right: 3em
+  // margin-top: -5em
   font-size: 1em
+  p,
+  ul,
+  ol,
+  blockquote
+    max-width: $content-max-width
+    margin: 0 auto

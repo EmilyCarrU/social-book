@@ -20,3 +20,6 @@ platforms/cordova-core/CordovaLib/CordovaLib.xcodeproj/project.pbxproj
 Rakefile
 .htaccess
 .htpasswd
+npm-debug.log
+
+node_modules

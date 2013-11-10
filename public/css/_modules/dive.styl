@@ -1,4 +1,5 @@
 .dive
+	box-shadow: 0 0 3em desaturate(darken($color-highlight, 25%), 50%)
 	border-top: 1px solid $color-highlight
 	border-bottom: 1px solid $color-highlight
 	width: auto
@@ -22,6 +23,8 @@
 			// hardware-acceleration(true)
 		&:after
 			transform rotate(180deg)
+	.is-focused > &
+		box-shadow: none
 
 .dive-wrapper
 	display: block

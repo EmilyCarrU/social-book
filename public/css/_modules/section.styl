@@ -1,10 +1,31 @@
-// .section-list,
-// .section
-// 	list-style-type: none
-// 	margin: 0
-// 	padding: 0
+.section-header:first-of-type
+  background: #444 no-repeat center center
+  background-size: auto 100%
+  height: ($content-max-width * 0.66)
+  color: #FFF
+  text-shadow: 0 0 1em rgba(0, 0, 0, 0.4)
+  padding-left: 1em
+  padding-right: 1em
+  @media $breakpoint-mid
+    padding-left: 3em
+    padding-right: 3em
 
-// .section-wrapper
+.section-wrapper
+  max-width: $content-max-width
+  // padding: 0 3em
+  margin: 0 auto
+  padding: 0
 
 .section-title
-  font-size: 1.5rem
+  font-size: 3rem
+  margin: 1em 0 0.25em 0
+  font-weight: normal
+  line-height: 1
+  text-transform: lowercase
+
+.section-info
+  font-weight: normal
+  margin-left: 2em
+
+.section-author
+  font-weight: 600

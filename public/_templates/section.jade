@@ -1,7 +1,12 @@
 script(type="text/template", id="template-section")
 
-    header.section-wrapper.topcoat-list__header
-      h2.section-title!= "<%= title_plain %>"
+    header.section-header.topcoat-list__header
+      .section-wrapper
+        h2.section-title!= "<%= title_plain %>"
+        .section-info
+          p.section-author Author S. Name
+          p.section-journal Journal Name
+          p.section-date Published July 3, 1999
       //- section!= "<%= content %>"
       //- div!= "Type: <%= type %>"
       //- div!= "Added: <%= date %>"
