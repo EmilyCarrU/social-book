@@ -19,6 +19,19 @@ html(lang="en", class="no-js")
 		meta(http-equiv="cleartype", content="on")
 		link(rel="stylesheet", href="#{ base }css/application.css")
 		//- != partial("shared/_fonts") // Load fonts asynchronously
+		link(rel="apple-touch-icon-precomposed", sizes="152x152", href="apple-touch-icon-152x152-precomposed.png")
+		link(rel="apple-touch-icon-precomposed", sizes="144x144", href="apple-touch-icon-144x144-precomposed.png")
+		link(rel="apple-touch-icon-precomposed", sizes="120x120", href="apple-touch-icon-120x120-precomposed.png")
+		link(rel="apple-touch-icon-precomposed", sizes="114x114", href="apple-touch-icon-114x114-precomposed.png")
+		link(rel="apple-touch-icon-precomposed", sizes="76x76", href="apple-touch-icon-76x76-precomposed.png")
+		link(rel="apple-touch-icon-precomposed", sizes="72x72", href="apple-touch-icon-72x72-precomposed.png")
+		link(rel="apple-touch-icon-precomposed", href="apple-touch-icon-precomposed.png")
+		link(href="apple-touch-startup-image-320x460.png", media="(device-width: 320px)", rel="apple-touch-startup-image")
+		link(href="apple-touch-startup-image-640x920.png", media="(device-width: 320px) and (-webkit-device-pixel-ratio: 2)", rel="apple-touch-startup-image")
+		link(href="apple-touch-startup-image-768x1004.png", media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)", rel="apple-touch-startup-image")
+		link(href="apple-touch-startup-image-1024x748.png", media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)", rel="apple-touch-startup-image")
+		link(href="apple-touch-startup-image-1536x2008.png", media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait) and (-webkit-min-device-pixel-ratio: 2)", rel="apple-touch-startup-image")
+		link(href="apple-touch-startup-image-2048x1496.png", media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) and (-webkit-min-device-pixel-ratio: 2)", rel="apple-touch-startup-image")
 
 		script(src="#{ base }bookdata.json", type="application/json")
 		script(src="#{ base }decadedata.json", type="application/json")
@@ -38,10 +51,10 @@ html(lang="en", class="no-js")
 			$(document).ready(function(e){
 				document.addEventListener("deviceready", onDeviceReady, false);
 			});
-			var Caliper = {
-				config: { apiKey: "dfc486b9-5cba-42ea-8ee6-8f74ffd2092d", debug: true }
-			};
-		script(src="//d2yr92gots5pio.cloudfront.net/caliper.backbone-0.4.2.min.js")
+		//- 	var Caliper = {
+		//- 		config: { apiKey: "dfc486b9-5cba-42ea-8ee6-8f74ffd2092d", debug: true }
+		//- 	};
+		//- script(src="//d2yr92gots5pio.cloudfront.net/caliper.backbone-0.4.2.min.js")
 
 	body(lang="en")
 		//- != partial("_debug")

@@ -1,9 +1,9 @@
 script(type="text/template", id="template-comment-list")
 
+	//- h1.ui!= "<% comment_count %>"
 	aside.topcoat-list.dive
-		header.topcoat-list__header
-			strong Comments
-			span.ui!= "<% comment_count %>"
+		//- header.topcoat-list__header
+		//- 	h4 Comments
 		ul.comment-list.topcoat-list__container.dive-wrapper
 			//- Comments load here
 		ul.comment-list-action-list

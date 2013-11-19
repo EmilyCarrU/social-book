@@ -16,7 +16,45 @@
   margin-left: (-3.75 * var-padding--list-header)
   margin-right: (-3.75 * var-padding--list-header)
   display: block
+  .topcoat-list__header
+    padding: 0
+    text-align: center
+    background: none
+    h4
+      text-transform: lowercase
+      font-style: italic
+      font-size: 2em
+      line-height: 1
+  .dive
+    background: lighten($color-background, 3)
+
+.comment-list
+  display: block
+  margin: 0 auto
 
 .comment
-  margin-left: (3.75 * var-padding--list-header)
+  font-size: 1.25em
+  padding-left: (3.75 * var-padding--list-header) + 2.5em
   margin-right: (3.75 * var-padding--list-header)
+  padding: 2.5em 2.5em 2.5em ((3.75 * var-padding--list-header) + 2.5em)
+  margin-bottom: 1px
+  border-left: 0.5em solid $color-highlight
+  background: lighten($color-background, 3)
+
+.comment-author
+  font-weight: normal
+  font-size: 1.25em
+  margin-left: -1em
+  display: block
+
+.comment-time
+  font-style: italic
+  color: #CCC
+  font-feature-settings: "pnum" true
+
+.comment-list-action
+  margin: 2em auto
+  max-width: 50%
+  input
+    width: 100%
+    display: block
