@@ -33,18 +33,19 @@
   margin: 0 auto
 
 .comment
-  font-size: 1.25em
-  padding-left: (3.75 * var-padding--list-header) + 2.5em
-  margin-right: (3.75 * var-padding--list-header)
+  font-size: 1rem
+  // padding-left: (3.75 * var-padding--list-header) + 2.5em
+  // padding-right: (3.75 * var-padding--list-header)
   padding: 2.5em 2.5em 2.5em ((3.75 * var-padding--list-header) + 2.5em)
-  margin-bottom: 1px
-  border-left: 0.5em solid $color-highlight
+  // margin-bottom: 1px
+  // border-left: 0.5em solid $color-highlight
+  // border-bottom: 1px solid lighten(#404040, 50%);
   background: lighten($color-background, 3)
 
 .comment-author
   font-weight: normal
   font-size: 1.25em
-  margin-left: -1em
+  margin-left: 2em
   display: block
 
 .comment-time
@@ -68,13 +69,27 @@
   margin: 0 auto
   label
     display: block
-  input, textarea
+    width: 100%
+  .topcoat-text-input
     display: block
-      width: 100%
-      margin-bottom: 1em
-      font-size: 1em
-      &:focus
-        border: none
+    width: 100%
+    margin-bottom: 1em
+    font-size: 1rem
+    &:focus
+      border: none
+      box-shadow: none
+  .topcoat-textarea
+    display: block
+    width: 100%
+    margin-bottom: 0.5em
+
+.comment-form-label
+  width: 50%
+  display: block
+  float: left
+  padding-right: 0.75em
+  &.last // :(
+    padding-right: 0
 
 .topcoat-link
   appearance: none
