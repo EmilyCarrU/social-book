@@ -1,20 +1,18 @@
-script(type="text/template", id="template-section")
+header.section-header.topcoat-list__header
+  .section-wrapper
+    h2.section-title!= "<%= title_plain %>"
+    .section-info
+      p.section-author Darrin Barney
+      p.section-journal ebook prototype
+      p.section-date Emily Carr University of Art + Design
+  //- section!= "<%= content %>"
+  //- div!= "Type: <%= type %>"
+  //- div!= "Added: <%= date %>"
+  //- div!= "Modified: <%= date %>"
+  //- div!= "Author: <%= author.first_name %> <%= author.last_name %>"
+  //- div!= "<%= id %>"
+  //- button.topcoat-button Hello
 
-    header.section-header.topcoat-list__header
-      .section-wrapper
-        h2.section-title!= "<%= title_plain %>"
-        .section-info
-          p.section-author Darrin Barney
-          p.section-journal ebook prototype
-          p.section-date Emily Carr University of Art + Design
-      //- section!= "<%= content %>"
-      //- div!= "Type: <%= type %>"
-      //- div!= "Added: <%= date %>"
-      //- div!= "Modified: <%= date %>"
-      //- div!= "Author: <%= author.first_name %> <%= author.last_name %>"
-      //- div!= "<%= id %>"
-      //- button.topcoat-button Hello
-
-    .js-chapterView.topcoat-list
-      //- header.topcoat-list__header
-      //-   h3 Chapters
+.js-chapterView.topcoat-list
+  //- header.topcoat-list__header
+  //-   h3 Chapters

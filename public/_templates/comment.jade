@@ -1,15 +1,13 @@
-script(type="text/template", id="template-comment")
+.comment-content(id!="comment-<%= id %>")
+	.comment-body!= "<%= content %>"
+		header.comment-header
+			//- a.comment-author(href!="#comment-<%= id %>")!= "—<%= name %>, "
+			strong.comment-author!= "—<%= name %>"
+			time(datetime="<%= date %>").comment-time!= "<%= date %>"
+		//- .comment-content
+		//- 	a.ui.reply(href="#reply", title="Reply to <%= name %>’s comment") Reply
 
-	.comment-content(id!="comment-<%= id %>")
-		.comment-body!= "<%= content %>"
-			header.comment-header
-				//- a.comment-author(href!="#comment-<%= id %>")!= "—<%= name %>, "
-				strong.comment-author!= "—<%= name %>"
-				time(datetime="<%= date %>").comment-time!= "<%= date %>"
-			//- .comment-content
-			//- 	a.ui.reply(href="#reply", title="Reply to <%= name %>’s comment") Reply
-
-			//- footer
-			//- 	ul.comment-action-list
-			//- 		li.comment-action
-			//- 			a.reply
+		//- footer
+		//- 	ul.comment-action-list
+		//- 		li.comment-action
+		//- 			a.reply

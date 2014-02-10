@@ -1,18 +1,16 @@
-script(type="text/template", id="template-comment-form")
+.comment-add
+	form.comment-form(method="post", action="#")
+		fieldset
+			label(for="comment-form-name") Name
+			input.topcoat-text-input.comment-form-name(placeholder="", type="text", name="comment-form-name", id="comment-form-name")
+			//- Need the subchapter number for ID, ex #comment-form-name--01-03-10
 
-	.comment-add
-		form.comment-form(method="post", action="#")
-			fieldset
-				label(for="comment-form-name") Name
-				input.topcoat-text-input.comment-form-name(type="text", name="comment-form-name", id="comment-form-name")
-				//- Need the subchapter number for ID, ex #comment-form-name--01-03-10
+			label(for="comment-form-email") Email
+			input.topcoat-text-input.comment-form-email(type="text", name="comment-form-email", id="comment-form-email")
 
-				label(for="comment-form-email") Email
-				input.topcoat-text-input.comment-form-email(type="text", name="comment-form-email", id="comment-form-email")
+			label(for="comment-form-content") Comment
+			textarea.topcoat-textarea.comment-form-content(name="comment-form-content", id="comment-form-content", rows="3", cols="18")
 
-				label(for="comment-form-content") Comment
-				textarea.topcoat-textarea.comment-form-content(name="comment-form-content", id="comment-form-content", rows="3", cols="18")
-
-				fieldset(class="comment-form-action-list")
-					button.topcoat-button.comment-form-action.js-submitAddComment Add Comment
-					button.topcoat-link.comment-form-action.js-cancelAddComment Cancel
+			fieldset(class="comment-form-action-list")
+				button.topcoat-button.comment-form-action.js-submitAddComment Add Comment
+				//- button.topcoat-link.comment-form-action.js-cancelAddComment Cancel

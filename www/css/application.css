@@ -344,6 +344,18 @@ input[type="search"]::-webkit-search-cancel-button{-webkit-appearance:none}
 .subchapter{padding:0 1em;font-size:1em;}
 @media screen and (min-width: 45em){.subchapter{padding-left:3em;padding-right:3em}
 }.subchapter > p,.subchapter > ul,.subchapter > ol,.subchapter > blockquote{max-width:35em;margin:0 auto}
+.comment-list,.comment-list-action-list,.comment-list-action,.comment,.comment-action-list,.comment-action,.comment-form,.comment-form-action-list{list-style-type:none;margin:0;padding:0}
+.comment-list{display:block;margin:0 auto}
+.comment{font-size:1.25em;padding-left:6.25em;margin-right:3.75em;padding:2.5em 2.5em 2.5em 6.25em;margin-bottom:1px;border-left:.5em solid #fc5b5d;background:#fdfdfb}
+.comment-author{font-weight:normal;font-size:1.25em;margin-left:-1em;display:block}
+.comment-time{font-style:italic;color:#ccc;-webkit-font-feature-settings:"pnum" true;-moz-font-feature-settings:"pnum" true;-ms-font-feature-settings:"pnum" true;font-feature-settings:"pnum" true}
+.comment-list-action{margin:2em auto;max-width:50%;}
+.comment-list-action input{width:100%;display:block}
+.comment-form{display:block;background:#fdfdfb;border-bottom:1px solid #fc5b5d;padding:2em 0;margin:0 auto;}
+.comment-form label{display:block}
+.comment-form input display: block,.comment-form textarea display: block{width:100%;margin-bottom:1em;font-size:1em;}
+.comment-form input display: block:focus,.comment-form textarea display: block:focus{border:none}
+.topcoat-link{-webkit-appearance:none;-moz-appearance:none;appearance:none;background:transparent;padding:1em;border:none}
 .topcoat-list{height:1px;overflow:hidden;}
 .topcoat-list.js-chapterView{display:block}
 .is-focused > .topcoat-list{display:block;height:auto}
