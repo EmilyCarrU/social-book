@@ -1,25 +1,15 @@
-<<<<<<< HEAD
 .sass-cache
 .DS_Store
 =======
 .DS_Store
 *.scssc
->>>>>>> 6120bc0702a8f1b3dcb15cffa8f2c2e8efb89f71
-
 *.xcscheme
 *.plist
 *.xcuserstate
-platforms/iphone-ebook/ebook.xcodeproj/project.xcworkspace/xcuserdata/haig-old.xcuserdatad/WorkspaceSettings.xcsettings
-
-platforms/cordova-core/CordovaLib/CordovaLib.xcodeproj/project.pbxproj
-
-platforms/cordova-core/CordovaLib/CordovaLib.xcodeproj/project.pbxproj
-
-platforms/cordova-core/CordovaLib/CordovaLib.xcodeproj/project.pbxproj
-
+platforms/
 Rakefile
 .htaccess
 .htpasswd
 npm-debug.log
-
 node_modules
+www/
