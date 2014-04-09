@@ -1,22 +1,34 @@
 # Emily Carr eBook Application
 
-## Contact
+A prototype ebook for Emily Carr University’s Social + Interactive Media Centre.
 
-* Haig: haig.armen@gmail.com - 778-881-6676
-* Alex: alex@alexandrasamuel.com
-* Kenneth: hello@kennethormandy.com
+## Running the ebook
 
-## Wordpress API
+This ebook is build with [Harp](http://harpjs.com), which uses Node.js. [Install Node.js](nodejs.org). It will come with npm, the Node Package Manager. [Open the terminal](http://wiseheartdesign.com/articles/2010/11/12/the-designers-guide-to-the-osx-command-prompt/), and you can install Harp using the following command:
 
-* http://book.hyko.org/api/
+```sh
+npm install -g harp
+```
 
-## Setup
+Next, you can clone this repository locally:
 
-    $ /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --disable-web-security
+```sh
+# drag the location you want the project to be, into the terminal
+cd ~/Sites/
+git clone https://github.com/emilycarru/social-ebook
+# this repo would now be in ~/Sites/social-ebook
+```
+
+You can now serve this project using Harp.
+
+```sh
+harp server social-ebook
+# social-ebook is being served in your browser at http://localhost:9000
+```
 
 ## Structure
 
-The platform accomidates different kinds of books with commenting at multiple levels. The basic structure is as follows:
+The platform accommodates different kinds of books with commenting at multiple levels. The basic structure is as follows:
 
 *Generic Book*
 
